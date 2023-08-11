@@ -1,0 +1,57 @@
+import Note from "./../note";
+import { fromJsonObject, toJsonObject } from "./index";
+import Notebook from "./../notebook";
+
+describe('JSON persistence', () => {
+    let notebook: Notebook
+
+    beforeEach(() => {
+        notebook = new Notebook()
+    })
+
+    const grandparent: Note = { id: '1', text: 'grandparent' }
+    const parent: Note = { id: '2', text: 'parent' }
+    const child: Note = { id: '3', text: 'child' }
+
+    const threeLevelHierarchyJsonObject = {
+        // Having top-level "notes" key makes it extendable in future versions
+        // which may add more keys like "author", "license", "drafts", "sops", etc.
+        //
+        // Storing notes' parents instead of children
+        // makes it harder to confuse the structure with a tree.
+        // It clearly shows that nodes may have multiple parents.
+        //
+        // It also makes it easier to edit notebook manually
+        // (e.g. to move a note to another parent).
+        'notes': {
+            '1': { text: 'grandparent' },
+            '2': { text: 'parent', parents: ['1'] },
+            '3': { text: 'child', parents: ['2'] }
+        }
+    }
+
+    describe('.toJsonObject()', () => {
+        test('Converts empty notebook to JSON object', () => {
+            expect(toJsonObject(notebook)).toStrictEqual({ notes: {} })
+        })
+
+        test('Converts hierarchical notebook to JSON object', () => {
+            notebook.upsert(grandparent)
+            notebook.attach(grandparent, parent)
+            notebook.attach(parent, child)
+            expect(toJsonObject(notebook)).toStrictEqual(threeLevelHierarchyJsonObject)
+        })
+    })
+
+    describe('.fromJsonObject()', () => {
+        test('Converts empty JSON object to empty notebook', () => {
+            const notebook = fromJsonObject({ notes: {} })
+            expect(Array.from(notebook.nodes())).toStrictEqual([])
+        })
+
+        test('Converts JSON object to hierarchical notebook', () => {
+            notebook = fromJsonObject(threeLevelHierarchyJsonObject)
+            expect(toJsonObject(notebook)).toStrictEqual(threeLevelHierarchyJsonObject)
+        })
+    })
+})
