@@ -117,4 +117,29 @@ describe('Notebook', () => {
       expect(family.ancestors("missing")).toBeUndefined();
     });
   });
+
+  describe(".remove()", function () {
+    test("Detaches all children from the parent", () => {
+      family.remove(PARENT.id);
+      expect(family.parents(CHILD.id)).toEqual(new Set([]));
+    });
+
+    test("Detaches child from all parents", () => {
+      family.remove(PARENT.id);
+      expect(family.children(GRANDPARENT.id)?.has(PARENT)).toStrictEqual(false);
+    });
+
+    test("Hierarchy no longer has removed node", () => {
+      family.remove(PARENT.id);
+      expect(family.nodes().has(PARENT)).toStrictEqual(false);
+    });
+
+    test("Removing the only node of the hierarchy empties the hierarchy", () => {
+      const hierarchy = new Notebook()
+      const orhpan = { id: 'orphan', text: 'orphan' }
+      hierarchy.upsert(orhpan);
+      hierarchy.remove(orhpan.id);
+      expect(hierarchy.nodes()).toStrictEqual(new Set());
+    });
+  });
 })

@@ -58,4 +58,9 @@ export default class Notebook {
     const note = this.findById(noteId)
     return note ? this.hierarchy.ancestors(note) : undefined
   }
+
+  remove = (noteId: string): void => {
+    const note = this.findById(noteId)
+    note && this.hierarchy.remove(note)
+  }
 }

@@ -44,7 +44,7 @@ function MyApp() {
   const onDeleteFromInspector = (note: Note) => {
     // todo: confirm action, show number of children
     // todo: handle case with children
-    notebook.hierarchy.remove(note)
+    notebook.remove(note.id)
     setInspectorNote(undefined)
     setNotebook(new Notebook(notebook))
   }
