@@ -5,7 +5,7 @@ import Note from "./note";
 export default class Notebook {
   hierarchy: OverlappingHierarchy<Note> = new OverlappingHierarchy<Note>() // TODO: make private
 
-  constructor(source?: Notebook) {
+  constructor(source?: Notebook) { // TODO: cover with tests; test for source mutation
     this.hierarchy = new OverlappingHierarchy<Note>(source?.hierarchy)
   }
 
