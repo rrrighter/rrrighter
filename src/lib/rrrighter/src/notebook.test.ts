@@ -64,6 +64,22 @@ describe('Notebook', () => {
     })
   })
 
+  describe(".children()", () => {
+    test("Returns children", () => {
+      expect(family.children(PARENT.id)).toStrictEqual(new Set([CHILD]));
+    });
+
+    test("When parent does not exist, returns undefined", () => {
+      expect(family.children("missing")).toBeUndefined();
+    });
+
+    test("Mutating returned set does not affect hierarchy", () => {
+      const children = family.children(PARENT.id);
+      children?.clear();
+      expect(family.children(PARENT.id)?.has(CHILD)).toStrictEqual(true);
+    });
+  });
+
   describe(".parents()", () => {
     test("Given top-level node, returns nothing", () => {
       expect(family.parents(GRANDPARENT.id)).toStrictEqual(new Set());

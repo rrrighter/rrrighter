@@ -23,7 +23,7 @@ const treeData = (notebook: Notebook): TreeDataNodeType[] => { // todo: move to 
   const _treeData = (notes: Iterable<Note>, prefix = ''): TreeDataNodeType[] => {
     return Array.from(notes).sort(sortByText).map((note) => {
       const key = prefix + '/' + note.id
-      const childrenNotes = notebook.hierarchy.children(note)
+      const childrenNotes = notebook.children(note.id)
       return { key, note, children: childrenNotes && childrenNotes.size > 0 ? _treeData(childrenNotes, key) : undefined }
     })
   }
