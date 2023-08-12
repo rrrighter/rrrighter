@@ -48,8 +48,6 @@ describe('Notebook', () => {
       clone.attach(newChild.id, newParent.id);
       expect(originalNodes).toStrictEqual(family.notes());
     });
-
-    // TODO: test that mutating a note text(s) or id(s) in the clone does not affect the source
   });
 
   describe(".notes()", () => {
