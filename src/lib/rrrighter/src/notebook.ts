@@ -8,6 +8,8 @@ export default class Notebook extends OverlappingHierarchy<Note> {
   //  todo: use note IDs as args instead of note object references to mutate hierarchy; cover with tests
   // todo: do not expose add directly
   // todo: delegate attachChild; detachChild; and traversal methods to OH; DO NOT EXPOSE .add
+  findById = (id: string): Note | undefined => Array.from(this.nodes()).find((note) => note.id === id)
+
   upsert = (note: Note): void => {
     const existing = Array.from(this.nodes()).find((n) => n.id === note.id)
     if (existing) {
