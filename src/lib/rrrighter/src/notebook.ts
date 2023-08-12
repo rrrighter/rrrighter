@@ -35,17 +35,17 @@ export default class Notebook {
 
   attach = (parent: Note, child: Note): void => { // todo: lift to Rrrighter app class as this is specific to application layer
     this.descendants(parent.id)?.forEach((descendant) => this.hierarchy.detach(descendant, child))
-    this.hierarchy.ancestors(parent)?.forEach((ancestor) => this.hierarchy.detach(ancestor, child))
+    this.ancestors(parent.id)?.forEach((ancestor) => this.hierarchy.detach(ancestor, child))
     this.hierarchy.attach(parent, child)
   }
 
-  descendants(ancestorId: string): Set<Note> | undefined {
-    const note = this.findById(ancestorId)
+  descendants(noteId: string): Set<Note> | undefined {
+    const note = this.findById(noteId)
     return note ? this.hierarchy.descendants(note) : undefined
   }
 
-  ancestors(descendantId: string): Set<Note> | undefined {
-    const note = this.findById(descendantId)
+  ancestors(noteId: string): Set<Note> | undefined {
+    const note = this.findById(noteId)
     return note ? this.hierarchy.ancestors(note) : undefined
   }
 }
