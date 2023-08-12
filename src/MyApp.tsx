@@ -22,7 +22,6 @@ function MyApp() {
 
   const createNote = (note: Note) => {
     notebook.upsert(note)
-    inspectorNote && notebook.attach(inspectorNote, note)
     setNotebook(new Notebook(notebook))
     setInspectorNote(note)
   }
