@@ -20,12 +20,6 @@ function MyApp() {
   const [inspectorNote, setInspectorNote] = useState<Note | undefined>(undefined)
   const [editorText, setEditorText] = useState<string | undefined>(undefined)
 
-  const createNote = (note: Note) => {
-    notebook.upsert(note)
-    setNotebook(new Notebook(notebook))
-    setInspectorNote(note)
-  }
-
   const showCreateNote = () => {
     // todo fix eslint
     // eslint-disable-next-line no-restricted-globals
@@ -37,7 +31,9 @@ function MyApp() {
   }
 
   const onCreate = (newNote: Note) => {
-    createNote(newNote)
+    notebook.upsert(newNote)
+    setNotebook(new Notebook(notebook))
+    setInspectorNote(newNote)
     hideCreateNote()
   }
 
