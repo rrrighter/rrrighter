@@ -23,7 +23,7 @@ const treeData = (notebook: Notebook): TreeDataNodeType[] => { // todo: move to 
   const _treeData = (notes: Iterable<Note>, prefix = ''): TreeDataNodeType[] => {
     return Array.from(notes).sort(sortByText).map((note) => {
       const key = prefix + '/' + note.id
-      const childrenNotes = notebook.children(note)
+      const childrenNotes = notebook.hierarchy.children(note)
       return { key, note, children: childrenNotes && childrenNotes.size > 0 ? _treeData(childrenNotes, key) : undefined }
     })
   }
@@ -39,7 +39,7 @@ export default function TreeTable(props: { notebook: Notebook, onSelect?: Functi
       defaultSortOrder: 'ascend',
       sorter: (a, b) => a.note.text.localeCompare(b.note.text),
       render: (text: string, record: DataType) => {
-        const descendantsCount = props.notebook.descendants(record.note)?.size || 0
+        const descendantsCount = props.notebook.descendants(record.note.id)?.size || 0
 
         return <div>
           <Text>{text.split('\n')[0]}</Text>

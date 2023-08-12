@@ -8,7 +8,7 @@ import { Tag } from 'antd'
 import TreeTable from '../notebook/tree-table/tree-table' // todo: move to hierarchy/ folder
 
 export default function Parents(props: { notebook: Notebook, note: Note, onDetach: Function, onAttach: Function }) {
-  const parents = Array.from(props.notebook.parents(props.note) || [])
+  const parents = Array.from(props.notebook.hierarchy.parents(props.note) || [])
   const tags: ReactNode[] = parents.map((parent): ReactNode => {
     const label = parent.text.split('\n')[0] // todo: try use Text component instead or create NoteTitle component
     return <Tag key={parent.id} closable onClose={() => props.onDetach(parent, props.note)}>{label}</Tag>
@@ -16,8 +16,8 @@ export default function Parents(props: { notebook: Notebook, note: Note, onDetac
 
   const potentialParentsNotebook = (notebook: Notebook, note: Note): Notebook => { // todo: extract to Rrrighter app class?
     const result = new Notebook(notebook)
-    result.descendants(note)?.forEach((descendant) => result.remove(descendant))
-    result.remove(note)
+    result.descendants(note.id)?.forEach((descendant) => result.hierarchy.remove(descendant))
+    result.hierarchy.remove(note)
     return result
   }
 
