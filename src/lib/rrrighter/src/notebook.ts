@@ -1,4 +1,6 @@
 import OverlappingHierarchy from "overlapping-hierarchy";
+import {LoopError, CycleError, ConflictingParentsError} from "overlapping-hierarchy";
+
 import Note from "./note";
 
 // Notebook is an overlapping hierarchy of text notes with unique IDs.
@@ -33,8 +35,10 @@ export default class Notebook {
     return notes
   }
 
-  attach = (parent: Note, child: Note): void => {
-    this.hierarchy.attach(parent, child) // TODO: cover with tests, convert to use ids as args
+  attach = (parentId: string, childId: string): LoopError | CycleError | ConflictingParentsError | void => {
+    const parent = this.findById(parentId)
+    const child = this.findById(childId)
+    return parent && child && this.hierarchy.attach(parent, child)
   }
 
   children(noteId: string): Set<Note> | undefined {

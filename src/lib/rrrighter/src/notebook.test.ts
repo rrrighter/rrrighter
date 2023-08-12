@@ -1,4 +1,5 @@
 import Notebook from './notebook'
+import {LoopError, CycleError, ConflictingParentsError} from "overlapping-hierarchy";
 
 const CHILD = { id: "child", text: "child" };
 const PARENT = { id: "parent", text: "parent" };
@@ -12,8 +13,10 @@ describe('Notebook', () => {
     notebook = new Notebook()
     family = new Notebook()
     family.upsert(GRANDPARENT);
-    family.attach(GRANDPARENT, PARENT);
-    family.attach(PARENT, CHILD);
+    family.upsert(PARENT);
+    family.upsert(CHILD);
+    family.attach(GRANDPARENT.id, PARENT.id);
+    family.attach(PARENT.id, CHILD.id);
   })
 
   describe(".nodes()", () => {
@@ -51,6 +54,60 @@ describe('Notebook', () => {
       expect(notebook.nodes()).toEqual(new Set([{ id: '1', text: 'update' }]))
     })
   })
+
+  describe(".attach()", () => {
+    test("Attaching node to itself returns LoopError", () => {
+      expect(family.attach(CHILD.id, CHILD.id)).toStrictEqual(
+          new LoopError("Cannot attach node to itself")
+      );
+    });
+
+    test("Attaching ancestor as a child returns CycleError", () => {
+      expect(family.attach(CHILD.id, GRANDPARENT.id)).toStrictEqual(
+          new CycleError("Cannot attach ancestor as a child")
+      );
+    });
+
+    test("Attaching non-child descendant as a child returns ConflictingParentsError", () => {
+      expect(family.attach(GRANDPARENT.id, CHILD.id)).toStrictEqual(
+          new ConflictingParentsError(`Cannot attach child to parent's ancestor`)
+      );
+    });
+
+    test("Attaches node to the parent as a child", () => {
+      const grandchild = { id: "grandchild", text: "grandchild" };
+      family.upsert(grandchild);
+      family.attach(CHILD.id, grandchild.id);
+      expect(family.children(CHILD.id)).toStrictEqual(new Set([grandchild]));
+    });
+
+    // // TODO: also test it doesn't change hierarchy
+    // test("Attaching to non-existing parent returns undefined", () => { // TODO consider returning ParentNotFoundError
+    //   expect(family.attach("missing", CHILD.id)).toStrictEqual(undefined);
+    // });
+    //
+    // // TODO: also test it doesn't change hierarchy
+    // test("Attaching to non-existing child returns undefined", () => { // TODO consider returning ParentNotFoundError
+    //   expect(family.attach("missing", CHILD.id)).toStrictEqual(undefined);
+    // });
+
+    test("Attaches node to another parent as a child", () => {
+      const anotherParent = { id: "another parent", text: "another parent" };
+      family.upsert(anotherParent);
+      family.attach(GRANDPARENT.id, anotherParent.id);
+      family.attach(anotherParent.id, CHILD.id);
+      expect(family.children(anotherParent.id)?.has(CHILD)).toStrictEqual(true);
+    });
+
+    test("Attached child has a parent", () => {
+      const GREAT_GRANDPARENT = { id: 'gg', text: "great-grandparent" }
+      family.upsert(GREAT_GRANDPARENT);
+      family.attach(GREAT_GRANDPARENT.id, GRANDPARENT.id);
+      expect(family.parents(GRANDPARENT.id)).toStrictEqual(
+          new Set([GREAT_GRANDPARENT])
+      );
+    });
+  });
 
   describe('.findById()', () => {
     test('When not found, returns undefined', () => {

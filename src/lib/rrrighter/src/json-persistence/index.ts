@@ -18,7 +18,7 @@ export const fromJsonObject = (jsonObject: NotebookJson): Notebook => {
 
     for(const childId in jsonObject.notes) {
         for(const parentId of jsonObject.notes[childId].parents || []) {
-            notebook.attach(notes[parentId], notes[childId])
+            notebook.attach(parentId, childId)
         }
     }
 

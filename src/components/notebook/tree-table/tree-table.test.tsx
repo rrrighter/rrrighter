@@ -16,7 +16,7 @@ beforeEach(() => {
   notebook = new Notebook()
   notebook.upsert(hierarch)
   notebook.upsert(child)
-  notebook.attach(hierarch, child)
+  notebook.attach(hierarch.id, child.id)
 })
 
 // todo extract to global setup

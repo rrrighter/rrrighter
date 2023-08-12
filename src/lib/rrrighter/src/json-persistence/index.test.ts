@@ -37,8 +37,10 @@ describe('JSON persistence', () => {
 
         test('Converts hierarchical notebook to JSON object', () => {
             notebook.upsert(grandparent)
-            notebook.attach(grandparent, parent)
-            notebook.attach(parent, child)
+            notebook.upsert(parent)
+            notebook.upsert(child)
+            notebook.attach(grandparent.id, parent.id)
+            notebook.attach(parent.id, child.id)
             expect(toJsonObject(notebook)).toStrictEqual(threeLevelHierarchyJsonObject)
         })
     })
