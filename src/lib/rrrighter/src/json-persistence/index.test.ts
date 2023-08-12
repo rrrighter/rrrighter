@@ -48,7 +48,7 @@ describe('JSON persistence', () => {
     describe('.fromJsonObject()', () => {
         test('Converts empty JSON object to empty notebook', () => {
             const notebook = fromJsonObject({ notes: {} })
-            expect(Array.from(notebook.nodes())).toStrictEqual([])
+            expect(Array.from(notebook.notes())).toStrictEqual([])
         })
 
         test('Converts JSON object to hierarchical notebook', () => {

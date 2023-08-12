@@ -27,7 +27,7 @@ export const fromJsonObject = (jsonObject: NotebookJson): Notebook => {
 
 export const toJsonObject = (notebook: Notebook): NotebookJson => {
     let jsonObject: NotebookJson = { notes: {} }
-    notebook.nodes().forEach(note => {
+    notebook.notes().forEach(note => {
         const parents = notebook.parents(note.id)
         jsonObject.notes[note.id] = { text: note.text }
         if (parents && parents.size > 0) {

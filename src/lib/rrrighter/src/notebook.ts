@@ -11,7 +11,7 @@ export default class Notebook {
     this.hierarchy = new OverlappingHierarchy<Note>(source?.hierarchy)
   }
 
-  nodes = (): Set<Note> => this.hierarchy.nodes()
+  notes = (): Set<Note> => this.hierarchy.nodes()
 
   findById = (id: string): Note | undefined => Array.from(this.hierarchy.nodes()).find((note) => note.id === id)
 
