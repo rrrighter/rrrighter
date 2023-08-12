@@ -31,7 +31,7 @@ export default class Notebook {
     return notes
   }
 
-  attach = (parentId: string, childId: string): LoopError | CycleError | ConflictingParentsError | void => {
+  attach = (parentId: string, childId: string): LoopError | CycleError | ConflictingParentsError | void => { // TODO: consider NoteNotFoundError |OverlappingHierarchyError | void
     const parent = this.findById(parentId)
     const child = this.findById(childId)
     return parent && child && this.hierarchy.attach(parent, child)
