@@ -5,7 +5,7 @@ import Note from "./note";
 
 // Notebook is an overlapping hierarchy of text notes with unique IDs.
 export default class Notebook {
-  hierarchy: OverlappingHierarchy<Note> = new OverlappingHierarchy<Note>() // TODO: make private
+  hierarchy: OverlappingHierarchy<Note> = new OverlappingHierarchy<Note>() // TODO: make private after covering constructor with tests
 
   constructor(source?: Notebook) { // TODO: cover with tests; test for source mutation
     this.hierarchy = new OverlappingHierarchy<Note>(source?.hierarchy)
@@ -39,6 +39,12 @@ export default class Notebook {
     const parent = this.findById(parentId)
     const child = this.findById(childId)
     return parent && child && this.hierarchy.attach(parent, child)
+  }
+
+  detach = (parentId: string, childId: string): void => {
+    const parent = this.findById(parentId)
+    const child = this.findById(childId)
+    parent && child && this.hierarchy.detach(parent, child)
   }
 
   children(noteId: string): Set<Note> | undefined {

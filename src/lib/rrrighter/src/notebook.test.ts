@@ -109,6 +109,26 @@ describe('Notebook', () => {
     });
   });
 
+  describe(".detach()", () => {
+    test("Parent no longer has detached child", () => {
+      family.detach(PARENT.id, CHILD.id);
+      expect(family.children(PARENT.id)?.has(CHILD)).toStrictEqual(false);
+    });
+
+    test("Detached child still belongs to another parent", () => {
+      const parent2 = { id: "parent2", text: "parent2" };
+      family.upsert(parent2);
+      family.attach(parent2.id, CHILD.id);
+      family.detach(PARENT.id, CHILD.id);
+      expect(family.children("parent2")?.has(CHILD)).toStrictEqual(true);
+    });
+
+    test("Child detached from the only parent still belongs to the hierarchy", () => {
+      family.detach(PARENT.id, CHILD.id);
+      expect(family.nodes().has(CHILD)).toStrictEqual(true);
+    });
+  });
+
   describe('.findById()', () => {
     test('When not found, returns undefined', () => {
       expect(notebook.findById('missing')).toBeUndefined()
