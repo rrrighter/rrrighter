@@ -39,6 +39,11 @@ export default class Notebook {
     this.hierarchy.attach(parent, child)
   }
 
+  parents(noteId: string): Set<Note> | undefined {
+    const note = this.findById(noteId)
+    return note ? this.hierarchy.parents(note) : undefined
+  }
+
   descendants(noteId: string): Set<Note> | undefined {
     const note = this.findById(noteId)
     return note ? this.hierarchy.descendants(note) : undefined

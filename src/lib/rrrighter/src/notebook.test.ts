@@ -64,6 +64,20 @@ describe('Notebook', () => {
     })
   })
 
+  describe(".parents()", () => {
+    test("Given top-level node, returns nothing", () => {
+      expect(family.parents(GRANDPARENT.id)).toStrictEqual(new Set());
+    });
+
+    test("Given child, returns its parents", () => {
+      expect(family.parents(CHILD.id)).toStrictEqual(new Set([PARENT]));
+    });
+
+    test("Returns undefined for non-member", () => {
+      expect(family.parents("missing")).toBeUndefined();
+    });
+  });
+
   describe(".descendants()", () => {
     test("Returns descendants", () => {
       expect(family.descendants(GRANDPARENT.id)).toStrictEqual(
