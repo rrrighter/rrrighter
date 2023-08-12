@@ -13,15 +13,10 @@ export default class Notebook {
 
   nodes = (): Set<Note> => this.hierarchy.nodes()
 
-  // TODO: #hierarchy = OverlappingHierarchy<string> to manipulate IDs instead of Note objects?
-  // TODO: do not extend OH, but delegate to it;
-  //  todo: use note IDs as args instead of note object references to mutate hierarchy; cover with tests
-  // todo: do not expose add directly
-  // todo: delegate attachChild; detachChild; and traversal methods to OH; DO NOT EXPOSE .add
   findById = (id: string): Note | undefined => Array.from(this.hierarchy.nodes()).find((note) => note.id === id)
 
   upsert = (note: Note): void => {
-    const existing = Array.from(this.hierarchy.nodes()).find((n) => n.id === note.id)
+    const existing = this.findById(note.id)
     if (existing) {
       existing.text = note.text
     } else {
