@@ -1,15 +1,19 @@
 import Notebook from './notebook'
-import OverlappingHierarchy from 'overlapping-hierarchy'
+
+const CHILD = { id: "child", text: "child" };
+const PARENT = { id: "parent", text: "parent" };
+const GRANDPARENT = { id: "grandparent", text: "grandparent" };
 
 describe('Notebook', () => {
   let notebook: Notebook
+  let family: Notebook
 
   beforeEach(() => {
     notebook = new Notebook()
-  })
-
-  test('Is an overlapping hierarchy', () => { // todo: remove
-    expect(notebook).toBeInstanceOf(OverlappingHierarchy)
+    family = new Notebook()
+    family.upsert(GRANDPARENT);
+    family.attach(GRANDPARENT, PARENT);
+    family.attach(PARENT, CHILD);
   })
 
   describe('.upsert()', () => {
@@ -36,13 +40,25 @@ describe('Notebook', () => {
 
   describe('.findById()', () => {
     test('When not found, returns undefined', () => {
-      expect(notebook.findById('404')).toBeUndefined()
+      expect(notebook.findById('missing')).toBeUndefined()
     })
 
     test('When found, returns note', () => {
-      const note = { id: '1', text: 'find me' }
+      const note = { id: '1', text: 'text' }
       notebook.upsert(note)
       expect(notebook.findById('1')).toStrictEqual(note)
     })
   })
+
+  describe(".descendants()", () => {
+    test("Returns descendants", () => {
+      expect(family.descendants(GRANDPARENT.id)).toStrictEqual(
+          new Set([PARENT, CHILD])
+      );
+    });
+
+    test("Returns undefined for non-member", () => {
+      expect(family.descendants("missing")).toBeUndefined();
+    });
+  });
 })
