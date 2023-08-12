@@ -61,4 +61,16 @@ describe('Notebook', () => {
       expect(family.descendants("missing")).toBeUndefined();
     });
   });
+
+  describe(".ancestors()", () => {
+    test("Returns ancestors", () => {
+      expect(family.ancestors(CHILD.id)).toStrictEqual(
+          new Set([GRANDPARENT, PARENT])
+      );
+    });
+
+    test("Returns undefined for non-member", () => {
+      expect(family.ancestors("missing")).toBeUndefined();
+    });
+  });
 })

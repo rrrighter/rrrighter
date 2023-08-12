@@ -43,4 +43,9 @@ export default class Notebook {
     const note = this.findById(ancestorId)
     return note ? this.hierarchy.descendants(note) : undefined
   }
+
+  ancestors(descendantId: string): Set<Note> | undefined {
+    const note = this.findById(descendantId)
+    return note ? this.hierarchy.ancestors(note) : undefined
+  }
 }
