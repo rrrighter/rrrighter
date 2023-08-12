@@ -19,6 +19,39 @@ describe('Notebook', () => {
     family.attach(PARENT.id, CHILD.id);
   })
 
+  describe("new Notebook()", () => {
+    let clone: Notebook
+
+    beforeEach(() => {
+      clone = new Notebook(family);
+    });
+
+    test("Has the same notes", () => {
+      expect(clone.notes()).toStrictEqual(family.notes());
+    });
+
+    test("Has the same relationships", () => {
+      for (const note of family.notes()) {
+        expect(clone.parents(note.id)).toStrictEqual(family.parents(note.id));
+      }
+    });
+
+    test("Restructuring a clone keeps the source structure intact", () => {
+      const originalNodes = family.notes();
+      const newParent = { id: 'new-parent', text: 'new parent' }
+      const newChild = { id: 'new-child', text: 'new child' }
+      for (const note of clone.notes()) {
+        clone.remove(note.id);
+      }
+      clone.upsert(newParent);
+      clone.upsert(newChild);
+      clone.attach(newChild.id, newParent.id);
+      expect(originalNodes).toStrictEqual(family.notes());
+    });
+
+    // TODO: test that mutating a note text(s) or id(s) in the clone does not affect the source
+  });
+
   describe(".notes()", () => {
     test("Returns notes", () => {
       expect(family.notes()).toStrictEqual(
