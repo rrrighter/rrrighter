@@ -5,6 +5,7 @@ import Note from "./note";
 
 // Notebook is an overlapping hierarchy of text notes with unique IDs.
 export default class Notebook {
+  // TODO: consider storing only note IDs in hierarchy, not the whole notes; use SET for note texts
   hierarchy: OverlappingHierarchy<Note> = new OverlappingHierarchy<Note>() // TODO: make private after covering constructor with tests
 
   constructor(source?: Notebook) { // TODO: cover with tests; test for source mutation
