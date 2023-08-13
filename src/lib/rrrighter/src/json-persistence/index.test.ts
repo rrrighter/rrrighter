@@ -43,6 +43,8 @@ describe('JSON persistence', () => {
             notebook.attach(parent.id, child.id)
             expect(toJsonObject(notebook)).toStrictEqual(threeLevelHierarchyJsonObject)
         })
+
+        // TODO tests for notebook mutations
     })
 
     describe('.fromJsonObject()', () => {
