@@ -29,7 +29,9 @@ export default function NotebookRepository(props: { filename: string, notebook: 
 
   return <div>
     <div style={{ float: 'left' }}><Button type="text" icon={<FolderOpenOutlined/>} aria-label="Open" title="Open" onClick={onOpen} /></div>
-    <div style={{ float: 'left' }}><Button type="text" icon={saveIcon} aria-label="Download" title="Download" onClick={onSave} /></div>
-    <div style={{ float: 'left' }}><Text>{fileName.split('.rrrighter')[0]}</Text></div>
+    <div style={{ float: 'left' }}>
+      <Button type="text" icon={saveIcon} aria-label="Download" title="Download" onClick={onSave} />
+      <Text>{fileName.split('.rrrighter')[0]}</Text>
+    </div>
   </div>
 }
