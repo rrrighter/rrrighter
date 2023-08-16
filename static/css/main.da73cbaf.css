@@ -1,0 +1,2 @@
+body{margin:0}.ant-layout{padding:1em}.ant-list-item p{margin:0}:root{color-scheme:dark}body{overflow:hidden}.viewport{display:grid;grid-template-columns:1fr;grid-template-rows:3em 1fr;height:100vh;width:100vw}.panels{grid-gap:1em;display:grid;grid-template-areas:"navigator inspector";grid-template-columns:1fr 1fr;grid-template-rows:1fr;overflow:hidden}.navigator{grid-area:navigator;overflow-y:scroll}.inspector{grid-area:inspector;overflow-y:scroll}.inspector .note p{white-space:pre-line}.ant-table-content p{float:left;margin:0}
+/*# sourceMappingURL=main.da73cbaf.css.map*/
