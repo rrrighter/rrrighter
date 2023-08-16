@@ -37,7 +37,10 @@ body {
     white-space: pre-line;
 }
 
+.ant-table-content div.note {
+    display: inline-block;
+}
+
 .ant-table-content p {
-    float: left;
     margin: 0;
 }
