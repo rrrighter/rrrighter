@@ -36,3 +36,8 @@ body {
 .inspector .note p {
     white-space: pre-line;
 }
+
+.ant-table-content p {
+    float: left;
+    margin: 0;
+}

@@ -3,6 +3,7 @@ import Notebook from '../../../lib/rrrighter/src/notebook'
 import Note from '../../../lib/rrrighter/src/note'
 import { Table, Typography } from 'antd'
 import { ColumnsType } from 'antd/es/table'
+import FormattedText from "../../notes/formatted-text";
 
 const { Text } = Typography;
 
@@ -40,9 +41,10 @@ export default function TreeTable(props: { notebook: Notebook, onSelect?: Functi
       sorter: (a, b) => a.note.text.localeCompare(b.note.text),
       render: (text: string, record: DataType) => {
         const descendantsCount = props.notebook.descendants(record.note.id)?.size || 0
+        const firstLine = text.split('\n')[0]
 
         return <div>
-          <Text>{text.split('\n')[0]}</Text>
+          <FormattedText text={firstLine} />
           <div style={{float: "right"}}><Text type="secondary">{descendantsCount === 0 ? '' : descendantsCount}</Text></div>
         </div>
       }
