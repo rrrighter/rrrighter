@@ -1,5 +1,5 @@
 {
-  "name": "Rrrighter PWA",
+  "name": "rrrighter",
   "version": "0.2.0",
   "homepage": "https://rrrighter.github.io/rrrighter/",
   "dependencies": {
@@ -13,6 +13,7 @@
     "antd": "^5.5.2",
     "axios": "^1.4.0",
     "browser-fs-access": "^0.34.1",
+    "gh-pages": "^6.0.0",
     "overlapping-hierarchy": "^0.1.11",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -25,7 +26,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
