@@ -118,7 +118,7 @@ function MyApp() {
           <div className='header'>
             <NotebookRepository filename="welcome" notebook={notebook} onNotebookOpen={setNotebook} />
             <div style={{ float: 'right' }}>
-              <Button type='text' icon={<PlusOutlined />} onClick={showCreateNote} />
+              <Button type='text' icon={<PlusOutlined />} onClick={showCreateNote}  aria-label="Add note" title="Add note" />
               {newNote && <CreateNoteModal note={newNote} onCancel={hideCreateNote} onCreate={onCreate} />}
             </div>
           </div>
