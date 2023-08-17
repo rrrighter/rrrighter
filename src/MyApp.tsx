@@ -16,12 +16,13 @@ const initialNotebook = new Notebook(fromJsonObject(welcome))
 
 function MyApp() {
   const [notebook, setNotebook] = useState<Notebook>(initialNotebook)
+  const [newNoteParentId, setNewNoteParentId] = useState<string | undefined>(undefined)
   const [newNote, setNewNote] = useState<Note | undefined>(undefined)
   const [inspectorNote, setInspectorNote] = useState<Note | undefined>(undefined)
   const [editorText, setEditorText] = useState<string | undefined>(undefined)
 
   const showCreateNote = () => {
-    // todo fix eslint
+    setNewNoteParentId(undefined)
     // eslint-disable-next-line no-restricted-globals
     setNewNote({ id: self.crypto.randomUUID(), text: '' })
   }
@@ -32,6 +33,9 @@ function MyApp() {
 
   const onCreate = (newNote: Note) => {
     notebook.upsert(newNote)
+    if (newNoteParentId) {
+        notebook.attach(newNoteParentId, newNote.id)
+    }
     setNotebook(new Notebook(notebook))
     setInspectorNote(newNote)
     hideCreateNote()
@@ -58,6 +62,12 @@ function MyApp() {
     setNotebook(new Notebook(notebook))
   }
 
+  const onCreateChild = (parentId: string) => {
+    setNewNoteParentId(parentId)
+    // eslint-disable-next-line no-restricted-globals
+    setNewNote({ id: self.crypto.randomUUID(), text: '' })
+  }
+
   const onEdit = (note: Note) => {
     setEditorText(note.text)
   }
@@ -65,7 +75,15 @@ function MyApp() {
   let inspectorPanel
   if (inspectorNote) {
     inspectorPanel =
-      <Inspector notebook={notebook} note={inspectorNote} onEdit={onEdit} onDelete={onDeleteFromInspector} onDetach={onDetach} onAttach={onAttach} />
+      <Inspector
+          notebook={notebook}
+          note={inspectorNote}
+          onEdit={onEdit}
+          onDelete={onDeleteFromInspector}
+          onDetach={onDetach}
+          onAttach={onAttach}
+          onCreateChild={onCreateChild}
+      />
   } else {
     inspectorPanel = <span>Select note to inspect</span>
   }
