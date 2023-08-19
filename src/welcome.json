@@ -13,7 +13,7 @@
       ]
     },
     "fee6f781-bad4-413e-ae95-5fa2d717e6bf": {
-      "text": " Start with space to move note to the top",
+      "text": " starts with single space",
       "parents": [
         "23c319e1-09a8-469c-976f-749e0233f58d"
       ]
@@ -61,10 +61,94 @@
         "f0efceb1-d638-49b3-ac2c-eca020b09f3f"
       ]
     },
-    "0cbf6518-81ce-424f-88c5-8f41840611ad": {
-      "text": "A note",
+    "7a109fef-5952-44e5-86e2-5b4af0d593b4": {
+      "text": "! top priority",
       "parents": [
         "23c319e1-09a8-469c-976f-749e0233f58d"
+      ]
+    },
+    "8408a02b-44fe-4ead-b8b2-233947b2603b": {
+      "text": ". index",
+      "parents": [
+        "23c319e1-09a8-469c-976f-749e0233f58d"
+      ]
+    },
+    "bed3cc9d-de31-481a-9c08-27a0073e9339": {
+      "text": ".. secondary index",
+      "parents": [
+        "23c319e1-09a8-469c-976f-749e0233f58d"
+      ]
+    },
+    "5fc69906-0023-48be-82b3-b13fd60b4298": {
+      "text": "!! second priority",
+      "parents": [
+        "23c319e1-09a8-469c-976f-749e0233f58d"
+      ]
+    },
+    "1e614df3-32df-4560-9533-04a0035275ae": {
+      "text": "A",
+      "parents": [
+        "23c319e1-09a8-469c-976f-749e0233f58d"
+      ]
+    },
+    "40a0c680-45fa-4093-a843-e21af9c50bcd": {
+      "text": "B",
+      "parents": [
+        "23c319e1-09a8-469c-976f-749e0233f58d"
+      ]
+    },
+    "9c71044e-c52a-4d4c-950a-c5d827bc8a11": {
+      "text": "a",
+      "parents": [
+        "23c319e1-09a8-469c-976f-749e0233f58d"
+      ]
+    },
+    "25b14885-837c-42bc-8907-b22039f82cef": {
+      "text": "b",
+      "parents": [
+        "23c319e1-09a8-469c-976f-749e0233f58d"
+      ]
+    },
+    "cf7132ab-624e-46cc-9795-f8aa9da163d6": {
+      "text": "  starts with two spaces",
+      "parents": [
+        "23c319e1-09a8-469c-976f-749e0233f58d"
+      ]
+    },
+    "a3df63f1-1e1a-47cc-9d70-8d99ee509a20": {
+      "text": "Headers",
+      "parents": [
+        "28d7e6ce-f778-47fb-a5df-5e55aa150e65"
+      ]
+    },
+    "d3b8d37d-aa14-4fe1-8c57-65ec85f7516e": {
+      "text": "# Starts with single hashtag",
+      "parents": [
+        "a3df63f1-1e1a-47cc-9d70-8d99ee509a20"
+      ]
+    },
+    "280a9a2d-ad8c-4c4a-beab-f8d81c305e5d": {
+      "text": "## Starts with two hashtags",
+      "parents": [
+        "a3df63f1-1e1a-47cc-9d70-8d99ee509a20"
+      ]
+    },
+    "535d0e57-1c54-4bf2-abbd-0a33f482d2a0": {
+      "text": "### Starts with three hashtags",
+      "parents": [
+        "a3df63f1-1e1a-47cc-9d70-8d99ee509a20"
+      ]
+    },
+    "98de2dc8-a21c-4455-ba65-fd8729a1d942": {
+      "text": "#### Starts with four hashtags",
+      "parents": [
+        "a3df63f1-1e1a-47cc-9d70-8d99ee509a20"
+      ]
+    },
+    "9fd91ca9-7c70-4cb6-8143-42ee660fd39c": {
+      "text": "##### Starts with five hashtags",
+      "parents": [
+        "a3df63f1-1e1a-47cc-9d70-8d99ee509a20"
       ]
     }
   }
