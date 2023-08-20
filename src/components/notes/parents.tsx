@@ -5,13 +5,14 @@ import { Popover } from 'antd';
 import { PullRequestOutlined } from '@ant-design/icons'
 
 import { Tag } from 'antd'
-import TreeTable from '../notebook/tree-table/tree-table' // todo: move to hierarchy/ folder
+import TreeTable from '../notebook/tree-table/tree-table'
+import FormattedText from "./formatted-text"; // todo: move to hierarchy/ folder
 
 export default function Parents(props: { notebook: Notebook, note: Note, onDetach: Function, onAttach: Function }) {
   const parents = Array.from(props.notebook.parents(props.note.id) || [])
   const tags: ReactNode[] = parents.map((parent): ReactNode => {
-    const label = parent.text.split('\n')[0] // todo: try use Text component instead or create NoteTitle component
-    return <Tag key={parent.id} closable onClose={() => props.onDetach(parent, props.note)}>{label}</Tag>
+    const firstLine = parent.text.split('\n')[0] // todo: try use Text component instead or create NoteTitle component
+    return <Tag key={parent.id} closable onClose={() => props.onDetach(parent, props.note)}><FormattedText text={firstLine} /></Tag>
   })
 
   const potentialParentsNotebook = (notebook: Notebook, note: Note): Notebook => { // todo: extract to Rrrighter app class?

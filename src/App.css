@@ -44,3 +44,11 @@ body {
 .ant-table-content p {
     margin: 0;
 }
+
+.ant-tag .note {
+    display: inline-block;
+}
+
+.ant-tag .note p {
+    margin: 0;
+}

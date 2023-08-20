@@ -69,6 +69,7 @@ export default class Notebook {
     return note ? this.#hierarchy.ancestors(note) : undefined
   }
 
+  // TODO: delete to resemble Map API
   remove = (noteId: string): void => {
     const note = this.findById(noteId)
     note && this.#hierarchy.remove(note)
