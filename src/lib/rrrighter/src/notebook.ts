@@ -18,8 +18,10 @@ export default class Notebook {
 
   notes = (): Set<Note> => this.#hierarchy.nodes()
 
+  // TODO: rename to get to resemble Map API
   findById = (id: string): Note | undefined => Array.from(this.#hierarchy.nodes()).find((note) => note.id === id)
 
+  // TODO: refactor into setText / setParents / set
   upsert = (note: Note): void => {
     const existing = this.findById(note.id)
     if (existing) {
