@@ -31,10 +31,8 @@ export default class Notebook {
     }
   }
 
-  hierarchs = (): Set<Note> => { // todo: backport into OH with performance benchmarks, as it's O(n*2) and OH is O(n^2)
-    const notes = this.#hierarchy.nodes()
-    this.#hierarchy.nodes().forEach((n) => this.#hierarchy.children(n)?.forEach((c) => notes.delete(c)))
-    return notes
+  hierarchs = (): Set<Note> => {
+    return this.#hierarchy.hierarchs()
   }
 
   attach = (parentId: string, childId: string): LoopError | CycleError | ConflictingParentsError | void => { // TODO: consider NoteNotFoundError |OverlappingHierarchyError | void
@@ -69,9 +67,8 @@ export default class Notebook {
     return note ? this.#hierarchy.ancestors(note) : undefined
   }
 
-  // TODO: delete to resemble Map API
-  remove = (noteId: string): void => {
+  delete = (noteId: string): void => {
     const note = this.findById(noteId)
-    note && this.#hierarchy.remove(note)
+    note && this.#hierarchy.delete(note)
   }
 }

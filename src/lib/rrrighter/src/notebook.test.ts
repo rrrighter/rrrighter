@@ -41,7 +41,7 @@ describe('Notebook', () => {
       const newParent = { id: 'new-parent', text: 'new parent' }
       const newChild = { id: 'new-child', text: 'new child' }
       for (const note of clone.notes()) {
-        clone.remove(note.id);
+        clone.delete(note.id);
       }
       clone.upsert(newParent);
       clone.upsert(newChild);
@@ -226,19 +226,19 @@ describe('Notebook', () => {
     });
   });
 
-  describe(".remove()", function () {
+  describe(".delete()", function () {
     test("Detaches all children from the parent", () => {
-      family.remove(PARENT.id);
+      family.delete(PARENT.id);
       expect(family.parents(CHILD.id)).toEqual(new Set([]));
     });
 
     test("Detaches child from all parents", () => {
-      family.remove(PARENT.id);
+      family.delete(PARENT.id);
       expect(family.children(GRANDPARENT.id)?.has(PARENT)).toStrictEqual(false);
     });
 
     test("Hierarchy no longer has removed node", () => {
-      family.remove(PARENT.id);
+      family.delete(PARENT.id);
       expect(family.notes().has(PARENT)).toStrictEqual(false);
     });
 
@@ -246,7 +246,7 @@ describe('Notebook', () => {
       const hierarchy = new Notebook()
       const orphan = { id: 'orphan', text: 'orphan' }
       hierarchy.upsert(orphan);
-      hierarchy.remove(orphan.id);
+      hierarchy.delete(orphan.id);
       expect(hierarchy.notes()).toStrictEqual(new Set());
     });
   });

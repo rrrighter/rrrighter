@@ -17,8 +17,8 @@ export default function Parents(props: { notebook: Notebook, note: Note, onDetac
 
   const potentialParentsNotebook = (notebook: Notebook, note: Note): Notebook => { // todo: extract to Rrrighter app class?
     const result = new Notebook(notebook)
-    result.descendants(note.id)?.forEach((descendant) => result.remove(descendant.id))
-    result.remove(note.id)
+    result.descendants(note.id)?.forEach((descendant) => result.delete(descendant.id))
+    result.delete(note.id)
     return result
   }
 
