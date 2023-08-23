@@ -101,6 +101,8 @@ function MyApp() {
       inspectorNote.text = editorText || ''
     }
     setEditorText(undefined)
+
+    setNotebook(new Notebook(notebook))
   }
 
   return (

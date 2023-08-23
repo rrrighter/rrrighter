@@ -8,6 +8,7 @@ import { fileOpen, fileSave, supported } from 'browser-fs-access';
 const { Text } = Typography;
 
 export default function NotebookRepository(props: { filename: string, notebook: Notebook, onNotebookOpen: Function }) {
+  const [savedNotebook, setSavedNotebook] = useState<Notebook>(props.notebook)
   const [fileName, setFileName] = useState<string>(props.filename)
   const [fileHandle, setFileHandle] = useState<FileSystemFileHandle | null>(null)
 
@@ -16,6 +17,7 @@ export default function NotebookRepository(props: { filename: string, notebook: 
     const openedNotebook = new Notebook(fromJsonObject(JSON.parse(await fileWithHandle.text())))
     setFileName(fileWithHandle.name)
     setFileHandle(fileWithHandle.handle || null)
+    setSavedNotebook(openedNotebook)
     props.onNotebookOpen(openedNotebook)
   }
 
@@ -23,6 +25,7 @@ export default function NotebookRepository(props: { filename: string, notebook: 
     const json = JSON.stringify(toJsonObject(props.notebook), null, '  ')
     const blob = new Blob([json])
     await fileSave(blob, { fileName, extensions: ['.rrrighter'] }, fileHandle)
+    setSavedNotebook(props.notebook)
   }
 
   const saveIcon = supported ? <SaveOutlined/> : <DownloadOutlined/>
@@ -30,7 +33,7 @@ export default function NotebookRepository(props: { filename: string, notebook: 
   return <div>
     <div style={{ float: 'left' }}><Button type="text" icon={<FolderOpenOutlined/>} aria-label="Open" title="Open" onClick={onOpen} /></div>
     <div style={{ float: 'left' }}>
-      <Button type="text" icon={saveIcon} aria-label="Download" title="Download" onClick={onSave} />
+      <Button disabled={savedNotebook === props.notebook} type="text" icon={saveIcon} aria-label="Download" title="Download" onClick={onSave} />
       <Text>{fileName.split('.rrrighter')[0]}</Text>
     </div>
   </div>
