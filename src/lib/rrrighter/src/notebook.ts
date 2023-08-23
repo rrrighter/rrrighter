@@ -18,12 +18,11 @@ export default class Notebook {
 
   notes = (): Set<Note> => this.#hierarchy.nodes()
 
-  // TODO: rename to get to resemble Map API
-  findById = (id: string): Note | undefined => Array.from(this.#hierarchy.nodes()).find((note) => note.id === id)
+  get = (id: string): Note | undefined => Array.from(this.#hierarchy.nodes()).find((note) => note.id === id)
 
   // TODO: refactor into setText / setParents / set
   upsert = (note: Note): void => {
-    const existing = this.findById(note.id)
+    const existing = this.get(note.id)
     if (existing) {
       existing.text = note.text
     } else {
@@ -36,39 +35,39 @@ export default class Notebook {
   }
 
   attach = (parentId: string, childId: string): LoopError | CycleError | ConflictingParentsError | void => { // TODO: consider NoteNotFoundError |OverlappingHierarchyError | void
-    const parent = this.findById(parentId)
-    const child = this.findById(childId)
+    const parent = this.get(parentId)
+    const child = this.get(childId)
     return parent && child && this.#hierarchy.attach(parent, child)
   }
 
   detach = (parentId: string, childId: string): void => {
-    const parent = this.findById(parentId)
-    const child = this.findById(childId)
+    const parent = this.get(parentId)
+    const child = this.get(childId)
     parent && child && this.#hierarchy.detach(parent, child)
   }
 
   children(noteId: string): Set<Note> | undefined {
-    const note = this.findById(noteId)
+    const note = this.get(noteId)
     return note ? this.#hierarchy.children(note) : undefined
   }
 
   parents(noteId: string): Set<Note> | undefined {
-    const note = this.findById(noteId)
+    const note = this.get(noteId)
     return note ? this.#hierarchy.parents(note) : undefined
   }
 
   descendants(noteId: string): Set<Note> | undefined {
-    const note = this.findById(noteId)
+    const note = this.get(noteId)
     return note ? this.#hierarchy.descendants(note) : undefined
   }
 
   ancestors(noteId: string): Set<Note> | undefined {
-    const note = this.findById(noteId)
+    const note = this.get(noteId)
     return note ? this.#hierarchy.ancestors(note) : undefined
   }
 
   delete = (noteId: string): void => {
-    const note = this.findById(noteId)
+    const note = this.get(noteId)
     note && this.#hierarchy.delete(note)
   }
 }

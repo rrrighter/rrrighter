@@ -162,13 +162,13 @@ describe('Notebook', () => {
 
   describe('.findById()', () => {
     test('When not found, returns undefined', () => {
-      expect(notebook.findById('missing')).toBeUndefined()
+      expect(notebook.get('missing')).toBeUndefined()
     })
 
     test('When found, returns note', () => {
       const note = { id: '1', text: 'text' }
       notebook.upsert(note)
-      expect(notebook.findById('1')).toStrictEqual(note)
+      expect(notebook.get('1')).toStrictEqual(note)
     })
   })
 
