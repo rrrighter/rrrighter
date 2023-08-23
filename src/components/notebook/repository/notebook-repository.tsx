@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import {Button, Dropdown, MenuProps, Switch, Typography} from 'antd'
-import {PlayCircleOutlined, PauseCircleOutlined, DownloadOutlined, EditOutlined, FolderOpenOutlined, SaveOutlined} from '@ant-design/icons'
+import {Button, Switch, Typography} from 'antd'
+import {DownloadOutlined, FolderOpenOutlined, SaveOutlined} from '@ant-design/icons'
 import Notebook from '../../../lib/rrrighter/src/notebook'
 import { fromJsonObject, toJsonObject } from '../../../lib/rrrighter/src/json-persistence'
 import { fileOpen, fileSave, supported } from 'browser-fs-access';
@@ -22,10 +22,6 @@ export default function NotebookRepository(props: { filename: string, notebook: 
     const blob = new Blob([json])
     await fileSave(blob, { fileName, extensions: ['.rrrighter'] }, fileHandle)
     setSavedNotebook(props.notebook)
-  }
-
-  const toggleAutoSave = () => {
-    setIsAutoSaveEnabled(!isAutoSaveEnabled)
   }
 
   const saveIcon = supported ? <SaveOutlined/> : <DownloadOutlined/>
