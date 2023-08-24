@@ -118,7 +118,9 @@ function MyApp() {
             <TextArea style={{ height: '100%' }} rows={4} value={editorText} onChange={onEditorTextChange} />
           </Drawer>
           <div className='header'>
-            <NotebookRepository filename="welcome" notebook={notebook} onNotebookOpen={setNotebook} />
+            <div style={{ float: 'left' }}>
+              <NotebookRepository filename="welcome" notebook={notebook} onNotebookOpen={setNotebook} />
+            </div>
             <div style={{ float: 'right' }}>
               <Button type='text' icon={<PlusOutlined />} onClick={showCreateNote}  aria-label="Add note" title="Add note" />
               {newNote && <CreateNoteModal note={newNote} onCancel={hideCreateNote} onCreate={onCreate} />}
