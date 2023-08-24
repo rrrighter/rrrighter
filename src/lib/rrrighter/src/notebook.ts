@@ -20,13 +20,13 @@ export default class Notebook {
 
   get = (id: string): Note | undefined => Array.from(this.#hierarchy.nodes()).find((note) => note.id === id)
 
-  // TODO: refactor into setText / setParents / set
-  upsert = (note: Note): void => {
-    const existing = this.get(note.id)
+  upsert = ({id, text}: Note): void => {
+    // TODO: refactor into setText / setParents / set(id, text, parents)? or make flexible interface?
+    const existing = this.get(id)
     if (existing) {
-      existing.text = note.text
+      existing.text = text
     } else {
-      this.#hierarchy.add(note)
+      this.#hierarchy.add({ id, text })
     }
   }
 
@@ -34,7 +34,8 @@ export default class Notebook {
     return this.#hierarchy.hierarchs()
   }
 
-  attach = (parentId: string, childId: string): LoopError | CycleError | ConflictingParentsError | void => { // TODO: consider NoteNotFoundError |OverlappingHierarchyError | void
+  attach = (parentId: string, childId: string): LoopError | CycleError | ConflictingParentsError | void => {
+    // TODO: consider NoteNotFoundError |OverlappingHierarchyError | void
     const parent = this.get(parentId)
     const child = this.get(childId)
     return parent && child && this.#hierarchy.attach(parent, child)
