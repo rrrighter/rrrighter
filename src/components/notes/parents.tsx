@@ -1,14 +1,24 @@
-import React, { ReactNode } from 'react'
+import React, {ReactNode, useState} from 'react'
 import Note from "../../lib/rrrighter/src/note"
 import Notebook from '../../lib/rrrighter/src/notebook'
-import { Popover } from 'antd';
+import {Button, Drawer} from 'antd';
 import { PullRequestOutlined } from '@ant-design/icons'
 
 import { Tag } from 'antd'
 import TreeTable from '../notebook/tree-table/tree-table'
-import FormattedText from "./formatted-text"; // todo: move to hierarchy/ folder
+import FormattedText from "./formatted-text";
 
 export default function Parents(props: { notebook: Notebook, note: Note, onDetach: Function, onAttach: Function }) {
+  const [open, setOpen] = useState(false);
+
+  const showDrawer = () => {
+    setOpen(true);
+  };
+
+  const onClose = () => {
+    setOpen(false);
+  };
+
   const parents = Array.from(props.notebook.parents(props.note.id) || [])
   const tags: ReactNode[] = parents.map((parent): ReactNode => {
     const firstLine = parent.text.split('\n')[0] // todo: try use Text component instead or create NoteTitle component
@@ -22,16 +32,18 @@ export default function Parents(props: { notebook: Notebook, note: Note, onDetac
     return result
   }
 
-  const popoverContent = (
-    <div style={{width: "30em", height: "30em", overflow: "scroll"}}>
-      <TreeTable notebook={potentialParentsNotebook(props.notebook, props.note)} onSelect={(parent: Note) => props.onAttach(parent)} />
-    </div>
-  )
+  const onSelect = (parent: Note) => {
+    props.onAttach(parent)
+    onClose()
+  }
 
   return <>
-    <Popover content={popoverContent} trigger="click" placement="bottomLeft" title="Attach to parent">
-      <Tag style={{ borderStyle: 'dashed', cursor: 'pointer' }}><PullRequestOutlined /></Tag>
-    </Popover>
+    <Tag style={{ borderStyle: 'dashed', cursor: 'pointer' }} onClick={showDrawer}><PullRequestOutlined /></Tag>
+
+    <Drawer title="Attach to parent" placement="right" size='large' bodyStyle={{padding: 0}} onClose={onClose} open={open}>
+      <TreeTable notebook={potentialParentsNotebook(props.notebook, props.note)} onSelect={onSelect} />
+    </Drawer>
+
     {tags}
   </>
 }
