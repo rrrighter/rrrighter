@@ -98,10 +98,9 @@ function MyApp() {
 
   const onEditorSave = () => {
     if (inspectorNote) {
-      inspectorNote.text = editorText || ''
+      notebook.upsert({ id: inspectorNote.id, text: editorText || '' })
     }
     setEditorText(undefined)
-
     setNotebook(new Notebook(notebook))
   }
 
