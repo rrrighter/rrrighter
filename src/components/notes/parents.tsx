@@ -1,7 +1,7 @@
 import React, {ReactNode, useState} from 'react'
 import Note from "../../lib/rrrighter/src/note"
 import Notebook from '../../lib/rrrighter/src/notebook'
-import {Button, Drawer} from 'antd';
+import {Drawer} from 'antd';
 import { PullRequestOutlined } from '@ant-design/icons'
 
 import { Tag } from 'antd'

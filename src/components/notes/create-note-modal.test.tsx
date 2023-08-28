@@ -1,6 +1,6 @@
 import {render, screen, fireEvent} from '@testing-library/react'
 import '@testing-library/jest-dom'
-import CreateNoteModal from "./create-note-modal";
+import CreateNote from "./create-note";
 import userEvent from '@testing-library/user-event'
 
 const id = Math.random().toString()
@@ -10,7 +10,7 @@ const onCancel = jest.fn()
 const onCreate = jest.fn()
 
 const renderComponent = () => {
-    render(<CreateNoteModal note={note} onCancel={onCancel} onCreate={onCreate} />)
+    render(<CreateNote note={note} onCancel={onCancel} onCreate={onCreate} />)
 }
 
 beforeEach(renderComponent)

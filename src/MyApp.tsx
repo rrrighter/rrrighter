@@ -5,7 +5,7 @@ import Notebook from './lib/rrrighter/src/notebook'
 import React, { useState } from 'react'
 import { App, ConfigProvider, theme, Space, Button, Drawer, Input } from 'antd'
 import { PlusOutlined } from '@ant-design/icons'
-import CreateNoteModal from './components/notes/create-note-modal'
+import CreateNote from './components/notes/create-note'
 import TreeTable from './components/notebook/tree-table/tree-table'
 import Inspector from './components/notes/inspector'
 import NotebookRepository from './components/notebook/repository/notebook-repository'
@@ -122,7 +122,7 @@ function MyApp() {
             </div>
             <div style={{ float: 'right' }}>
               <Button type='text' icon={<PlusOutlined />} onClick={showCreateNote}  aria-label="Add note" title="Add note" />
-              {newNote && <CreateNoteModal note={newNote} onCancel={hideCreateNote} onCreate={onCreate} />}
+              {newNote && <CreateNote note={newNote} onCancel={hideCreateNote} onCreate={onCreate} />}
             </div>
           </div>
           <div className='panels'>
