@@ -1,5 +1,5 @@
 import React from "react"
-import {Modal, Input, Drawer, Button, Space} from "antd";
+import {Input, Drawer, Button, Space} from "antd";
 import Note from "../../lib/rrrighter/src/note";
 
 const { TextArea } = Input;
