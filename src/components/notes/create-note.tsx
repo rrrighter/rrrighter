@@ -32,8 +32,7 @@ export default function CreateNote(props: { note: Note, onCancel: Function, onCr
                 <Button type={"primary"} onClick={onCreate}>Create</Button>
             </Space>
         }>
-            <TextArea ref={inputRef} rows={5} value={text} onChange={onTextChange} />
-            <p>ID:<span>{props.note.id}</span></p>
+            <TextArea ref={inputRef} style={{ height: '100%' }} rows={10} value={text} onChange={onTextChange} />
         </Drawer>
     )
 }

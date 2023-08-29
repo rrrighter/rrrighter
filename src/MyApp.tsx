@@ -114,7 +114,7 @@ function MyApp() {
               <Button type="primary" onClick={onEditorSave}>Save</Button>
             </Space>
           }>
-            <TextArea style={{ height: '100%' }} rows={4} value={editorText} onChange={onEditorTextChange} />
+            <TextArea style={{ height: '100%' }} rows={10} value={editorText} onChange={onEditorTextChange} />
           </Drawer>
           <div className='header'>
             <div style={{ float: 'left' }}>
