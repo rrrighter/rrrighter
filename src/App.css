@@ -52,3 +52,7 @@ body {
 .ant-tag .note p {
     margin: 0;
 }
+
+.ant-table-thead th {
+    border-radius: 0 !important;
+}

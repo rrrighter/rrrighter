@@ -35,18 +35,22 @@ const treeData = (notebook: Notebook): TreeDataNodeType[] => { // todo: move to 
 export default function TreeTable(props: { notebook: Notebook, onSelect?: Function }) {
   const columns: ColumnsType<DataType> = [
     {
-      dataIndex: ['note', 'text'],
+      width: '100%',
+      title: 'Note',
       ellipsis: true,
-      defaultSortOrder: 'ascend',
       sorter: (a, b) => a.note.text.localeCompare(b.note.text),
-      render: (text: string, record: DataType) => {
+      render: (_text: string, record: DataType) => {
+        const firstLine = record.note.text.split('\n')[0]
+        return <FormattedText text={firstLine} />
+      }
+    },
+    {
+      width: '4em',
+      title: '',
+      align: 'right',
+      render: (_text: string, record: DataType) => {
         const descendantsCount = props.notebook.descendants(record.note.id)?.size || 0
-        const firstLine = text.split('\n')[0]
-
-        return <div>
-          <FormattedText text={firstLine} />
-          <div style={{float: "right"}}><Text type="secondary">{descendantsCount === 0 ? '' : descendantsCount}</Text></div>
-        </div>
+        return <Text type="secondary">{descendantsCount === 0 ? '' : descendantsCount}</Text>
       }
     }
   ]
