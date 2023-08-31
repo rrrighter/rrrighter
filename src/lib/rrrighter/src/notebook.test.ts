@@ -156,7 +156,7 @@ describe('Notebook', () => {
 
     test("Child detached from the only parent still belongs to the hierarchy", () => {
       family.detach(PARENT.id, CHILD.id);
-      expect(family.notes().has(CHILD)).toStrictEqual(true);
+      expect(family.get(CHILD.id)).toBeDefined();
     });
   });
 
