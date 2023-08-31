@@ -127,7 +127,7 @@ describe('Notebook', () => {
       family.upsert(anotherParent);
       family.attach(GRANDPARENT.id, anotherParent.id);
       family.attach(anotherParent.id, CHILD.id);
-      expect(family.children(anotherParent.id)?.has(CHILD)).toStrictEqual(true);
+      expect(family.children(anotherParent.id)).toStrictEqual(new Set([CHILD]));
     });
 
     test("Attached child has a parent", () => {
@@ -151,7 +151,7 @@ describe('Notebook', () => {
       family.upsert(parent2);
       family.attach(parent2.id, CHILD.id);
       family.detach(PARENT.id, CHILD.id);
-      expect(family.children("parent2")?.has(CHILD)).toStrictEqual(true);
+      expect(family.children("parent2")).toStrictEqual(new Set([CHILD]));
     });
 
     test("Child detached from the only parent still belongs to the hierarchy", () => {
