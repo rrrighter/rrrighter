@@ -101,7 +101,7 @@ describe('Notebook', () => {
 
     test("Attaching non-child descendant as a child returns ConflictingParentsError", () => {
       expect(family.attach(GRANDPARENT.id, CHILD.id)).toStrictEqual(
-          new TransitiveReductionError(`Cannot attach child to parent's ancestor`)
+          new TransitiveReductionError(`Cannot attach non-child descendant as a child`)
       );
     });
 
