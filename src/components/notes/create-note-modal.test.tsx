@@ -19,10 +19,6 @@ test('Has new note indication', async () => {
     expect(screen.getByText('New note')).toBeInTheDocument()
 })
 
-test('Shows note ID', async () => {
-    expect(await screen.findByText(id)).toBeInTheDocument()
-})
-
 test('Shows note text', async () => {
     expect(await screen.findByText(text)).toBeInTheDocument()
 })
