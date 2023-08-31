@@ -1,5 +1,5 @@
 import Notebook from './notebook'
-import {LoopError, CycleError, ConflictingParentsError} from "overlapping-hierarchy";
+import {LoopError, CycleError, TransitiveReductionError} from "overlapping-hierarchy";
 
 const CHILD = { id: "child", text: "child" };
 const PARENT = { id: "parent", text: "parent" };
@@ -101,7 +101,7 @@ describe('Notebook', () => {
 
     test("Attaching non-child descendant as a child returns ConflictingParentsError", () => {
       expect(family.attach(GRANDPARENT.id, CHILD.id)).toStrictEqual(
-          new ConflictingParentsError(`Cannot attach child to parent's ancestor`)
+          new TransitiveReductionError(`Cannot attach child to parent's ancestor`)
       );
     });
 

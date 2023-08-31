@@ -1,5 +1,5 @@
 import OverlappingHierarchy from "overlapping-hierarchy";
-import {LoopError, CycleError, ConflictingParentsError} from "overlapping-hierarchy";
+import {LoopError, CycleError, TransitiveReductionError} from "overlapping-hierarchy";
 
 import Note from "./note";
 
@@ -34,7 +34,7 @@ export default class Notebook {
     return this.#hierarchy.hierarchs()
   }
 
-  attach = (parentId: string, childId: string): LoopError | CycleError | ConflictingParentsError | void => {
+  attach = (parentId: string, childId: string): LoopError | CycleError | TransitiveReductionError | void => {
     // TODO: consider NoteNotFoundError |OverlappingHierarchyError | void
     const parent = this.get(parentId)
     const child = this.get(childId)
