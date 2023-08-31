@@ -184,7 +184,7 @@ describe('Notebook', () => {
     test("Mutating returned set does not affect hierarchy", () => {
       const children = family.children(PARENT.id);
       children?.clear();
-      expect(family.children(PARENT.id)?.has(CHILD)).toStrictEqual(true);
+      expect(family.children(PARENT.id)).toStrictEqual(new Set([CHILD]));
     });
   });
 
