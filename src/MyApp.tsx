@@ -105,6 +105,10 @@ function MyApp() {
     setNotebook(new Notebook(notebook))
   }
 
+  const onSelect = (id: string) => {
+    setInspectorNote(notebook.get(id))
+  }
+
   return (
     <ConfigProvider theme={{ algorithm: theme.darkAlgorithm }}>
       <App>
@@ -123,13 +127,13 @@ function MyApp() {
             </div>
 
             <div style={{ float: 'right' }}>
-              <Search notebook={notebook} onSelect={(id: string) => { setInspectorNote(notebook.get(id)) }} />
+              <Search notebook={notebook} onSelect={onSelect} />
               <Button type='text' icon={<PlusOutlined />} onClick={showCreateNote}  aria-label="Add note" title="Add note" />
               {newNote && <CreateNote note={newNote} onCancel={hideCreateNote} onCreate={onCreate} />}
             </div>
           </div>
           <div className='panels'>
-            <div className='navigator'><TreeTable notebook={notebook} onSelect={setInspectorNote} /></div>
+            <div className='navigator'><TreeTable notebook={notebook} onSelect={onSelect} /></div>
             <div className='inspector'>{inspectorPanel}</div>
           </div>
         </div>

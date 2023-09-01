@@ -33,14 +33,9 @@ export default function Parents(props: { notebook: Notebook, note: Note, onDetac
     return result
   }
 
-  const onSelect = (parent: Note) => {
-    props.onAttach(parent.id)
+  const onSelect = (parentId: string) => {
+    props.onAttach(parentId)
     onClose()
-  }
-
-  const onSelectNoteId = (parentId: string) => {
-    const note = props.notebook.get(parentId)
-    note && onSelect(note)
   }
 
   const potentialParents = potentialParentsNotebook(props.notebook, props.note)
@@ -49,7 +44,7 @@ export default function Parents(props: { notebook: Notebook, note: Note, onDetac
     <Tag style={{ borderStyle: 'dashed', cursor: 'pointer' }} onClick={showDrawer}><PullRequestOutlined /></Tag>
 
     <Drawer title="Attach to parent" placement="right" size='large' bodyStyle={{padding: 0}} onClose={onClose} open={open} extra={
-      <Search notebook={potentialParents} onSelect={onSelectNoteId} />
+      <Search notebook={potentialParents} onSelect={onSelect} />
     }>
       <TreeTable notebook={potentialParents} onSelect={onSelect} />
     </Drawer>

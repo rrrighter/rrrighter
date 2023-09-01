@@ -57,7 +57,7 @@ export default function TreeTable(props: { notebook: Notebook, onSelect?: Functi
 
   const onRow = (record: DataType) => {
     return {
-      onClick: () => props.onSelect && props.onSelect(record.note)
+      onClick: () => props.onSelect && props.onSelect(record.note.id)
     }
   }
 
