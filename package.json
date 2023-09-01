@@ -1,6 +1,6 @@
 {
   "name": "rrrighter",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "homepage": "https://rrrighter.github.io/rrrighter/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",

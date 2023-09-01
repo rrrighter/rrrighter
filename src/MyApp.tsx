@@ -3,17 +3,16 @@ import './App.css'
 import Note from './lib/rrrighter/src/note'
 import Notebook from './lib/rrrighter/src/notebook'
 import React, { useState } from 'react'
-import {App, ConfigProvider, theme, Space, Button, Drawer, Input, Select} from 'antd'
+import {App, ConfigProvider, theme, Space, Button, Drawer, Input} from 'antd'
 import { PlusOutlined } from '@ant-design/icons'
 import CreateNote from './components/notes/create-note'
 import TreeTable from './components/notebook/tree-table/tree-table'
 import Inspector from './components/notes/inspector'
 import NotebookRepository from './components/notebook/repository/notebook-repository'
 import welcome from './welcome.json'
-import FormattedText from "./components/notes/formatted-text";
+import Search from './components/notebook/search/search'
 
 const { TextArea } = Input
-const { Option } = Select;
 const initialNotebook = new Notebook(fromJsonObject(welcome))
 
 function MyApp() {
@@ -106,18 +105,6 @@ function MyApp() {
     setNotebook(new Notebook(notebook))
   }
 
-  const onSearchSelect = (_value: string, option: any) => {
-    setInspectorNote(notebook.get(option.key))
-  };
-
-
-  const searchOptions = Array.from(notebook.notes()).map((note) => {
-    const firstLine = note.text.split('\n')[0]
-    return <Option key={note.id} value={firstLine}>
-      <FormattedText text={firstLine} />
-    </Option>
-  })
-
   return (
     <ConfigProvider theme={{ algorithm: theme.darkAlgorithm }}>
       <App>
@@ -136,17 +123,7 @@ function MyApp() {
             </div>
 
             <div style={{ float: 'right' }}>
-              <Select
-                  style={{width: '20em'}}
-                  showSearch
-                  bordered={false}
-                  placeholder="Search"
-                  value={[]}
-                  onSelect={onSearchSelect}
-              >
-                {searchOptions}
-              </Select>
-
+              <Search notebook={notebook} onSelect={(id: string) => { setInspectorNote(notebook.get(id)) }} />
               <Button type='text' icon={<PlusOutlined />} onClick={showCreateNote}  aria-label="Add note" title="Add note" />
               {newNote && <CreateNote note={newNote} onCancel={hideCreateNote} onCreate={onCreate} />}
             </div>
