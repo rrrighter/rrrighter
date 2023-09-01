@@ -55,10 +55,10 @@ function MyApp() {
     setNotebook(new Notebook(notebook))
   }
 
-  const onAttach = (parent: Note, child: Note) => {
-    notebook.descendants(parent.id)?.forEach((descendant) => notebook.detach(descendant.id, child.id))
-    notebook.ancestors(parent.id)?.forEach((ancestor) => notebook.detach(ancestor.id, child.id))
-    notebook.attach(parent.id, child.id)
+  const onAttach = (parentId: string, childId: string) => {
+    notebook.descendants(parentId)?.forEach((descendant) => notebook.detach(descendant.id, childId))
+    notebook.ancestors(parentId)?.forEach((ancestor) => notebook.detach(ancestor.id, childId))
+    notebook.attach(parentId, childId)
 
     setNotebook(new Notebook(notebook))
   }

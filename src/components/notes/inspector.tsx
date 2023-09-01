@@ -7,8 +7,8 @@ import { SubnodeOutlined, EditOutlined, DeleteOutlined } from '@ant-design/icons
 import FormattedText from "./formatted-text";
 
 export default function Inspector(props: { notebook: Notebook, note: Note, onEdit: Function, onDelete: Function, onDetach: Function, onAttach: Function, onCreateChild: Function }) {
-  const onAttach = (parent: Note) => {
-    props.onAttach(parent, props.note)
+  const onAttach = (parentId: string) => {
+    props.onAttach(parentId, props.note.id)
   }
 
   const handleMenuClick: MenuProps['onClick'] = (_e) => {

@@ -34,7 +34,7 @@ export default function Parents(props: { notebook: Notebook, note: Note, onDetac
   }
 
   const onSelect = (parent: Note) => {
-    props.onAttach(parent)
+    props.onAttach(parent.id)
     onClose()
   }
 
