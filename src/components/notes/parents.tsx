@@ -7,6 +7,7 @@ import { PullRequestOutlined } from '@ant-design/icons'
 import { Tag } from 'antd'
 import TreeTable from '../notebook/tree-table/tree-table'
 import FormattedText from "./formatted-text";
+import Search from "../notebook/search/search";
 
 export default function Parents(props: { notebook: Notebook, note: Note, onDetach: Function, onAttach: Function }) {
   const [open, setOpen] = useState(false);
@@ -37,11 +38,20 @@ export default function Parents(props: { notebook: Notebook, note: Note, onDetac
     onClose()
   }
 
+  const onSelectNoteId = (parentId: string) => {
+    const note = props.notebook.get(parentId)
+    note && onSelect(note)
+  }
+
+  const potentialParents = potentialParentsNotebook(props.notebook, props.note)
+
   return <>
     <Tag style={{ borderStyle: 'dashed', cursor: 'pointer' }} onClick={showDrawer}><PullRequestOutlined /></Tag>
 
-    <Drawer title="Attach to parent" placement="right" size='large' bodyStyle={{padding: 0}} onClose={onClose} open={open}>
-      <TreeTable notebook={potentialParentsNotebook(props.notebook, props.note)} onSelect={onSelect} />
+    <Drawer title="Attach to parent" placement="right" size='large' bodyStyle={{padding: 0}} onClose={onClose} open={open} extra={
+      <Search notebook={potentialParents} onSelect={onSelectNoteId} />
+    }>
+      <TreeTable notebook={potentialParents} onSelect={onSelect} />
     </Drawer>
 
     {tags}
