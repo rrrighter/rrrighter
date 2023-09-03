@@ -79,11 +79,11 @@ function MyApp() {
 
   let inspectorPanel
   if (inspectorNote) {
+    const inspectorScopeNotebook = new Notebook(notebook)
     const descendantIds = new Set(Array.from(notebook.descendants(inspectorNote.id) || []).map(n => n.id))
-    const descendantsNotebook = new Notebook(notebook)
-    for (const note of descendantsNotebook.notes()) {
+    for (const note of inspectorScopeNotebook.notes()) {
       if (!descendantIds.has(note.id)) {
-        descendantsNotebook.delete(note.id)
+        inspectorScopeNotebook.delete(note.id)
       }
     }
 
@@ -97,7 +97,7 @@ function MyApp() {
           onAttach={onAttach}
           onCreateChild={onCreateChild}
       />
-      <TreeTable notebook={descendantsNotebook} onSelect={onSelect} />
+      <TreeTable notebook={inspectorScopeNotebook} onSelect={onSelect} />
     </>
   } else {
     inspectorPanel = <span>Select note to inspect</span>
