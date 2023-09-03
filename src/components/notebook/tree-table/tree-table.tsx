@@ -45,7 +45,7 @@ export default function TreeTable(props: { notebook: Notebook, onSelect?: Functi
       }
     },
     {
-      width: '4em',
+      width: '5em',
       title: '',
       align: 'right',
       render: (_text: string, record: DataType) => {
