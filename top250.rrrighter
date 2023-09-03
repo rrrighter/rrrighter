@@ -1,0 +1,3858 @@
+{
+  "notes": {
+    "Rating": {
+      "text": "⭐️ IMDB Top 250 Movies"
+    },
+    "Directors": {
+      "text": "Directors"
+    },
+    "Genres": {
+      "text": "Genres"
+    },
+    "Centuries": {
+      "text": "Centuries"
+    },
+    "Centuries/20": {
+      "text": "20th century",
+      "parents": [
+        "Centuries"
+      ]
+    },
+    "Centuries/21": {
+      "text": "21th century",
+      "parents": [
+        "Centuries"
+      ]
+    },
+    "Genres/Drama": {
+      "text": "Drama",
+      "parents": [
+        "Genres"
+      ]
+    },
+    "/name/nm0001104/": {
+      "text": "[Frank Darabont](https://www.imdb.com/name/nm0001104/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0111161/": {
+      "text": "001 | 9.3 | [The Shawshank Redemption](https://www.imdb.com/title/tt0111161/)\n\nTwo imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
+      "parents": [
+        "Rating",
+        "Genres/Drama",
+        "/name/nm0001104/",
+        "Centuries/20"
+      ]
+    },
+    "Genres/Crime": {
+      "text": "Crime",
+      "parents": [
+        "Genres"
+      ]
+    },
+    "/name/nm0000338/": {
+      "text": "[Francis Ford Coppola](https://www.imdb.com/name/nm0000338/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0068646/": {
+      "text": "002 | 9.2 | [The Godfather](https://www.imdb.com/title/tt0068646/)\n\nThe aging patriarch of an organized crime dynasty in postwar New York City transfers control of his clandestine empire to his reluctant youngest son.",
+      "parents": [
+        "Rating",
+        "Genres/Crime",
+        "Genres/Drama",
+        "/name/nm0000338/",
+        "Centuries/20"
+      ]
+    },
+    "/name/nm0001486/": {
+      "text": "[Sidney Lumet](https://www.imdb.com/name/nm0001486/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0050083/": {
+      "text": "003 | 9 | [12 Angry Men](https://www.imdb.com/title/tt0050083/)\n\nThe jury in a New York City murder trial is frustrated by a single member whose skeptical caution forces them to more carefully consider the evidence before jumping to a hasty verdict.",
+      "parents": [
+        "Rating",
+        "Genres/Crime",
+        "Genres/Drama",
+        "/name/nm0001486/",
+        "Centuries/20"
+      ]
+    },
+    "Genres/Biography": {
+      "text": "Biography",
+      "parents": [
+        "Genres"
+      ]
+    },
+    "Genres/History": {
+      "text": "History",
+      "parents": [
+        "Genres"
+      ]
+    },
+    "/name/nm0000229/": {
+      "text": "[Steven Spielberg](https://www.imdb.com/name/nm0000229/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0108052/": {
+      "text": "004 | 9 | [Schindler&apos;s List](https://www.imdb.com/title/tt0108052/)\n\nIn German-occupied Poland during World War II, industrialist Oskar Schindler gradually becomes concerned for his Jewish workforce after witnessing their persecution by the Nazis.",
+      "parents": [
+        "Rating",
+        "Genres/Biography",
+        "Genres/Drama",
+        "Genres/History",
+        "/name/nm0000229/",
+        "Centuries/20"
+      ]
+    },
+    "Genres/Action": {
+      "text": "Action",
+      "parents": [
+        "Genres"
+      ]
+    },
+    "/name/nm0634240/": {
+      "text": "[Christopher Nolan](https://www.imdb.com/name/nm0634240/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0468569/": {
+      "text": "005 | 9 | [The Dark Knight](https://www.imdb.com/title/tt0468569/)\n\nWhen the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.",
+      "parents": [
+        "Rating",
+        "Genres/Action",
+        "Genres/Crime",
+        "Genres/Drama",
+        "/name/nm0634240/",
+        "Centuries/21"
+      ]
+    },
+    "/title/tt0071562/": {
+      "text": "006 | 9 | [The Godfather Part II](https://www.imdb.com/title/tt0071562/)\n\nThe early life and career of Vito Corleone in 1920s New York City is portrayed, while his son, Michael, expands and tightens his grip on the family crime syndicate.",
+      "parents": [
+        "Rating",
+        "Genres/Crime",
+        "Genres/Drama",
+        "/name/nm0000338/",
+        "Centuries/20"
+      ]
+    },
+    "Genres/Adventure": {
+      "text": "Adventure",
+      "parents": [
+        "Genres"
+      ]
+    },
+    "/name/nm0001392/": {
+      "text": "[Peter Jackson](https://www.imdb.com/name/nm0001392/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0167260/": {
+      "text": "007 | 9 | [The Lord of the Rings: The Return of the King](https://www.imdb.com/title/tt0167260/)\n\nGandalf and Aragorn lead the World of Men against Sauron&apos;s army to draw his gaze from Frodo and Sam as they approach Mount Doom with the One Ring.",
+      "parents": [
+        "Rating",
+        "Genres/Action",
+        "Genres/Adventure",
+        "Genres/Drama",
+        "/name/nm0001392/",
+        "Centuries/21"
+      ]
+    },
+    "Genres/Mystery": {
+      "text": "Mystery",
+      "parents": [
+        "Genres"
+      ]
+    },
+    "/name/nm4377096/": {
+      "text": "[T.J. Gnanavel](https://www.imdb.com/name/nm4377096/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt15097216/": {
+      "text": "008 | 8.9 | [Jai Bhim](https://www.imdb.com/title/tt15097216/)\n\nWhen a tribal man is arrested for a case of alleged theft, his wife turns to a human-rights lawyer to help bring justice.",
+      "parents": [
+        "Rating",
+        "Genres/Crime",
+        "Genres/Drama",
+        "Genres/Mystery",
+        "/name/nm4377096/",
+        "Centuries/21"
+      ]
+    },
+    "/name/nm0000233/": {
+      "text": "[Quentin Tarantino](https://www.imdb.com/name/nm0000233/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0110912/": {
+      "text": "009 | 8.9 | [Pulp Fiction](https://www.imdb.com/title/tt0110912/)\n\nThe lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.",
+      "parents": [
+        "Rating",
+        "Genres/Crime",
+        "Genres/Drama",
+        "/name/nm0000233/",
+        "Centuries/20"
+      ]
+    },
+    "/name/nm0000399/": {
+      "text": "[David Fincher](https://www.imdb.com/name/nm0000399/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0137523/": {
+      "text": "010 | 8.8 | [Fight Club](https://www.imdb.com/title/tt0137523/)\n\nAn insomniac office worker and a devil-may-care soap maker form an underground fight club that evolves into much more.",
+      "parents": [
+        "Rating",
+        "Genres/Drama",
+        "/name/nm0000399/",
+        "Centuries/20"
+      ]
+    },
+    "Genres/Romance": {
+      "text": "Romance",
+      "parents": [
+        "Genres"
+      ]
+    },
+    "/name/nm0000709/": {
+      "text": "[Robert Zemeckis](https://www.imdb.com/name/nm0000709/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0109830/": {
+      "text": "011 | 8.8 | [Forrest Gump](https://www.imdb.com/title/tt0109830/)\n\nThe presidencies of Kennedy and Johnson, the Vietnam War, the Watergate scandal and other historical events unfold from the perspective of an Alabama man with an IQ of 75, whose only desire is to be reunited with his childhood swe...",
+      "parents": [
+        "Rating",
+        "Genres/Drama",
+        "Genres/Romance",
+        "/name/nm0000709/",
+        "Centuries/20"
+      ]
+    },
+    "Genres/Western": {
+      "text": "Western",
+      "parents": [
+        "Genres"
+      ]
+    },
+    "/name/nm0001466/": {
+      "text": "[Sergio Leone](https://www.imdb.com/name/nm0001466/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0060196/": {
+      "text": "012 | 8.8 | [Il buono, il brutto, il cattivo](https://www.imdb.com/title/tt0060196/)\n\nA bounty hunting scam joins two men in an uneasy alliance against a third in a race to find a fortune in gold buried in a remote cemetery.",
+      "parents": [
+        "Rating",
+        "Genres/Adventure",
+        "Genres/Western",
+        "/name/nm0001466/",
+        "Centuries/20"
+      ]
+    },
+    "Genres/Sci-Fi": {
+      "text": "Sci-Fi",
+      "parents": [
+        "Genres"
+      ]
+    },
+    "/title/tt1375666/": {
+      "text": "013 | 8.8 | [Inception](https://www.imdb.com/title/tt1375666/)\n\nA thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O., but his tragic past may doom the project and his team to disaster.",
+      "parents": [
+        "Rating",
+        "Genres/Action",
+        "Genres/Adventure",
+        "Genres/Sci-Fi",
+        "/name/nm0634240/",
+        "Centuries/21"
+      ]
+    },
+    "/title/tt0120737/": {
+      "text": "014 | 8.8 | [The Lord of the Rings: The Fellowship of the Ring](https://www.imdb.com/title/tt0120737/)\n\nA meek Hobbit from the Shire and eight companions set out on a journey to destroy the powerful One Ring and save Middle-earth from the Dark Lord Sauron.",
+      "parents": [
+        "Rating",
+        "Genres/Action",
+        "Genres/Adventure",
+        "Genres/Drama",
+        "/name/nm0001392/",
+        "Centuries/21"
+      ]
+    },
+    "/title/tt0167261/": {
+      "text": "015 | 8.8 | [The Lord of the Rings: The Two Towers](https://www.imdb.com/title/tt0167261/)\n\nWhile Frodo and Sam edge closer to Mordor with the help of the shifty Gollum, the divided fellowship makes a stand against Sauron&apos;s new ally, Saruman, and his hordes of Isengard.",
+      "parents": [
+        "Rating",
+        "Genres/Action",
+        "Genres/Adventure",
+        "Genres/Drama",
+        "/name/nm0001392/",
+        "Centuries/21"
+      ]
+    },
+    "/name/nm0000217/": {
+      "text": "[Martin Scorsese](https://www.imdb.com/name/nm0000217/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0099685/": {
+      "text": "016 | 8.7 | [Goodfellas](https://www.imdb.com/title/tt0099685/)\n\nThe story of Henry Hill and his life in the mob, covering his relationship with his wife Karen Hill and his mob partners Jimmy Conway and Tommy DeVito in the Italian-American crime syndicate.",
+      "parents": [
+        "Rating",
+        "Genres/Biography",
+        "Genres/Crime",
+        "Genres/Drama",
+        "/name/nm0000217/",
+        "Centuries/20"
+      ]
+    },
+    "/name/nm0001232/": {
+      "text": "[Milos Forman](https://www.imdb.com/name/nm0001232/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0073486/": {
+      "text": "017 | 8.7 | [One Flew Over the Cuckoo&apos;s Nest](https://www.imdb.com/title/tt0073486/)\n\nIn the Fall of 1963, a Korean War veteran and criminal pleads insanity and is admitted to a mental institution, where he rallies up the scared patients against the tyrannical nurse.",
+      "parents": [
+        "Rating",
+        "Genres/Drama",
+        "/name/nm0001232/",
+        "Centuries/20"
+      ]
+    },
+    "Genres/Fantasy": {
+      "text": "Fantasy",
+      "parents": [
+        "Genres"
+      ]
+    },
+    "/name/nm0449984/": {
+      "text": "[Irvin Kershner](https://www.imdb.com/name/nm0449984/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0080684/": {
+      "text": "018 | 8.7 | [The Empire Strikes Back](https://www.imdb.com/title/tt0080684/)\n\nAfter the Rebels are brutally overpowered by the Empire on the ice planet Hoth, Luke Skywalker begins Jedi training with Yoda, while his friends are pursued across the galaxy by Darth Vader and bounty hunter Boba Fett.",
+      "parents": [
+        "Rating",
+        "Genres/Action",
+        "Genres/Adventure",
+        "Genres/Fantasy",
+        "/name/nm0449984/",
+        "Centuries/20"
+      ]
+    },
+    "/name/nm0905154/": {
+      "text": "[Lana Wachowski](https://www.imdb.com/name/nm0905154/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/name/nm0905152/": {
+      "text": "[Lilly Wachowski](https://www.imdb.com/name/nm0905152/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0133093/": {
+      "text": "019 | 8.7 | [The Matrix](https://www.imdb.com/title/tt0133093/)\n\nWhen a beautiful stranger leads computer hacker Neo to a forbidding underworld, he discovers the shocking truth--the life he knows is the elaborate deception of an evil cyber-intelligence.",
+      "parents": [
+        "Rating",
+        "Genres/Action",
+        "Genres/Sci-Fi",
+        "/name/nm0905154/",
+        "/name/nm0905152/",
+        "Centuries/20"
+      ]
+    },
+    "/name/nm0576987/": {
+      "text": "[Fernando Meirelles](https://www.imdb.com/name/nm0576987/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/name/nm0526199/": {
+      "text": "[Kátia Lund](https://www.imdb.com/name/nm0526199/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0317248/": {
+      "text": "020 | 8.6 | [Cidade de Deus](https://www.imdb.com/title/tt0317248/)\n\nIn the slums of Rio, two kids&apos; paths diverge as one struggles to become a photographer and the other a kingpin.",
+      "parents": [
+        "Rating",
+        "Genres/Crime",
+        "Genres/Drama",
+        "/name/nm0576987/",
+        "/name/nm0526199/",
+        "Centuries/21"
+      ]
+    },
+    "/title/tt0816692/": {
+      "text": "021 | 8.6 | [Interstellar](https://www.imdb.com/title/tt0816692/)\n\nA team of explorers travel through a wormhole in space in an attempt to ensure humanity&apos;s survival.",
+      "parents": [
+        "Rating",
+        "Genres/Adventure",
+        "Genres/Drama",
+        "Genres/Sci-Fi",
+        "/name/nm0634240/",
+        "Centuries/21"
+      ]
+    },
+    "Genres/Family": {
+      "text": "Family",
+      "parents": [
+        "Genres"
+      ]
+    },
+    "/name/nm0001008/": {
+      "text": "[Frank Capra](https://www.imdb.com/name/nm0001008/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0038650/": {
+      "text": "022 | 8.6 | [It&apos;s a Wonderful Life](https://www.imdb.com/title/tt0038650/)\n\nAn angel is sent from Heaven to help a desperately frustrated businessman by showing him what life would have been like if he had never existed.",
+      "parents": [
+        "Rating",
+        "Genres/Drama",
+        "Genres/Family",
+        "Genres/Fantasy",
+        "/name/nm0001008/",
+        "Centuries/20"
+      ]
+    },
+    "Genres/Comedy": {
+      "text": "Comedy",
+      "parents": [
+        "Genres"
+      ]
+    },
+    "/name/nm0000905/": {
+      "text": "[Roberto Benigni](https://www.imdb.com/name/nm0000905/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0118799/": {
+      "text": "023 | 8.6 | [La vita è bella](https://www.imdb.com/title/tt0118799/)\n\nWhen an open-minded Jewish waiter and his son become victims of the Holocaust, he uses a perfect mixture of will, humor, and imagination to protect his son from the dangers around their camp.",
+      "parents": [
+        "Rating",
+        "Genres/Comedy",
+        "Genres/Drama",
+        "Genres/Romance",
+        "/name/nm0000905/",
+        "Centuries/20"
+      ]
+    },
+    "Genres/War": {
+      "text": "War",
+      "parents": [
+        "Genres"
+      ]
+    },
+    "/title/tt0120815/": {
+      "text": "024 | 8.6 | [Saving Private Ryan](https://www.imdb.com/title/tt0120815/)\n\nFollowing the Normandy Landings, a group of U.S. soldiers go behind enemy lines to retrieve a paratrooper whose brothers have been killed in action.",
+      "parents": [
+        "Rating",
+        "Genres/Drama",
+        "Genres/War",
+        "/name/nm0000229/",
+        "Centuries/20"
+      ]
+    },
+    "/title/tt0114369/": {
+      "text": "025 | 8.6 | [Se7en](https://www.imdb.com/title/tt0114369/)\n\nTwo detectives, a rookie and a veteran, hunt a serial killer who uses the seven deadly sins as his motives.",
+      "parents": [
+        "Rating",
+        "Genres/Crime",
+        "Genres/Drama",
+        "Genres/Mystery",
+        "/name/nm0000399/",
+        "Centuries/20"
+      ]
+    },
+    "Genres/Animation": {
+      "text": "Animation",
+      "parents": [
+        "Genres"
+      ]
+    },
+    "/name/nm0594503/": {
+      "text": "[Hayao Miyazaki](https://www.imdb.com/name/nm0594503/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0245429/": {
+      "text": "026 | 8.6 | [Sen to Chihiro no kamikakushi](https://www.imdb.com/title/tt0245429/)\n\nDuring her family&apos;s move to the suburbs, a sullen 10-year-old girl wanders into a world ruled by gods, witches, and spirits, and where humans are changed into beasts.",
+      "parents": [
+        "Rating",
+        "Genres/Animation",
+        "Genres/Adventure",
+        "Genres/Family",
+        "/name/nm0594503/",
+        "Centuries/21"
+      ]
+    },
+    "/name/nm0462030/": {
+      "text": "[Masaki Kobayashi](https://www.imdb.com/name/nm0462030/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0056058/": {
+      "text": "027 | 8.6 | [Seppuku](https://www.imdb.com/title/tt0056058/)\n\nWhen a ronin requesting seppuku at a feudal lord&apos;s palace is told of the brutal suicide of another ronin who previously visited, he reveals how their pasts are intertwined - and in doing so challenges the clan&apos;s integrity.",
+      "parents": [
+        "Rating",
+        "Genres/Action",
+        "Genres/Drama",
+        "Genres/Mystery",
+        "/name/nm0462030/",
+        "Centuries/20"
+      ]
+    },
+    "/name/nm0000041/": {
+      "text": "[Akira Kurosawa](https://www.imdb.com/name/nm0000041/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0047478/": {
+      "text": "028 | 8.6 | [Shichinin no samurai](https://www.imdb.com/title/tt0047478/)\n\nFarmers from a village exploited by bandits hire a veteran samurai for protection, who gathers six other samurai to join him. As the samurai teach the peasants how to defend themselves, the village is attacked by an army of bandits.",
+      "parents": [
+        "Rating",
+        "Genres/Action",
+        "Genres/Drama",
+        "/name/nm0000041/",
+        "Centuries/20"
+      ]
+    },
+    "/name/nm0000184/": {
+      "text": "[George Lucas](https://www.imdb.com/name/nm0000184/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0076759/": {
+      "text": "029 | 8.6 | [Star Wars](https://www.imdb.com/title/tt0076759/)\n\nLuke Skywalker joins forces with a Jedi Knight, a cocky pilot, a Wookiee and two droids to save the galaxy from the Empire&apos;s world-destroying battle station, while also attempting to rescue Princess Leia from the mysterious Darth ...",
+      "parents": [
+        "Rating",
+        "Genres/Action",
+        "Genres/Adventure",
+        "Genres/Fantasy",
+        "/name/nm0000184/",
+        "Centuries/20"
+      ]
+    },
+    "/name/nm0000116/": {
+      "text": "[James Cameron](https://www.imdb.com/name/nm0000116/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0103064/": {
+      "text": "030 | 8.6 | [Terminator 2: Judgment Day](https://www.imdb.com/title/tt0103064/)\n\nA cyborg, identical to the one who failed to kill Sarah Connor, must now protect her 10-year old adolescent son John from an even more advanced and powerful cyborg.",
+      "parents": [
+        "Rating",
+        "Genres/Action",
+        "Genres/Sci-Fi",
+        "/name/nm0000116/",
+        "Centuries/20"
+      ]
+    },
+    "/title/tt0120689/": {
+      "text": "031 | 8.6 | [The Green Mile](https://www.imdb.com/title/tt0120689/)\n\nThe lives of guards on Death Row are affected by one of their charges: a black man accused of child murder and rape, yet who has a mysterious gift.",
+      "parents": [
+        "Rating",
+        "Genres/Crime",
+        "Genres/Drama",
+        "Genres/Fantasy",
+        "/name/nm0001104/",
+        "Centuries/20"
+      ]
+    },
+    "Genres/Thriller": {
+      "text": "Thriller",
+      "parents": [
+        "Genres"
+      ]
+    },
+    "/name/nm0001129/": {
+      "text": "[Jonathan Demme](https://www.imdb.com/name/nm0001129/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0102926/": {
+      "text": "032 | 8.6 | [The Silence of the Lambs](https://www.imdb.com/title/tt0102926/)\n\nA young F.B.I. cadet must receive the help of an incarcerated and manipulative cannibal killer to help catch another serial killer, a madman who skins his victims.",
+      "parents": [
+        "Rating",
+        "Genres/Crime",
+        "Genres/Drama",
+        "Genres/Thriller",
+        "/name/nm0001129/",
+        "Centuries/20"
+      ]
+    },
+    "Genres/Horror": {
+      "text": "Horror",
+      "parents": [
+        "Genres"
+      ]
+    },
+    "/name/nm0000631/": {
+      "text": "[Ridley Scott](https://www.imdb.com/name/nm0000631/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0078748/": {
+      "text": "033 | 8.5 | [Alien](https://www.imdb.com/title/tt0078748/)\n\nThe crew of a commercial spacecraft encounter a deadly lifeform after investigating an unknown transmission.",
+      "parents": [
+        "Rating",
+        "Genres/Horror",
+        "Genres/Sci-Fi",
+        "/name/nm0000631/",
+        "Centuries/20"
+      ]
+    },
+    "/name/nm0443411/": {
+      "text": "[Tony Kaye](https://www.imdb.com/name/nm0443411/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0120586/": {
+      "text": "034 | 8.5 | [American History X](https://www.imdb.com/title/tt0120586/)\n\nA former neo-nazi skinhead tries to prevent his younger brother from going down the same wrong path that he did.",
+      "parents": [
+        "Rating",
+        "Genres/Crime",
+        "Genres/Drama",
+        "/name/nm0443411/",
+        "Centuries/20"
+      ]
+    },
+    "/title/tt0078788/": {
+      "text": "035 | 8.5 | [Apocalypse Now](https://www.imdb.com/title/tt0078788/)\n\nA U.S. Army officer serving in Vietnam is tasked with assassinating a renegade Special Forces Colonel who sees himself as a god.",
+      "parents": [
+        "Rating",
+        "Genres/Drama",
+        "Genres/Mystery",
+        "Genres/War",
+        "/name/nm0000338/",
+        "Centuries/20"
+      ]
+    },
+    "/title/tt0088763/": {
+      "text": "036 | 8.5 | [Back to the Future](https://www.imdb.com/title/tt0088763/)\n\nMarty McFly, a 17-year-old high school student, is accidentally sent 30 years into the past in a time-traveling DeLorean invented by his close friend, the maverick scientist Doc Brown.",
+      "parents": [
+        "Rating",
+        "Genres/Adventure",
+        "Genres/Comedy",
+        "Genres/Sci-Fi",
+        "/name/nm0000709/",
+        "Centuries/20"
+      ]
+    },
+    "/title/tt0064116/": {
+      "text": "037 | 8.5 | [C&apos;era una volta il West](https://www.imdb.com/title/tt0064116/)\n\nA mysterious stranger with a harmonica joins forces with a notorious desperado to protect a beautiful widow from a ruthless assassin working for the railroad.",
+      "parents": [
+        "Rating",
+        "Genres/Western",
+        "/name/nm0001466/",
+        "Centuries/20"
+      ]
+    },
+    "/name/nm0002031/": {
+      "text": "[Michael Curtiz](https://www.imdb.com/name/nm0002031/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0034583/": {
+      "text": "038 | 8.5 | [Casablanca](https://www.imdb.com/title/tt0034583/)\n\nA cynical expatriate American cafe owner struggles to decide whether or not to help his former lover and her fugitive husband escape the Nazis in French Morocco.",
+      "parents": [
+        "Rating",
+        "Genres/Drama",
+        "Genres/Romance",
+        "Genres/War",
+        "/name/nm0002031/",
+        "Centuries/20"
+      ]
+    },
+    "/name/nm0000122/": {
+      "text": "[Charles Chaplin](https://www.imdb.com/name/nm0000122/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0021749/": {
+      "text": "039 | 8.5 | [City Lights](https://www.imdb.com/title/tt0021749/)\n\nWith the aid of a wealthy erratic tippler, a dewy-eyed tramp who has fallen in love with a sightless flower girl accumulates money to be able to help her medically.",
+      "parents": [
+        "Rating",
+        "Genres/Comedy",
+        "Genres/Drama",
+        "Genres/Romance",
+        "/name/nm0000122/",
+        "Centuries/20"
+      ]
+    },
+    "/name/nm0094435/": {
+      "text": "[Bong Joon Ho](https://www.imdb.com/name/nm0094435/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt6751668/": {
+      "text": "040 | 8.5 | [Gisaengchung](https://www.imdb.com/title/tt6751668/)\n\nGreed and class discrimination threaten the newly formed symbiotic relationship between the wealthy Park family and the destitute Kim clan.",
+      "parents": [
+        "Rating",
+        "Genres/Drama",
+        "Genres/Thriller",
+        "/name/nm0094435/",
+        "Centuries/21"
+      ]
+    },
+    "/title/tt0172495/": {
+      "text": "041 | 8.5 | [Gladiator](https://www.imdb.com/title/tt0172495/)\n\nA former Roman General sets out to exact vengeance against the corrupt emperor who murdered his family and sent him into slavery.",
+      "parents": [
+        "Rating",
+        "Genres/Action",
+        "Genres/Adventure",
+        "Genres/Drama",
+        "/name/nm0000631/",
+        "Centuries/21"
+      ]
+    },
+    "/name/nm0847223/": {
+      "text": "[Isao Takahata](https://www.imdb.com/name/nm0847223/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0095327/": {
+      "text": "042 | 8.5 | [Hotaru no haka](https://www.imdb.com/title/tt0095327/)\n\nA young boy and his little sister struggle to survive in Japan during World War II.",
+      "parents": [
+        "Rating",
+        "Genres/Animation",
+        "Genres/Drama",
+        "Genres/War",
+        "/name/nm0847223/",
+        "Centuries/20"
+      ]
+    },
+    "/name/nm0619923/": {
+      "text": "[Olivier Nakache](https://www.imdb.com/name/nm0619923/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/name/nm0865918/": {
+      "text": "[Éric Toledano](https://www.imdb.com/name/nm0865918/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt1675434/": {
+      "text": "043 | 8.5 | [Intouchables](https://www.imdb.com/title/tt1675434/)\n\nAfter he becomes a quadriplegic from a paragliding accident, an aristocrat hires a young man from the projects to be his caregiver.",
+      "parents": [
+        "Rating",
+        "Genres/Biography",
+        "Genres/Comedy",
+        "Genres/Drama",
+        "/name/nm0619923/",
+        "/name/nm0865918/",
+        "Centuries/21"
+      ]
+    },
+    "/name/nm0000108/": {
+      "text": "[Luc Besson](https://www.imdb.com/name/nm0000108/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0110413/": {
+      "text": "044 | 8.5 | [Léon](https://www.imdb.com/title/tt0110413/)\n\n12-year-old Mathilda is reluctantly taken in by Léon, a professional assassin, after her family is murdered. An unusual relationship forms as she becomes his protégée and learns the assassin&apos;s trade.",
+      "parents": [
+        "Rating",
+        "Genres/Action",
+        "Genres/Crime",
+        "Genres/Drama",
+        "/name/nm0000108/",
+        "Centuries/20"
+      ]
+    },
+    "/title/tt0027977/": {
+      "text": "045 | 8.5 | [Modern Times](https://www.imdb.com/title/tt0027977/)\n\nThe Tramp struggles to live in modern industrial society with the help of a young homeless woman.",
+      "parents": [
+        "Rating",
+        "Genres/Comedy",
+        "Genres/Drama",
+        "Genres/Romance",
+        "/name/nm0000122/",
+        "Centuries/20"
+      ]
+    },
+    "/name/nm0868153/": {
+      "text": "[Giuseppe Tornatore](https://www.imdb.com/name/nm0868153/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0095765/": {
+      "text": "046 | 8.5 | [Nuovo Cinema Paradiso](https://www.imdb.com/title/tt0095765/)\n\nA filmmaker recalls his childhood when falling in love with the pictures at the cinema of his home village and forms a deep friendship with the cinema&apos;s projectionist.",
+      "parents": [
+        "Rating",
+        "Genres/Drama",
+        "Genres/Romance",
+        "/name/nm0868153/",
+        "Centuries/20"
+      ]
+    },
+    "/name/nm0000033/": {
+      "text": "[Alfred Hitchcock](https://www.imdb.com/name/nm0000033/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0054215/": {
+      "text": "047 | 8.5 | [Psycho](https://www.imdb.com/title/tt0054215/)\n\nA Phoenix secretary embezzles $40,000 from her employer&apos;s client, goes on the run and checks into a remote motel run by a young man under the domination of his mother.",
+      "parents": [
+        "Rating",
+        "Genres/Horror",
+        "Genres/Mystery",
+        "Genres/Thriller",
+        "/name/nm0000033/",
+        "Centuries/20"
+      ]
+    },
+    "/title/tt0047396/": {
+      "text": "048 | 8.5 | [Rear Window](https://www.imdb.com/title/tt0047396/)\n\nA wheelchair-bound photographer spies on his neighbors from his Greenwich Village courtyard apartment window, and becomes convinced one of them has committed murder, despite the skepticism of his fashion-model girlfriend.",
+      "parents": [
+        "Rating",
+        "Genres/Mystery",
+        "Genres/Thriller",
+        "/name/nm0000033/",
+        "Centuries/20"
+      ]
+    },
+    "/title/tt0407887/": {
+      "text": "049 | 8.5 | [The Departed](https://www.imdb.com/title/tt0407887/)\n\nAn undercover cop and a mole in the police attempt to identify each other while infiltrating an Irish gang in South Boston.",
+      "parents": [
+        "Rating",
+        "Genres/Crime",
+        "Genres/Drama",
+        "Genres/Thriller",
+        "/name/nm0000217/",
+        "Centuries/21"
+      ]
+    },
+    "/name/nm0021249/": {
+      "text": "[Roger Allers](https://www.imdb.com/name/nm0021249/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/name/nm0591450/": {
+      "text": "[Rob Minkoff](https://www.imdb.com/name/nm0591450/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0110357/": {
+      "text": "050 | 8.5 | [The Lion King](https://www.imdb.com/title/tt0110357/)\n\nLion prince Simba and his father are targeted by his bitter uncle, who wants to ascend the throne himself.",
+      "parents": [
+        "Rating",
+        "Genres/Animation",
+        "Genres/Adventure",
+        "Genres/Drama",
+        "/name/nm0021249/",
+        "/name/nm0591450/",
+        "Centuries/20"
+      ]
+    },
+    "Genres/Music": {
+      "text": "Music",
+      "parents": [
+        "Genres"
+      ]
+    },
+    "/name/nm0000591/": {
+      "text": "[Roman Polanski](https://www.imdb.com/name/nm0000591/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0253474/": {
+      "text": "051 | 8.5 | [The Pianist](https://www.imdb.com/title/tt0253474/)\n\nA Polish Jewish musician struggles to survive the destruction of the Warsaw ghetto of World War II.",
+      "parents": [
+        "Rating",
+        "Genres/Biography",
+        "Genres/Drama",
+        "Genres/Music",
+        "/name/nm0000591/",
+        "Centuries/21"
+      ]
+    },
+    "/title/tt0482571/": {
+      "text": "052 | 8.5 | [The Prestige](https://www.imdb.com/title/tt0482571/)\n\nAfter a tragic accident, two stage magicians in 1890s London engage in a battle to create the ultimate illusion while sacrificing everything they have to outwit each other.",
+      "parents": [
+        "Rating",
+        "Genres/Drama",
+        "Genres/Mystery",
+        "Genres/Sci-Fi",
+        "/name/nm0634240/",
+        "Centuries/21"
+      ]
+    },
+    "/name/nm0001741/": {
+      "text": "[Bryan Singer](https://www.imdb.com/name/nm0001741/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0114814/": {
+      "text": "053 | 8.5 | [The Usual Suspects](https://www.imdb.com/title/tt0114814/)\n\nA sole survivor tells of the twisty events leading up to a horrific gun battle on a boat, which began when five criminals met at a seemingly random police lineup.",
+      "parents": [
+        "Rating",
+        "Genres/Crime",
+        "Genres/Drama",
+        "Genres/Mystery",
+        "/name/nm0001741/",
+        "Centuries/20"
+      ]
+    },
+    "/name/nm3227090/": {
+      "text": "[Damien Chazelle](https://www.imdb.com/name/nm3227090/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt2582802/": {
+      "text": "054 | 8.5 | [Whiplash](https://www.imdb.com/title/tt2582802/)\n\nA promising young drummer enrolls at a cut-throat music conservatory where his dreams of greatness are mentored by an instructor who will stop at nothing to realize a student&apos;s potential.",
+      "parents": [
+        "Rating",
+        "Genres/Drama",
+        "Genres/Music",
+        "/name/nm3227090/",
+        "Centuries/21"
+      ]
+    },
+    "/name/nm0386246/": {
+      "text": "[Rajkumar Hirani](https://www.imdb.com/name/nm0386246/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt1187043/": {
+      "text": "055 | 8.4 | [3 Idiots](https://www.imdb.com/title/tt1187043/)\n\nTwo friends are searching for their long lost companion. They revisit their college days and recall the memories of their friend who inspired them to think differently, even as the rest of the world called them &quot;idiots&quot;.",
+      "parents": [
+        "Rating",
+        "Genres/Comedy",
+        "Genres/Drama",
+        "/name/nm0386246/",
+        "Centuries/21"
+      ]
+    },
+    "/title/tt0090605/": {
+      "text": "056 | 8.4 | [Aliens](https://www.imdb.com/title/tt0090605/)\n\nFifty-seven years after surviving an apocalyptic attack aboard her space vessel by merciless space creatures, Officer Ripley awakens from hyper-sleep and tries to warn anyone who will listen about the predators.",
+      "parents": [
+        "Rating",
+        "Genres/Action",
+        "Genres/Adventure",
+        "Genres/Sci-Fi",
+        "/name/nm0000116/",
+        "Centuries/20"
+      ]
+    },
+    "/title/tt0086879/": {
+      "text": "057 | 8.4 | [Amadeus](https://www.imdb.com/title/tt0086879/)\n\nThe life, success and troubles of Wolfgang Amadeus Mozart, as told by Antonio Salieri, the contemporaneous composer who was deeply jealous of Mozart&apos;s talent and claimed to have murdered him.",
+      "parents": [
+        "Rating",
+        "Genres/Biography",
+        "Genres/Drama",
+        "Genres/Music",
+        "/name/nm0001232/",
+        "Centuries/20"
+      ]
+    },
+    "/name/nm0005222/": {
+      "text": "[Sam Mendes](https://www.imdb.com/name/nm0005222/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0169547/": {
+      "text": "058 | 8.4 | [American Beauty](https://www.imdb.com/title/tt0169547/)\n\nA sexually frustrated suburban father has a mid-life crisis after becoming infatuated with his daughter&apos;s best friend.",
+      "parents": [
+        "Rating",
+        "Genres/Drama",
+        "/name/nm0005222/",
+        "Centuries/20"
+      ]
+    },
+    "/name/nm0751577/": {
+      "text": "[Anthony Russo](https://www.imdb.com/name/nm0751577/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/name/nm0751648/": {
+      "text": "[Joe Russo](https://www.imdb.com/name/nm0751648/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt4154796/": {
+      "text": "059 | 8.4 | [Avengers: Endgame](https://www.imdb.com/title/tt4154796/)\n\nAfter the devastating events of Avengers: Infinity War (2018), the universe is in ruins. With the help of remaining allies, the Avengers assemble once more in order to reverse Thanos&apos; actions and restore balance to the universe.",
+      "parents": [
+        "Rating",
+        "Genres/Action",
+        "Genres/Adventure",
+        "Genres/Drama",
+        "/name/nm0751577/",
+        "/name/nm0751648/",
+        "Centuries/21"
+      ]
+    },
+    "/title/tt4154756/": {
+      "text": "060 | 8.4 | [Avengers: Infinity War](https://www.imdb.com/title/tt4154756/)\n\nThe Avengers and their allies must be willing to sacrifice all in an attempt to defeat the powerful Thanos before his blitz of devastation and ruin puts an end to the universe.",
+      "parents": [
+        "Rating",
+        "Genres/Action",
+        "Genres/Adventure",
+        "Genres/Sci-Fi",
+        "/name/nm0751577/",
+        "/name/nm0751648/",
+        "Centuries/21"
+      ]
+    },
+    "/name/nm0000154/": {
+      "text": "[Mel Gibson](https://www.imdb.com/name/nm0000154/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0112573/": {
+      "text": "061 | 8.4 | [Braveheart](https://www.imdb.com/title/tt0112573/)\n\nScottish warrior William Wallace leads his countrymen in a rebellion to free his homeland from the tyranny of King Edward I of England.",
+      "parents": [
+        "Rating",
+        "Genres/Biography",
+        "Genres/Drama",
+        "Genres/History",
+        "/name/nm0000154/",
+        "Centuries/20"
+      ]
+    },
+    "/name/nm1701024/": {
+      "text": "[Nadine Labaki](https://www.imdb.com/name/nm1701024/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt8267604/": {
+      "text": "062 | 8.4 | [Capharnaüm](https://www.imdb.com/title/tt8267604/)\n\nWhile serving a five-year sentence for a violent crime, a 12-year-old boy sues his parents for neglect.",
+      "parents": [
+        "Rating",
+        "Genres/Drama",
+        "/name/nm1701024/",
+        "Centuries/21"
+      ]
+    },
+    "/name/nm0881279/": {
+      "text": "[Lee Unkrich](https://www.imdb.com/name/nm0881279/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/name/nm2937122/": {
+      "text": "[Adrian Molina](https://www.imdb.com/name/nm2937122/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt2380307/": {
+      "text": "063 | 8.4 | [Coco](https://www.imdb.com/title/tt2380307/)\n\nAspiring musician Miguel, confronted with his family&apos;s ancestral ban on music, enters the Land of the Dead to find his great-great-grandfather, a legendary singer.",
+      "parents": [
+        "Rating",
+        "Genres/Animation",
+        "Genres/Adventure",
+        "Genres/Comedy",
+        "/name/nm0881279/",
+        "/name/nm2937122/",
+        "Centuries/21"
+      ]
+    },
+    "/name/nm0000583/": {
+      "text": "[Wolfgang Petersen](https://www.imdb.com/name/nm0000583/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0082096/": {
+      "text": "064 | 8.4 | [Das Boot](https://www.imdb.com/title/tt0082096/)\n\nA German U-boat stalks the frigid waters of the North Atlantic as its young crew experience the sheer terror and claustrophobic life of a submariner in World War II.",
+      "parents": [
+        "Rating",
+        "Genres/Drama",
+        "Genres/War",
+        "/name/nm0000583/",
+        "Centuries/20"
+      ]
+    },
+    "/name/nm0003697/": {
+      "text": "[Florian Henckel von Donnersmarck](https://www.imdb.com/name/nm0003697/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0405094/": {
+      "text": "065 | 8.4 | [Das Leben der Anderen](https://www.imdb.com/title/tt0405094/)\n\nIn 1984 East Berlin, an agent of the secret police, conducting surveillance on a writer and his lover, finds himself becoming increasingly absorbed by their lives.",
+      "parents": [
+        "Rating",
+        "Genres/Drama",
+        "Genres/Mystery",
+        "Genres/Thriller",
+        "/name/nm0003697/",
+        "Centuries/21"
+      ]
+    },
+    "/title/tt1853728/": {
+      "text": "066 | 8.4 | [Django Unchained](https://www.imdb.com/title/tt1853728/)\n\nWith the help of a German bounty-hunter, a freed slave sets out to rescue his wife from a brutal plantation-owner in Mississippi.",
+      "parents": [
+        "Rating",
+        "Genres/Drama",
+        "Genres/Western",
+        "/name/nm0000233/",
+        "Centuries/21"
+      ]
+    },
+    "/name/nm0000040/": {
+      "text": "[Stanley Kubrick](https://www.imdb.com/name/nm0000040/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0057012/": {
+      "text": "067 | 8.4 | [Dr. Strangelove or: How I Learned to Stop Worrying and Love the Bomb](https://www.imdb.com/title/tt0057012/)\n\nAn insane American general orders a bombing attack on the Soviet Union, triggering a path to nuclear holocaust that a war room full of politicians and generals frantically tries to stop.",
+      "parents": [
+        "Rating",
+        "Genres/Comedy",
+        "Genres/War",
+        "/name/nm0000040/",
+        "Centuries/20"
+      ]
+    },
+    "/name/nm2371802/": {
+      "text": "[Thomas Kail](https://www.imdb.com/name/nm2371802/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt8503618/": {
+      "text": "068 | 8.4 | [Hamilton](https://www.imdb.com/title/tt8503618/)\n\nThe real life of one of America&apos;s foremost founding fathers and first Secretary of the Treasury, Alexander Hamilton. Captured live on Broadway from the Richard Rodgers Theater with the original Broadway cast.",
+      "parents": [
+        "Rating",
+        "Genres/Biography",
+        "Genres/Drama",
+        "Genres/History",
+        "/name/nm2371802/",
+        "Centuries/21"
+      ]
+    },
+    "/name/nm0459552/": {
+      "text": "[Elem Klimov](https://www.imdb.com/name/nm0459552/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0091251/": {
+      "text": "069 | 8.4 | [Idi i smotri](https://www.imdb.com/title/tt0091251/)\n\nAfter finding an old rifle, a young boy joins the Soviet resistance movement against ruthless German forces and experiences the horrors of World War II.",
+      "parents": [
+        "Rating",
+        "Genres/Drama",
+        "Genres/Thriller",
+        "Genres/War",
+        "/name/nm0459552/",
+        "Centuries/20"
+      ]
+    },
+    "/name/nm0680846/": {
+      "text": "[Todd Phillips](https://www.imdb.com/name/nm0680846/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt7286456/": {
+      "text": "070 | 8.4 | [Joker](https://www.imdb.com/title/tt7286456/)\n\nA mentally troubled stand-up comedian embarks on a downward spiral that leads to the creation of an iconic villain.",
+      "parents": [
+        "Rating",
+        "Genres/Crime",
+        "Genres/Drama",
+        "Genres/Thriller",
+        "/name/nm0680846/",
+        "Centuries/21"
+      ]
+    },
+    "/name/nm1396121/": {
+      "text": "[Makoto Shinkai](https://www.imdb.com/name/nm1396121/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt5311514/": {
+      "text": "071 | 8.4 | [Kimi no Na wa.](https://www.imdb.com/title/tt5311514/)\n\nTwo strangers find themselves linked in a bizarre way. When a connection forms, will distance be the only thing to keep them apart?",
+      "parents": [
+        "Rating",
+        "Genres/Animation",
+        "Genres/Drama",
+        "Genres/Fantasy",
+        "/name/nm1396121/",
+        "Centuries/21"
+      ]
+    },
+    "/title/tt0209144/": {
+      "text": "072 | 8.4 | [Memento](https://www.imdb.com/title/tt0209144/)\n\nA man with short-term memory loss attempts to track down his wife&apos;s murderer.",
+      "parents": [
+        "Rating",
+        "Genres/Mystery",
+        "Genres/Thriller",
+        "/name/nm0634240/",
+        "Centuries/21"
+      ]
+    },
+    "/title/tt0119698/": {
+      "text": "073 | 8.4 | [Mononoke-hime](https://www.imdb.com/title/tt0119698/)\n\nOn a journey to find the cure for a Tatarigami&apos;s curse, Ashitaka finds himself in the middle of a war between the forest gods and Tatara, a mining colony. In this quest he also meets San, the Mononoke Hime.",
+      "parents": [
+        "Rating",
+        "Genres/Animation",
+        "Genres/Action",
+        "Genres/Adventure",
+        "/name/nm0594503/",
+        "Centuries/20"
+      ]
+    },
+    "/name/nm0661791/": {
+      "text": "[Park Chan-wook](https://www.imdb.com/name/nm0661791/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0364569/": {
+      "text": "074 | 8.4 | [Oldeuboi](https://www.imdb.com/title/tt0364569/)\n\nAfter being kidnapped and imprisoned for fifteen years, Oh Dae-Su is released, only to find that he must find his captor in five days.",
+      "parents": [
+        "Rating",
+        "Genres/Action",
+        "Genres/Drama",
+        "Genres/Mystery",
+        "/name/nm0661791/",
+        "Centuries/21"
+      ]
+    },
+    "/title/tt0050825/": {
+      "text": "075 | 8.4 | [Paths of Glory](https://www.imdb.com/title/tt0050825/)\n\nAfter refusing to attack an enemy position, a general accuses the soldiers of cowardice and their commanding officer must defend them.",
+      "parents": [
+        "Rating",
+        "Genres/Drama",
+        "Genres/War",
+        "/name/nm0000040/",
+        "Centuries/20"
+      ]
+    },
+    "/title/tt0082971/": {
+      "text": "076 | 8.4 | [Raiders of the Lost Ark](https://www.imdb.com/title/tt0082971/)\n\nArchaeology professor Indiana Jones ventures to seize a biblical artefact known as the Ark of the Covenant. While doing so, he puts up a fight against Renee and a troop of Nazis.",
+      "parents": [
+        "Rating",
+        "Genres/Action",
+        "Genres/Adventure",
+        "/name/nm0000229/",
+        "Centuries/20"
+      ]
+    },
+    "/name/nm2130108/": {
+      "text": "[Bob Persichetti](https://www.imdb.com/name/nm2130108/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/name/nm0709056/": {
+      "text": "[Peter Ramsey](https://www.imdb.com/name/nm0709056/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/name/nm0745247/": {
+      "text": "[Rodney Rothman](https://www.imdb.com/name/nm0745247/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt4633694/": {
+      "text": "077 | 8.4 | [Spider-Man: Into the Spider-Verse](https://www.imdb.com/title/tt4633694/)\n\nTeen Miles Morales becomes the Spider-Man of his universe, and must join with five spider-powered individuals from other dimensions to stop a threat for all realities.",
+      "parents": [
+        "Rating",
+        "Genres/Animation",
+        "Genres/Action",
+        "Genres/Adventure",
+        "/name/nm2130108/",
+        "/name/nm0709056/",
+        "/name/nm0745247/",
+        "Centuries/21"
+      ]
+    },
+    "Genres/Film-Noir": {
+      "text": "Film-Noir",
+      "parents": [
+        "Genres"
+      ]
+    },
+    "/name/nm0000697/": {
+      "text": "[Billy Wilder](https://www.imdb.com/name/nm0000697/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0043014/": {
+      "text": "078 | 8.4 | [Sunset Blvd.](https://www.imdb.com/title/tt0043014/)\n\nA screenwriter develops a dangerous relationship with a faded film star determined to make a triumphant return.",
+      "parents": [
+        "Rating",
+        "Genres/Drama",
+        "Genres/Film-Noir",
+        "/name/nm0000697/",
+        "Centuries/20"
+      ]
+    },
+    "/name/nm0451148/": {
+      "text": "[Aamir Khan](https://www.imdb.com/name/nm0451148/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/name/nm1244760/": {
+      "text": "[Amole Gupte](https://www.imdb.com/name/nm1244760/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0986264/": {
+      "text": "079 | 8.4 | [Taare Zameen Par](https://www.imdb.com/title/tt0986264/)\n\nAn eight-year-old boy is thought to be a lazy trouble-maker, until the new art teacher has the patience and compassion to discover the real problem behind his struggles in school.",
+      "parents": [
+        "Rating",
+        "Genres/Drama",
+        "Genres/Family",
+        "/name/nm0451148/",
+        "/name/nm1244760/",
+        "Centuries/21"
+      ]
+    },
+    "/title/tt0057565/": {
+      "text": "080 | 8.4 | [Tengoku to jigoku](https://www.imdb.com/title/tt0057565/)\n\nAn executive of a Yokohama shoe company becomes a victim of extortion when his chauffeur&apos;s son is kidnapped by mistake and held for ransom.",
+      "parents": [
+        "Rating",
+        "Genres/Crime",
+        "Genres/Drama",
+        "Genres/Mystery",
+        "/name/nm0000041/",
+        "Centuries/20"
+      ]
+    },
+    "/title/tt1345836/": {
+      "text": "081 | 8.4 | [The Dark Knight Rises](https://www.imdb.com/title/tt1345836/)\n\nEight years after the Joker&apos;s reign of anarchy, Batman, with the help of the enigmatic Selina Kyle, is forced from his exile to save Gotham City from the brutal guerrilla terrorist Bane.",
+      "parents": [
+        "Rating",
+        "Genres/Action",
+        "Genres/Drama",
+        "/name/nm0634240/",
+        "Centuries/21"
+      ]
+    },
+    "/title/tt0032553/": {
+      "text": "082 | 8.4 | [The Great Dictator](https://www.imdb.com/title/tt0032553/)\n\nDictator Adenoid Hynkel tries to expand his empire while a poor Jewish barber tries to avoid persecution from Hynkel&apos;s regime.",
+      "parents": [
+        "Rating",
+        "Genres/Comedy",
+        "Genres/Drama",
+        "Genres/War",
+        "/name/nm0000122/",
+        "Centuries/20"
+      ]
+    },
+    "/title/tt0081505/": {
+      "text": "083 | 8.4 | [The Shining](https://www.imdb.com/title/tt0081505/)\n\nA family heads to an isolated hotel for the winter where a sinister presence influences the father into violence, while his psychic son sees horrific forebodings from both past and future.",
+      "parents": [
+        "Rating",
+        "Genres/Drama",
+        "Genres/Horror",
+        "/name/nm0000040/",
+        "Centuries/20"
+      ]
+    },
+    "/name/nm2676052/": {
+      "text": "[Joseph Kosinski](https://www.imdb.com/name/nm2676052/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt1745960/": {
+      "text": "084 | 8.4 | [Top Gun: Maverick](https://www.imdb.com/title/tt1745960/)\n\nAfter thirty years, Maverick is still pushing the envelope as a top naval aviator, but must confront ghosts of his past when he leads TOP GUN&apos;s elite graduates on a mission that demands the ultimate sacrifice from those chosen to ...",
+      "parents": [
+        "Rating",
+        "Genres/Action",
+        "Genres/Drama",
+        "/name/nm2676052/",
+        "Centuries/21"
+      ]
+    },
+    "/name/nm0004056/": {
+      "text": "[Andrew Stanton](https://www.imdb.com/name/nm0004056/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0910970/": {
+      "text": "085 | 8.4 | [WALL·E](https://www.imdb.com/title/tt0910970/)\n\nIn the distant future, a small waste-collecting robot inadvertently embarks on a space journey that will ultimately decide the fate of mankind.",
+      "parents": [
+        "Rating",
+        "Genres/Animation",
+        "Genres/Adventure",
+        "Genres/Family",
+        "/name/nm0004056/",
+        "Centuries/21"
+      ]
+    },
+    "/title/tt0051201/": {
+      "text": "086 | 8.4 | [Witness for the Prosecution](https://www.imdb.com/title/tt0051201/)\n\nA veteran British barrister must defend his client in a murder trial that has surprise after surprise.",
+      "parents": [
+        "Rating",
+        "Genres/Crime",
+        "Genres/Drama",
+        "Genres/Mystery",
+        "/name/nm0000697/",
+        "Centuries/20"
+      ]
+    },
+    "/title/tt0062622/": {
+      "text": "087 | 8.3 | [2001: A Space Odyssey](https://www.imdb.com/title/tt0062622/)\n\nAfter uncovering a mysterious artifact buried beneath the Lunar surface, a spacecraft is sent to Jupiter to find its origins - a spacecraft manned by two men and the supercomputer H.A.L. 9000.",
+      "parents": [
+        "Rating",
+        "Genres/Adventure",
+        "Genres/Sci-Fi",
+        "/name/nm0000040/",
+        "Centuries/20"
+      ]
+    },
+    "/title/tt0066921/": {
+      "text": "088 | 8.3 | [A Clockwork Orange](https://www.imdb.com/title/tt0066921/)\n\nIn the future, a sadistic gang leader is imprisoned and volunteers for a conduct-aversion experiment, but it doesn&apos;t go as planned.",
+      "parents": [
+        "Rating",
+        "Genres/Crime",
+        "Genres/Sci-Fi",
+        "/name/nm0000040/",
+        "Centuries/20"
+      ]
+    },
+    "/name/nm0000080/": {
+      "text": "[Orson Welles](https://www.imdb.com/name/nm0000080/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0033467/": {
+      "text": "089 | 8.3 | [Citizen Kane](https://www.imdb.com/title/tt0033467/)\n\nFollowing the death of publishing tycoon Charles Foster Kane, reporters scramble to uncover the meaning of his final utterance: &apos;Rosebud.&apos;",
+      "parents": [
+        "Rating",
+        "Genres/Drama",
+        "Genres/Mystery",
+        "/name/nm0000080/",
+        "Centuries/20"
+      ]
+    },
+    "/name/nm4318159/": {
+      "text": "[Nitesh Tiwari](https://www.imdb.com/name/nm4318159/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt5074352/": {
+      "text": "090 | 8.3 | [Dangal](https://www.imdb.com/title/tt5074352/)\n\nFormer wrestler Mahavir Singh Phogat and his two wrestler daughters struggle towards glory at the Commonwealth Games in the face of societal oppression.",
+      "parents": [
+        "Rating",
+        "Genres/Action",
+        "Genres/Biography",
+        "Genres/Drama",
+        "/name/nm4318159/",
+        "Centuries/21"
+      ]
+    },
+    "/title/tt0036775/": {
+      "text": "091 | 8.3 | [Double Indemnity](https://www.imdb.com/title/tt0036775/)\n\nA Los Angeles insurance representative lets an alluring housewife seduce him into a scheme of insurance fraud and murder that arouses the suspicion of his colleague, an insurance investigator.",
+      "parents": [
+        "Rating",
+        "Genres/Crime",
+        "Genres/Drama",
+        "Genres/Film-Noir",
+        "/name/nm0000697/",
+        "Centuries/20"
+      ]
+    },
+    "/name/nm0327273/": {
+      "text": "[Michel Gondry](https://www.imdb.com/name/nm0327273/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0338013/": {
+      "text": "092 | 8.3 | [Eternal Sunshine of the Spotless Mind](https://www.imdb.com/title/tt0338013/)\n\nWhen their relationship turns sour, a couple undergoes a medical procedure to have each other erased from their memories for ever.",
+      "parents": [
+        "Rating",
+        "Genres/Drama",
+        "Genres/Romance",
+        "Genres/Sci-Fi",
+        "/name/nm0327273/",
+        "Centuries/21"
+      ]
+    },
+    "/title/tt0093058/": {
+      "text": "093 | 8.3 | [Full Metal Jacket](https://www.imdb.com/title/tt0093058/)\n\nA pragmatic U.S. Marine observes the dehumanizing effects the Vietnam War has on his fellow recruits from their brutal boot camp training to the bloody street fighting in Hue.",
+      "parents": [
+        "Rating",
+        "Genres/Drama",
+        "Genres/War",
+        "/name/nm0000040/",
+        "Centuries/20"
+      ]
+    },
+    "/name/nm0001814/": {
+      "text": "[Gus Van Sant](https://www.imdb.com/name/nm0001814/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0119217/": {
+      "text": "094 | 8.3 | [Good Will Hunting](https://www.imdb.com/title/tt0119217/)\n\nWill Hunting, a janitor at M.I.T., has a gift for mathematics, but needs help from a psychologist to find direction in his life.",
+      "parents": [
+        "Rating",
+        "Genres/Drama",
+        "Genres/Romance",
+        "/name/nm0001814/",
+        "Centuries/20"
+      ]
+    },
+    "/name/nm0000520/": {
+      "text": "[Michael Mann](https://www.imdb.com/name/nm0000520/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0113277/": {
+      "text": "095 | 8.3 | [Heat](https://www.imdb.com/title/tt0113277/)\n\nA group of high-end professional thieves start to feel the heat from the LAPD when they unknowingly leave a clue at their latest heist.",
+      "parents": [
+        "Rating",
+        "Genres/Action",
+        "Genres/Crime",
+        "Genres/Drama",
+        "/name/nm0000520/",
+        "Centuries/20"
+      ]
+    },
+    "/title/tt0044741/": {
+      "text": "096 | 8.3 | [Ikiru](https://www.imdb.com/title/tt0044741/)\n\nA bureaucrat tries to find meaning in his life after he discovers he has terminal cancer.",
+      "parents": [
+        "Rating",
+        "Genres/Drama",
+        "/name/nm0000041/",
+        "Centuries/20"
+      ]
+    },
+    "/name/nm0898288/": {
+      "text": "[Denis Villeneuve](https://www.imdb.com/name/nm0898288/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt1255953/": {
+      "text": "097 | 8.3 | [Incendies](https://www.imdb.com/title/tt1255953/)\n\nTwins journey to the Middle East to discover their family history and fulfill their mother&apos;s last wishes.",
+      "parents": [
+        "Rating",
+        "Genres/Drama",
+        "Genres/Mystery",
+        "/name/nm0898288/",
+        "Centuries/21"
+      ]
+    },
+    "/title/tt0361748/": {
+      "text": "098 | 8.3 | [Inglourious Basterds](https://www.imdb.com/title/tt0361748/)\n\nIn Nazi-occupied France during World War II, a plan to assassinate Nazi leaders by a group of Jewish U.S. soldiers coincides with a theatre owner&apos;s vengeful plans for the same.",
+      "parents": [
+        "Rating",
+        "Genres/Adventure",
+        "Genres/Drama",
+        "Genres/War",
+        "/name/nm0000233/",
+        "Centuries/21"
+      ]
+    },
+    "/name/nm0899121/": {
+      "text": "[Thomas Vinterberg](https://www.imdb.com/name/nm0899121/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt2106476/": {
+      "text": "099 | 8.3 | [Jagten](https://www.imdb.com/title/tt2106476/)\n\nA teacher lives a lonely life, all the while struggling over his son&apos;s custody. His life slowly gets better as he finds love and receives good news from his son, but his new luck is about to be brutally shattered by an innocent li...",
+      "parents": [
+        "Rating",
+        "Genres/Drama",
+        "/name/nm0899121/",
+        "Centuries/21"
+      ]
+    },
+    "/name/nm1410815/": {
+      "text": "[Asghar Farhadi](https://www.imdb.com/name/nm1410815/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt1832382/": {
+      "text": "100 | 8.3 | [Jodaeiye Nader az Simin](https://www.imdb.com/title/tt1832382/)\n\nA married couple are faced with a difficult decision - to improve the life of their child by moving to another country or to stay in Iran and look after a deteriorating parent who has Alzheimer&apos;s disease.",
+      "parents": [
+        "Rating",
+        "Genres/Drama",
+        "/name/nm1410815/",
+        "Centuries/21"
+      ]
+    },
+    "/name/nm0006452/": {
+      "text": "[Stanley Kramer](https://www.imdb.com/name/nm0006452/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0055031/": {
+      "text": "101 | 8.3 | [Judgment at Nuremberg](https://www.imdb.com/title/tt0055031/)\n\nIn 1948, an American court in occupied Germany tries four Nazis judged for war crimes.",
+      "parents": [
+        "Rating",
+        "Genres/Drama",
+        "Genres/War",
+        "/name/nm0006452/",
+        "Centuries/20"
+      ]
+    },
+    "/name/nm0001120/": {
+      "text": "[Vittorio De Sica](https://www.imdb.com/name/nm0001120/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0040522/": {
+      "text": "102 | 8.3 | [Ladri di biciclette](https://www.imdb.com/title/tt0040522/)\n\nIn post-war Italy, a working-class man&apos;s bicycle is stolen, endangering his efforts to find work. He and his son set out to find it.",
+      "parents": [
+        "Rating",
+        "Genres/Drama",
+        "/name/nm0001120/",
+        "Centuries/20"
+      ]
+    },
+    "/name/nm0000180/": {
+      "text": "[David Lean](https://www.imdb.com/name/nm0000180/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0056172/": {
+      "text": "103 | 8.3 | [Lawrence of Arabia](https://www.imdb.com/title/tt0056172/)\n\nThe story of T.E. Lawrence, the English officer who successfully united and led the diverse, often warring, Arab tribes during World War I in order to fight the Turks.",
+      "parents": [
+        "Rating",
+        "Genres/Adventure",
+        "Genres/Biography",
+        "Genres/Drama",
+        "/name/nm0000180/",
+        "Centuries/20"
+      ]
+    },
+    "/name/nm0000466/": {
+      "text": "[Jean-Pierre Jeunet](https://www.imdb.com/name/nm0000466/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0211915/": {
+      "text": "104 | 8.3 | [Le fabuleux destin d&apos;Amélie Poulain](https://www.imdb.com/title/tt0211915/)\n\nAmélie is an innocent and naive girl in Paris with her own sense of justice. She decides to help those around her and, along the way, discovers love.",
+      "parents": [
+        "Rating",
+        "Genres/Comedy",
+        "Genres/Romance",
+        "/name/nm0000466/",
+        "Centuries/21"
+      ]
+    },
+    "/name/nm0000485/": {
+      "text": "[Fritz Lang](https://www.imdb.com/name/nm0000485/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0022100/": {
+      "text": "105 | 8.3 | [M - Eine Stadt sucht einen Mörder](https://www.imdb.com/title/tt0022100/)\n\nWhen the police in a German city are unable to catch a child-murderer, other criminals join in the manhunt.",
+      "parents": [
+        "Rating",
+        "Genres/Crime",
+        "Genres/Mystery",
+        "Genres/Thriller",
+        "/name/nm0000485/",
+        "Centuries/20"
+      ]
+    },
+    "/title/tt0017136/": {
+      "text": "106 | 8.3 | [Metropolis](https://www.imdb.com/title/tt0017136/)\n\nIn a futuristic city sharply divided between the working class and the city planners, the son of the city&apos;s mastermind falls in love with a working-class prophet who predicts the coming of a savior to mediate their differences.",
+      "parents": [
+        "Rating",
+        "Genres/Drama",
+        "Genres/Sci-Fi",
+        "/name/nm0000485/",
+        "Centuries/20"
+      ]
+    },
+    "/title/tt0053125/": {
+      "text": "107 | 8.3 | [North by Northwest](https://www.imdb.com/title/tt0053125/)\n\nA New York City advertising executive goes on the run after being mistaken for a government agent by a group of foreign spies, and falls for a woman whose loyalties he begins to doubt.",
+      "parents": [
+        "Rating",
+        "Genres/Action",
+        "Genres/Adventure",
+        "Genres/Mystery",
+        "/name/nm0000033/",
+        "Centuries/20"
+      ]
+    },
+    "/title/tt0087843/": {
+      "text": "108 | 8.3 | [Once Upon a Time in America](https://www.imdb.com/title/tt0087843/)\n\nA former Prohibition-era Jewish gangster returns to the Lower East Side of Manhattan 35 years later, where he must once again confront the ghosts and regrets of his old life.",
+      "parents": [
+        "Rating",
+        "Genres/Crime",
+        "Genres/Drama",
+        "/name/nm0001466/",
+        "Centuries/20"
+      ]
+    },
+    "/name/nm0006249/": {
+      "text": "[Satyajit Ray](https://www.imdb.com/name/nm0006249/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0048473/": {
+      "text": "109 | 8.3 | [Pather Panchali](https://www.imdb.com/title/tt0048473/)\n\nImpoverished priest Harihar Ray, dreaming of a better life for himself and his family, leaves his rural Bengal village in search of work.",
+      "parents": [
+        "Rating",
+        "Genres/Drama",
+        "/name/nm0006249/",
+        "Centuries/20"
+      ]
+    },
+    "/name/nm0004716/": {
+      "text": "[Darren Aronofsky](https://www.imdb.com/name/nm0004716/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0180093/": {
+      "text": "110 | 8.3 | [Requiem for a Dream](https://www.imdb.com/title/tt0180093/)\n\nThe drug-induced utopias of four Coney Island people are shattered when their addictions run deep.",
+      "parents": [
+        "Rating",
+        "Genres/Drama",
+        "/name/nm0004716/",
+        "Centuries/21"
+      ]
+    },
+    "/title/tt0105236/": {
+      "text": "111 | 8.3 | [Reservoir Dogs](https://www.imdb.com/title/tt0105236/)\n\nWhen a simple jewelry heist goes horribly wrong, the surviving criminals begin to suspect that one of them is a police informant.",
+      "parents": [
+        "Rating",
+        "Genres/Crime",
+        "Genres/Thriller",
+        "/name/nm0000233/",
+        "Centuries/20"
+      ]
+    },
+    "/name/nm0000361/": {
+      "text": "[Brian De Palma](https://www.imdb.com/name/nm0000361/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0086250/": {
+      "text": "112 | 8.3 | [Scarface](https://www.imdb.com/title/tt0086250/)\n\nIn 1980 Miami, a determined Cuban immigrant takes over a drug cartel and succumbs to greed.",
+      "parents": [
+        "Rating",
+        "Genres/Crime",
+        "Genres/Drama",
+        "/name/nm0000361/",
+        "Centuries/20"
+      ]
+    },
+    "Genres/Musical": {
+      "text": "Musical",
+      "parents": [
+        "Genres"
+      ]
+    },
+    "/name/nm0002045/": {
+      "text": "[Stanley Donen](https://www.imdb.com/name/nm0002045/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/name/nm0000037/": {
+      "text": "[Gene Kelly](https://www.imdb.com/name/nm0000037/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0045152/": {
+      "text": "113 | 8.3 | [Singin&apos; in the Rain](https://www.imdb.com/title/tt0045152/)\n\nA silent film star falls for a chorus girl just as he and his delusionally jealous screen partner are trying to make the difficult transition to talking pictures in 1920s Hollywood.",
+      "parents": [
+        "Rating",
+        "Genres/Comedy",
+        "Genres/Musical",
+        "Genres/Romance",
+        "/name/nm0002045/",
+        "/name/nm0000037/",
+        "Centuries/20"
+      ]
+    },
+    "/name/nm1218281/": {
+      "text": "[Jon Watts](https://www.imdb.com/name/nm1218281/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt10872600/": {
+      "text": "114 | 8.3 | [Spider-Man: No Way Home](https://www.imdb.com/title/tt10872600/)\n\nWith Spider-Man&apos;s identity now revealed, Peter asks Doctor Strange for help. When a spell goes wrong, dangerous foes from other worlds start to appear, forcing Peter to discover what it truly means to be Spider-Man.",
+      "parents": [
+        "Rating",
+        "Genres/Action",
+        "Genres/Adventure",
+        "Genres/Fantasy",
+        "/name/nm1218281/",
+        "Centuries/21"
+      ]
+    },
+    "/name/nm0549658/": {
+      "text": "[Richard Marquand](https://www.imdb.com/name/nm0549658/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0086190/": {
+      "text": "115 | 8.3 | [Star Wars: Episode VI - Return of the Jedi](https://www.imdb.com/title/tt0086190/)\n\nAfter a daring mission to rescue Han Solo from Jabba the Hutt, the Rebels dispatch to Endor to destroy the second Death Star. Meanwhile, Luke struggles to help Darth Vader back from the dark side without falling into the Emperor&apos;s...",
+      "parents": [
+        "Rating",
+        "Genres/Action",
+        "Genres/Adventure",
+        "Genres/Fantasy",
+        "/name/nm0549658/",
+        "Centuries/20"
+      ]
+    },
+    "/title/tt0053604/": {
+      "text": "116 | 8.3 | [The Apartment](https://www.imdb.com/title/tt0053604/)\n\nA Manhattan insurance clerk tries to rise in his company by letting its executives use his apartment for trysts, but complications and a romance of his own ensue.",
+      "parents": [
+        "Rating",
+        "Genres/Comedy",
+        "Genres/Drama",
+        "Genres/Romance",
+        "/name/nm0000697/",
+        "Centuries/20"
+      ]
+    },
+    "/title/tt0012349/": {
+      "text": "117 | 8.3 | [The Kid](https://www.imdb.com/title/tt0012349/)\n\nThe Tramp cares for an abandoned child, but events put their relationship in jeopardy.",
+      "parents": [
+        "Rating",
+        "Genres/Comedy",
+        "Genres/Drama",
+        "Genres/Family",
+        "/name/nm0000122/",
+        "Centuries/20"
+      ]
+    },
+    "/name/nm0001351/": {
+      "text": "[George Roy Hill](https://www.imdb.com/name/nm0001351/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0070735/": {
+      "text": "118 | 8.3 | [The Sting](https://www.imdb.com/title/tt0070735/)\n\nTwo grifters team up to pull off the ultimate con.",
+      "parents": [
+        "Rating",
+        "Genres/Comedy",
+        "Genres/Crime",
+        "Genres/Drama",
+        "/name/nm0001351/",
+        "Centuries/20"
+      ]
+    },
+    "/name/nm0612322/": {
+      "text": "[Robert Mulligan](https://www.imdb.com/name/nm0612322/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0056592/": {
+      "text": "119 | 8.3 | [To Kill a Mockingbird](https://www.imdb.com/title/tt0056592/)\n\nAtticus Finch, a widowed lawyer in Depression-era Alabama, defends a black man against an undeserved rape charge, and his children against prejudice.",
+      "parents": [
+        "Rating",
+        "Genres/Crime",
+        "Genres/Drama",
+        "/name/nm0612322/",
+        "Centuries/20"
+      ]
+    },
+    "/name/nm0005124/": {
+      "text": "[John Lasseter](https://www.imdb.com/name/nm0005124/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0114709/": {
+      "text": "120 | 8.3 | [Toy Story](https://www.imdb.com/title/tt0114709/)\n\nA cowboy doll is profoundly threatened and jealous when a new spaceman action figure supplants him as top toy in a boy&apos;s bedroom.",
+      "parents": [
+        "Rating",
+        "Genres/Animation",
+        "Genres/Adventure",
+        "Genres/Comedy",
+        "/name/nm0005124/",
+        "Centuries/20"
+      ]
+    },
+    "/title/tt0435761/": {
+      "text": "121 | 8.3 | [Toy Story 3](https://www.imdb.com/title/tt0435761/)\n\nThe toys are mistakenly delivered to a day-care center instead of the attic right before Andy leaves for college, and it&apos;s up to Woody to convince the other toys that they weren&apos;t abandoned and to return home.",
+      "parents": [
+        "Rating",
+        "Genres/Animation",
+        "Genres/Adventure",
+        "Genres/Comedy",
+        "/name/nm0881279/",
+        "Centuries/21"
+      ]
+    },
+    "/name/nm0230032/": {
+      "text": "[Pete Docter](https://www.imdb.com/name/nm0230032/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/name/nm0677037/": {
+      "text": "[Bob Peterson](https://www.imdb.com/name/nm0677037/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt1049413/": {
+      "text": "122 | 8.3 | [Up](https://www.imdb.com/title/tt1049413/)\n\n78-year-old Carl Fredricksen travels to Paradise Falls in his house equipped with balloons, inadvertently taking a young stowaway.",
+      "parents": [
+        "Rating",
+        "Genres/Animation",
+        "Genres/Adventure",
+        "Genres/Comedy",
+        "/name/nm0230032/",
+        "/name/nm0677037/",
+        "Centuries/21"
+      ]
+    },
+    "/title/tt0052357/": {
+      "text": "123 | 8.3 | [Vertigo](https://www.imdb.com/title/tt0052357/)\n\nA former San Francisco police detective juggles wrestling with his personal demons and becoming obsessed with the hauntingly beautiful woman he has been hired to trail, who may be deeply disturbed.",
+      "parents": [
+        "Rating",
+        "Genres/Mystery",
+        "Genres/Romance",
+        "Genres/Thriller",
+        "/name/nm0000033/",
+        "Centuries/20"
+      ]
+    },
+    "/title/tt8579674/": {
+      "text": "124 | 8.2 | [1917](https://www.imdb.com/title/tt8579674/)\n\nApril 6th, 1917. As an infantry battalion assembles to wage war deep in enemy territory, two soldiers are assigned to race against time and deliver a message that will stop 1,600 men from walking straight into a deadly trap.",
+      "parents": [
+        "Rating",
+        "Genres/Action",
+        "Genres/Drama",
+        "Genres/War",
+        "/name/nm0005222/",
+        "Centuries/21"
+      ]
+    },
+    "/name/nm0000165/": {
+      "text": "[Ron Howard](https://www.imdb.com/name/nm0000165/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0268978/": {
+      "text": "125 | 8.2 | [A Beautiful Mind](https://www.imdb.com/title/tt0268978/)\n\nAfter John Nash, a brilliant but asocial mathematician, accepts secret work in cryptography, his life takes a turn for the nightmarish.",
+      "parents": [
+        "Rating",
+        "Genres/Biography",
+        "Genres/Drama",
+        "/name/nm0000165/",
+        "Centuries/21"
+      ]
+    },
+    "/name/nm0000581/": {
+      "text": "[Joseph L. Mankiewicz](https://www.imdb.com/name/nm0000581/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0042192/": {
+      "text": "126 | 8.2 | [All About Eve](https://www.imdb.com/title/tt0042192/)\n\nA seemingly timid but secretly ruthless ingénue insinuates herself into the lives of an aging Broadway star and her circle of theater friends.",
+      "parents": [
+        "Rating",
+        "Genres/Drama",
+        "/name/nm0000581/",
+        "Centuries/20"
+      ]
+    },
+    "/name/nm1463981/": {
+      "text": "[Çagan Irmak](https://www.imdb.com/name/nm1463981/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0476735/": {
+      "text": "127 | 8.2 | [Babam ve Oglum](https://www.imdb.com/title/tt0476735/)\n\nThe family of a left-wing journalist is torn apart after the military coup of Turkey in 1980.",
+      "parents": [
+        "Rating",
+        "Genres/Drama",
+        "Genres/Family",
+        "/name/nm1463981/",
+        "Centuries/21"
+      ]
+    },
+    "Genres/Sport": {
+      "text": "Sport",
+      "parents": [
+        "Genres"
+      ]
+    },
+    "/name/nm0006498/": {
+      "text": "[Majid Majidi](https://www.imdb.com/name/nm0006498/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0118849/": {
+      "text": "128 | 8.2 | [Bacheha-Ye aseman](https://www.imdb.com/title/tt0118849/)\n\nAfter a boy loses his sister&apos;s pair of shoes, he goes on a series of adventures in order to find them. When he can&apos;t, he tries a new way to &quot;win&quot; a new pair.",
+      "parents": [
+        "Rating",
+        "Genres/Drama",
+        "Genres/Family",
+        "Genres/Sport",
+        "/name/nm0006498/",
+        "Centuries/20"
+      ]
+    },
+    "/title/tt0372784/": {
+      "text": "129 | 8.2 | [Batman Begins](https://www.imdb.com/title/tt0372784/)\n\nAfter training with his mentor, Batman begins his fight to free crime-ridden Gotham City from corruption.",
+      "parents": [
+        "Rating",
+        "Genres/Action",
+        "Genres/Crime",
+        "Genres/Drama",
+        "/name/nm0634240/",
+        "Centuries/21"
+      ]
+    },
+    "/title/tt0112641/": {
+      "text": "130 | 8.2 | [Casino](https://www.imdb.com/title/tt0112641/)\n\nA tale of greed, deception, money, power, and murder occur between two best friends: a mafia enforcer and a casino executive compete against each other over a gambling empire, and over a fast-living and fast-loving socialite.",
+      "parents": [
+        "Rating",
+        "Genres/Crime",
+        "Genres/Drama",
+        "/name/nm0000217/",
+        "Centuries/20"
+      ]
+    },
+    "/title/tt0071315/": {
+      "text": "131 | 8.2 | [Chinatown](https://www.imdb.com/title/tt0071315/)\n\nA private detective hired to expose an adulterer in 1930s Los Angeles finds himself caught up in a web of deceit, corruption, and murder.",
+      "parents": [
+        "Rating",
+        "Genres/Drama",
+        "Genres/Mystery",
+        "Genres/Thriller",
+        "/name/nm0000591/",
+        "Centuries/20"
+      ]
+    },
+    "/name/nm0386570/": {
+      "text": "[Oliver Hirschbiegel](https://www.imdb.com/name/nm0386570/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0363163/": {
+      "text": "132 | 8.2 | [Der Untergang](https://www.imdb.com/title/tt0363163/)\n\nTraudl Junge, the final secretary for Adolf Hitler, tells of the Nazi dictator&apos;s final days in his Berlin bunker at the end of WWII.",
+      "parents": [
+        "Rating",
+        "Genres/Biography",
+        "Genres/Drama",
+        "Genres/History",
+        "/name/nm0386570/",
+        "Centuries/21"
+      ]
+    },
+    "/title/tt0071411/": {
+      "text": "133 | 8.2 | [Dersu Uzala](https://www.imdb.com/title/tt0071411/)\n\nThe Russian army sends an explorer on an expedition to the snowy Siberian wilderness where he makes friends with a seasoned local hunter.",
+      "parents": [
+        "Rating",
+        "Genres/Adventure",
+        "Genres/Biography",
+        "Genres/Drama",
+        "/name/nm0000041/",
+        "Centuries/20"
+      ]
+    },
+    "/title/tt0046912/": {
+      "text": "134 | 8.2 | [Dial M for Murder](https://www.imdb.com/title/tt0046912/)\n\nA former tennis star arranges the murder of his adulterous wife.",
+      "parents": [
+        "Rating",
+        "Genres/Crime",
+        "Genres/Thriller",
+        "/name/nm0000033/",
+        "Centuries/20"
+      ]
+    },
+    "/name/nm0001532/": {
+      "text": "[John McTiernan](https://www.imdb.com/name/nm0001532/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0095016/": {
+      "text": "135 | 8.2 | [Die Hard](https://www.imdb.com/title/tt0095016/)\n\nA New York City police officer tries to save his estranged wife and several others taken hostage by terrorists during a Christmas party at the Nakatomi Plaza in Los Angeles.",
+      "parents": [
+        "Rating",
+        "Genres/Action",
+        "Genres/Thriller",
+        "/name/nm0001532/",
+        "Centuries/20"
+      ]
+    },
+    "/name/nm0868219/": {
+      "text": "[Guillermo del Toro](https://www.imdb.com/name/nm0868219/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0457430/": {
+      "text": "136 | 8.2 | [El laberinto del fauno](https://www.imdb.com/title/tt0457430/)\n\nIn the Falangist Spain of 1944, the bookish young stepdaughter of a sadistic army officer escapes into an eerie but captivating fantasy world.",
+      "parents": [
+        "Rating",
+        "Genres/Drama",
+        "Genres/Fantasy",
+        "Genres/War",
+        "/name/nm0868219/",
+        "Centuries/21"
+      ]
+    },
+    "/name/nm0002728/": {
+      "text": "[Juan José Campanella](https://www.imdb.com/name/nm0002728/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt1305806/": {
+      "text": "137 | 8.2 | [El secreto de sus ojos](https://www.imdb.com/title/tt1305806/)\n\nA retired legal counselor writes a novel hoping to find closure for one of his past unresolved homicide cases and for his unreciprocated love with his superior - both of which still haunt him decades later.",
+      "parents": [
+        "Rating",
+        "Genres/Drama",
+        "Genres/Mystery",
+        "Genres/Romance",
+        "/name/nm0002728/",
+        "Centuries/21"
+      ]
+    },
+    "/title/tt0266543/": {
+      "text": "138 | 8.2 | [Finding Nemo](https://www.imdb.com/title/tt0266543/)\n\nAfter his son is captured in the Great Barrier Reef and taken to Sydney, a timid clownfish sets out on a journey to bring him home.",
+      "parents": [
+        "Rating",
+        "Genres/Animation",
+        "Genres/Adventure",
+        "Genres/Comedy",
+        "/name/nm0004056/",
+        "/name/nm0881279/",
+        "Centuries/21"
+      ]
+    },
+    "/name/nm0281808/": {
+      "text": "[Victor Fleming](https://www.imdb.com/name/nm0281808/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/name/nm0002030/": {
+      "text": "[George Cukor](https://www.imdb.com/name/nm0002030/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/name/nm0939992/": {
+      "text": "[Sam Wood](https://www.imdb.com/name/nm0939992/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0031381/": {
+      "text": "139 | 8.2 | [Gone with the Wind](https://www.imdb.com/title/tt0031381/)\n\nThe manipulative daughter of a Georgia plantation owner conducts a turbulent romance with a roguish profiteer during the American Civil War and Reconstruction periods.",
+      "parents": [
+        "Rating",
+        "Genres/Drama",
+        "Genres/Romance",
+        "Genres/War",
+        "/name/nm0281808/",
+        "/name/nm0002030/",
+        "/name/nm0939992/",
+        "Centuries/20"
+      ]
+    },
+    "/name/nm0268380/": {
+      "text": "[Peter Farrelly](https://www.imdb.com/name/nm0268380/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt6966692/": {
+      "text": "140 | 8.2 | [Green Book](https://www.imdb.com/title/tt6966692/)\n\nA working-class Italian-American bouncer becomes the driver for an African-American classical pianist on a tour of venues through the 1960s American South.",
+      "parents": [
+        "Rating",
+        "Genres/Biography",
+        "Genres/Comedy",
+        "Genres/Drama",
+        "/name/nm0268380/",
+        "Centuries/21"
+      ]
+    },
+    "/title/tt0347149/": {
+      "text": "141 | 8.2 | [Hauru no ugoku shiro](https://www.imdb.com/title/tt0347149/)\n\nWhen an unconfident young woman is cursed with an old body by a spiteful witch, her only chance of breaking the spell lies with a self-indulgent yet insecure young wizard and his companions in his legged, walking castle.",
+      "parents": [
+        "Rating",
+        "Genres/Animation",
+        "Genres/Adventure",
+        "Genres/Family",
+        "/name/nm0594503/",
+        "Centuries/21"
+      ]
+    },
+    "/title/tt0097576/": {
+      "text": "142 | 8.2 | [Indiana Jones and the Last Crusade](https://www.imdb.com/title/tt0097576/)\n\nIn 1938, after his father Professor Henry Jones, Sr. goes missing while pursuing the Holy Grail, Professor Henry &quot;Indiana&quot; Jones, Jr. finds himself up against Adolf Hitler&apos;s Nazis again to stop them from obtaining its powers.",
+      "parents": [
+        "Rating",
+        "Genres/Action",
+        "Genres/Adventure",
+        "/name/nm0000229/",
+        "Centuries/20"
+      ]
+    },
+    "/name/nm0215455/": {
+      "text": "[Ronnie Del Carmen](https://www.imdb.com/name/nm0215455/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt2096673/": {
+      "text": "143 | 8.2 | [Inside Out](https://www.imdb.com/title/tt2096673/)\n\nAfter young Riley is uprooted from her Midwest life and moved to San Francisco, her emotions - Joy, Fear, Anger, Disgust and Sadness - conflict on how best to navigate a new city, house, and school.",
+      "parents": [
+        "Rating",
+        "Genres/Animation",
+        "Genres/Adventure",
+        "Genres/Comedy",
+        "/name/nm0230032/",
+        "/name/nm0215455/",
+        "Centuries/21"
+      ]
+    },
+    "/title/tt0107290/": {
+      "text": "144 | 8.2 | [Jurassic Park](https://www.imdb.com/title/tt0107290/)\n\nA pragmatic paleontologist touring an almost complete theme park on an island in Central America is tasked with protecting a couple of kids after a power failure causes the park&apos;s cloned dinosaurs to run loose.",
+      "parents": [
+        "Rating",
+        "Genres/Action",
+        "Genres/Adventure",
+        "Genres/Sci-Fi",
+        "/name/nm0000229/",
+        "Centuries/20"
+      ]
+    },
+    "/title/tt0266697/": {
+      "text": "145 | 8.2 | [Kill Bill: Vol. 1](https://www.imdb.com/title/tt0266697/)\n\nAfter awakening from a four-year coma, a former assassin wreaks vengeance on the team of assassins who betrayed her.",
+      "parents": [
+        "Rating",
+        "Genres/Action",
+        "Genres/Crime",
+        "Genres/Drama",
+        "/name/nm0000233/",
+        "Centuries/21"
+      ]
+    },
+    "/name/nm0000436/": {
+      "text": "[Curtis Hanson](https://www.imdb.com/name/nm0000436/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0119488/": {
+      "text": "146 | 8.2 | [L.A. Confidential](https://www.imdb.com/title/tt0119488/)\n\nAs corruption grows in 1950s Los Angeles, three policemen - one strait-laced, one brutal, and one sleazy - investigate a series of murders with their own brand of justice.",
+      "parents": [
+        "Rating",
+        "Genres/Crime",
+        "Genres/Drama",
+        "Genres/Mystery",
+        "/name/nm0000436/",
+        "Centuries/20"
+      ]
+    },
+    "/name/nm0003433/": {
+      "text": "[Carl Theodor Dreyer](https://www.imdb.com/name/nm0003433/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0019254/": {
+      "text": "147 | 8.2 | [La passion de Jeanne d&apos;Arc](https://www.imdb.com/title/tt0019254/)\n\nIn 1431, Jeanne d&apos;Arc is placed on trial on charges of heresy. The ecclesiastical jurists attempt to force Jeanne to recant her claims of holy visions.",
+      "parents": [
+        "Rating",
+        "Genres/Biography",
+        "Genres/Drama",
+        "Genres/History",
+        "/name/nm0003433/",
+        "Centuries/20"
+      ]
+    },
+    "/name/nm0167241/": {
+      "text": "[Henri-Georges Clouzot](https://www.imdb.com/name/nm0167241/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0046268/": {
+      "text": "148 | 8.2 | [Le salaire de la peur](https://www.imdb.com/title/tt0046268/)\n\nIn a decrepit South American village, four men are hired to transport an urgent nitroglycerine shipment without the equipment that would make it safe.",
+      "parents": [
+        "Rating",
+        "Genres/Adventure",
+        "Genres/Drama",
+        "Genres/Thriller",
+        "/name/nm0167241/",
+        "Centuries/20"
+      ]
+    },
+    "/name/nm0005363/": {
+      "text": "[Guy Ritchie](https://www.imdb.com/name/nm0005363/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0120735/": {
+      "text": "149 | 8.2 | [Lock, Stock and Two Smoking Barrels](https://www.imdb.com/title/tt0120735/)\n\nEddy persuades his three pals to pool money for a vital poker game against a powerful local mobster, Hatchet Harry. Eddy loses, after which Harry gives him a week to pay back 500,000 pounds.",
+      "parents": [
+        "Rating",
+        "Genres/Action",
+        "Genres/Comedy",
+        "Genres/Crime",
+        "/name/nm0005363/",
+        "Centuries/20"
+      ]
+    },
+    "/name/nm0000416/": {
+      "text": "[Terry Gilliam](https://www.imdb.com/name/nm0000416/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/name/nm0001402/": {
+      "text": "[Terry Jones](https://www.imdb.com/name/nm0001402/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0071853/": {
+      "text": "150 | 8.2 | [Monty Python and the Holy Grail](https://www.imdb.com/title/tt0071853/)\n\nKing Arthur and his Knights of the Round Table embark on a surreal, low-budget search for the Holy Grail, encountering many, very silly obstacles.",
+      "parents": [
+        "Rating",
+        "Genres/Adventure",
+        "Genres/Comedy",
+        "Genres/Fantasy",
+        "/name/nm0000416/",
+        "/name/nm0001402/",
+        "Centuries/20"
+      ]
+    },
+    "/name/nm0001053/": {
+      "text": "[Ethan Coen](https://www.imdb.com/name/nm0001053/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/name/nm0001054/": {
+      "text": "[Joel Coen](https://www.imdb.com/name/nm0001054/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0477348/": {
+      "text": "151 | 8.2 | [No Country for Old Men](https://www.imdb.com/title/tt0477348/)\n\nViolence and mayhem ensue after a hunter stumbles upon a drug deal gone wrong and more than two million dollars in cash near the Rio Grande.",
+      "parents": [
+        "Rating",
+        "Genres/Crime",
+        "Genres/Drama",
+        "Genres/Thriller",
+        "/name/nm0001053/",
+        "/name/nm0001054/",
+        "Centuries/21"
+      ]
+    },
+    "/title/tt0059578/": {
+      "text": "152 | 8.2 | [Per qualche dollaro in più](https://www.imdb.com/title/tt0059578/)\n\nTwo bounty hunters with the same intentions team up to track down an escaped Mexican outlaw.",
+      "parents": [
+        "Rating",
+        "Genres/Western",
+        "/name/nm0001466/",
+        "Centuries/20"
+      ]
+    },
+    "/title/tt0081398/": {
+      "text": "153 | 8.2 | [Raging Bull](https://www.imdb.com/title/tt0081398/)\n\nThe life of boxer Jake LaMotta, whose violence and temper that led him to the top in the ring destroyed his life outside of it.",
+      "parents": [
+        "Rating",
+        "Genres/Biography",
+        "Genres/Drama",
+        "Genres/Sport",
+        "/name/nm0000217/",
+        "Centuries/20"
+      ]
+    },
+    "/title/tt0089881/": {
+      "text": "154 | 8.2 | [Ran](https://www.imdb.com/title/tt0089881/)\n\nIn Medieval Japan, an elderly warlord retires, handing over his empire to his three sons. However, he vastly underestimates how the new-found power will corrupt them and cause them to turn on each other...and him.",
+      "parents": [
+        "Rating",
+        "Genres/Action",
+        "Genres/Drama",
+        "Genres/War",
+        "/name/nm0000041/",
+        "Centuries/20"
+      ]
+    },
+    "/title/tt0042876/": {
+      "text": "155 | 8.2 | [Rashômon](https://www.imdb.com/title/tt0042876/)\n\nThe rape of a bride and the murder of her samurai husband are recalled from the perspectives of a bandit, the bride, the samurai&apos;s ghost and a woodcutter.",
+      "parents": [
+        "Rating",
+        "Genres/Crime",
+        "Genres/Drama",
+        "Genres/Mystery",
+        "/name/nm0000041/",
+        "Centuries/20"
+      ]
+    },
+    "/name/nm0000036/": {
+      "text": "[Buster Keaton](https://www.imdb.com/name/nm0000036/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0015324/": {
+      "text": "156 | 8.2 | [Sherlock Jr.](https://www.imdb.com/title/tt0015324/)\n\nA film projectionist longs to be a detective, and puts his meagre skills to work when he is framed by a rival for stealing his girlfriend&apos;s father&apos;s pocketwatch.",
+      "parents": [
+        "Rating",
+        "Genres/Action",
+        "Genres/Comedy",
+        "Genres/Romance",
+        "/name/nm0000036/",
+        "Centuries/20"
+      ]
+    },
+    "/title/tt1130884/": {
+      "text": "157 | 8.2 | [Shutter Island](https://www.imdb.com/title/tt1130884/)\n\nIn 1954, a U.S. Marshal investigates the disappearance of a murderer who escaped from a hospital for the criminally insane.",
+      "parents": [
+        "Rating",
+        "Genres/Mystery",
+        "Genres/Thriller",
+        "/name/nm0000217/",
+        "Centuries/21"
+      ]
+    },
+    "/title/tt0208092/": {
+      "text": "158 | 8.2 | [Snatch](https://www.imdb.com/title/tt0208092/)\n\nUnscrupulous boxing promoters, violent bookmakers, a Russian gangster, incompetent amateur robbers and supposedly Jewish jewelers fight to track down a priceless stolen diamond.",
+      "parents": [
+        "Rating",
+        "Genres/Comedy",
+        "Genres/Crime",
+        "/name/nm0005363/",
+        "Centuries/21"
+      ]
+    },
+    "/title/tt0053291/": {
+      "text": "159 | 8.2 | [Some Like It Hot](https://www.imdb.com/title/tt0053291/)\n\nAfter two male musicians witness a mob hit, they flee the state in an all-female band disguised as women, but further complications set in.",
+      "parents": [
+        "Rating",
+        "Genres/Comedy",
+        "Genres/Music",
+        "Genres/Romance",
+        "/name/nm0000697/",
+        "Centuries/20"
+      ]
+    },
+    "/title/tt0075314/": {
+      "text": "160 | 8.2 | [Taxi Driver](https://www.imdb.com/title/tt0075314/)\n\nA mentally unstable veteran works as a nighttime taxi driver in New York City, where the perceived decadence and sleaze fuels his urge for violent action.",
+      "parents": [
+        "Rating",
+        "Genres/Crime",
+        "Genres/Drama",
+        "/name/nm0000217/",
+        "Centuries/20"
+      ]
+    },
+    "/title/tt0050212/": {
+      "text": "161 | 8.2 | [The Bridge on the River Kwai](https://www.imdb.com/title/tt0050212/)\n\nBritish POWs are forced to build a railway bridge across the river Kwai for their Japanese captors in occupied Burma, not knowing that the allied forces are planning a daring commando raid through the jungle to destroy it.",
+      "parents": [
+        "Rating",
+        "Genres/Adventure",
+        "Genres/Drama",
+        "Genres/War",
+        "/name/nm0000180/",
+        "Centuries/20"
+      ]
+    },
+    "/name/nm0000186/": {
+      "text": "[David Lynch](https://www.imdb.com/name/nm0000186/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0080678/": {
+      "text": "162 | 8.2 | [The Elephant Man](https://www.imdb.com/title/tt0080678/)\n\nA Victorian surgeon rescues a heavily disfigured man who is mistreated while scraping a living as a side-show freak. Behind his monstrous façade, there is revealed a person of kindness, intelligence and sophistication.",
+      "parents": [
+        "Rating",
+        "Genres/Biography",
+        "Genres/Drama",
+        "/name/nm0000186/",
+        "Centuries/20"
+      ]
+    },
+    "/name/nm1725469/": {
+      "text": "[Florian Zeller](https://www.imdb.com/name/nm1725469/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt10272386/": {
+      "text": "163 | 8.2 | [The Father](https://www.imdb.com/title/tt10272386/)\n\nA man refuses all assistance from his daughter as he ages. As he tries to make sense of his changing circumstances, he begins to doubt his loved ones, his own mind and even the fabric of his reality.",
+      "parents": [
+        "Rating",
+        "Genres/Drama",
+        "Genres/Mystery",
+        "/name/nm1725469/",
+        "Centuries/21"
+      ]
+    },
+    "/name/nm0115669/": {
+      "text": "[Clyde Bruckman](https://www.imdb.com/name/nm0115669/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0017925/": {
+      "text": "164 | 8.2 | [The General](https://www.imdb.com/title/tt0017925/)\n\nAfter being rejected by the Confederate military, not realizing it was due to his crucial civilian role, an engineer must single-handedly recapture his beloved locomotive after it is seized by Union spies and return it through ene...",
+      "parents": [
+        "Rating",
+        "Genres/Action",
+        "Genres/Adventure",
+        "Genres/Comedy",
+        "/name/nm0115669/",
+        "/name/nm0000036/",
+        "Centuries/20"
+      ]
+    },
+    "/title/tt0015864/": {
+      "text": "165 | 8.2 | [The Gold Rush](https://www.imdb.com/title/tt0015864/)\n\nA prospector goes to the Klondike during the 1890s gold rush in hopes of making his fortune, and is smitten with a girl he sees in a dance hall.",
+      "parents": [
+        "Rating",
+        "Genres/Adventure",
+        "Genres/Comedy",
+        "Genres/Drama",
+        "/name/nm0000122/",
+        "Centuries/20"
+      ]
+    },
+    "/name/nm0836328/": {
+      "text": "[John Sturges](https://www.imdb.com/name/nm0836328/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0057115/": {
+      "text": "166 | 8.2 | [The Great Escape](https://www.imdb.com/title/tt0057115/)\n\nAllied prisoners of war plan for several hundred of their number to escape from a German camp during World War II.",
+      "parents": [
+        "Rating",
+        "Genres/Adventure",
+        "Genres/Drama",
+        "Genres/History",
+        "/name/nm0836328/",
+        "Centuries/20"
+      ]
+    },
+    "/name/nm0796117/": {
+      "text": "[M. Night Shyamalan](https://www.imdb.com/name/nm0796117/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0167404/": {
+      "text": "167 | 8.2 | [The Sixth Sense](https://www.imdb.com/title/tt0167404/)\n\nA frightened, withdrawn Philadelphia boy who communicates with spirits seeks the help of a disheartened child psychologist.",
+      "parents": [
+        "Rating",
+        "Genres/Drama",
+        "Genres/Mystery",
+        "Genres/Thriller",
+        "/name/nm0796117/",
+        "Centuries/20"
+      ]
+    },
+    "/name/nm0000118/": {
+      "text": "[John Carpenter](https://www.imdb.com/name/nm0000118/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0084787/": {
+      "text": "168 | 8.2 | [The Thing](https://www.imdb.com/title/tt0084787/)\n\nA research team in Antarctica is hunted by a shape-shifting alien that assumes the appearance of its victims.",
+      "parents": [
+        "Rating",
+        "Genres/Horror",
+        "Genres/Mystery",
+        "Genres/Sci-Fi",
+        "/name/nm0000118/",
+        "Centuries/20"
+      ]
+    },
+    "/name/nm0001379/": {
+      "text": "[John Huston](https://www.imdb.com/name/nm0001379/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0040897/": {
+      "text": "169 | 8.2 | [The Treasure of the Sierra Madre](https://www.imdb.com/title/tt0040897/)\n\nTwo down-on-their-luck Americans searching for work in 1920s Mexico convince an old prospector to help them mine for gold in the Sierra Madre Mountains.",
+      "parents": [
+        "Rating",
+        "Genres/Adventure",
+        "Genres/Drama",
+        "Genres/Western",
+        "/name/nm0001379/",
+        "Centuries/20"
+      ]
+    },
+    "/name/nm0001837/": {
+      "text": "[Peter Weir](https://www.imdb.com/name/nm0001837/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0120382/": {
+      "text": "170 | 8.2 | [The Truman Show](https://www.imdb.com/title/tt0120382/)\n\nAn insurance salesman discovers his whole life is actually a reality TV show.",
+      "parents": [
+        "Rating",
+        "Genres/Comedy",
+        "Genres/Drama",
+        "/name/nm0001837/",
+        "Centuries/20"
+      ]
+    },
+    "/title/tt0993846/": {
+      "text": "171 | 8.2 | [The Wolf of Wall Street](https://www.imdb.com/title/tt0993846/)\n\nBased on the true story of Jordan Belfort, from his rise to a wealthy stock-broker living the high life to his fall involving crime, corruption and the federal government.",
+      "parents": [
+        "Rating",
+        "Genres/Biography",
+        "Genres/Comedy",
+        "Genres/Crime",
+        "/name/nm0000217/",
+        "Centuries/21"
+      ]
+    },
+    "/name/nm0000759/": {
+      "text": "[Paul Thomas Anderson](https://www.imdb.com/name/nm0000759/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0469494/": {
+      "text": "172 | 8.2 | [There Will Be Blood](https://www.imdb.com/title/tt0469494/)\n\nA story of family, religion, hatred, oil and madness, focusing on a turn-of-the-century prospector in the early days of the business.",
+      "parents": [
+        "Rating",
+        "Genres/Drama",
+        "/name/nm0000759/",
+        "Centuries/21"
+      ]
+    },
+    "/name/nm0523932/": {
+      "text": "[Ernst Lubitsch](https://www.imdb.com/name/nm0523932/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0035446/": {
+      "text": "173 | 8.2 | [To Be or Not to Be](https://www.imdb.com/title/tt0035446/)\n\nDuring the Nazi occupation of Poland, an acting troupe becomes embroiled in a Polish soldier&apos;s efforts to track down a German spy.",
+      "parents": [
+        "Rating",
+        "Genres/Comedy",
+        "Genres/Romance",
+        "Genres/War",
+        "/name/nm0523932/",
+        "Centuries/20"
+      ]
+    },
+    "/name/nm0654868/": {
+      "text": "[Yasujirô Ozu](https://www.imdb.com/name/nm0654868/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0046438/": {
+      "text": "174 | 8.2 | [Tôkyô monogatari](https://www.imdb.com/title/tt0046438/)\n\nAn old couple visit their children and grandchildren in the city, but receive little attention.",
+      "parents": [
+        "Rating",
+        "Genres/Drama",
+        "/name/nm0654868/",
+        "Centuries/20"
+      ]
+    },
+    "/name/nm0000142/": {
+      "text": "[Clint Eastwood](https://www.imdb.com/name/nm0000142/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0105695/": {
+      "text": "175 | 8.2 | [Unforgiven](https://www.imdb.com/title/tt0105695/)\n\nRetired Old West gunslinger William Munny reluctantly takes on one last job, with the help of his old partner Ned Logan and a young man, The &quot;Schofield Kid.&quot;",
+      "parents": [
+        "Rating",
+        "Genres/Drama",
+        "Genres/Western",
+        "/name/nm0000142/",
+        "Centuries/20"
+      ]
+    },
+    "/name/nm0574625/": {
+      "text": "[James McTeigue](https://www.imdb.com/name/nm0574625/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0434409/": {
+      "text": "176 | 8.2 | [V for Vendetta](https://www.imdb.com/title/tt0434409/)\n\nIn a future British dystopian society, a shadowy freedom fighter, known only by the alias of &quot;V&quot;, plots to overthrow the tyrannical government - with the help of a young woman.",
+      "parents": [
+        "Rating",
+        "Genres/Action",
+        "Genres/Drama",
+        "Genres/Sci-Fi",
+        "/name/nm0574625/",
+        "Centuries/21"
+      ]
+    },
+    "/name/nm0640334/": {
+      "text": "[Gavin O&apos;Connor](https://www.imdb.com/name/nm0640334/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt1291584/": {
+      "text": "177 | 8.2 | [Warrior](https://www.imdb.com/title/tt1291584/)\n\nThe youngest son of an alcoholic former boxer returns home, where he&apos;s trained by his father for competition in a mixed martial arts tournament - a path that puts the fighter on a collision course with his estranged, older brother.",
+      "parents": [
+        "Rating",
+        "Genres/Action",
+        "Genres/Drama",
+        "Genres/Sport",
+        "/name/nm0640334/",
+        "Centuries/21"
+      ]
+    },
+    "/title/tt0055630/": {
+      "text": "178 | 8.2 | [Yôjinbô](https://www.imdb.com/title/tt0055630/)\n\nA crafty ronin comes to a town divided by two criminal gangs and decides to play them against each other to free the town.",
+      "parents": [
+        "Rating",
+        "Genres/Action",
+        "Genres/Drama",
+        "Genres/Thriller",
+        "/name/nm0000041/",
+        "Centuries/20"
+      ]
+    },
+    "/name/nm2588606/": {
+      "text": "[Steve McQueen](https://www.imdb.com/name/nm2588606/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt2024544/": {
+      "text": "179 | 8.1 | [12 Years a Slave](https://www.imdb.com/title/tt2024544/)\n\nIn the antebellum United States, Solomon Northup, a free black man from upstate New York, is abducted and sold into slavery.",
+      "parents": [
+        "Rating",
+        "Genres/Biography",
+        "Genres/Drama",
+        "Genres/History",
+        "/name/nm2588606/",
+        "Centuries/21"
+      ]
+    },
+    "/title/tt4016934/": {
+      "text": "180 | 8.1 | [Ah-ga-ssi](https://www.imdb.com/title/tt4016934/)\n\nA woman is hired as a handmaiden to a Japanese heiress, but secretly she is involved in a plot to defraud her.",
+      "parents": [
+        "Rating",
+        "Genres/Drama",
+        "Genres/Romance",
+        "Genres/Thriller",
+        "/name/nm0661791/",
+        "Centuries/21"
+      ]
+    },
+    "/name/nm0327944/": {
+      "text": "[Alejandro G. Iñárritu](https://www.imdb.com/name/nm0327944/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0245712/": {
+      "text": "181 | 8.1 | [Amores perros](https://www.imdb.com/title/tt0245712/)\n\nA horrific car accident connects three stories, each involving characters dealing with loss, regret, and life&apos;s harsh realities, all in the name of love.",
+      "parents": [
+        "Rating",
+        "Genres/Drama",
+        "Genres/Thriller",
+        "/name/nm0327944/",
+        "Centuries/21"
+      ]
+    },
+    "/title/tt0072684/": {
+      "text": "182 | 8.1 | [Barry Lyndon](https://www.imdb.com/title/tt0072684/)\n\nAn Irish rogue wins the heart of a rich widow and assumes her dead husband&apos;s aristocratic position in 18th-century England.",
+      "parents": [
+        "Rating",
+        "Genres/Adventure",
+        "Genres/Drama",
+        "Genres/War",
+        "/name/nm0000040/",
+        "Centuries/20"
+      ]
+    },
+    "/name/nm0000500/": {
+      "text": "[Richard Linklater](https://www.imdb.com/name/nm0000500/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0112471/": {
+      "text": "183 | 8.1 | [Before Sunrise](https://www.imdb.com/title/tt0112471/)\n\nA young man and woman meet on a train in Europe, and wind up spending one evening together in Vienna. Unfortunately, both know that this will probably be their only night together.",
+      "parents": [
+        "Rating",
+        "Genres/Drama",
+        "Genres/Romance",
+        "/name/nm0000500/",
+        "Centuries/20"
+      ]
+    },
+    "/title/tt0381681/": {
+      "text": "184 | 8.1 | [Before Sunset](https://www.imdb.com/title/tt0381681/)\n\nNine years after Jesse and Celine first met, they encounter each other again on the French leg of Jesse&apos;s book tour.",
+      "parents": [
+        "Rating",
+        "Genres/Drama",
+        "Genres/Romance",
+        "/name/nm0000500/",
+        "Centuries/21"
+      ]
+    },
+    "/name/nm0943758/": {
+      "text": "[William Wyler](https://www.imdb.com/name/nm0943758/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0052618/": {
+      "text": "185 | 8.1 | [Ben-Hur](https://www.imdb.com/title/tt0052618/)\n\nAfter a Jewish prince is betrayed and sent into slavery by a Roman friend in 1st-century Jerusalem, he regains his freedom and comes back for revenge.",
+      "parents": [
+        "Rating",
+        "Genres/Adventure",
+        "Genres/Drama",
+        "/name/nm0943758/",
+        "Centuries/20"
+      ]
+    },
+    "/title/tt0083658/": {
+      "text": "186 | 8.1 | [Blade Runner](https://www.imdb.com/title/tt0083658/)\n\nA blade runner must pursue and terminate four replicants who stole a ship in space and have returned to Earth to find their creator.",
+      "parents": [
+        "Rating",
+        "Genres/Action",
+        "Genres/Drama",
+        "Genres/Sci-Fi",
+        "/name/nm0000631/",
+        "Centuries/20"
+      ]
+    },
+    "/title/tt0264464/": {
+      "text": "187 | 8.1 | [Catch Me If You Can](https://www.imdb.com/title/tt0264464/)\n\nBarely 21 yet, Frank is a skilled forger who has passed as a doctor, lawyer and pilot. FBI agent Carl becomes obsessed with tracking down the con man, who only revels in the pursuit.",
+      "parents": [
+        "Rating",
+        "Genres/Biography",
+        "Genres/Crime",
+        "Genres/Drama",
+        "/name/nm0000229/",
+        "Centuries/21"
+      ]
+    },
+    "/name/nm0742341/": {
+      "text": "[Stuart Rosenberg](https://www.imdb.com/name/nm0742341/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0061512/": {
+      "text": "188 | 8.1 | [Cool Hand Luke](https://www.imdb.com/title/tt0061512/)\n\nA laid back Southern man is sentenced to two years in a rural prison, but refuses to conform.",
+      "parents": [
+        "Rating",
+        "Genres/Crime",
+        "Genres/Drama",
+        "/name/nm0742341/",
+        "Centuries/20"
+      ]
+    },
+    "/title/tt0097165/": {
+      "text": "189 | 8.1 | [Dead Poets Society](https://www.imdb.com/title/tt0097165/)\n\nMaverick teacher John Keating uses poetry to embolden his boarding school students to new heights of self-expression.",
+      "parents": [
+        "Rating",
+        "Genres/Comedy",
+        "Genres/Drama",
+        "/name/nm0001837/",
+        "Centuries/20"
+      ]
+    },
+    "/name/nm0000005/": {
+      "text": "[Ingmar Bergman](https://www.imdb.com/name/nm0000005/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0050976/": {
+      "text": "190 | 8.1 | [Det sjunde inseglet](https://www.imdb.com/title/tt0050976/)\n\nA knight returning to Sweden after the Crusades seeks answers about life, death, and the existence of God as he plays chess against the Grim Reaper during the Black Plague.",
+      "parents": [
+        "Rating",
+        "Genres/Drama",
+        "Genres/Fantasy",
+        "/name/nm0000005/",
+        "Centuries/20"
+      ]
+    },
+    "/name/nm3453283/": {
+      "text": "[Dan Kwan](https://www.imdb.com/name/nm3453283/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/name/nm3215397/": {
+      "text": "[Daniel Scheinert](https://www.imdb.com/name/nm3215397/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt6710474/": {
+      "text": "191 | 8.1 | [Everything Everywhere All at Once](https://www.imdb.com/title/tt6710474/)\n\nAn aging Chinese immigrant is swept up in an insane adventure, in which she alone can save the world by exploring other universes connecting with the lives she could have led.",
+      "parents": [
+        "Rating",
+        "Genres/Action",
+        "Genres/Adventure",
+        "Genres/Comedy",
+        "/name/nm3453283/",
+        "/name/nm3215397/",
+        "Centuries/21"
+      ]
+    },
+    "/title/tt0116282/": {
+      "text": "192 | 8.1 | [Fargo](https://www.imdb.com/title/tt0116282/)\n\nMinnesota car salesman Jerry Lundegaard&apos;s inept crime falls apart due to his and his henchmen&apos;s bungling and the persistent police work of the quite pregnant Marge Gunderson.",
+      "parents": [
+        "Rating",
+        "Genres/Crime",
+        "Genres/Thriller",
+        "/name/nm0001054/",
+        "/name/nm0001053/",
+        "Centuries/20"
+      ]
+    },
+    "/name/nm0003506/": {
+      "text": "[James Mangold](https://www.imdb.com/name/nm0003506/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt1950186/": {
+      "text": "193 | 8.1 | [Ford v Ferrari](https://www.imdb.com/title/tt1950186/)\n\nAmerican car designer Carroll Shelby and driver Ken Miles battle corporate interference and the laws of physics to build a revolutionary race car for Ford in order to defeat Ferrari at the 24 Hours of Le Mans in 1966.",
+      "parents": [
+        "Rating",
+        "Genres/Action",
+        "Genres/Biography",
+        "Genres/Drama",
+        "/name/nm0003506/",
+        "Centuries/21"
+      ]
+    },
+    "/name/nm0000277/": {
+      "text": "[Richard Attenborough](https://www.imdb.com/name/nm0000277/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0083987/": {
+      "text": "194 | 8.1 | [Gandhi](https://www.imdb.com/title/tt0083987/)\n\nThe life of the lawyer who became the famed leader of the Indian revolts against the British rule through his philosophy of nonviolent protest.",
+      "parents": [
+        "Rating",
+        "Genres/Biography",
+        "Genres/Drama",
+        "/name/nm0000277/",
+        "Centuries/20"
+      ]
+    },
+    "/title/tt2267998/": {
+      "text": "195 | 8.1 | [Gone Girl](https://www.imdb.com/title/tt2267998/)\n\nWith his wife&apos;s disappearance having become the focus of an intense media circus, a man sees the spotlight turned on him when it&apos;s suspected that he may not be innocent.",
+      "parents": [
+        "Rating",
+        "Genres/Drama",
+        "Genres/Mystery",
+        "Genres/Thriller",
+        "/name/nm0000399/",
+        "Centuries/21"
+      ]
+    },
+    "/title/tt1205489/": {
+      "text": "196 | 8.1 | [Gran Torino](https://www.imdb.com/title/tt1205489/)\n\nDisgruntled Korean War veteran Walt Kowalski sets out to reform his neighbor, Thao Lor, a Hmong teenager who tried to steal Kowalski&apos;s prized possession: a 1972 Gran Torino.",
+      "parents": [
+        "Rating",
+        "Genres/Drama",
+        "/name/nm0000142/",
+        "Centuries/21"
+      ]
+    },
+    "/name/nm0000601/": {
+      "text": "[Harold Ramis](https://www.imdb.com/name/nm0000601/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0107048/": {
+      "text": "197 | 8.1 | [Groundhog Day](https://www.imdb.com/title/tt0107048/)\n\nA narcissistic, self-centered weatherman finds himself in a time loop on Groundhog Day, and the day keeps repeating until he gets it right.",
+      "parents": [
+        "Rating",
+        "Genres/Comedy",
+        "Genres/Drama",
+        "Genres/Fantasy",
+        "/name/nm0000601/",
+        "Centuries/20"
+      ]
+    },
+    "/name/nm0002120/": {
+      "text": "[Lasse Hallström](https://www.imdb.com/name/nm0002120/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt1028532/": {
+      "text": "198 | 8.1 | [Hachi: A Dog&apos;s Tale](https://www.imdb.com/title/tt1028532/)\n\nA college professor bonds with an abandoned dog he takes into his home.",
+      "parents": [
+        "Rating",
+        "Genres/Biography",
+        "Genres/Drama",
+        "Genres/Family",
+        "/name/nm0002120/",
+        "Centuries/21"
+      ]
+    },
+    "/title/tt2119532/": {
+      "text": "199 | 8.1 | [Hacksaw Ridge](https://www.imdb.com/title/tt2119532/)\n\nWorld War II American Army Medic Desmond T. Doss, who served during the Battle of Okinawa, refuses to kill people and becomes the first man in American history to receive the Medal of Honor without firing a shot.",
+      "parents": [
+        "Rating",
+        "Genres/Biography",
+        "Genres/Drama",
+        "Genres/History",
+        "/name/nm0000154/",
+        "Centuries/21"
+      ]
+    },
+    "/name/nm0946734/": {
+      "text": "[David Yates](https://www.imdb.com/name/nm0946734/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt1201607/": {
+      "text": "200 | 8.1 | [Harry Potter and the Deathly Hallows - Part 2](https://www.imdb.com/title/tt1201607/)\n\nHarry, Ron, and Hermione search for Voldemort&apos;s remaining Horcruxes in their effort to destroy the Dark Lord as the final battle rages on at Hogwarts.",
+      "parents": [
+        "Rating",
+        "Genres/Adventure",
+        "Genres/Family",
+        "Genres/Fantasy",
+        "/name/nm0946734/",
+        "Centuries/21"
+      ]
+    },
+    "/name/nm0313623/": {
+      "text": "[Terry George](https://www.imdb.com/name/nm0313623/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0395169/": {
+      "text": "201 | 8.1 | [Hotel Rwanda](https://www.imdb.com/title/tt0395169/)\n\nPaul Rusesabagina, a hotel manager, houses over a thousand Tutsi refugees during their struggle against the Hutu militia in Rwanda, Africa.",
+      "parents": [
+        "Rating",
+        "Genres/Biography",
+        "Genres/Drama",
+        "Genres/History",
+        "/name/nm0313623/",
+        "Centuries/21"
+      ]
+    },
+    "/name/nm0213450/": {
+      "text": "[Dean DeBlois](https://www.imdb.com/name/nm0213450/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/name/nm0761498/": {
+      "text": "[Chris Sanders](https://www.imdb.com/name/nm0761498/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0892769/": {
+      "text": "202 | 8.1 | [How to Train Your Dragon](https://www.imdb.com/title/tt0892769/)\n\nA hapless young Viking who aspires to hunt dragons becomes the unlikely friend of a young dragon himself, and learns there may be more to the creatures than he assumed.",
+      "parents": [
+        "Rating",
+        "Genres/Animation",
+        "Genres/Action",
+        "Genres/Adventure",
+        "/name/nm0213450/",
+        "/name/nm0761498/",
+        "Centuries/21"
+      ]
+    },
+    "/name/nm0006487/": {
+      "text": "[Jim Sheridan](https://www.imdb.com/name/nm0006487/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0107207/": {
+      "text": "203 | 8.1 | [In the Name of the Father](https://www.imdb.com/title/tt0107207/)\n\nA man&apos;s coerced confession to an I.R.A. bombing he did not commit results in the imprisonment of his father as well. An English lawyer fights to free them.",
+      "parents": [
+        "Rating",
+        "Genres/Biography",
+        "Genres/Crime",
+        "Genres/Drama",
+        "/name/nm0006487/",
+        "Centuries/20"
+      ]
+    },
+    "/name/nm0000576/": {
+      "text": "[Sean Penn](https://www.imdb.com/name/nm0000576/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0758758/": {
+      "text": "204 | 8.1 | [Into the Wild](https://www.imdb.com/title/tt0758758/)\n\nAfter graduating from Emory University, top student and athlete Christopher McCandless abandons his possessions, gives his entire $24,000 savings account to charity and hitchhikes to Alaska to live in the wilderness. Along the way...",
+      "parents": [
+        "Rating",
+        "Genres/Adventure",
+        "Genres/Biography",
+        "Genres/Drama",
+        "/name/nm0000576/",
+        "Centuries/21"
+      ]
+    },
+    "/title/tt0025316/": {
+      "text": "205 | 8.1 | [It Happened One Night](https://www.imdb.com/title/tt0025316/)\n\nA renegade reporter trailing a young runaway heiress for a big story joins her on a bus heading from Florida to New York, and they end up stuck with each other when the bus leaves them behind at one of the stops.",
+      "parents": [
+        "Rating",
+        "Genres/Comedy",
+        "Genres/Romance",
+        "/name/nm0001008/",
+        "Centuries/20"
+      ]
+    },
+    "/title/tt0073195/": {
+      "text": "206 | 8.1 | [Jaws](https://www.imdb.com/title/tt0073195/)\n\nWhen a killer shark unleashes chaos on a beach community off Cape Cod, it&apos;s up to a local sheriff, a marine biologist, and an old seafarer to hunt the beast down.",
+      "parents": [
+        "Rating",
+        "Genres/Adventure",
+        "Genres/Thriller",
+        "/name/nm0000229/",
+        "Centuries/20"
+      ]
+    },
+    "/name/nm0655053/": {
+      "text": "[Sergio Pablos](https://www.imdb.com/name/nm0655053/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/name/nm3582089/": {
+      "text": "[Carlos Martínez López](https://www.imdb.com/name/nm3582089/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt4729430/": {
+      "text": "207 | 8.1 | [Klaus](https://www.imdb.com/title/tt4729430/)\n\nA simple act of kindness always sparks another, even in a frozen, faraway place. When Smeerensburg&apos;s new postman, Jesper, befriends toymaker Klaus, their gifts melt an age-old feud and deliver a sleigh full of holiday traditions.",
+      "parents": [
+        "Rating",
+        "Genres/Animation",
+        "Genres/Adventure",
+        "Genres/Comedy",
+        "/name/nm0655053/",
+        "/name/nm3582089/",
+        "Centuries/21"
+      ]
+    },
+    "/name/nm0690597/": {
+      "text": "[Gillo Pontecorvo](https://www.imdb.com/name/nm0690597/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0058946/": {
+      "text": "208 | 8.1 | [La battaglia di Algeri](https://www.imdb.com/title/tt0058946/)\n\nIn the 1950s, fear and violence escalate as the people of Algiers fight for independence from the French government.",
+      "parents": [
+        "Rating",
+        "Genres/Drama",
+        "Genres/War",
+        "/name/nm0690597/",
+        "Centuries/20"
+      ]
+    },
+    "/name/nm0440913/": {
+      "text": "[Mathieu Kassovitz](https://www.imdb.com/name/nm0440913/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0113247/": {
+      "text": "209 | 8.1 | [La haine](https://www.imdb.com/title/tt0113247/)\n\n24 hours in the lives of three young men in the French suburbs the day after a violent riot.",
+      "parents": [
+        "Rating",
+        "Genres/Crime",
+        "Genres/Drama",
+        "/name/nm0440913/",
+        "Centuries/20"
+      ]
+    },
+    "/name/nm0000076/": {
+      "text": "[François Truffaut](https://www.imdb.com/name/nm0000076/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0053198/": {
+      "text": "210 | 8.1 | [Les quatre cents coups](https://www.imdb.com/title/tt0053198/)\n\nA young boy, left without attention, delves into a life of petty crime.",
+      "parents": [
+        "Rating",
+        "Genres/Crime",
+        "Genres/Drama",
+        "/name/nm0000076/",
+        "Centuries/20"
+      ]
+    },
+    "/title/tt3315342/": {
+      "text": "211 | 8.1 | [Logan](https://www.imdb.com/title/tt3315342/)\n\nIn a future where mutants are nearly extinct, an elderly and weary Logan leads a quiet life. But when Laura, a mutant child pursued by scientists, comes to him for help, he must get her to safety.",
+      "parents": [
+        "Rating",
+        "Genres/Action",
+        "Genres/Drama",
+        "Genres/Sci-Fi",
+        "/name/nm0003506/",
+        "Centuries/21"
+      ]
+    },
+    "/name/nm0004306/": {
+      "text": "[George Miller](https://www.imdb.com/name/nm0004306/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt1392190/": {
+      "text": "212 | 8.1 | [Mad Max: Fury Road](https://www.imdb.com/title/tt1392190/)\n\nIn a post-apocalyptic wasteland, a woman rebels against a tyrannical ruler in search for her homeland with the aid of a group of female prisoners, a psychotic worshiper, and a drifter named Max.",
+      "parents": [
+        "Rating",
+        "Genres/Action",
+        "Genres/Adventure",
+        "Genres/Sci-Fi",
+        "/name/nm0004306/",
+        "Centuries/21"
+      ]
+    },
+    "/name/nm0254178/": {
+      "text": "[Adam Elliot](https://www.imdb.com/name/nm0254178/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0978762/": {
+      "text": "213 | 8.1 | [Mary and Max.](https://www.imdb.com/title/tt0978762/)\n\nA tale of friendship between two unlikely pen pals: Mary, a lonely, eight-year-old girl living in the suburbs of Melbourne, and Max, a forty-four-year old, severely obese man living in New York.",
+      "parents": [
+        "Rating",
+        "Genres/Animation",
+        "Genres/Comedy",
+        "Genres/Drama",
+        "/name/nm0254178/",
+        "Centuries/21"
+      ]
+    },
+    "/title/tt0405159/": {
+      "text": "214 | 8.1 | [Million Dollar Baby](https://www.imdb.com/title/tt0405159/)\n\nA determined woman works with a hardened boxing trainer to become a professional.",
+      "parents": [
+        "Rating",
+        "Genres/Drama",
+        "Genres/Sport",
+        "/name/nm0000142/",
+        "Centuries/21"
+      ]
+    },
+    "/name/nm0798899/": {
+      "text": "[David Silverman](https://www.imdb.com/name/nm0798899/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0198781/": {
+      "text": "215 | 8.1 | [Monsters, Inc.](https://www.imdb.com/title/tt0198781/)\n\nIn order to power the city, monsters have to scare children so that they scream. However, the children are toxic to the monsters, and after a child gets through, two monsters realize things may not be what they think.",
+      "parents": [
+        "Rating",
+        "Genres/Animation",
+        "Genres/Adventure",
+        "Genres/Comedy",
+        "/name/nm0230032/",
+        "/name/nm0798899/",
+        "/name/nm0881279/",
+        "Centuries/21"
+      ]
+    },
+    "/title/tt0031679/": {
+      "text": "216 | 8.1 | [Mr. Smith Goes to Washington](https://www.imdb.com/title/tt0031679/)\n\nA naive youth leader is appointed to fill a vacancy in the U.S. Senate. His idealistic plans promptly collide with corruption at home and subterfuge from his hero in Washington, but he tries to forge ahead despite attacks on his c...",
+      "parents": [
+        "Rating",
+        "Genres/Comedy",
+        "Genres/Drama",
+        "/name/nm0001008/",
+        "Centuries/20"
+      ]
+    },
+    "/title/tt0074958/": {
+      "text": "217 | 8.1 | [Network](https://www.imdb.com/title/tt0074958/)\n\nA television network cynically exploits a deranged former anchor&apos;s ravings and revelations about the news media for its own profit, but finds that his message may be difficult to control.",
+      "parents": [
+        "Rating",
+        "Genres/Drama",
+        "/name/nm0001486/",
+        "Centuries/20"
+      ]
+    },
+    "/name/nm0001415/": {
+      "text": "[Elia Kazan](https://www.imdb.com/name/nm0001415/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0047296/": {
+      "text": "218 | 8.1 | [On the Waterfront](https://www.imdb.com/title/tt0047296/)\n\nAn ex-prize fighter turned New Jersey longshoreman struggles to stand up to his corrupt union bosses, including his older brother, as he starts to connect with the grieving sister of one of the syndicate&apos;s victims.",
+      "parents": [
+        "Rating",
+        "Genres/Crime",
+        "Genres/Drama",
+        "Genres/Thriller",
+        "/name/nm0001415/",
+        "Centuries/20"
+      ]
+    },
+    "/title/tt0060827/": {
+      "text": "219 | 8.1 | [Persona](https://www.imdb.com/title/tt0060827/)\n\nA nurse is put in charge of a mute actress and finds that their personae are melding together.",
+      "parents": [
+        "Rating",
+        "Genres/Drama",
+        "Genres/Thriller",
+        "/name/nm0000005/",
+        "Centuries/20"
+      ]
+    },
+    "/name/nm0893659/": {
+      "text": "[Gore Verbinski](https://www.imdb.com/name/nm0893659/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0325980/": {
+      "text": "220 | 8.1 | [Pirates of the Caribbean: The Curse of the Black Pearl](https://www.imdb.com/title/tt0325980/)\n\nBlacksmith Will Turner teams up with eccentric pirate &quot;Captain&quot; Jack Sparrow to save his love, the governor&apos;s daughter, from Jack&apos;s former pirate allies, who are now undead.",
+      "parents": [
+        "Rating",
+        "Genres/Action",
+        "Genres/Adventure",
+        "Genres/Fantasy",
+        "/name/nm0893659/",
+        "Centuries/21"
+      ]
+    },
+    "/name/nm0000231/": {
+      "text": "[Oliver Stone](https://www.imdb.com/name/nm0000231/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0091763/": {
+      "text": "221 | 8.1 | [Platoon](https://www.imdb.com/title/tt0091763/)\n\nChris Taylor, a neophyte recruit in Vietnam, finds himself caught in a battle of wills between two sergeants, one good and the other evil. A shrewd examination of the brutality of war and the duality of man in conflict.",
+      "parents": [
+        "Rating",
+        "Genres/Drama",
+        "Genres/War",
+        "/name/nm0000231/",
+        "Centuries/20"
+      ]
+    },
+    "/title/tt1392214/": {
+      "text": "222 | 8.1 | [Prisoners](https://www.imdb.com/title/tt1392214/)\n\nWhen Keller Dover&apos;s daughter and her friend go missing, he takes matters into his own hands as the police pursue multiple leads and the pressure mounts.",
+      "parents": [
+        "Rating",
+        "Genres/Crime",
+        "Genres/Drama",
+        "Genres/Mystery",
+        "/name/nm0898288/",
+        "Centuries/21"
+      ]
+    },
+    "/name/nm0083348/": {
+      "text": "[Brad Bird](https://www.imdb.com/name/nm0083348/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/name/nm0684342/": {
+      "text": "[Jan Pinkava](https://www.imdb.com/name/nm0684342/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0382932/": {
+      "text": "223 | 8.1 | [Ratatouille](https://www.imdb.com/title/tt0382932/)\n\nA rat who can cook makes an unusual alliance with a young kitchen worker at a famous Paris restaurant.",
+      "parents": [
+        "Rating",
+        "Genres/Animation",
+        "Genres/Adventure",
+        "Genres/Comedy",
+        "/name/nm0083348/",
+        "/name/nm0684342/",
+        "Centuries/21"
+      ]
+    },
+    "/title/tt0032976/": {
+      "text": "224 | 8.1 | [Rebecca](https://www.imdb.com/title/tt0032976/)\n\nA self-conscious woman juggles adjusting to her new role as an aristocrat&apos;s wife and avoiding being intimidated by his first wife&apos;s spectral presence.",
+      "parents": [
+        "Rating",
+        "Genres/Drama",
+        "Genres/Film-Noir",
+        "Genres/Mystery",
+        "/name/nm0000033/",
+        "Centuries/20"
+      ]
+    },
+    "/name/nm1167933/": {
+      "text": "[Damián Szifron](https://www.imdb.com/name/nm1167933/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt3011894/": {
+      "text": "225 | 8.1 | [Relatos salvajes](https://www.imdb.com/title/tt3011894/)\n\nSix short stories that explore the extremities of human behavior involving people in distress.",
+      "parents": [
+        "Rating",
+        "Genres/Comedy",
+        "Genres/Drama",
+        "Genres/Thriller",
+        "/name/nm1167933/",
+        "Centuries/21"
+      ]
+    },
+    "/name/nm0000814/": {
+      "text": "[John G. Avildsen](https://www.imdb.com/name/nm0000814/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0075148/": {
+      "text": "226 | 8.1 | [Rocky](https://www.imdb.com/title/tt0075148/)\n\nA small-time Philadelphia boxer gets a supremely rare chance to fight the world heavyweight champion in a bout in which he strives to go the distance for his self-respect.",
+      "parents": [
+        "Rating",
+        "Genres/Drama",
+        "Genres/Sport",
+        "/name/nm0000814/",
+        "Centuries/20"
+      ]
+    },
+    "/name/nm1049433/": {
+      "text": "[Lenny Abrahamson](https://www.imdb.com/name/nm1049433/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt3170832/": {
+      "text": "227 | 8.1 | [Room](https://www.imdb.com/title/tt3170832/)\n\nHeld captive for 7 years in an enclosed space, a woman and her young son finally gain their freedom, allowing the boy to experience the outside world for the first time.",
+      "parents": [
+        "Rating",
+        "Genres/Drama",
+        "Genres/Thriller",
+        "/name/nm1049433/",
+        "Centuries/21"
+      ]
+    },
+    "/title/tt1979320/": {
+      "text": "228 | 8.1 | [Rush](https://www.imdb.com/title/tt1979320/)\n\nThe merciless 1970s rivalry between Formula One rivals James Hunt and Niki Lauda.",
+      "parents": [
+        "Rating",
+        "Genres/Action",
+        "Genres/Biography",
+        "Genres/Drama",
+        "/name/nm0000165/",
+        "Centuries/21"
+      ]
+    },
+    "/title/tt0353969/": {
+      "text": "229 | 8.1 | [Salinui chueok](https://www.imdb.com/title/tt0353969/)\n\nIn a small Korean province in 1986, two detectives struggle with the case of multiple young women being found raped and murdered by an unknown culprit.",
+      "parents": [
+        "Rating",
+        "Genres/Crime",
+        "Genres/Drama",
+        "Genres/Mystery",
+        "/name/nm0094435/",
+        "Centuries/21"
+      ]
+    },
+    "/title/tt0050986/": {
+      "text": "230 | 8.1 | [Smultronstället](https://www.imdb.com/title/tt0050986/)\n\nAfter living a life marked by coldness, an aging professor is forced to confront the emptiness of his existence.",
+      "parents": [
+        "Rating",
+        "Genres/Drama",
+        "Genres/Romance",
+        "/name/nm0000005/",
+        "Centuries/20"
+      ]
+    },
+    "/name/nm0565336/": {
+      "text": "[Tom McCarthy](https://www.imdb.com/name/nm0565336/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt1895587/": {
+      "text": "231 | 8.1 | [Spotlight](https://www.imdb.com/title/tt1895587/)\n\nThe true story of how the Boston Globe uncovered the massive scandal of child molestation and cover-up within the local Catholic Archdiocese, shaking the entire Catholic Church to its core.",
+      "parents": [
+        "Rating",
+        "Genres/Biography",
+        "Genres/Crime",
+        "Genres/Drama",
+        "/name/nm0565336/",
+        "Centuries/21"
+      ]
+    },
+    "/name/nm0001661/": {
+      "text": "[Rob Reiner](https://www.imdb.com/name/nm0001661/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0092005/": {
+      "text": "232 | 8.1 | [Stand by Me](https://www.imdb.com/title/tt0092005/)\n\nAfter the death of one of his friends, a writer recounts a childhood journey with his friends to find the body of a missing boy.",
+      "parents": [
+        "Rating",
+        "Genres/Adventure",
+        "Genres/Drama",
+        "/name/nm0001661/",
+        "Centuries/20"
+      ]
+    },
+    "/title/tt0036868/": {
+      "text": "233 | 8.1 | [The Best Years of Our Lives](https://www.imdb.com/title/tt0036868/)\n\nThree World War II veterans, two of them traumatized or disabled, return home to the American midwest to discover that they and their families have been irreparably changed.",
+      "parents": [
+        "Rating",
+        "Genres/Drama",
+        "Genres/Romance",
+        "Genres/War",
+        "/name/nm0943758/",
+        "Centuries/20"
+      ]
+    },
+    "/title/tt0118715/": {
+      "text": "234 | 8.1 | [The Big Lebowski](https://www.imdb.com/title/tt0118715/)\n\nUltimate L.A. slacker Jeff &quot;The Dude&quot; Lebowski, mistaken for a millionaire of the same name, seeks restitution for a rug ruined by debt collectors, enlisting his bowling buddies for help while trying to find the millionaire&apos;s miss...",
+      "parents": [
+        "Rating",
+        "Genres/Comedy",
+        "Genres/Crime",
+        "/name/nm0001054/",
+        "/name/nm0001053/",
+        "Centuries/20"
+      ]
+    },
+    "/name/nm0001047/": {
+      "text": "[Michael Cimino](https://www.imdb.com/name/nm0001047/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0077416/": {
+      "text": "235 | 8.1 | [The Deer Hunter](https://www.imdb.com/title/tt0077416/)\n\nAn in-depth examination of the ways in which the Vietnam War impacts and disrupts the lives of several friends in a small steel mill town in Pennsylvania.",
+      "parents": [
+        "Rating",
+        "Genres/Drama",
+        "Genres/War",
+        "/name/nm0001047/",
+        "Centuries/20"
+      ]
+    },
+    "/name/nm0001243/": {
+      "text": "[William Friedkin](https://www.imdb.com/name/nm0001243/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0070047/": {
+      "text": "236 | 8.1 | [The Exorcist](https://www.imdb.com/title/tt0070047/)\n\nWhen a teenage girl is possessed by a mysterious entity, her mother seeks the help of two priests to save her daughter.",
+      "parents": [
+        "Rating",
+        "Genres/Horror",
+        "/name/nm0001243/",
+        "Centuries/20"
+      ]
+    },
+    "/name/nm0027572/": {
+      "text": "[Wes Anderson](https://www.imdb.com/name/nm0027572/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt2278388/": {
+      "text": "237 | 8.1 | [The Grand Budapest Hotel](https://www.imdb.com/title/tt2278388/)\n\nA writer encounters the owner of an aging high-class hotel, who tells him of his early years serving as a lobby boy in the hotel&apos;s glorious years under an exceptional concierge.",
+      "parents": [
+        "Rating",
+        "Genres/Adventure",
+        "Genres/Comedy",
+        "Genres/Crime",
+        "/name/nm0027572/",
+        "Centuries/21"
+      ]
+    },
+    "/name/nm0000406/": {
+      "text": "[John Ford](https://www.imdb.com/name/nm0000406/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0032551/": {
+      "text": "238 | 8.1 | [The Grapes of Wrath](https://www.imdb.com/title/tt0032551/)\n\nAn Oklahoma family, driven off their farm by the poverty and hopelessness of the Dust Bowl, joins the westward migration to California, suffering the misfortunes of the homeless in the Great Depression.",
+      "parents": [
+        "Rating",
+        "Genres/Drama",
+        "/name/nm0000406/",
+        "Centuries/20"
+      ]
+    },
+    "/name/nm0853238/": {
+      "text": "[Tate Taylor](https://www.imdb.com/name/nm0853238/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt1454029/": {
+      "text": "239 | 8.1 | [The Help](https://www.imdb.com/title/tt1454029/)\n\nAn aspiring author during the civil rights movement of the 1960s decides to write a book detailing the African American maids&apos; point of view on the white families for which they work, and the hardships they go through on a daily b...",
+      "parents": [
+        "Rating",
+        "Genres/Drama",
+        "/name/nm0853238/",
+        "Centuries/21"
+      ]
+    },
+    "/title/tt0129167/": {
+      "text": "240 | 8.1 | [The Iron Giant](https://www.imdb.com/title/tt0129167/)\n\nA young boy befriends a giant robot from outer space that a paranoid government agent wants to destroy.",
+      "parents": [
+        "Rating",
+        "Genres/Animation",
+        "Genres/Action",
+        "Genres/Adventure",
+        "/name/nm0083348/",
+        "Centuries/20"
+      ]
+    },
+    "/name/nm0936404/": {
+      "text": "[Robert Wise](https://www.imdb.com/name/nm0936404/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0059742/": {
+      "text": "241 | 8.1 | [The Sound of Music](https://www.imdb.com/title/tt0059742/)\n\nA young novitiate is sent by her convent in 1930s Austria to become a governess to the seven children of a widowed naval officer.",
+      "parents": [
+        "Rating",
+        "Genres/Biography",
+        "Genres/Drama",
+        "Genres/Family",
+        "/name/nm0936404/",
+        "Centuries/20"
+      ]
+    },
+    "/title/tt0088247/": {
+      "text": "242 | 8.1 | [The Terminator](https://www.imdb.com/title/tt0088247/)\n\nA human soldier is sent from 2029 to 1984 to stop an almost indestructible cyborg killing machine, sent from the same year, which has been programmed to execute a young woman whose unborn son is the key to humanity&apos;s future salvat...",
+      "parents": [
+        "Rating",
+        "Genres/Action",
+        "Genres/Sci-Fi",
+        "/name/nm0000116/",
+        "Centuries/20"
+      ]
+    },
+    "/name/nm0715346/": {
+      "text": "[Carol Reed](https://www.imdb.com/name/nm0715346/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0041959/": {
+      "text": "243 | 8.1 | [The Third Man](https://www.imdb.com/title/tt0041959/)\n\nPulp novelist Holly Martins travels to shadowy, postwar Vienna, only to find himself investigating the mysterious death of an old friend, Harry Lime.",
+      "parents": [
+        "Rating",
+        "Genres/Film-Noir",
+        "Genres/Mystery",
+        "Genres/Thriller",
+        "/name/nm0715346/",
+        "Centuries/20"
+      ]
+    },
+    "/name/nm0503777/": {
+      "text": "[Mervyn LeRoy](https://www.imdb.com/name/nm0503777/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0032138/": {
+      "text": "244 | 8.1 | [The Wizard of Oz](https://www.imdb.com/title/tt0032138/)\n\nYoung Dorothy Gale and her dog Toto are swept away by a tornado from their Kansas farm to the magical Land of Oz, and embark on a quest with three new friends to see the Wizard, who can return her to her home and fulfill the other...",
+      "parents": [
+        "Rating",
+        "Genres/Adventure",
+        "Genres/Family",
+        "Genres/Fantasy",
+        "/name/nm0281808/",
+        "/name/nm0002030/",
+        "/name/nm0503777/",
+        "Centuries/20"
+      ]
+    },
+    "/name/nm1732981/": {
+      "text": "[Martin McDonagh](https://www.imdb.com/name/nm1732981/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt5027774/": {
+      "text": "245 | 8.1 | [Three Billboards Outside Ebbing, Missouri](https://www.imdb.com/title/tt5027774/)\n\nA mother personally challenges the local authorities to solve her daughter&apos;s murder when they fail to catch the culprit.",
+      "parents": [
+        "Rating",
+        "Genres/Comedy",
+        "Genres/Crime",
+        "Genres/Drama",
+        "/name/nm1732981/",
+        "Centuries/21"
+      ]
+    },
+    "/title/tt0096283/": {
+      "text": "246 | 8.1 | [Tonari no Totoro](https://www.imdb.com/title/tt0096283/)\n\nWhen two girls move to the country to be near their ailing mother, they have adventures with the wondrous forest spirits who live nearby.",
+      "parents": [
+        "Rating",
+        "Genres/Animation",
+        "Genres/Comedy",
+        "Genres/Family",
+        "/name/nm0594503/",
+        "Centuries/20"
+      ]
+    },
+    "/name/nm0000965/": {
+      "text": "[Danny Boyle](https://www.imdb.com/name/nm0000965/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0117951/": {
+      "text": "247 | 8.1 | [Trainspotting](https://www.imdb.com/title/tt0117951/)\n\nRenton, deeply immersed in the Edinburgh drug scene, tries to clean up and get out, despite the allure of the drugs and influence of friends.",
+      "parents": [
+        "Rating",
+        "Genres/Drama",
+        "/name/nm0000965/",
+        "Centuries/20"
+      ]
+    },
+    "/name/nm0166256/": {
+      "text": "[Ron Clements](https://www.imdb.com/name/nm0166256/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/name/nm0615780/": {
+      "text": "[John Musker](https://www.imdb.com/name/nm0615780/)",
+      "parents": [
+        "Directors"
+      ]
+    },
+    "/title/tt0103639/": {
+      "text": "248 | 8 | [Aladdin](https://www.imdb.com/title/tt0103639/)\n\nA kindhearted street urchin and a power-hungry Grand Vizier vie for a magic lamp that has the power to make their deepest wishes come true.",
+      "parents": [
+        "Rating",
+        "Genres/Animation",
+        "Genres/Adventure",
+        "Genres/Comedy",
+        "/name/nm0166256/",
+        "/name/nm0615780/",
+        "Centuries/20"
+      ]
+    },
+    "/title/tt0079470/": {
+      "text": "249 | 8 | [Life of Brian](https://www.imdb.com/title/tt0079470/)\n\nBorn on the original Christmas in the stable next door to Jesus Christ, Brian of Nazareth spends his life being mistaken for a messiah.",
+      "parents": [
+        "Rating",
+        "Genres/Comedy",
+        "/name/nm0001402/",
+        "Centuries/20"
+      ]
+    },
+    "/title/tt0317705/": {
+      "text": "250 | 8 | [The Incredibles](https://www.imdb.com/title/tt0317705/)\n\nWhile trying to lead a quiet suburban life, a family of undercover superheroes are forced into action to save the world.",
+      "parents": [
+        "Rating",
+        "Genres/Animation",
+        "Genres/Action",
+        "Genres/Adventure",
+        "/name/nm0083348/",
+        "Centuries/21"
+      ]
+    }
+  }
+}
