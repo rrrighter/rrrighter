@@ -73,9 +73,21 @@ function MyApp() {
     setEditorText(note.text)
   }
 
+  const onSelect = (id: string) => {
+    setInspectorNote(notebook.get(id))
+  }
+
   let inspectorPanel
   if (inspectorNote) {
-    inspectorPanel =
+    const descendantIds = new Set(Array.from(notebook.descendants(inspectorNote.id) || []).map(n => n.id))
+    const descendantsNotebook = new Notebook(notebook)
+    for (const note of descendantsNotebook.notes()) {
+      if (!descendantIds.has(note.id)) {
+        descendantsNotebook.delete(note.id)
+      }
+    }
+
+    inspectorPanel = <>
       <Inspector
           notebook={notebook}
           note={inspectorNote}
@@ -85,6 +97,8 @@ function MyApp() {
           onAttach={onAttach}
           onCreateChild={onCreateChild}
       />
+      <TreeTable notebook={descendantsNotebook} onSelect={onSelect} />
+    </>
   } else {
     inspectorPanel = <span>Select note to inspect</span>
   }
@@ -103,10 +117,6 @@ function MyApp() {
     }
     setEditorText(undefined)
     setNotebook(new Notebook(notebook))
-  }
-
-  const onSelect = (id: string) => {
-    setInspectorNote(notebook.get(id))
   }
 
   return (

@@ -38,7 +38,7 @@ export default function Inspector(props: { notebook: Notebook, note: Note, onEdi
       </Dropdown.Button>
     </div>
 
-    <div style={{float: "right", marginRight: "1em"}}>
+    <div style={{float: "right"}}>
       <Button size="small" onClick={() => props.onCreateChild(props.note.id)} icon={<SubnodeOutlined />} aria-label="Add child note" title="Add child note" />
     </div>
     <FormattedText text={props.note.text} />
