@@ -25,7 +25,7 @@ export default function Search(props: { notebook: Notebook, onSelect: Function }
         style={{width: '20em'}}
         showSearch
         bordered={false}
-        placeholder="Search (/)"
+        placeholder="Search"
         value={[]}
         onSelect={(_val: string, option: any) => props.onSelect(option.key)}
     >
