@@ -38,6 +38,11 @@ body {
     white-space: pre-line;
 }
 
+.ant-table-cell {
+    padding: 8px !important;
+    border-bottom: none !important;
+}
+
 .ant-table-content div.note {
     display: inline-block;
 }
