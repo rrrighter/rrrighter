@@ -38,7 +38,6 @@ function MyApp() {
         notebook.attach(newNoteParentId, newNote.id)
     }
     setNotebook(new Notebook(notebook))
-    setInspectorNote(newNote)
     hideCreateNote()
   }
 
