@@ -6,7 +6,7 @@ import React, { useState } from 'react'
 import {App, ConfigProvider, theme, Space, Button, Drawer, Input} from 'antd'
 import { PlusOutlined } from '@ant-design/icons'
 import CreateNote from './components/notes/create-note'
-import TreeTable from './components/notebook/tree-table/tree-table'
+import Outline from './components/notebook/outline/outline'
 import Inspector from './components/notes/inspector'
 import NotebookRepository from './components/notebook/repository/notebook-repository'
 import welcome from './welcome.json'
@@ -57,7 +57,7 @@ function MyApp() {
   const onAttach = (parentId: string, childId: string) => {
     notebook.descendants(parentId)?.forEach((descendant) => notebook.detach(descendant.id, childId))
     notebook.ancestors(parentId)?.forEach((ancestor) => notebook.detach(ancestor.id, childId))
-    notebook.attach(parentId, childId)
+    console.log(notebook.attach(parentId, childId))
 
     setNotebook(new Notebook(notebook))
   }
@@ -96,7 +96,7 @@ function MyApp() {
           onAttach={onAttach}
           onCreateChild={onCreateChild}
       />
-      <TreeTable notebook={inspectorScopeNotebook} onSelect={onSelect} />
+      <Outline notebook={inspectorScopeNotebook} onSelect={onSelect} />
     </>
   } else {
     inspectorPanel = <span>Select note to inspect</span>
@@ -142,7 +142,7 @@ function MyApp() {
             </div>
           </div>
           <div className='panels'>
-            <div className='navigator'><TreeTable notebook={notebook} onSelect={onSelect} /></div>
+            <div className='navigator'><Outline notebook={notebook} onSelect={onSelect} /></div>
             <div className='inspector'>{inspectorPanel}</div>
           </div>
         </div>

@@ -32,7 +32,7 @@ const treeData = (notebook: Notebook): TreeDataNodeType[] => { // todo: move to 
   return _treeData(notebook.hierarchs())
 }
 
-export default function TreeTable(props: { notebook: Notebook, onSelect?: Function }) {
+export default function Outline(props: { notebook: Notebook, onSelect?: Function }) {
   const columns: ColumnsType<DataType> = [
     {
       width: '100%',

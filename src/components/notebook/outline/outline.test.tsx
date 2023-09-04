@@ -1,6 +1,6 @@
 import {render, screen, fireEvent} from '@testing-library/react'
 import '@testing-library/jest-dom'
-import TreeTable from "./tree-table";
+import Outline from "./outline";
 import Notebook from '../../../lib/rrrighter/src/notebook'
 import Note from '../../../lib/rrrighter/src/note'
 import failOnConsole from 'jest-fail-on-console'
@@ -30,12 +30,12 @@ global.matchMedia = global.matchMedia || function () {
 }
 
 test('Shows hierarchs by default', async () => {
-  render(<TreeTable notebook={notebook} />)
+  render(<Outline notebook={notebook} />)
   expect(screen.getByText(hierarch.text)).toBeInTheDocument()
 })
 
 test('Does not show descendants by default', async () => {
-  render(<TreeTable notebook={notebook} />)
+  render(<Outline notebook={notebook} />)
   expect(screen.queryByText(child.text)).not.toBeInTheDocument()
 })
 
@@ -52,7 +52,7 @@ test('Sorts notes by text in ascending natural sort order by default', async () 
   const isNodesInOrder = (precedingNode: HTMLElement, followingNode: HTMLElement) => {
     return precedingNode.compareDocumentPosition(followingNode) === 4
   }
-  render(<TreeTable notebook={notebook} />)
+  render(<Outline notebook={notebook} />)
   const a = screen.getByText(noteA.text)
   const b = screen.getByText(noteB.text)
   expect(isNodesInOrder(a, b)).toStrictEqual(true)
@@ -79,7 +79,7 @@ test('Shows 100+ notes without pagination', async () => {
   for(let n = 0; n < 100; n++) {
     notebook.upsert({ id: 'Note' + n, text: 'Note' + n })
   }
-  render(<TreeTable notebook={notebook} />)
+  render(<Outline notebook={notebook} />)
   for(let n = 0; n < 100; n++) {
     expect(screen.getByText('Note' + n)).toBeInTheDocument()
   }
@@ -96,7 +96,7 @@ test('Shows 100+ notes without pagination', async () => {
 
 describe('Hierarchy', () => {
   test('Expanding hierarch shows second hierarchy level', async () => {
-    render(<TreeTable notebook={notebook} />)
+    render(<Outline notebook={notebook} />)
     fireEvent.click(screen.getByRole('button', { name: 'Expand row'} ))
     expect(screen.getByText(child.text)).toBeInTheDocument()
   })
@@ -104,7 +104,7 @@ describe('Hierarchy', () => {
   test('Shows no expand button for leaf notes', async () => {
     const notebook = new Notebook()
     notebook.upsert({ id: '1', text: 'Orpan' })
-    render(<TreeTable notebook={notebook} />)
+    render(<Outline notebook={notebook} />)
     expect(screen.queryByRole('button', { name: 'Expand row'} )).not.toBeInTheDocument()
   })
 })
