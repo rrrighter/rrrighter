@@ -39,7 +39,7 @@ export default function Parents(props: { notebook: Notebook, note: Note, onDetac
   const potentialParents = potentialParentsNotebook(props.notebook, props.note)
 
   return <>
-    <Tag style={{ borderStyle: 'dashed', cursor: 'pointer' }} onClick={showDrawer}><PullRequestOutlined /></Tag>
+    <Tag style={{ cursor: 'pointer' }} onClick={showDrawer}><PullRequestOutlined /></Tag>
     {tags}
     <SearchDrawer notebook={potentialParents} onSelect={onSelect} onClose={onClose} open={open} />
   </>

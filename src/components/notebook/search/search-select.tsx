@@ -15,7 +15,6 @@ export default function SearchSelect(props: { notebook: Notebook, onSelect: Func
 
     return <Select
         id='search'
-        showAction={['focus', 'click']}
         style={{width: '20em'}}
         showSearch
         bordered={false}
