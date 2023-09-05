@@ -10,7 +10,7 @@ import Outline from './components/notebook/outline/outline'
 import Inspector from './components/notes/inspector'
 import NotebookRepository from './components/notebook/repository/notebook-repository'
 import welcome from './welcome.json'
-import Search from './components/notebook/search/search'
+import SearchSelect from './components/notebook/search/search-select'
 
 const { TextArea } = Input
 const initialNotebook = new Notebook(fromJsonObject(welcome))
@@ -136,7 +136,7 @@ function MyApp() {
             </div>
 
             <div style={{ float: 'right' }}>
-              <Search notebook={notebook} onSelect={onSelect} />
+              <SearchSelect notebook={notebook} onSelect={onSelect} />
               <Button type='text' icon={<PlusOutlined />} onClick={showCreateNote}  aria-label="Add note" title="Add note" />
               {newNote && <CreateNote note={newNote} onCancel={hideCreateNote} onCreate={onCreate} />}
             </div>
