@@ -8,6 +8,7 @@ import { Tag } from 'antd'
 import Outline from '../notebook/outline/outline'
 import FormattedText from "./formatted-text";
 import SearchSelect from "../notebook/search/search-select";
+import SearchDrawer from "../notebook/search/search-drawer";
 
 export default function Parents(props: { notebook: Notebook, note: Note, onDetach: Function, onAttach: Function }) {
   const [open, setOpen] = useState(false);
@@ -42,13 +43,7 @@ export default function Parents(props: { notebook: Notebook, note: Note, onDetac
 
   return <>
     <Tag style={{ borderStyle: 'dashed', cursor: 'pointer' }} onClick={showDrawer}><PullRequestOutlined /></Tag>
-
-    <Drawer title="Attach to parent" placement="right" size='large' bodyStyle={{padding: 0}} onClose={onClose} open={open} extra={
-      <SearchSelect notebook={potentialParents} onSelect={onSelect} />
-    }>
-      <Outline notebook={potentialParents} onSelect={onSelect} />
-    </Drawer>
-
     {tags}
+    <SearchDrawer notebook={potentialParents} onSelect={onSelect} onClose={onClose} open={open} />
   </>
 }
