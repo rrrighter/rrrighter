@@ -1,13 +1,10 @@
 import React, {ReactNode, useState} from 'react'
 import Note from "../../lib/rrrighter/src/note"
 import Notebook from '../../lib/rrrighter/src/notebook'
-import {Drawer} from 'antd';
 import { PullRequestOutlined } from '@ant-design/icons'
 
 import { Tag } from 'antd'
-import Outline from '../notebook/outline/outline'
 import FormattedText from "./formatted-text";
-import SearchSelect from "../notebook/search/search-select";
 import SearchDrawer from "../notebook/search/search-drawer";
 
 export default function Parents(props: { notebook: Notebook, note: Note, onDetach: Function, onAttach: Function }) {
