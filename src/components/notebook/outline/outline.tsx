@@ -1,11 +1,9 @@
 import React from 'react'
 import Notebook from '../../../lib/rrrighter/src/notebook'
 import Note from '../../../lib/rrrighter/src/note'
-import { Table, Typography } from 'antd'
+import { Table } from 'antd'
 import { ColumnsType } from 'antd/es/table'
 import NoteOutline from "../../notes/note-outline";
-
-const { Text } = Typography;
 
 interface DataType {
   key: string
@@ -36,7 +34,6 @@ export default function Outline(props: { notebook: Notebook, onSelect?: Function
   const columns: ColumnsType<DataType> = [
     {
       width: '100%',
-      sorter: (a, b) => a.note.text.localeCompare(b.note.text),
       render: (_text: string, record: DataType) => {
         return <NoteOutline notebook={props.notebook} note={record.note} />
       }
