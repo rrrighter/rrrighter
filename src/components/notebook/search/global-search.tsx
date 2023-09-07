@@ -9,12 +9,11 @@
 // export default function SearchDrawer(props: { notebook: Notebook, onSelect: Function }) {
 //     useHotkeys('/', (e) => {
 //         e.preventDefault()
-//         alert('TODO: show search drawer')
+//         alert('TODO: show search dropdown')
 //     })
 //
 //     return <Button>Search</Button>
 // import SearchDrawer from "./search-drawer";
 // import React from "react";
 //
-// <SearchDrawer notebook={potentialParents} onSelect={onSelect} onClose={onClose} open={open} />
 // }

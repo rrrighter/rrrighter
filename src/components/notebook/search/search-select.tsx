@@ -14,7 +14,6 @@ export default function SearchSelect(props: { notebook: Notebook, onSelect: Func
     })
 
     return <Select
-        id='search'
         style={{width: '20em'}}
         showSearch
         bordered={false}
