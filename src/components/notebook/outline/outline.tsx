@@ -1,15 +1,9 @@
 import React from 'react'
 import Notebook from '../../../lib/rrrighter/src/notebook'
 import Note from '../../../lib/rrrighter/src/note'
-import { Table } from 'antd'
-import { ColumnsType } from 'antd/es/table'
+import {Tree} from 'antd'
+import type { TreeProps } from 'antd/es/tree';
 import NoteOutline from "../../notes/note-outline";
-
-interface DataType {
-  key: string
-  note: Note
-  children?: DataType[]
-}
 
 interface TreeDataNodeType {
   key: string
@@ -31,20 +25,12 @@ const treeData = (notebook: Notebook): TreeDataNodeType[] => { // todo: move to 
 }
 
 export default function Outline(props: { notebook: Notebook, onSelect?: Function }) {
-  const columns: ColumnsType<DataType> = [
-    {
-      width: '100%',
-      render: (_text: string, record: DataType) => {
-        return <NoteOutline notebook={props.notebook} note={record.note} />
-      }
-    }
-  ]
+  const titleRender = (node: TreeDataNodeType) => <NoteOutline notebook={props.notebook} note={node.note} />
 
-  const onRow = (record: DataType) => {
-    return {
-      onClick: () => props.onSelect && props.onSelect(record.note.id)
-    }
-  }
+  const onSelect: TreeProps['onSelect'] = (_selectedKeys, info) => {
+    const node = info.node as unknown as TreeDataNodeType
+    props.onSelect && props.onSelect(node.note.id)
+  };
 
-  return <Table showHeader={false} columns={columns} dataSource={treeData(props.notebook)} pagination={false} onRow={onRow} />
+  return <Tree treeData={treeData(props.notebook)} titleRender={titleRender} blockNode onSelect={onSelect} />
 }
