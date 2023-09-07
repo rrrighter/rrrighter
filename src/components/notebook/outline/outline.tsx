@@ -32,5 +32,10 @@ export default function Outline(props: { notebook: Notebook, onSelect?: Function
     props.onSelect && props.onSelect(node.note.id)
   };
 
-  return <Tree treeData={treeData(props.notebook)} titleRender={titleRender} blockNode onSelect={onSelect} />
+  return <Tree
+      treeData={treeData(props.notebook)}
+      blockNode
+      titleRender={titleRender}
+      onSelect={onSelect}
+  />
 }
