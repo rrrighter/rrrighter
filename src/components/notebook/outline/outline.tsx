@@ -3,7 +3,7 @@ import Notebook from '../../../lib/rrrighter/src/notebook'
 import Note from '../../../lib/rrrighter/src/note'
 import { Table, Typography } from 'antd'
 import { ColumnsType } from 'antd/es/table'
-import FormattedText from "../../notes/formatted-text";
+import NoteOutline from "../../notes/note-outline";
 
 const { Text } = Typography;
 
@@ -36,21 +36,9 @@ export default function Outline(props: { notebook: Notebook, onSelect?: Function
   const columns: ColumnsType<DataType> = [
     {
       width: '100%',
-      title: 'Note',
-      ellipsis: true,
       sorter: (a, b) => a.note.text.localeCompare(b.note.text),
       render: (_text: string, record: DataType) => {
-        const firstLine = record.note.text.split('\n')[0]
-        return <FormattedText text={firstLine} />
-      }
-    },
-    {
-      width: '5em',
-      title: '',
-      align: 'right',
-      render: (_text: string, record: DataType) => {
-        const descendantsCount = props.notebook.descendants(record.note.id)?.size || 0
-        return <Text type="secondary">{descendantsCount === 0 ? '' : descendantsCount}</Text>
+        return <NoteOutline notebook={props.notebook} note={record.note} />
       }
     }
   ]
