@@ -7,7 +7,7 @@ import NoteOutline from "../../notes/note-outline";
 
 interface TreeDataNodeType {
   key: string
-  note: Note
+  value: Note
   children?: TreeDataNodeType[]
 }
 
@@ -16,8 +16,9 @@ const treeData = (notebook: Notebook): TreeDataNodeType[] => { // todo: move to 
   const _treeData = (notes: Iterable<Note>, prefix = ''): TreeDataNodeType[] => {
     return Array.from(notes).sort(sortByText).map((note) => {
       const key = prefix + '/' + note.id
+      const value = note
       const childrenNotes = notebook.children(note.id)
-      return { key, note, children: childrenNotes && childrenNotes.size > 0 ? _treeData(childrenNotes, key) : undefined }
+      return { key, value, children: childrenNotes && childrenNotes.size > 0 ? _treeData(childrenNotes, key) : undefined }
     })
   }
 
@@ -25,11 +26,11 @@ const treeData = (notebook: Notebook): TreeDataNodeType[] => { // todo: move to 
 }
 
 export default function Outline(props: { notebook: Notebook, onSelect?: Function }) {
-  const titleRender = (node: TreeDataNodeType) => <NoteOutline notebook={props.notebook} note={node.note} />
+  const titleRender = (node: TreeDataNodeType) => <NoteOutline notebook={props.notebook} note={node.value} />
 
   const onSelect: TreeProps['onSelect'] = (_selectedKeys, info) => {
     const node = info.node as unknown as TreeDataNodeType
-    props.onSelect && props.onSelect(node.note.id)
+    props.onSelect && props.onSelect(node.value.id)
   };
 
   return <Tree
