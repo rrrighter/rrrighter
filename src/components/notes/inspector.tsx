@@ -32,15 +32,17 @@ export default function Inspector(props: { notebook: Notebook, note: Note, onEdi
   return <>
     <Parents notebook={props.notebook} note={props.note} onDetach={props.onDetach} onAttach={onAttach} />
 
-    <div style={{float: "right"}}>
-      <Dropdown.Button size="small" trigger={["click"]} menu={menuProps} onClick={() => props.onEdit(props.note)}>
-        <EditOutlined />
-      </Dropdown.Button>
-    </div>
+    <div>
+      <div style={{float: "right"}}>
+        <Dropdown.Button size="small" trigger={["click"]} menu={menuProps} onClick={() => props.onEdit(props.note)}>
+          <EditOutlined />
+        </Dropdown.Button>
+      </div>
 
-    <div style={{float: "right", marginRight: "1em"}}>
-      <Button size="small" onClick={() => props.onCreateChild(props.note.id)} icon={<SubnodeOutlined />} aria-label="Add child note" title="Add child note" />
+      <div style={{float: "right", marginRight: "1em"}}>
+        <Button size="small" onClick={() => props.onCreateChild(props.note.id)} icon={<SubnodeOutlined />} aria-label="Add child note" title="Add child note" />
+      </div>
+      <FormattedText text={props.note.text} />
     </div>
-    <FormattedText text={props.note.text} />
   </>
 }
