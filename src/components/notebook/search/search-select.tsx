@@ -1,6 +1,5 @@
 import React from "react";
 import {Select} from "antd";
-import FormattedText from "../../notes/formatted-text";
 import Notebook from "../../../lib/rrrighter/src/notebook";
 import NoteOutline from "../../notes/note-outline";
 
