@@ -2,9 +2,10 @@ import React from 'react'
 import Note from '../../lib/rrrighter/src/note'
 import Notebook from '../../lib/rrrighter/src/notebook'
 import Parents from './parents'
-import {Button, Dropdown, MenuProps} from 'antd'
-import { SubnodeOutlined, EditOutlined, DeleteOutlined } from '@ant-design/icons'
+import {Dropdown, MenuProps} from 'antd'
+import { EditOutlined, DeleteOutlined } from '@ant-design/icons'
 import FormattedText from "./formatted-text";
+import NoteToolbar from "./note-toolbar";
 
 export default function Inspector(props: { notebook: Notebook, note: Note, onEdit: Function, onDelete: Function, onDetach: Function, onAttach: Function, onCreateChild: Function }) {
   const onAttach = (parentId: string) => {
@@ -39,9 +40,10 @@ export default function Inspector(props: { notebook: Notebook, note: Note, onEdi
         </Dropdown.Button>
       </div>
 
-      <div style={{float: "right", marginRight: "1em"}}>
-        <Button size="small" onClick={() => props.onCreateChild(props.note.id)} icon={<SubnodeOutlined />} aria-label="Add child note" title="Add child note" />
+      <div style={{float: "right", marginRight: "0.5em"}}>
+        <NoteToolbar noteId={props.note.id} onCreateChild={(noteId: string) => props.onCreateChild(noteId)} />
       </div>
+
       <FormattedText text={props.note.text} />
     </div>
   </>
