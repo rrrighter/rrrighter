@@ -7,12 +7,11 @@ import {Typography} from "antd";
 const { Text } = Typography;
 
 export default function NoteOutline(props: { notebook: Notebook, note: Note }) {
-    const firstLine = props.note.text.split('\n')[0]
     const descendantsCount = props.notebook.descendants(props.note.id)?.size || 0
 
     return <div className='note-outline'>
         <div style={{ float: 'left' }}>
-            <FormattedText text={firstLine} />
+            <FormattedText text={props.note.text} />
         </div>
         <div style={{ float: 'right' }}>
             <Text type="secondary">{descendantsCount === 0 ? '' : descendantsCount}</Text>
