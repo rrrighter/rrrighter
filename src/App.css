@@ -51,6 +51,12 @@ body {
     margin: 0;
 }
 
+.ant-tree-title h1,
+.ant-tree-title h2,
+.ant-tree-title h3,
+.ant-tree-title h4,
+.ant-tree-title h5,
+.ant-tree-title h6,
 .ant-tree-title p {
     margin: 0;
 }
