@@ -16,7 +16,7 @@ export default class Notebook {
     }
   }
 
-  notes = (): Set<Note> => this.#hierarchy.nodes()
+  notes = (): Note[] => Array.from(this.#hierarchy.nodes() || [])
 
   get = (id: string): Note | undefined => Array.from(this.#hierarchy.nodes()).find((note) => note.id === id)
 
@@ -30,8 +30,8 @@ export default class Notebook {
     }
   }
 
-  hierarchs = (): Set<Note> => {
-    return this.#hierarchy.hierarchs()
+  hierarchs = (): Note[] => {
+    return Array.from(this.#hierarchy.hierarchs() || [])
   }
 
   attach = (parentId: string, childId: string): LoopError | CycleError | TransitiveReductionError | void => {
@@ -47,24 +47,24 @@ export default class Notebook {
     parent && child && this.#hierarchy.detach(parent, child)
   }
 
-  children(noteId: string): Set<Note> | undefined {
+  children(noteId: string): Note[] | undefined {
     const note = this.get(noteId)
-    return note ? this.#hierarchy.children(note) : undefined
+    return note ? Array.from(this.#hierarchy.children(note) || []) : undefined
   }
 
-  parents(noteId: string): Set<Note> | undefined {
+  parents(noteId: string): Note[] | undefined {
     const note = this.get(noteId)
-    return note ? this.#hierarchy.parents(note) : undefined
+    return note ? Array.from(this.#hierarchy.parents(note) || []) : undefined
   }
 
-  descendants(noteId: string): Set<Note> | undefined {
+  descendants(noteId: string): Note[] | undefined {
     const note = this.get(noteId)
-    return note ? this.#hierarchy.descendants(note) : undefined
+    return note ? Array.from(this.#hierarchy.descendants(note) || []) : undefined
   }
 
-  ancestors(noteId: string): Set<Note> | undefined {
+  ancestors(noteId: string): Note[] | undefined {
     const note = this.get(noteId)
-    return note ? this.#hierarchy.ancestors(note) : undefined
+    return note ? Array.from(this.#hierarchy.ancestors(note) || []) : undefined
   }
 
   delete = (noteId: string): void => {

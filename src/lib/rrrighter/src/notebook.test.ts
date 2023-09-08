@@ -52,15 +52,13 @@ describe('Notebook', () => {
 
   describe(".notes()", () => {
     test("Returns notes", () => {
-      expect(family.notes()).toStrictEqual(
-          new Set([GRANDPARENT, PARENT, CHILD])
-      );
+      expect(family.notes()).toStrictEqual([GRANDPARENT, PARENT, CHILD]);
     });
   });
 
   describe(".hierarchs()", () => {
     test("Returns hierarchs", () => {
-      expect(family.hierarchs()).toStrictEqual(new Set([GRANDPARENT]));
+      expect(family.hierarchs()).toStrictEqual([GRANDPARENT]);
     });
   });
 
@@ -69,20 +67,20 @@ describe('Notebook', () => {
 
     test('Adds a note to the empty notebook', () => {
       notebook.upsert(note)
-      expect(notebook.notes()).toEqual(new Set([note]))
+      expect(notebook.notes()).toEqual([note])
     })
 
     test('Adding the same note twice does not duplicate it', () => {
       notebook.upsert(note)
       notebook.upsert(note)
-      expect(notebook.notes()).toEqual(new Set([note]))
+      expect(notebook.notes()).toEqual([note])
     })
 
     test('Adding new note object with duplicate id updates note with that id', () => {
       const updated = { id: note.id, text: 'update' }
       notebook.upsert(note)
       notebook.upsert(updated)
-      expect(notebook.notes()).toEqual(new Set([{ id: '1', text: 'update' }]))
+      expect(notebook.notes()).toEqual([{ id: '1', text: 'update' }])
     })
   })
 
@@ -109,7 +107,7 @@ describe('Notebook', () => {
       const grandchild = { id: "grandchild", text: "grandchild" };
       family.upsert(grandchild);
       family.attach(CHILD.id, grandchild.id);
-      expect(family.children(CHILD.id)).toStrictEqual(new Set([grandchild]));
+      expect(family.children(CHILD.id)).toStrictEqual([grandchild]);
     });
 
     // // TODO: also test it doesn't change hierarchy
@@ -127,23 +125,21 @@ describe('Notebook', () => {
       family.upsert(anotherParent);
       family.attach(GRANDPARENT.id, anotherParent.id);
       family.attach(anotherParent.id, CHILD.id);
-      expect(family.children(anotherParent.id)).toStrictEqual(new Set([CHILD]));
+      expect(family.children(anotherParent.id)).toStrictEqual([CHILD]);
     });
 
     test("Attached child has a parent", () => {
       const GREAT_GRANDPARENT = { id: 'gg', text: "great-grandparent" }
       family.upsert(GREAT_GRANDPARENT);
       family.attach(GREAT_GRANDPARENT.id, GRANDPARENT.id);
-      expect(family.parents(GRANDPARENT.id)).toStrictEqual(
-          new Set([GREAT_GRANDPARENT])
-      );
+      expect(family.parents(GRANDPARENT.id)).toStrictEqual([GREAT_GRANDPARENT]);
     });
   });
 
   describe(".detach()", () => {
     test("Parent no longer has detached child", () => {
       family.detach(PARENT.id, CHILD.id);
-      expect(family.children(PARENT.id)?.has(CHILD)).toStrictEqual(false);
+      expect(family.children(PARENT.id)?.includes(CHILD)).toStrictEqual(false);
     });
 
     test("Detached child still belongs to another parent", () => {
@@ -151,7 +147,7 @@ describe('Notebook', () => {
       family.upsert(parent2);
       family.attach(parent2.id, CHILD.id);
       family.detach(PARENT.id, CHILD.id);
-      expect(family.children("parent2")).toStrictEqual(new Set([CHILD]));
+      expect(family.children("parent2")).toStrictEqual([CHILD]);
     });
 
     test("Child detached from the only parent still belongs to the hierarchy", () => {
@@ -174,7 +170,7 @@ describe('Notebook', () => {
 
   describe(".children()", () => {
     test("Returns children", () => {
-      expect(family.children(PARENT.id)).toStrictEqual(new Set([CHILD]));
+      expect(family.children(PARENT.id)).toStrictEqual([CHILD]);
     });
 
     test("When parent does not exist, returns undefined", () => {
@@ -183,18 +179,18 @@ describe('Notebook', () => {
 
     test("Mutating returned set does not affect hierarchy", () => {
       const children = family.children(PARENT.id);
-      children?.clear();
-      expect(family.children(PARENT.id)).toStrictEqual(new Set([CHILD]));
+      children?.splice(0, children.length)
+      expect(family.children(PARENT.id)).toStrictEqual([CHILD]);
     });
   });
 
   describe(".parents()", () => {
     test("Given top-level node, returns nothing", () => {
-      expect(family.parents(GRANDPARENT.id)).toStrictEqual(new Set());
+      expect(family.parents(GRANDPARENT.id)).toStrictEqual([]);
     });
 
     test("Given child, returns its parents", () => {
-      expect(family.parents(CHILD.id)).toStrictEqual(new Set([PARENT]));
+      expect(family.parents(CHILD.id)).toStrictEqual([PARENT]);
     });
 
     test("Returns undefined for non-member", () => {
@@ -204,9 +200,7 @@ describe('Notebook', () => {
 
   describe(".descendants()", () => {
     test("Returns descendants", () => {
-      expect(family.descendants(GRANDPARENT.id)).toStrictEqual(
-          new Set([PARENT, CHILD])
-      );
+      expect(family.descendants(GRANDPARENT.id)).toStrictEqual([PARENT, CHILD]);
     });
 
     test("Returns undefined for non-member", () => {
@@ -216,9 +210,7 @@ describe('Notebook', () => {
 
   describe(".ancestors()", () => {
     test("Returns ancestors", () => {
-      expect(family.ancestors(CHILD.id)).toStrictEqual(
-          new Set([GRANDPARENT, PARENT])
-      );
+      expect(family.ancestors(CHILD.id)).toStrictEqual([PARENT, GRANDPARENT]);
     });
 
     test("Returns undefined for non-member", () => {
@@ -229,17 +221,17 @@ describe('Notebook', () => {
   describe(".delete()", function () {
     test("Detaches all children from the parent", () => {
       family.delete(PARENT.id);
-      expect(family.parents(CHILD.id)).toEqual(new Set([]));
+      expect(family.parents(CHILD.id)).toEqual([]);
     });
 
     test("Detaches child from all parents", () => {
       family.delete(PARENT.id);
-      expect(family.children(GRANDPARENT.id)?.has(PARENT)).toStrictEqual(false);
+      expect(family.children(GRANDPARENT.id)?.includes(PARENT)).toStrictEqual(false);
     });
 
     test("Hierarchy no longer has removed node", () => {
       family.delete(PARENT.id);
-      expect(family.notes().has(PARENT)).toStrictEqual(false);
+      expect(family.notes().includes(PARENT)).toStrictEqual(false);
     });
 
     test("Removing the only node of the hierarchy empties the hierarchy", () => {
@@ -247,7 +239,7 @@ describe('Notebook', () => {
       const orphan = { id: 'orphan', text: 'orphan' }
       hierarchy.upsert(orphan);
       hierarchy.delete(orphan.id);
-      expect(hierarchy.notes()).toStrictEqual(new Set());
+      expect(hierarchy.notes()).toStrictEqual([]);
     });
   });
 })

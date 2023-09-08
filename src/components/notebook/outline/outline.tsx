@@ -17,7 +17,7 @@ const treeData = (notebook: Notebook): TreeDataNodeType[] => { // todo: move to 
     return Array.from(notes).sort(sortByText).map((note) => {
       const key = prefix + '/' + note.id
       const childrenNotes = notebook.children(note.id)
-      return { key, note, children: childrenNotes && childrenNotes.size > 0 ? _treeData(childrenNotes, key) : undefined }
+      return { key, note, children: childrenNotes && childrenNotes.length > 0 ? _treeData(childrenNotes, key) : undefined }
     })
   }
 
