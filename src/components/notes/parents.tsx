@@ -3,7 +3,7 @@ import Note from "../../lib/rrrighter/src/note"
 import Notebook from '../../lib/rrrighter/src/notebook'
 import { PullRequestOutlined } from '@ant-design/icons'
 
-import { Tag } from 'antd'
+import {Button, Tag} from 'antd'
 import FormattedText from "./formatted-text";
 import SearchDrawer from "../notebook/search/search-drawer";
 
@@ -38,9 +38,13 @@ export default function Parents(props: { notebook: Notebook, note: Note, onDetac
 
   const potentialParents = potentialParentsNotebook(props.notebook, props.note)
 
-  return <>
-    <Tag style={{ cursor: 'pointer' }} onClick={showDrawer}><PullRequestOutlined /></Tag>
-    {tags}
-    <SearchDrawer notebook={potentialParents} onSelect={onSelect} onClose={onClose} open={open} />
-  </>
+  return <div style={{height: '1.2em'}}>
+    <div style={{float: "left"}}>
+      {tags}
+    </div>
+    <div style={{float: "right"}}>
+      <Button type="text" size="small" onClick={showDrawer}><PullRequestOutlined /></Button>
+      <SearchDrawer notebook={potentialParents} onSelect={onSelect} onClose={onClose} open={open} />
+    </div>
+  </div>
 }
