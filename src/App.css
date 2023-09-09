@@ -66,3 +66,12 @@ body {
 .ant-table-thead th {
     border-radius: 0 !important;
 }
+
+.zoom-in {
+    display: none;
+}
+
+.inspector .ant-tree-treenode:hover .zoom-in {
+    display: inline-block;
+}
+
