@@ -4,164 +4,128 @@
       "text": " 👋 Welcome\n\nRrrighter is a personal multi-dimensional notes manager for power users.\n\n(c) 2023, [Andrey Zharikov](https://github.com/zharikovpro)"
     },
     "834cedcc-3b76-4078-beb9-c2f7b40916cd": {
-      "text": "🎁 Features"
+      "text": "🎁 Features",
+      "children": [
+        "23c319e1-09a8-469c-976f-749e0233f58d",
+        "853ad2b8-9c72-4f9a-a7a5-f7c0b9eb47d7",
+        "28d7e6ce-f778-47fb-a5df-5e55aa150e65"
+      ]
     },
     "23c319e1-09a8-469c-976f-749e0233f58d": {
       "text": "🔤 Sorting",
-      "parents": [
-        "834cedcc-3b76-4078-beb9-c2f7b40916cd"
+      "children": [
+        "fee6f781-bad4-413e-ae95-5fa2d717e6bf",
+        "7a109fef-5952-44e5-86e2-5b4af0d593b4",
+        "8408a02b-44fe-4ead-b8b2-233947b2603b",
+        "bed3cc9d-de31-481a-9c08-27a0073e9339",
+        "5fc69906-0023-48be-82b3-b13fd60b4298",
+        "1e614df3-32df-4560-9533-04a0035275ae",
+        "40a0c680-45fa-4093-a843-e21af9c50bcd",
+        "9c71044e-c52a-4d4c-950a-c5d827bc8a11",
+        "25b14885-837c-42bc-8907-b22039f82cef",
+        "cf7132ab-624e-46cc-9795-f8aa9da163d6",
+        "1aabf91a-41f5-46f5-ac64-d3f665acba8c",
+        "9beeae77-1570-429c-8d28-2f2d929b645c"
       ]
     },
     "fee6f781-bad4-413e-ae95-5fa2d717e6bf": {
-      "text": " starts with single space",
-      "parents": [
-        "23c319e1-09a8-469c-976f-749e0233f58d"
-      ]
+      "text": " starts with single space"
     },
     "853ad2b8-9c72-4f9a-a7a5-f7c0b9eb47d7": {
       "text": "👨‍👩‍👦 Multiple parents",
-      "parents": [
-        "834cedcc-3b76-4078-beb9-c2f7b40916cd"
-      ]
-    },
-    "fa9bc5c6-9568-44d5-913d-f766d19eaf53": {
-      "text": "👨 Father",
-      "parents": [
-        "853ad2b8-9c72-4f9a-a7a5-f7c0b9eb47d7"
-      ]
-    },
-    "29e592db-1966-4b58-9b62-e90cdb1ee0e5": {
-      "text": "🧑 Mother",
-      "parents": [
-        "853ad2b8-9c72-4f9a-a7a5-f7c0b9eb47d7"
-      ]
-    },
-    "23dd9e57-a496-447a-b72d-74a6f9cf0a9e": {
-      "text": "👶 Child",
-      "parents": [
+      "children": [
         "fa9bc5c6-9568-44d5-913d-f766d19eaf53",
         "29e592db-1966-4b58-9b62-e90cdb1ee0e5"
       ]
     },
+    "fa9bc5c6-9568-44d5-913d-f766d19eaf53": {
+      "text": "👨 Father",
+      "children": [
+        "23dd9e57-a496-447a-b72d-74a6f9cf0a9e"
+      ]
+    },
+    "29e592db-1966-4b58-9b62-e90cdb1ee0e5": {
+      "text": "🧑 Mother",
+      "children": [
+        "23dd9e57-a496-447a-b72d-74a6f9cf0a9e"
+      ]
+    },
+    "23dd9e57-a496-447a-b72d-74a6f9cf0a9e": {
+      "text": "👶 Child"
+    },
     "28d7e6ce-f778-47fb-a5df-5e55aa150e65": {
       "text": "✏️ Markdown",
-      "parents": [
-        "834cedcc-3b76-4078-beb9-c2f7b40916cd"
+      "children": [
+        "f0efceb1-d638-49b3-ac2c-eca020b09f3f",
+        "a3df63f1-1e1a-47cc-9d70-8d99ee509a20"
       ]
     },
     "f0efceb1-d638-49b3-ac2c-eca020b09f3f": {
       "text": "🔗 Links",
-      "parents": [
-        "28d7e6ce-f778-47fb-a5df-5e55aa150e65"
+      "children": [
+        "3ca7c090-e6ae-4e7e-83ae-66fb57764d80"
       ]
     },
     "3ca7c090-e6ae-4e7e-83ae-66fb57764d80": {
-      "text": "[GitHub](https://github.com/rrrighter/rrrighter)",
-      "parents": [
-        "f0efceb1-d638-49b3-ac2c-eca020b09f3f"
-      ]
+      "text": "[GitHub](https://github.com/rrrighter/rrrighter)"
     },
     "7a109fef-5952-44e5-86e2-5b4af0d593b4": {
-      "text": "! top priority",
-      "parents": [
-        "23c319e1-09a8-469c-976f-749e0233f58d"
-      ]
+      "text": "! top priority"
     },
     "8408a02b-44fe-4ead-b8b2-233947b2603b": {
-      "text": ". index",
-      "parents": [
-        "23c319e1-09a8-469c-976f-749e0233f58d"
-      ]
+      "text": ". index"
     },
     "bed3cc9d-de31-481a-9c08-27a0073e9339": {
-      "text": ".. secondary index",
-      "parents": [
-        "23c319e1-09a8-469c-976f-749e0233f58d"
-      ]
+      "text": ".. secondary index"
     },
     "5fc69906-0023-48be-82b3-b13fd60b4298": {
-      "text": "!! second priority",
-      "parents": [
-        "23c319e1-09a8-469c-976f-749e0233f58d"
-      ]
+      "text": "!! second priority"
     },
     "1e614df3-32df-4560-9533-04a0035275ae": {
-      "text": "A",
-      "parents": [
-        "23c319e1-09a8-469c-976f-749e0233f58d"
-      ]
+      "text": "A"
     },
     "40a0c680-45fa-4093-a843-e21af9c50bcd": {
-      "text": "B",
-      "parents": [
-        "23c319e1-09a8-469c-976f-749e0233f58d"
-      ]
+      "text": "B"
     },
     "9c71044e-c52a-4d4c-950a-c5d827bc8a11": {
-      "text": "a",
-      "parents": [
-        "23c319e1-09a8-469c-976f-749e0233f58d"
-      ]
+      "text": "a"
     },
     "25b14885-837c-42bc-8907-b22039f82cef": {
-      "text": "b",
-      "parents": [
-        "23c319e1-09a8-469c-976f-749e0233f58d"
-      ]
+      "text": "b"
     },
     "cf7132ab-624e-46cc-9795-f8aa9da163d6": {
-      "text": "  starts with two spaces",
-      "parents": [
-        "23c319e1-09a8-469c-976f-749e0233f58d"
-      ]
+      "text": "  starts with two spaces"
     },
     "a3df63f1-1e1a-47cc-9d70-8d99ee509a20": {
       "text": "Headers",
-      "parents": [
-        "28d7e6ce-f778-47fb-a5df-5e55aa150e65"
+      "children": [
+        "d3b8d37d-aa14-4fe1-8c57-65ec85f7516e",
+        "280a9a2d-ad8c-4c4a-beab-f8d81c305e5d",
+        "535d0e57-1c54-4bf2-abbd-0a33f482d2a0",
+        "98de2dc8-a21c-4455-ba65-fd8729a1d942",
+        "9fd91ca9-7c70-4cb6-8143-42ee660fd39c"
       ]
     },
     "d3b8d37d-aa14-4fe1-8c57-65ec85f7516e": {
-      "text": "# Starts with single hashtag",
-      "parents": [
-        "a3df63f1-1e1a-47cc-9d70-8d99ee509a20"
-      ]
+      "text": "# Starts with single hashtag"
     },
     "280a9a2d-ad8c-4c4a-beab-f8d81c305e5d": {
-      "text": "## Starts with two hashtags",
-      "parents": [
-        "a3df63f1-1e1a-47cc-9d70-8d99ee509a20"
-      ]
+      "text": "## Starts with two hashtags"
     },
     "535d0e57-1c54-4bf2-abbd-0a33f482d2a0": {
-      "text": "### Starts with three hashtags",
-      "parents": [
-        "a3df63f1-1e1a-47cc-9d70-8d99ee509a20"
-      ]
+      "text": "### Starts with three hashtags"
     },
     "98de2dc8-a21c-4455-ba65-fd8729a1d942": {
-      "text": "#### Starts with four hashtags",
-      "parents": [
-        "a3df63f1-1e1a-47cc-9d70-8d99ee509a20"
-      ]
+      "text": "#### Starts with four hashtags"
     },
     "9fd91ca9-7c70-4cb6-8143-42ee660fd39c": {
-      "text": "##### Starts with five hashtags",
-      "parents": [
-        "a3df63f1-1e1a-47cc-9d70-8d99ee509a20"
-      ]
+      "text": "##### Starts with five hashtags"
     },
     "1aabf91a-41f5-46f5-ac64-d3f665acba8c": {
-      "text": "_ underscore",
-      "parents": [
-        "23c319e1-09a8-469c-976f-749e0233f58d"
-      ]
+      "text": "_ underscore"
     },
     "9beeae77-1570-429c-8d28-2f2d929b645c": {
-      "text": "__ double underscore",
-      "parents": [
-        "23c319e1-09a8-469c-976f-749e0233f58d"
-      ]
+      "text": "__ double underscore"
     }
   }
 }

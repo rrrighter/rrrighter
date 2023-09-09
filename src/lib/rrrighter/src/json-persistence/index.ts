@@ -3,7 +3,8 @@ import Note from "./../note"
 
 export type NotebookJson = {
     notes: {
-        [key: string]: { text: string, parents?: string[] }
+        // TODO: deprecate parents once converted all old notebooks
+        [key: string]: { text: string, parents?: string[], children?: string[] }
     }
 }
 
@@ -22,16 +23,22 @@ export const fromJsonObject = (jsonObject: NotebookJson): Notebook => {
         }
     }
 
+    for(const parentId in jsonObject.notes) {
+        for(const childId of jsonObject.notes[parentId].children || []) {
+            notebook.attach(parentId, childId)
+        }
+    }
+
     return notebook
 }
 
 export const toJsonObject = (notebook: Notebook): NotebookJson => {
     let jsonObject: NotebookJson = { notes: {} }
     notebook.notes().forEach(note => {
-        const parents = notebook.parents(note.id)
+        const children = notebook.children(note.id)
         jsonObject.notes[note.id] = { text: note.text }
-        if (parents && parents.size > 0) {
-            jsonObject.notes[note.id].parents = Array.from(parents).map(parent => parent.id)
+        if (children && children.length > 0) {
+            jsonObject.notes[note.id].children = Array.from(children).map(child => child.id)
         }
     })
 
