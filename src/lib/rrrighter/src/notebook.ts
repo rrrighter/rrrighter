@@ -16,7 +16,7 @@ export default class Notebook {
     }
   }
 
-  notes = (): Note[] => Array.from(this.#hierarchy.nodes() || [])
+  notes = (): Set<Note> => this.#hierarchy.nodes()
 
   get = (id: string): Note | undefined => Array.from(this.#hierarchy.nodes()).find((note) => note.id === id)
 
@@ -52,19 +52,19 @@ export default class Notebook {
     return note ? Array.from(this.#hierarchy.children(note) || []) : undefined
   }
 
-  parents(noteId: string): Note[] | undefined {
+  parents(noteId: string): Set<Note> | undefined {
     const note = this.get(noteId)
-    return note ? Array.from(this.#hierarchy.parents(note) || []) : undefined
+    return note ? this.#hierarchy.parents(note) : undefined
   }
 
-  descendants(noteId: string): Note[] | undefined {
+  descendants(noteId: string): Set<Note> | undefined {
     const note = this.get(noteId)
-    return note ? Array.from(this.#hierarchy.descendants(note) || []) : undefined
+    return note ? this.#hierarchy.descendants(note) : undefined
   }
 
-  ancestors(noteId: string): Note[] | undefined {
+  ancestors(noteId: string): Set<Note> | undefined {
     const note = this.get(noteId)
-    return note ? Array.from(this.#hierarchy.ancestors(note) || []) : undefined
+    return note ? this.#hierarchy.ancestors(note) : undefined
   }
 
   delete = (noteId: string): void => {
