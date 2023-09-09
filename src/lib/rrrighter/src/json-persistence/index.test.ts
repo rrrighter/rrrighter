@@ -41,9 +41,9 @@ describe('JSON persistence', () => {
         // It also makes it easier to edit notebook manually
         // (e.g. to move a note to another parent).
         'notes': {
-            '1': { text: 'grandparent', children: ['2'] },
-            '2': { text: 'parent', children: ['3'] },
-            '3': { text: 'child' }
+            '1': { id: '1', text: 'grandparent', children: ['2'] },
+            '2': { id: '2', text: 'parent', children: ['3'] },
+            '3': { id: '3', text: 'child' }
         }
     }
 

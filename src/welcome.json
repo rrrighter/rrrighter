@@ -1,9 +1,11 @@
 {
   "notes": {
     "welcome": {
+      "id": "welcome",
       "text": " 👋 Welcome\n\nRrrighter is a personal multi-dimensional notes manager for power users.\n\n(c) 2023, [Andrey Zharikov](https://github.com/zharikovpro)"
     },
     "834cedcc-3b76-4078-beb9-c2f7b40916cd": {
+      "id": "834cedcc-3b76-4078-beb9-c2f7b40916cd",
       "text": "🎁 Features",
       "children": [
         "23c319e1-09a8-469c-976f-749e0233f58d",
@@ -12,6 +14,7 @@
       ]
     },
     "23c319e1-09a8-469c-976f-749e0233f58d": {
+      "id": "23c319e1-09a8-469c-976f-749e0233f58d",
       "text": "🔤 Sorting",
       "children": [
         "fee6f781-bad4-413e-ae95-5fa2d717e6bf",
@@ -29,9 +32,11 @@
       ]
     },
     "fee6f781-bad4-413e-ae95-5fa2d717e6bf": {
+      "id": "fee6f781-bad4-413e-ae95-5fa2d717e6bf",
       "text": " starts with single space"
     },
     "853ad2b8-9c72-4f9a-a7a5-f7c0b9eb47d7": {
+      "id": "853ad2b8-9c72-4f9a-a7a5-f7c0b9eb47d7",
       "text": "👨‍👩‍👦 Multiple parents",
       "children": [
         "fa9bc5c6-9568-44d5-913d-f766d19eaf53",
@@ -39,21 +44,25 @@
       ]
     },
     "fa9bc5c6-9568-44d5-913d-f766d19eaf53": {
+      "id": "fa9bc5c6-9568-44d5-913d-f766d19eaf53",
       "text": "👨 Father",
       "children": [
         "23dd9e57-a496-447a-b72d-74a6f9cf0a9e"
       ]
     },
     "29e592db-1966-4b58-9b62-e90cdb1ee0e5": {
+      "id": "29e592db-1966-4b58-9b62-e90cdb1ee0e5",
       "text": "🧑 Mother",
       "children": [
         "23dd9e57-a496-447a-b72d-74a6f9cf0a9e"
       ]
     },
     "23dd9e57-a496-447a-b72d-74a6f9cf0a9e": {
+      "id": "23dd9e57-a496-447a-b72d-74a6f9cf0a9e",
       "text": "👶 Child"
     },
     "28d7e6ce-f778-47fb-a5df-5e55aa150e65": {
+      "id": "28d7e6ce-f778-47fb-a5df-5e55aa150e65",
       "text": "✏️ Markdown",
       "children": [
         "f0efceb1-d638-49b3-ac2c-eca020b09f3f",
@@ -61,42 +70,54 @@
       ]
     },
     "f0efceb1-d638-49b3-ac2c-eca020b09f3f": {
+      "id": "f0efceb1-d638-49b3-ac2c-eca020b09f3f",
       "text": "🔗 Links",
       "children": [
         "3ca7c090-e6ae-4e7e-83ae-66fb57764d80"
       ]
     },
     "3ca7c090-e6ae-4e7e-83ae-66fb57764d80": {
+      "id": "3ca7c090-e6ae-4e7e-83ae-66fb57764d80",
       "text": "[GitHub](https://github.com/rrrighter/rrrighter)"
     },
     "7a109fef-5952-44e5-86e2-5b4af0d593b4": {
+      "id": "7a109fef-5952-44e5-86e2-5b4af0d593b4",
       "text": "! top priority"
     },
     "8408a02b-44fe-4ead-b8b2-233947b2603b": {
+      "id": "8408a02b-44fe-4ead-b8b2-233947b2603b",
       "text": ". index"
     },
     "bed3cc9d-de31-481a-9c08-27a0073e9339": {
+      "id": "bed3cc9d-de31-481a-9c08-27a0073e9339",
       "text": ".. secondary index"
     },
     "5fc69906-0023-48be-82b3-b13fd60b4298": {
+      "id": "5fc69906-0023-48be-82b3-b13fd60b4298",
       "text": "!! second priority"
     },
     "1e614df3-32df-4560-9533-04a0035275ae": {
+      "id": "1e614df3-32df-4560-9533-04a0035275ae",
       "text": "A"
     },
     "40a0c680-45fa-4093-a843-e21af9c50bcd": {
+      "id": "40a0c680-45fa-4093-a843-e21af9c50bcd",
       "text": "B"
     },
     "9c71044e-c52a-4d4c-950a-c5d827bc8a11": {
+      "id": "9c71044e-c52a-4d4c-950a-c5d827bc8a11",
       "text": "a"
     },
     "25b14885-837c-42bc-8907-b22039f82cef": {
+      "id": "25b14885-837c-42bc-8907-b22039f82cef",
       "text": "b"
     },
     "cf7132ab-624e-46cc-9795-f8aa9da163d6": {
+      "id": "cf7132ab-624e-46cc-9795-f8aa9da163d6",
       "text": "  starts with two spaces"
     },
     "a3df63f1-1e1a-47cc-9d70-8d99ee509a20": {
+      "id": "a3df63f1-1e1a-47cc-9d70-8d99ee509a20",
       "text": "Headers",
       "children": [
         "d3b8d37d-aa14-4fe1-8c57-65ec85f7516e",
@@ -107,24 +128,31 @@
       ]
     },
     "d3b8d37d-aa14-4fe1-8c57-65ec85f7516e": {
+      "id": "d3b8d37d-aa14-4fe1-8c57-65ec85f7516e",
       "text": "# Starts with single hashtag"
     },
     "280a9a2d-ad8c-4c4a-beab-f8d81c305e5d": {
+      "id": "280a9a2d-ad8c-4c4a-beab-f8d81c305e5d",
       "text": "## Starts with two hashtags"
     },
     "535d0e57-1c54-4bf2-abbd-0a33f482d2a0": {
+      "id": "535d0e57-1c54-4bf2-abbd-0a33f482d2a0",
       "text": "### Starts with three hashtags"
     },
     "98de2dc8-a21c-4455-ba65-fd8729a1d942": {
+      "id": "98de2dc8-a21c-4455-ba65-fd8729a1d942",
       "text": "#### Starts with four hashtags"
     },
     "9fd91ca9-7c70-4cb6-8143-42ee660fd39c": {
+      "id": "9fd91ca9-7c70-4cb6-8143-42ee660fd39c",
       "text": "##### Starts with five hashtags"
     },
     "1aabf91a-41f5-46f5-ac64-d3f665acba8c": {
+      "id": "1aabf91a-41f5-46f5-ac64-d3f665acba8c",
       "text": "_ underscore"
     },
     "9beeae77-1570-429c-8d28-2f2d929b645c": {
+      "id": "9beeae77-1570-429c-8d28-2f2d929b645c",
       "text": "__ double underscore"
     }
   }
