@@ -35,7 +35,7 @@ export default function Inspector(props: { notebook: Notebook, note: Note, onEdi
 
     <div>
       <div style={{float: "right"}}>
-        <Dropdown.Button size="small" trigger={["click"]} menu={menuProps} onClick={() => props.onEdit(props.note)}>
+        <Dropdown.Button type="text" size="small" trigger={["click"]} menu={menuProps} onClick={() => props.onEdit(props.note)}>
           <EditOutlined />
         </Dropdown.Button>
       </div>
