@@ -1,11 +1,11 @@
 import React, {ReactNode, useState} from 'react'
 import Note from "../../lib/rrrighter/src/note"
 import Notebook from '../../lib/rrrighter/src/notebook'
-import { PullRequestOutlined, UpOutlined } from '@ant-design/icons'
+import { PullRequestOutlined } from '@ant-design/icons'
 
-import {Button, Tag} from 'antd'
-import FormattedText from "./formatted-text";
+import {Button} from 'antd'
 import SearchDrawer from "../notebook/search/search-drawer";
+import NoteTag from "./note-tag";
 
 export default function Parents(props: {
   notebook: Notebook,
@@ -26,17 +26,7 @@ export default function Parents(props: {
 
   const parents = Array.from(props.notebook.parents(props.note.id) || [])
   const tags: ReactNode[] = parents.map((parent): ReactNode => {
-    const firstLine = parent.text.split('\n')[0] // todo: try use Text component instead or create NoteTitle component
-    return <Tag
-        style={{ cursor: 'pointer' }}
-        icon={<UpOutlined />}
-        key={parent.id}
-        onClick={() => props.onSelect && props.onSelect(parent.id)}
-        closable
-        onClose={() => props.onDetach(parent, props.note)}
-    >
-      <FormattedText text={firstLine} />
-    </Tag>
+    return <NoteTag parent={parent} child={props.note} onSelect={props.onSelect} onDetach={props.onDetach} />
   })
 
   const potentialParentsNotebook = (notebook: Notebook, note: Note): Notebook => { // todo: extract to Rrrighter app class?
