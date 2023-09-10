@@ -75,3 +75,8 @@ body {
     display: inline-block;
 }
 
+.outline {
+    padding: 0.5em;
+    overflow: hidden;
+    overflow-y: scroll;
+}

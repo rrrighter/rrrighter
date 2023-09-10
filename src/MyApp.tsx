@@ -4,7 +4,7 @@ import Note from './lib/rrrighter/src/note'
 import Notebook from './lib/rrrighter/src/notebook'
 import React, { useState } from 'react'
 import {App, ConfigProvider, theme, Space, Button, Drawer, Input} from 'antd'
-import { PlusOutlined } from '@ant-design/icons'
+import {HomeOutlined, PlusOutlined} from '@ant-design/icons'
 import CreateNote from './components/notes/create-note'
 import Outline from './components/notebook/outline/outline'
 import Inspector from './components/notes/inspector'
@@ -77,8 +77,9 @@ function MyApp() {
   }
 
   let inspectorPanel
+  let inspectorScopeNotebook = notebook
   if (inspectorNote) {
-    const inspectorScopeNotebook = new Notebook(notebook)
+    inspectorScopeNotebook = new Notebook(notebook)
     const descendantIds = new Set(Array.from(notebook.descendants(inspectorNote.id) || []).map(n => n.id))
     for (const note of inspectorScopeNotebook.notes()) {
       if (!descendantIds.has(note.id)) {
@@ -97,11 +98,13 @@ function MyApp() {
           onCreateChild={onCreateChild}
           onSelect={onSelect}
       />
-      <Outline notebook={inspectorScopeNotebook} onSelect={onSelect} />
+
     </>
   } else {
-    inspectorPanel = <span>Select note to inspect</span>
+    inspectorPanel = <></>
   }
+
+  const outlinePanel = <Outline notebook={inspectorScopeNotebook} onSelect={onSelect} />
 
   const onEditorClose = () => {
     setEditorText(undefined)
@@ -134,6 +137,7 @@ function MyApp() {
           <div className='header'>
             <div style={{ float: 'left' }}>
               <NotebookRepository filename="welcome" notebook={notebook} onNotebookOpen={setNotebook} />
+              <Button type="text" icon={<HomeOutlined />} size="small" aria-label="Home" title="Home" onClick={() => setInspectorNote(undefined)} />
             </div>
 
             <div style={{ float: 'right' }}>
@@ -142,10 +146,13 @@ function MyApp() {
               {newNote && <CreateNote note={newNote} onCancel={hideCreateNote} onCreate={onCreate} />}
             </div>
           </div>
-          <div className='panels'>
-            <div className='navigator'><Outline notebook={notebook} onSelect={onSelect} /></div>
-            <div className='inspector'>{inspectorPanel}</div>
-          </div>
+          {/*<div className='panels'>*/}
+            {/*<div className='navigator'><Outline notebook={notebook} onSelect={onSelect} /></div>*/}
+            <div className='outline'>
+              {inspectorPanel}
+              {outlinePanel}
+            </div>
+          {/*</div>*/}
         </div>
       </App>
     </ConfigProvider>
