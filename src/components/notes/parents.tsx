@@ -1,7 +1,7 @@
 import React, {ReactNode, useState} from 'react'
 import Note from "../../lib/rrrighter/src/note"
 import Notebook from '../../lib/rrrighter/src/notebook'
-import { PullRequestOutlined } from '@ant-design/icons'
+import { PullRequestOutlined, UpOutlined } from '@ant-design/icons'
 
 import {Button, Tag} from 'antd'
 import FormattedText from "./formatted-text";
@@ -29,6 +29,7 @@ export default function Parents(props: {
     const firstLine = parent.text.split('\n')[0] // todo: try use Text component instead or create NoteTitle component
     return <Tag
         style={{ cursor: 'pointer' }}
+        icon={<UpOutlined />}
         key={parent.id}
         onClick={() => props.onSelect && props.onSelect(parent.id)}
         closable
