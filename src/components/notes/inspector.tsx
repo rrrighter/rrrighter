@@ -7,7 +7,16 @@ import { EditOutlined, DeleteOutlined } from '@ant-design/icons'
 import FormattedText from "./formatted-text";
 import NoteToolbar from "./note-toolbar";
 
-export default function Inspector(props: { notebook: Notebook, note: Note, onEdit: Function, onDelete: Function, onDetach: Function, onAttach: Function, onCreateChild: Function }) {
+export default function Inspector(props: {
+  notebook: Notebook,
+  note: Note,
+  onEdit: Function,
+  onDelete: Function,
+  onDetach: Function,
+  onAttach: Function,
+  onCreateChild: Function,
+  onSelect?: Function
+}) {
   const onAttach = (parentId: string) => {
     props.onAttach(parentId, props.note.id)
   }
@@ -31,7 +40,13 @@ export default function Inspector(props: { notebook: Notebook, note: Note, onEdi
   }
 
   return <>
-    <Parents notebook={props.notebook} note={props.note} onDetach={props.onDetach} onAttach={onAttach} />
+    <Parents
+        notebook={props.notebook}
+        note={props.note}
+        onDetach={props.onDetach}
+        onAttach={onAttach}
+        onSelect={props.onSelect}
+    />
 
     <div>
       <div style={{float: "right"}}>

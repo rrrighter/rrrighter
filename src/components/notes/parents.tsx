@@ -7,7 +7,13 @@ import {Button, Tag} from 'antd'
 import FormattedText from "./formatted-text";
 import SearchDrawer from "../notebook/search/search-drawer";
 
-export default function Parents(props: { notebook: Notebook, note: Note, onDetach: Function, onAttach: Function }) {
+export default function Parents(props: {
+  notebook: Notebook,
+  note: Note,
+  onDetach: Function,
+  onAttach: Function,
+  onSelect?: Function
+}) {
   const [open, setOpen] = useState(false);
 
   const showDrawer = () => {
@@ -21,7 +27,15 @@ export default function Parents(props: { notebook: Notebook, note: Note, onDetac
   const parents = Array.from(props.notebook.parents(props.note.id) || [])
   const tags: ReactNode[] = parents.map((parent): ReactNode => {
     const firstLine = parent.text.split('\n')[0] // todo: try use Text component instead or create NoteTitle component
-    return <Tag key={parent.id} closable onClose={() => props.onDetach(parent, props.note)}><FormattedText text={firstLine} /></Tag>
+    return <Tag
+        style={{ cursor: 'pointer' }}
+        key={parent.id}
+        onClick={() => props.onSelect && props.onSelect(parent.id)}
+        closable
+        onClose={() => props.onDetach(parent, props.note)}
+    >
+      <FormattedText text={firstLine} />
+    </Tag>
   })
 
   const potentialParentsNotebook = (notebook: Notebook, note: Note): Notebook => { // todo: extract to Rrrighter app class?

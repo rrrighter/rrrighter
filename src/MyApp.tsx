@@ -95,6 +95,7 @@ function MyApp() {
           onDetach={onDetach}
           onAttach={onAttach}
           onCreateChild={onCreateChild}
+          onSelect={onSelect}
       />
       <Outline notebook={inspectorScopeNotebook} onSelect={onSelect} />
     </>
