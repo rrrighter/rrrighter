@@ -80,3 +80,7 @@ body {
     overflow: hidden;
     overflow-y: scroll;
 }
+
+.ant-tag a {
+    text-decoration: underline;
+}
