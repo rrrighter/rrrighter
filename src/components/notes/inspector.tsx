@@ -51,7 +51,7 @@ export default function Inspector(props: {
       </div>
 
       <div style={{float: "right", marginRight: "0.5em"}}>
-        <AttachToParent notebook={props.notebook} child={props.note} onAttach={props.onAttach} />
+        <AttachToParent notebook={props.notebook} childId={props.note.id} onAttach={props.onAttach} />
       </div>
 
       <FormattedText text={props.note.text} />
