@@ -17,40 +17,18 @@ export default function Inspector(props: {
   onCreateChild: Function,
   onSelect?: Function
 }) {
-  const handleMenuClick: MenuProps['onClick'] = (_e) => {
-    props.onDelete(props.note)
-  };
-
-  const items: MenuProps['items'] = [
-    {
-      label: 'Delete',
-      key: 'delete',
-      icon: <DeleteOutlined />,
-      danger: true,
-    }
-  ];
-
-  const menuProps = {
-    items,
-    onClick: handleMenuClick,
-  }
-
   return <>
     <Parents notebook={props.notebook} note={props.note} onDetach={props.onDetach} onSelect={props.onSelect} />
 
     <div>
-      <div style={{float: "right"}}>
-        <Dropdown.Button type="text" size="small" trigger={["click"]} menu={menuProps} onClick={() => props.onEdit(props.note)}>
-          <EditOutlined />
-        </Dropdown.Button>
-      </div>
-
       <div style={{float: "right", marginRight: "0.5em"}}>
         <NoteToolbar
             notebook={props.notebook}
             noteId={props.note.id}
+            onEdit={() => props.onEdit(props.note)}
             onCreateChild={(noteId: string) => props.onCreateChild(noteId)}
             onAttach={props.onAttach}
+            onDelete={() => props.onDelete(props.note)}
         />
       </div>
 
