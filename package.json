@@ -1,6 +1,6 @@
 {
   "name": "rrrighter",
-  "version": "0.25.0",
+  "version": "0.26.0",
   "homepage": "https://rrrighter.github.io/rrrighter/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
@@ -29,12 +29,15 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "eslintConfig": {
     "extends": [
       "react-app",
-      "react-app/jest"
+      "react-app/jest",
+      "plugin:storybook/recommended"
     ]
   },
   "browserslist": {
@@ -50,9 +53,23 @@
     ]
   },
   "devDependencies": {
+    "@storybook/addon-essentials": "^7.4.0",
+    "@storybook/addon-interactions": "^7.4.0",
+    "@storybook/addon-links": "^7.4.0",
+    "@storybook/addon-onboarding": "^1.0.8",
+    "@storybook/blocks": "^7.4.0",
+    "@storybook/preset-create-react-app": "^7.4.0",
+    "@storybook/react": "^7.4.0",
+    "@storybook/react-webpack5": "^7.4.0",
+    "@storybook/testing-library": "^0.2.0",
     "@types/file-saver": "^2.0.5",
+    "babel-plugin-named-exports-order": "^0.0.2",
+    "eslint-plugin-storybook": "^0.6.13",
     "jest-fail-on-console": "^3.1.1",
-    "react-markdown": "^8.0.7"
+    "prop-types": "^15.8.1",
+    "react-markdown": "^8.0.7",
+    "storybook": "^7.4.0",
+    "webpack": "^5.88.2"
   },
   "jest": {
     "transformIgnorePatterns": [
