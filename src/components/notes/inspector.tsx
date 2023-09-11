@@ -3,9 +3,10 @@ import Note from '../../lib/rrrighter/src/note'
 import Notebook from '../../lib/rrrighter/src/notebook'
 import Parents from './parents'
 import {Dropdown, MenuProps} from 'antd'
-import { EditOutlined, DeleteOutlined } from '@ant-design/icons'
+import {EditOutlined, DeleteOutlined} from '@ant-design/icons'
 import FormattedText from "./formatted-text";
 import NoteToolbar from "./note-toolbar";
+import AttachToParent from "./attach-to-parent";
 
 export default function Inspector(props: {
   notebook: Notebook,
@@ -17,10 +18,6 @@ export default function Inspector(props: {
   onCreateChild: Function,
   onSelect?: Function
 }) {
-  const onAttach = (parentId: string) => {
-    props.onAttach(parentId, props.note.id)
-  }
-
   const handleMenuClick: MenuProps['onClick'] = (_e) => {
     props.onDelete(props.note)
   };
@@ -40,13 +37,14 @@ export default function Inspector(props: {
   }
 
   return <>
-    <Parents
-        notebook={props.notebook}
-        note={props.note}
-        onDetach={props.onDetach}
-        onAttach={onAttach}
-        onSelect={props.onSelect}
-    />
+    <div>
+      <div style={{float: "left"}}>
+        <Parents notebook={props.notebook} note={props.note} onDetach={props.onDetach} onSelect={props.onSelect} />
+      </div>
+      <div style={{float: "right"}}>
+        <AttachToParent notebook={props.notebook} child={props.note} onAttach={props.onAttach} />
+      </div>
+    </div>
 
     <div>
       <div style={{float: "right"}}>
