@@ -1,0 +1,11 @@
+.ant-tag .note {
+    display: inline-block;
+}
+
+.ant-tag .note p {
+    margin: 0;
+}
+
+.ant-tag .note a {
+    text-decoration: underline;
+}

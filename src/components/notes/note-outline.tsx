@@ -2,8 +2,8 @@ import Notebook from "../../lib/rrrighter/src/notebook";
 import FormattedText from "./formatted-text";
 import React from "react";
 import Note from "../../lib/rrrighter/src/note";
-import {Button, Typography} from "antd";
-import {ZoomInOutlined} from "@ant-design/icons";
+import {Typography} from "antd";
+import './note-outline.css';
 
 const { Text } = Typography;
 
@@ -16,9 +16,6 @@ export default function NoteOutline(props: { notebook: Notebook, note: Note }) {
         </div>
         <div style={{ float: 'right' }}>
             <Text type="secondary">{descendantsCount === 0 ? '' : descendantsCount}</Text>
-        </div>
-        <div style={{float: "right", marginRight: "0.5em"}}>
-            <Button className="zoom-in" type="text" size="small"><ZoomInOutlined /></Button>
         </div>
     </div>
 }

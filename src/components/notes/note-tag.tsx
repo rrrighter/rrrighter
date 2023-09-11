@@ -3,6 +3,7 @@ import React from "react";
 import Note from "../../lib/rrrighter/src/note";
 import {UpOutlined} from "@ant-design/icons";
 import {Tag} from 'antd'
+import './note-tag.css';
 
 export default function NoteTag(props: {
     parent: Note,

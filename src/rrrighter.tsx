@@ -1,5 +1,4 @@
 import { fromJsonObject } from './lib/rrrighter/src/json-persistence'
-import './App.css'
 import Note from './lib/rrrighter/src/note'
 import Notebook from './lib/rrrighter/src/notebook'
 import React, { useState } from 'react'
@@ -11,11 +10,12 @@ import Inspector from './components/notes/inspector'
 import NotebookRepository from './components/notebook/repository/notebook-repository'
 import welcome from './welcome.json'
 import SearchSelect from './components/notebook/search/search-select'
+import './rrrighter.css'
 
 const { TextArea } = Input
 const initialNotebook = new Notebook(fromJsonObject(welcome))
 
-function MyApp() {
+function Rrrighter() {
   const [notebook, setNotebook] = useState<Notebook>(initialNotebook)
   const [newNoteParentId, setNewNoteParentId] = useState<string | undefined>(undefined)
   const [newNote, setNewNote] = useState<Note | undefined>(undefined)
@@ -98,7 +98,6 @@ function MyApp() {
           onCreateChild={onCreateChild}
           onSelect={onSelect}
       />
-
     </>
   } else {
     inspectorPanel = <></>
@@ -125,38 +124,33 @@ function MyApp() {
   return (
     <ConfigProvider theme={{ algorithm: theme.darkAlgorithm }}>
       <App>
-        <div className='viewport'>
-          <Drawer open={!!editorText} size={'large'} onClose={onEditorClose} extra={
-            <Space>
-              <Button onClick={onEditorClose}>Cancel</Button>
-              <Button type="primary" onClick={onEditorSave}>Save</Button>
-            </Space>
-          }>
-            <TextArea style={{ height: '100%' }} rows={10} value={editorText} onChange={onEditorTextChange} />
-          </Drawer>
-          <div className='header'>
-            <div style={{ float: 'left' }}>
-              <NotebookRepository filename="welcome" notebook={notebook} onNotebookOpen={setNotebook} />
-              <Button type="text" icon={<HomeOutlined />} size="small" aria-label="Home" title="Home" onClick={() => setInspectorNote(undefined)} />
-            </div>
-
-            <div style={{ float: 'right' }}>
-              <SearchSelect notebook={notebook} onSelect={onSelect} />
-              <Button type='text' icon={<PlusOutlined />} onClick={showCreateNote}  aria-label="Add note" title="Add note" />
-              {newNote && <CreateNote note={newNote} onCancel={hideCreateNote} onCreate={onCreate} />}
-            </div>
+        <Drawer open={!!editorText} size={'large'} onClose={onEditorClose} extra={
+          <Space>
+            <Button onClick={onEditorClose}>Cancel</Button>
+            <Button type="primary" onClick={onEditorSave}>Save</Button>
+          </Space>
+        }>
+          <TextArea style={{ height: '100%' }} rows={10} value={editorText} onChange={onEditorTextChange} />
+        </Drawer>
+        <header>
+          <div style={{ float: 'left' }}>
+            <NotebookRepository filename="welcome" notebook={notebook} onNotebookOpen={setNotebook} />
+            <Button type="text" icon={<HomeOutlined />} size="small" aria-label="Home" title="Home" onClick={() => setInspectorNote(undefined)} />
           </div>
-          {/*<div className='panels'>*/}
-            {/*<div className='navigator'><Outline notebook={notebook} onSelect={onSelect} /></div>*/}
-            <div className='outline'>
-              {inspectorPanel}
-              {outlinePanel}
-            </div>
-          {/*</div>*/}
-        </div>
+
+          <div style={{ float: 'right' }}>
+            <SearchSelect notebook={notebook} onSelect={onSelect} />
+            <Button type='text' icon={<PlusOutlined />} onClick={showCreateNote}  aria-label="Add note" title="Add note" />
+            {newNote && <CreateNote note={newNote} onCancel={hideCreateNote} onCreate={onCreate} />}
+          </div>
+        </header>
+        <main>
+          {inspectorPanel}
+          {outlinePanel}
+        </main>
       </App>
     </ConfigProvider>
   )
 }
 
-export default MyApp
+export default Rrrighter

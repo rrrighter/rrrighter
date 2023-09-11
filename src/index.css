@@ -1,11 +1,8 @@
+:root {
+    color-scheme: dark;
+}
+
 body {
   margin: 0;
-}
-
-.ant-layout {
-  padding: 1em;
-}
-
-.ant-list-item p {
-    margin: 0;
+  overflow: hidden;
 }

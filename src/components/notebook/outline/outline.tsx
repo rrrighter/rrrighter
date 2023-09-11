@@ -4,6 +4,7 @@ import Note from '../../../lib/rrrighter/src/note'
 import {Tree} from 'antd'
 import type { TreeProps } from 'antd/es/tree';
 import NoteOutline from "../../notes/note-outline";
+import './outline.css';
 
 interface TreeDataNodeType {
   key: string
