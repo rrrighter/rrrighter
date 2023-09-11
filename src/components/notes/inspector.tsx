@@ -6,7 +6,6 @@ import {Dropdown, MenuProps} from 'antd'
 import {EditOutlined, DeleteOutlined} from '@ant-design/icons'
 import FormattedText from "./formatted-text";
 import NoteToolbar from "./note-toolbar";
-import AttachToParent from "./attach-to-parent";
 
 export default function Inspector(props: {
   notebook: Notebook,
@@ -47,11 +46,12 @@ export default function Inspector(props: {
       </div>
 
       <div style={{float: "right", marginRight: "0.5em"}}>
-        <NoteToolbar noteId={props.note.id} onCreateChild={(noteId: string) => props.onCreateChild(noteId)} />
-      </div>
-
-      <div style={{float: "right", marginRight: "0.5em"}}>
-        <AttachToParent notebook={props.notebook} childId={props.note.id} onAttach={props.onAttach} />
+        <NoteToolbar
+            notebook={props.notebook}
+            noteId={props.note.id}
+            onCreateChild={(noteId: string) => props.onCreateChild(noteId)}
+            onAttach={props.onAttach}
+        />
       </div>
 
       <FormattedText text={props.note.text} />

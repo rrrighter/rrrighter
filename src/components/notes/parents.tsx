@@ -14,10 +14,5 @@ export default function Parents(props: {
   const tags: ReactNode[] = parents.map((parent): ReactNode => {
     return <NoteTag parent={parent} child={props.note} onSelect={props.onSelect} onDetach={props.onDetach} />
   })
-
-  return <div style={{height: '1.2em'}}>
-    <div style={{float: "left"}}>
-      {tags}
-    </div>
-  </div>
+  return <>{tags}</>
 }
