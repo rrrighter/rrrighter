@@ -103,7 +103,7 @@ function Rrrighter() {
     inspectorPanel = <></>
   }
 
-  const outlinePanel = <Outline notebook={inspectorScopeNotebook} onSelect={onSelect} />
+  const outlinePanel = <Outline notebook={inspectorScopeNotebook} onNoteSelect={onSelect} />
 
   const onEditorClose = () => {
     setEditorText(undefined)

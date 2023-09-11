@@ -8,6 +8,6 @@ export default function SearchDrawer(props: { notebook: Notebook, onSelect: Func
     return <Drawer title="Select a note" placement="right" size='large' bodyStyle={{padding: 0}} onClose={() => props.onClose()} open={props.open} extra={
         <SearchSelect notebook={props.notebook} onSelect={props.onSelect} />
     }>
-        <Outline notebook={props.notebook} onSelect={props.onSelect} />
+        <Outline notebook={props.notebook} onNoteSelect={props.onSelect} />
     </Drawer>
 }

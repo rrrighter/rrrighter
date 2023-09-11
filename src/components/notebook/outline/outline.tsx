@@ -26,12 +26,14 @@ const treeData = (notebook: Notebook): TreeDataNodeType[] => { // todo: move to 
   return _treeData(notebook.hierarchs())
 }
 
-export default function Outline(props: { notebook: Notebook, onSelect?: Function }) {
-  const titleRender = (node: TreeDataNodeType) => <NoteOutline notebook={props.notebook} note={node.note} />
+export default function Outline(props: { notebook: Notebook, onNoteSelect?: Function }) {
+  const titleRender = (node: TreeDataNodeType) => <NoteOutline
+      notebook={props.notebook} note={node.note}
+  />
 
   const onSelect: TreeProps['onSelect'] = (_selectedKeys, info) => {
     const node = info.node as unknown as TreeDataNodeType
-    props.onSelect && props.onSelect(node.note.id)
+    props.onNoteSelect && props.onNoteSelect(node.note.id)
   };
 
   return <Tree
