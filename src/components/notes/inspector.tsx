@@ -2,8 +2,6 @@ import React from 'react'
 import Note from '../../lib/rrrighter/src/note'
 import Notebook from '../../lib/rrrighter/src/notebook'
 import Parents from './parents'
-import {Dropdown, MenuProps} from 'antd'
-import {EditOutlined, DeleteOutlined} from '@ant-design/icons'
 import FormattedText from "./formatted-text";
 import NoteToolbar from "./note-toolbar";
 
@@ -26,7 +24,7 @@ export default function Inspector(props: {
             notebook={props.notebook}
             noteId={props.note.id}
             onEdit={() => props.onEdit(props.note)}
-            onCreateChild={(noteId: string) => props.onCreateChild(noteId)}
+            onCreateChild={props.onCreateChild}
             onAttach={props.onAttach}
             onDelete={() => props.onDelete(props.note)}
         />
