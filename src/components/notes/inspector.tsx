@@ -37,14 +37,7 @@ export default function Inspector(props: {
   }
 
   return <>
-    <div>
-      <div style={{float: "left"}}>
-        <Parents notebook={props.notebook} note={props.note} onDetach={props.onDetach} onSelect={props.onSelect} />
-      </div>
-      <div style={{float: "right"}}>
-        <AttachToParent notebook={props.notebook} child={props.note} onAttach={props.onAttach} />
-      </div>
-    </div>
+    <Parents notebook={props.notebook} note={props.note} onDetach={props.onDetach} onSelect={props.onSelect} />
 
     <div>
       <div style={{float: "right"}}>
@@ -55,6 +48,10 @@ export default function Inspector(props: {
 
       <div style={{float: "right", marginRight: "0.5em"}}>
         <NoteToolbar noteId={props.note.id} onCreateChild={(noteId: string) => props.onCreateChild(noteId)} />
+      </div>
+
+      <div style={{float: "right", marginRight: "0.5em"}}>
+        <AttachToParent notebook={props.notebook} child={props.note} onAttach={props.onAttach} />
       </div>
 
       <FormattedText text={props.note.text} />
