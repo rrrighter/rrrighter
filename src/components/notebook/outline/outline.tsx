@@ -1,10 +1,10 @@
 import React from 'react'
 import Notebook from '../../../lib/rrrighter/src/notebook'
 import Note from '../../../lib/rrrighter/src/note'
-import {Tree} from 'antd'
-import type { TreeProps } from 'antd/es/tree';
+import {Button, Tree} from 'antd'
 import NoteOutline from "../../notes/note-outline";
 import './outline.css';
+import {ZoomInOutlined} from "@ant-design/icons";
 
 interface TreeDataNodeType {
   key: string
@@ -27,19 +27,18 @@ const treeData = (notebook: Notebook): TreeDataNodeType[] => { // todo: move to 
 }
 
 export default function Outline(props: { notebook: Notebook, onNoteSelect?: Function }) {
-  const titleRender = (node: TreeDataNodeType) => <NoteOutline
-      notebook={props.notebook} note={node.note}
-  />
-
-  const onSelect: TreeProps['onSelect'] = (_selectedKeys, info) => {
-    const node = info.node as unknown as TreeDataNodeType
-    props.onNoteSelect && props.onNoteSelect(node.note.id)
-  };
+  const titleRender = (node: TreeDataNodeType) => <>
+    <NoteOutline
+        notebook={props.notebook} note={node.note}
+    />
+    <div style={{float: "right"}}>
+      <Button className="zoom" type="text" size="small" onClick={() => props.onNoteSelect && props.onNoteSelect(node.note.id)} icon={<ZoomInOutlined />} />
+    </div>
+  </>
 
   return <Tree
       treeData={treeData(props.notebook)}
       blockNode
       titleRender={titleRender}
-      onSelect={onSelect}
   />
 }

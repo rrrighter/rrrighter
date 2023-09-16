@@ -1,3 +1,11 @@
 .ant-tree-title p {
     margin: 0;
 }
+
+.zoom {
+    visibility: hidden;
+}
+
+.ant-tree-node-content-wrapper:hover .zoom {
+    visibility: visible;
+}
