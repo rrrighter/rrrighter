@@ -49,7 +49,7 @@ export default class Notebook {
 
   children(noteId: string): Note[] | undefined {
     const note = this.get(noteId)
-    return note ? Array.from(this.#hierarchy.children(note) || []) : undefined
+    return note ? this.#hierarchy.children(note) || [] : undefined
   }
 
   parents(noteId: string): Set<Note> | undefined {

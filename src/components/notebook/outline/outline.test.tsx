@@ -39,24 +39,19 @@ test('Does not show descendants by default', async () => {
   expect(screen.queryByText(child.text)).not.toBeInTheDocument()
 })
 
-// todo group in describe Sorting
-
-test('Sorts notes by text in ascending natural sort order by default', async () => {
+test('Displays notes in insertion order', async () => {
   const notebook = new Notebook()
   const noteA = { id: '2', text: 'A' }
   const noteB = { id: '1', text: 'B' }
   notebook.upsert(noteB)
   notebook.upsert(noteA)
-  // todo: extend with more cases with 1/10/2
-  // todo: sorting for 1/2/10/11/20 // https://stackoverflow.com/a/38641281
   const isNodesInOrder = (precedingNode: HTMLElement, followingNode: HTMLElement) => {
     return precedingNode.compareDocumentPosition(followingNode) === 4
   }
   render(<Outline notebook={notebook} />)
   const a = screen.getByText(noteA.text)
   const b = screen.getByText(noteB.text)
-  expect(isNodesInOrder(a, b)).toStrictEqual(true)
-  expect(isNodesInOrder(a, b)).toStrictEqual(true)
+  expect(isNodesInOrder(b, a)).toStrictEqual(true)
 })
 
 // test('Clicking Text column header changes sorting to descending', async () => {
