@@ -1,6 +1,6 @@
 {
   "name": "rrrighter",
-  "version": "0.27.4",
+  "version": "0.28.0",
   "homepage": "https://rrrighter.github.io/rrrighter/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
@@ -14,7 +14,7 @@
     "axios": "^1.4.0",
     "browser-fs-access": "^0.34.1",
     "gh-pages": "^6.0.0",
-    "overlapping-hierarchy": "^0.5.1",
+    "ordered-overlapping-hierarchy": "^0.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hotkeys-hook": "^4.4.1",

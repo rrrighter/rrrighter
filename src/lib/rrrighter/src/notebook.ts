@@ -1,5 +1,5 @@
-import OverlappingHierarchy from "overlapping-hierarchy";
-import {LoopError, CycleError, TransitiveReductionError} from "overlapping-hierarchy";
+import OverlappingHierarchy from "ordered-overlapping-hierarchy";
+import {LoopError, CycleError, TransitiveReductionError} from "ordered-overlapping-hierarchy";
 
 import Note from "./note";
 

@@ -1,5 +1,5 @@
 import Notebook from './notebook'
-import {LoopError, CycleError, TransitiveReductionError} from "overlapping-hierarchy";
+import {LoopError, CycleError, TransitiveReductionError} from "ordered-overlapping-hierarchy";
 
 const CHILD = { id: "child", text: "child" };
 const PARENT = { id: "parent", text: "parent" };
