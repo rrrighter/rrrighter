@@ -14,9 +14,8 @@ interface TreeDataNodeType {
 }
 
 const treeData = (notebook: Notebook): TreeDataNodeType[] => { // todo: move to Rrrighter app presentation layer?
-  const sortByText = (a: Note, b: Note) => a.text.localeCompare(b.text, undefined, { numeric: true })
   const _treeData = (notes: Iterable<Note>, prefix = '', parent: Note | undefined = undefined): TreeDataNodeType[] => {
-    return Array.from(notes).sort(sortByText).map((note) => {
+    return Array.from(notes).map((note) => {
       const key = prefix + '/' + note.id
       const childrenNotes = notebook.children(note.id)
       return { key, parent, note, children: childrenNotes && childrenNotes.length > 0 ? _treeData(childrenNotes, key, note) : undefined }
