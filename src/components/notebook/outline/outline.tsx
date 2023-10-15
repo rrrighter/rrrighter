@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {ReactElement} from 'react'
 import Notebook from '../../../lib/rrrighter/src/notebook'
 import Note from '../../../lib/rrrighter/src/note'
 import {Button, Tree} from 'antd'
@@ -25,13 +25,13 @@ const treeData = (notebook: Notebook): TreeDataNodeType[] => { // todo: move to 
   return _treeData(notebook.hierarchs())
 }
 
-export default function Outline(props: { notebook: Notebook, onNoteSelect?: Function }) {
+export default function Outline(props: { notebook: Notebook, selectIcon?: ReactElement, onNoteSelect?: Function }) {
   const titleRender = (node: TreeDataNodeType) => <>
     <NoteOutline
         notebook={props.notebook} note={node.note}
     />
     <div style={{float: "right"}}>
-      <Button className="zoom" type="text" size="small" onClick={() => props.onNoteSelect && props.onNoteSelect(node.note.id)} icon={<ZoomInOutlined />} />
+      <Button className="select" type="text" size="small" onClick={() => props.onNoteSelect && props.onNoteSelect(node.note.id)} icon={props.selectIcon || <ZoomInOutlined/>} />
     </div>
   </>
 
