@@ -34,11 +34,11 @@ export default class Notebook {
     return Array.from(this.#hierarchy.hierarchs() || [])
   }
 
-  attach = (parentId: string, childId: string): LoopError | CycleError | TransitiveReductionError | void => {
+  attach = (parentId: string, childId: string, index?: number): LoopError | CycleError | TransitiveReductionError | void => {
     // TODO: consider NoteNotFoundError |OverlappingHierarchyError | void
     const parent = this.get(parentId)
     const child = this.get(childId)
-    return parent && child && this.#hierarchy.attach(parent, child)
+    return parent && child && this.#hierarchy.attach(parent, child, index)
   }
 
   detach = (parentId: string, childId: string): void => {

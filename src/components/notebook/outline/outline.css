@@ -2,10 +2,10 @@
     margin: 0;
 }
 
-.select {
+.actions {
     visibility: hidden;
 }
 
-.ant-tree-node-content-wrapper:hover .select {
+.ant-tree-node-content-wrapper:hover .actions {
     visibility: visible;
 }
