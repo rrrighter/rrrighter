@@ -13,10 +13,10 @@ export default function Inspector(props: {
   onDetach: Function,
   onAttach: Function,
   onCreateChild: Function,
-  onSelect?: Function
+  onInspect?: Function
 }) {
   return <>
-    <Parents notebook={props.notebook} note={props.note} onDetach={props.onDetach} onSelect={props.onSelect} />
+    <Parents notebook={props.notebook} note={props.note} onDetach={props.onDetach} onSelect={props.onInspect} />
 
     <div>
       <div style={{float: "right", marginRight: "0.5em"}}>

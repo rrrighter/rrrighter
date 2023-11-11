@@ -1,7 +1,7 @@
 import { fromJsonObject } from './lib/rrrighter/src/json-persistence'
 import Note from './lib/rrrighter/src/note'
 import Notebook from './lib/rrrighter/src/notebook'
-import React, { useState } from 'react'
+import React, {ReactElement, useState} from 'react'
 import {App, ConfigProvider, theme, Space, Button, Drawer, Input} from 'antd'
 import {HomeOutlined, PlusOutlined} from '@ant-design/icons'
 import CreateNote from './components/notes/create-note'
@@ -11,9 +11,18 @@ import NotebookRepository from './components/notebook/repository/notebook-reposi
 import welcome from './welcome.json'
 import SearchSelect from './components/notebook/search/search-select'
 import './rrrighter.css'
+import Prompt from "./components/prompt/prompt";
+import FormattedText from "./components/notes/formatted-text";
+import NoteActions from "./components/notes/note-actions";
 
 const { TextArea } = Input
 const initialNotebook = new Notebook(fromJsonObject(welcome))
+
+type PromptProps = {
+  title: string,
+  children: ReactElement,
+  onDismiss: Function
+}
 
 function Rrrighter() {
   const [notebook, setNotebook] = useState<Notebook>(initialNotebook)
@@ -21,6 +30,7 @@ function Rrrighter() {
   const [newNote, setNewNote] = useState<Note | undefined>(undefined)
   const [inspectorNote, setInspectorNote] = useState<Note | undefined>(undefined)
   const [editorText, setEditorText] = useState<string | undefined>(undefined)
+  const [prompt, setPrompt] = useState<PromptProps | undefined>(undefined)
 
   const showCreateNote = () => {
     setNewNoteParentId(undefined)
@@ -72,11 +82,29 @@ function Rrrighter() {
     setEditorText(note.text)
   }
 
-  const onSelect = (id: string) => {
+  const onInspect = (id: string) => {
     setInspectorNote(notebook.get(id))
   }
 
-  let inspectorPanel
+  const onPromptDismiss = () => {
+    setPrompt(undefined)
+  }
+
+  const onNoteAction = (noteId: string, action: string) => {
+    console.log(`action ${noteId}: ${action}`)
+    notebook.delete(noteId)
+    setPrompt(undefined)
+  }
+
+  const onSecondaryAction = (id: string) => {
+    setPrompt({
+        onDismiss: onPromptDismiss,
+        title: 'Note actions',
+        children: <NoteActions note={notebook.get(id)!} onAction={(action: string) => onNoteAction(id, action)} />
+    })
+  }
+
+  let inspectorPanel = <></>
   let inspectorScopeNotebook = notebook
   if (inspectorNote) {
     inspectorScopeNotebook = new Notebook(notebook)
@@ -96,14 +124,14 @@ function Rrrighter() {
           onDetach={onDetach}
           onAttach={onAttach}
           onCreateChild={onCreateChild}
-          onSelect={onSelect}
+          onInspect={onInspect}
       />
     </>
-  } else {
-    inspectorPanel = <></>
   }
 
-  const outlinePanel = <Outline notebook={inspectorScopeNotebook} onNoteSelect={onSelect} />
+  const promptComponent = prompt ? <Prompt title={prompt.title} onDismiss={prompt.onDismiss}>{prompt.children}</Prompt> : <></>
+
+  const outlinePanel = <Outline notebook={inspectorScopeNotebook} onPrimaryAction={onInspect} onSecondaryAction={onSecondaryAction} />
 
   const onEditorClose = () => {
     setEditorText(undefined)
@@ -124,6 +152,8 @@ function Rrrighter() {
   return (
     <ConfigProvider theme={{ algorithm: theme.darkAlgorithm }}>
       <App>
+        {promptComponent}
+
         <Drawer open={!!editorText} size={'large'} onClose={onEditorClose} extra={
           <Space>
             <Button onClick={onEditorClose}>Cancel</Button>
@@ -139,7 +169,7 @@ function Rrrighter() {
           </div>
 
           <div style={{ float: 'right' }}>
-            <SearchSelect notebook={notebook} onSelect={onSelect} />
+            <SearchSelect notebook={notebook} onSelect={onInspect} />
             <Button type='text' icon={<PlusOutlined />} onClick={showCreateNote}  aria-label="Add note" title="Add note" />
             {newNote && <CreateNote note={newNote} onCancel={hideCreateNote} onCreate={onCreate} />}
           </div>

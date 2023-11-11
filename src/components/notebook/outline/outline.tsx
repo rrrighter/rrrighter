@@ -1,10 +1,9 @@
 import React, {ReactElement} from 'react'
 import Notebook from '../../../lib/rrrighter/src/notebook'
 import Note from '../../../lib/rrrighter/src/note'
-import {Button, Tree} from 'antd'
+import {Tree} from 'antd'
 import NoteOutline from "../../notes/note-outline";
 import './outline.css';
-import {ZoomInOutlined, EditOutlined, ArrowUpOutlined, ArrowDownOutlined,VerticalAlignTopOutlined,VerticalAlignBottomOutlined} from "@ant-design/icons";
 
 interface TreeDataNodeType {
   key: string
@@ -25,7 +24,7 @@ const treeData = (notebook: Notebook): TreeDataNodeType[] => { // todo: move to 
   return _treeData(notebook.hierarchs())
 }
 
-export default function Outline(props: { notebook: Notebook, selectIcon?: ReactElement, onNoteSelect?: Function, onNoteAction?: Function }) {
+export default function Outline(props: { notebook: Notebook, selectIcon?: ReactElement, onPrimaryAction?: Function, onSecondaryAction?: Function, onNoteAction?: Function }) {
   const titleRender = (node: TreeDataNodeType) => <>
     <NoteOutline
         notebook={props.notebook} note={node.note}
@@ -43,7 +42,8 @@ export default function Outline(props: { notebook: Notebook, selectIcon?: ReactE
   return <Tree
       // draggable
       // onDrop={(info) => { console.dir(info) }}
-      onSelect={(_selectedKeys, e) => { props.onNoteSelect && props.onNoteSelect(e.node.note.id) }}
+      onSelect={(_selectedKeys, e) => { props.onPrimaryAction && props.onPrimaryAction(e.node.note.id) }}
+      onRightClick={(e) => { props.onSecondaryAction && props.onSecondaryAction(e.node.note.id) }}
       treeData={treeData(props.notebook)}
       blockNode
       titleRender={titleRender}
