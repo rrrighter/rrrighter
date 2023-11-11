@@ -107,6 +107,7 @@ function Rrrighter() {
   let inspectorPanel = <></>
   let inspectorScopeNotebook = notebook
   if (inspectorNote) {
+    console.time('inspectorScopeNotebook')
     inspectorScopeNotebook = new Notebook(notebook)
     const descendantIds = new Set(Array.from(notebook.descendants(inspectorNote.id) || []).map(n => n.id))
     for (const note of inspectorScopeNotebook.notes()) {
@@ -114,6 +115,7 @@ function Rrrighter() {
         inspectorScopeNotebook.delete(note.id)
       }
     }
+    console.timeEnd('inspectorScopeNotebook')
 
     inspectorPanel = <>
       <Inspector
