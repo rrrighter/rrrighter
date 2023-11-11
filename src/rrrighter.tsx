@@ -12,7 +12,6 @@ import welcome from './welcome.json'
 import SearchSelect from './components/notebook/search/search-select'
 import './rrrighter.css'
 import Prompt from "./components/prompt/prompt";
-import FormattedText from "./components/notes/formatted-text";
 import NoteActions from "./components/notes/note-actions";
 
 const { TextArea } = Input
