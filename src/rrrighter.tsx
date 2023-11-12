@@ -20,23 +20,10 @@ const initialNotebook = new Notebook(fromJsonObject(welcome))
 function Rrrighter() {
   const [notebook, setNotebook] = useState<Notebook>(initialNotebook)
   const [inspectorNote, setInspectorNote] = useState<Note | undefined>(undefined)
-  const [newNote, setNewNote] = useState<Note | undefined>(undefined)
-  const [newNoteParentId, setNewNoteParentId] = useState<string | undefined>(undefined)
   const [editNote, setEditNote] = useState<Note | undefined>(undefined)
 
   const hideNoteEditor = () => {
-    setNewNote(undefined)
     setEditNote(undefined)
-  }
-
-  const onCreateSave = (note: Note) => {
-    notebook.upsert(note)
-    if (newNoteParentId) {
-        notebook.attach(newNoteParentId, note.id)
-        setNewNoteParentId(undefined)
-    }
-    setNotebook(new Notebook(notebook))
-    hideNoteEditor()
   }
 
   const onEditSave = (note: Note) => {
@@ -70,12 +57,6 @@ function Rrrighter() {
     setNotebook(new Notebook(notebook))
   }
 
-  const onCreateChild = (parentId: string) => {
-    setNewNoteParentId(parentId)
-    // eslint-disable-next-line no-restricted-globals
-    setNewNote({ id: self.crypto.randomUUID(), text: '' })
-  }
-
   const onEdit = (note: Note) => {
     setEditNote(note)
   }
@@ -93,6 +74,13 @@ function Rrrighter() {
 
   let inspectorDrawer = <></> // todo extract into InspectorDrawer component (notebook, note, actions..) & onNoteAction(inspectorNote.id, action)
   if (inspectorNote) {
+    const onCreateChild = (text: string) => {
+      // eslint-disable-next-line no-restricted-globals
+      const id = self.crypto.randomUUID()
+      notebook.upsert({ id, text})
+      notebook.attach(inspectorNote.id, id)
+      setNotebook(new Notebook(notebook))
+    }
     const noteParents = <Parents notebook={notebook} note={inspectorNote} onDetach={onDetach} onSelect={onSelect} />
     const noteToolbar = <NoteToolbar
         notebook={notebook}
@@ -125,7 +113,6 @@ function Rrrighter() {
         </main>
         <aside>
           {inspectorDrawer}
-          {newNote && <UpdateNote note={newNote} onClose={hideNoteEditor} onSave={onCreateSave} />}
           {editNote && <UpdateNote note={editNote} onClose={hideNoteEditor} onSave={onEditSave} />}
         </aside>
       </App>

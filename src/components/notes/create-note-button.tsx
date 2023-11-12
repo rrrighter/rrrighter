@@ -22,7 +22,7 @@ export default function CreateNoteButton(props: {
     }
 
     return <>
-        <Button type='text' icon={<PlusOutlined />} onClick={showPrompt}  aria-label="Add note" title="Add note" />
+        <Button type='text' size={'small'} icon={<PlusOutlined />} onClick={showPrompt}  aria-label="Create note" title="Create note" />
         {isPromptVisible && <TextareaPrompt title='Create note' buttonText='Create' onClose={hidePrompt} onInput={onInput} />}
     </>
 }

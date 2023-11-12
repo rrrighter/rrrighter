@@ -1,9 +1,10 @@
 import React from 'react'
-import {DeleteOutlined, EditOutlined, SubnodeOutlined} from '@ant-design/icons'
+import {DeleteOutlined, EditOutlined} from '@ant-design/icons'
 
-import {Button, Dropdown, MenuProps} from 'antd'
+import {Dropdown, MenuProps} from 'antd'
 import AttachToParent from "./attach-to-parent";
 import Notebook from "../../lib/rrrighter/src/notebook";
+import CreateNoteButton from "./create-note-button";
 
 export default function NoteToolbar(props: {
     notebook: Notebook,
@@ -31,6 +32,10 @@ export default function NoteToolbar(props: {
         onClick: handleMenuClick,
     }
 
+    const onCreateChild = (text: string) => {
+        props.onCreateChild(text)
+    }
+
     return <>
         <div style={{float: "right"}}>
             <Dropdown.Button type="text" size="small" trigger={["click"]} menu={menuProps} onClick={() => props.onEdit()}>
@@ -39,6 +44,6 @@ export default function NoteToolbar(props: {
         </div>
 
         <AttachToParent notebook={props.notebook} childId={props.noteId} onAttach={props.onAttach} />
-        <Button type="text" size="small" onClick={() => props.onCreateChild(props.noteId)} icon={<SubnodeOutlined />} aria-label="Add child note" title="Add child note" />
+        <CreateNoteButton onCreate={onCreateChild} />
     </>
 }
