@@ -3,9 +3,7 @@ import {PlusOutlined} from "@ant-design/icons";
 import React, {useState} from 'react'
 import TextareaPrompt from "../prompt/textarea-prompt";
 
-export default function CreateNoteButton(props: {
-    onCreate: Function
-}) {
+export default function CreateNoteButton(props: { onCreate: Function }) {
     const [isPromptVisible, setIsPromptVisible] = useState<boolean>(false)
 
     const showPrompt = () => {
