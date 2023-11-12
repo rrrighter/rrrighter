@@ -8,9 +8,10 @@ export default function TextareaPrompt(props: {
   title: string,
   buttonText: string,
   onClose: Function,
-  onInput: Function
+  onInput: Function,
+  text?: string
 }) {
-  const [text, setText] = React.useState('')
+  const [text, setText] = React.useState(props.text || '')
   const inputRef = React.createRef<TextAreaRef>()
 
   const onTextChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {

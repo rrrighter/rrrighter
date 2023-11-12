@@ -1,23 +1,25 @@
 import React from 'react'
-import {DeleteOutlined, EditOutlined} from '@ant-design/icons'
+import {DeleteOutlined} from '@ant-design/icons'
 
 import {Button, Popconfirm} from 'antd'
 import AttachToParent from "./attach-to-parent";
 import Notebook from "../../lib/rrrighter/src/notebook";
 import CreateNoteButton from "./create-note-button";
+import EditNoteButton from "./edit-note-button";
+import Note from "../../lib/rrrighter/src/note";
 
 export default function NoteToolbar(props: {
     notebook: Notebook,
-    noteId: string,
+    note: Note,
     onEdit: Function,
     onDelete: Function,
     onCreateChild: Function,
     onAttach: Function
 }) {
     return <>
-        <AttachToParent notebook={props.notebook} childId={props.noteId} onAttach={props.onAttach} />
+        <AttachToParent notebook={props.notebook} childId={props.note.id} onAttach={props.onAttach} />
         <CreateNoteButton onCreate={props.onCreateChild} />
-        <Button type="text" size="small" icon={<EditOutlined />} onClick={() => props.onEdit()} />
+        <EditNoteButton text={props.note.text} onEdit={props.onEdit} />
 
         <Popconfirm
             title="Delete the note"

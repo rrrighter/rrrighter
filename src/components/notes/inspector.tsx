@@ -7,7 +7,6 @@ import Outline from "../notebook/outline/outline";
 export default function Inspector(props: {
   notebook: Notebook,
   note: Note,
-  onEdit: Function,
   onSelect?: Function
 }) {
   const inspectorScopeNotebook = new Notebook(props.notebook)
@@ -19,9 +18,7 @@ export default function Inspector(props: {
   }
 
   return <div>
-    <span style={{cursor: "pointer"}} onClick={() => props.onEdit(props.note)}>
-      <FormattedText text={props.note.text} />
-    </span>
+    <FormattedText text={props.note.text} />
 
     <Outline notebook={inspectorScopeNotebook} onSelect={props.onSelect} />
   </div>

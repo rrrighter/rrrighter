@@ -4,7 +4,6 @@ import Notebook from './lib/rrrighter/src/notebook'
 import React, {useState} from 'react'
 import {App, ConfigProvider, theme, Button, Drawer} from 'antd'
 import {HomeOutlined} from '@ant-design/icons'
-import UpdateNote from './components/notes/update-note'
 import Outline from './components/notebook/outline/outline'
 import Inspector from './components/notes/inspector'
 import NotebookRepository from './components/notebook/repository/notebook-repository'
@@ -20,19 +19,6 @@ const initialNotebook = new Notebook(fromJsonObject(welcome))
 function Rrrighter() {
   const [notebook, setNotebook] = useState<Notebook>(initialNotebook)
   const [inspectorNote, setInspectorNote] = useState<Note | undefined>(undefined)
-  const [editNote, setEditNote] = useState<Note | undefined>(undefined)
-
-  const hideNoteEditor = () => {
-    setEditNote(undefined)
-  }
-
-  const onEditSave = (note: Note) => {
-    notebook.upsert(note)
-    setInspectorNote({ id: note.id, text: note.text })
-    hideNoteEditor()
-
-    setNotebook(new Notebook(notebook))
-  }
 
   const onDelete = (note: Note) => {
     // todo: confirm action, show number of children
@@ -57,15 +43,11 @@ function Rrrighter() {
     setNotebook(new Notebook(notebook))
   }
 
-  const onEdit = (note: Note) => {
-    setEditNote(note)
-  }
-
   const onSelect = (id: string) => {
     setInspectorNote(notebook.get(id))
   }
 
-  const onCreateHierarchNote = (text: string) => {
+  const onCreateHierarch = (text: string) => {
     // eslint-disable-next-line no-restricted-globals
     const id = self.crypto.randomUUID()
     notebook.upsert({ id, text})
@@ -81,17 +63,23 @@ function Rrrighter() {
       notebook.attach(inspectorNote.id, id)
       setNotebook(new Notebook(notebook))
     }
+    const onEdit = (text: string) => {
+      const id = inspectorNote.id
+      notebook.upsert({ id, text})
+      setNotebook(new Notebook(notebook))
+      setInspectorNote(notebook.get(id))
+    }
     const noteParents = <Parents notebook={notebook} note={inspectorNote} onDetach={onDetach} onSelect={onSelect} />
     const noteToolbar = <NoteToolbar
         notebook={notebook}
-        noteId={inspectorNote.id}
-        onEdit={() => onEdit(inspectorNote)}
+        note={inspectorNote}
+        onEdit={onEdit}
         onCreateChild={onCreateChild}
         onAttach={onAttach}
         onDelete={() => onDelete(inspectorNote)}
     />
     inspectorDrawer = <Drawer open={true} size={'large'} title={noteParents} extra={noteToolbar} onClose={() => setInspectorNote(undefined)}>
-      <Inspector notebook={notebook} note={inspectorNote} onEdit={onEdit} onSelect={onSelect} />
+      <Inspector notebook={notebook} note={inspectorNote} onSelect={onSelect} />
     </Drawer>
   }
 
@@ -105,7 +93,7 @@ function Rrrighter() {
           </div>
           <div style={{ float: 'right' }}>
             <SearchSelect notebook={notebook} onSelect={onSelect} />
-            <CreateNoteButton onCreate={onCreateHierarchNote} />
+            <CreateNoteButton onCreate={onCreateHierarch} />
           </div>
         </header>
         <main>
@@ -113,7 +101,6 @@ function Rrrighter() {
         </main>
         <aside>
           {inspectorDrawer}
-          {editNote && <UpdateNote note={editNote} onClose={hideNoteEditor} onSave={onEditSave} />}
         </aside>
       </App>
     </ConfigProvider>
