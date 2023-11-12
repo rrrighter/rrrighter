@@ -1,7 +1,7 @@
 import { fromJsonObject } from './lib/rrrighter/src/json-persistence'
 import Note from './lib/rrrighter/src/note'
 import Notebook from './lib/rrrighter/src/notebook'
-import React, {ReactElement, useState} from 'react'
+import React, {useState} from 'react'
 import {App, ConfigProvider, theme, Button, Drawer} from 'antd'
 import {HomeOutlined, PlusOutlined} from '@ant-design/icons'
 import UpdateNote from './components/notes/update-note'
@@ -11,16 +11,8 @@ import NotebookRepository from './components/notebook/repository/notebook-reposi
 import welcome from './welcome.json'
 import SearchSelect from './components/notebook/search/search-select'
 import './rrrighter.css'
-import Prompt from "./components/prompt/prompt";
-// import NoteActions from "./components/notes/note-actions";
 
 const initialNotebook = new Notebook(fromJsonObject(welcome))
-
-type PromptProps = {
-  title: string,
-  children: ReactElement,
-  onDismiss: Function
-}
 
 function Rrrighter() {
   const [notebook, setNotebook] = useState<Notebook>(initialNotebook)
@@ -28,7 +20,6 @@ function Rrrighter() {
   const [newNote, setNewNote] = useState<Note | undefined>(undefined)
   const [editNote, setEditNote] = useState<Note | undefined>(undefined)
   const [inspectorNote, setInspectorNote] = useState<Note | undefined>(undefined)
-  const [prompt, setPrompt] = useState<PromptProps | undefined>(undefined)
 
   const showCreateNote = () => {
     setNewNoteParentId(undefined)
@@ -130,13 +121,9 @@ function Rrrighter() {
     </Drawer>
   }
 
-  const promptComponent = prompt ? <Prompt title={prompt.title} onDismiss={prompt.onDismiss}>{prompt.children}</Prompt> : <></>
-
   return (
     <ConfigProvider theme={{ algorithm: theme.darkAlgorithm }}>
       <App>
-        {promptComponent}
-
         <header>
           <div style={{ float: 'left' }}>
             <NotebookRepository filename="welcome" notebook={notebook} onNotebookOpen={setNotebook} />
