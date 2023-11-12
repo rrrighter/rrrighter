@@ -144,14 +144,16 @@ function Rrrighter() {
           <div style={{ float: 'right' }}>
             <SearchSelect notebook={notebook} onSelect={onInspect} />
             <Button type='text' icon={<PlusOutlined />} onClick={showCreateNote}  aria-label="Add note" title="Add note" />
-            {newNote && <UpdateNote note={newNote} onCancel={hideCreateNote} onSave={onCreateSave} />}
-            {editNote && <UpdateNote note={editNote} onCancel={hideEditNote} onSave={onEditSave} />}
           </div>
         </header>
         <main>
           <Outline notebook={notebook} onPrimaryAction={onInspect} onSecondaryAction={onSecondaryAction} />
-          {inspectorDrawer}
         </main>
+        <aside>
+          {inspectorDrawer}
+          {newNote && <UpdateNote note={newNote} onCancel={hideCreateNote} onSave={onCreateSave} />}
+          {editNote && <UpdateNote note={editNote} onCancel={hideEditNote} onSave={onEditSave} />}
+        </aside>
       </App>
     </ConfigProvider>
   )
