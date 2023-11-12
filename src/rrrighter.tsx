@@ -29,11 +29,8 @@ function Rrrighter() {
     setNewNote({ id: self.crypto.randomUUID(), text: '' })
   }
 
-  const hideCreateNote = () => {
+  const hideNoteEditor = () => {
     setNewNote(undefined)
-  }
-
-  const hideEditNote = () => {
     setEditNote(undefined)
   }
 
@@ -43,7 +40,7 @@ function Rrrighter() {
         notebook.attach(newNoteParentId, newNote.id)
     }
     setNotebook(new Notebook(notebook))
-    hideCreateNote()
+    hideNoteEditor()
   }
 
   const onDelete = (note: Note) => {
@@ -77,7 +74,7 @@ function Rrrighter() {
     notebook.upsert(note)
     setNotebook(new Notebook(notebook))
     setInspectorNote({ id: note.id, text: note.text })
-    hideEditNote()
+    hideNoteEditor()
   }
 
   const onEdit = (note: Note) => {
@@ -112,7 +109,6 @@ function Rrrighter() {
             <NotebookRepository filename="welcome" notebook={notebook} onNotebookOpen={setNotebook} />
             <Button type="text" icon={<HomeOutlined />} size="small" aria-label="Home" title="Home" onClick={() => setInspectorNote(undefined)} />
           </div>
-
           <div style={{ float: 'right' }}>
             <SearchSelect notebook={notebook} onSelect={onInspect} />
             <Button type='text' icon={<PlusOutlined />} onClick={showCreateNote}  aria-label="Add note" title="Add note" />
@@ -123,8 +119,8 @@ function Rrrighter() {
         </main>
         <aside>
           {inspectorDrawer}
-          {newNote && <UpdateNote note={newNote} onCancel={hideCreateNote} onSave={onCreateSave} />}
-          {editNote && <UpdateNote note={editNote} onCancel={hideEditNote} onSave={onEditSave} />}
+          {newNote && <UpdateNote note={newNote} onClose={hideNoteEditor} onSave={onCreateSave} />}
+          {editNote && <UpdateNote note={editNote} onClose={hideNoteEditor} onSave={onEditSave} />}
         </aside>
       </App>
     </ConfigProvider>

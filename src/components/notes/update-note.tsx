@@ -5,7 +5,7 @@ import {TextAreaRef} from "antd/es/input/TextArea";
 
 const { TextArea } = Input;
 
-export default function UpdateNote(props: { note: Note, onCancel: Function, onSave: Function }) {
+export default function UpdateNote(props: { note: Note, onClose: Function, onSave: Function }) {
     const [text, setText] = React.useState(props.note.text)
     const inputRef = React.createRef<TextAreaRef>()
 
@@ -13,8 +13,8 @@ export default function UpdateNote(props: { note: Note, onCancel: Function, onSa
         setText(e.target.value)
     }
 
-    const onCancel = () => {
-        props.onCancel()
+    const onClose = () => {
+        props.onClose()
     }
 
     const onSave = () => {
@@ -26,9 +26,9 @@ export default function UpdateNote(props: { note: Note, onCancel: Function, onSa
     };
 
     return (
-        <Drawer title="Note" size={"large"} open={true} afterOpenChange={setFocus} onClose={onCancel} extra={
+        <Drawer title="Note" size={"large"} open={true} afterOpenChange={setFocus} onClose={onClose} extra={
             <Space>
-                <Button onClick={onCancel}>Cancel</Button>
+                <Button onClick={onClose}>Cancel</Button>
                 <Button type={"primary"} onClick={onSave}>Save</Button>
             </Space>
         }>
