@@ -103,20 +103,9 @@ function Rrrighter() {
     })
   }
 
-  let inspectorPanel = <></>
-  let inspectorScopeNotebook = notebook
+  let inspectorDrawer = <></>
   if (inspectorNote) {
-    console.time('inspectorScopeNotebook')
-    inspectorScopeNotebook = new Notebook(notebook)
-    const descendantIds = new Set(Array.from(notebook.descendants(inspectorNote.id) || []).map(n => n.id))
-    for (const note of inspectorScopeNotebook.notes()) {
-      if (!descendantIds.has(note.id)) {
-        inspectorScopeNotebook.delete(note.id)
-      }
-    }
-    console.timeEnd('inspectorScopeNotebook')
-
-    inspectorPanel = <>
+    inspectorDrawer = <Drawer size={'large'} open={true} onClose={() => setInspectorNote(undefined)}>
       <Inspector
           notebook={notebook}
           note={inspectorNote}
@@ -127,12 +116,10 @@ function Rrrighter() {
           onCreateChild={onCreateChild}
           onInspect={onInspect}
       />
-    </>
+    </Drawer>
   }
 
   const promptComponent = prompt ? <Prompt title={prompt.title} onDismiss={prompt.onDismiss}>{prompt.children}</Prompt> : <></>
-
-  const outlinePanel = <Outline notebook={inspectorScopeNotebook} onPrimaryAction={onInspect} onSecondaryAction={onSecondaryAction} />
 
   const onEditorClose = () => {
     setEditorText(undefined)
@@ -155,7 +142,7 @@ function Rrrighter() {
       <App>
         {promptComponent}
 
-        <Drawer open={!!editorText} size={'large'} onClose={onEditorClose} extra={
+        <Drawer zIndex={3000} open={!!editorText} size={'large'} onClose={onEditorClose} extra={
           <Space>
             <Button onClick={onEditorClose}>Cancel</Button>
             <Button type="primary" onClick={onEditorSave}>Save</Button>
@@ -176,8 +163,8 @@ function Rrrighter() {
           </div>
         </header>
         <main>
-          {inspectorPanel}
-          {outlinePanel}
+          <Outline notebook={notebook} onPrimaryAction={onInspect} onSecondaryAction={onSecondaryAction} />
+          {inspectorDrawer}
         </main>
       </App>
     </ConfigProvider>

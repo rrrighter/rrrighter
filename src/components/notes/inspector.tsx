@@ -4,6 +4,7 @@ import Notebook from '../../lib/rrrighter/src/notebook'
 import Parents from './parents'
 import FormattedText from "./formatted-text";
 import NoteToolbar from "./note-toolbar";
+import Outline from "../notebook/outline/outline";
 
 export default function Inspector(props: {
   notebook: Notebook,
@@ -15,6 +16,14 @@ export default function Inspector(props: {
   onCreateChild: Function,
   onInspect?: Function
 }) {
+  const inspectorScopeNotebook = new Notebook(props.notebook)
+  const descendantIds = new Set(Array.from(props.notebook.descendants(props.note.id) || []).map(n => n.id))
+  for (const note of inspectorScopeNotebook.notes()) {
+    if (!descendantIds.has(note.id)) {
+      inspectorScopeNotebook.delete(note.id)
+    }
+  }
+
   return <>
     <Parents notebook={props.notebook} note={props.note} onDetach={props.onDetach} onSelect={props.onInspect} />
 
@@ -31,6 +40,8 @@ export default function Inspector(props: {
       </div>
 
       <FormattedText text={props.note.text} />
+
+      <Outline notebook={inspectorScopeNotebook} onPrimaryAction={props.onInspect} />
     </div>
   </>
 }
