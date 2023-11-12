@@ -2,9 +2,9 @@ import { fromJsonObject } from './lib/rrrighter/src/json-persistence'
 import Note from './lib/rrrighter/src/note'
 import Notebook from './lib/rrrighter/src/notebook'
 import React, {ReactElement, useState} from 'react'
-import {App, ConfigProvider, theme, Space, Button, Drawer, Input} from 'antd'
+import {App, ConfigProvider, theme, Button, Drawer} from 'antd'
 import {HomeOutlined, PlusOutlined} from '@ant-design/icons'
-import CreateNote from './components/notes/create-note'
+import UpdateNote from './components/notes/update-note'
 import Outline from './components/notebook/outline/outline'
 import Inspector from './components/notes/inspector'
 import NotebookRepository from './components/notebook/repository/notebook-repository'
@@ -14,7 +14,6 @@ import './rrrighter.css'
 import Prompt from "./components/prompt/prompt";
 import NoteActions from "./components/notes/note-actions";
 
-const { TextArea } = Input
 const initialNotebook = new Notebook(fromJsonObject(welcome))
 
 type PromptProps = {
@@ -27,8 +26,8 @@ function Rrrighter() {
   const [notebook, setNotebook] = useState<Notebook>(initialNotebook)
   const [newNoteParentId, setNewNoteParentId] = useState<string | undefined>(undefined)
   const [newNote, setNewNote] = useState<Note | undefined>(undefined)
+  const [editNote, setEditNote] = useState<Note | undefined>(undefined)
   const [inspectorNote, setInspectorNote] = useState<Note | undefined>(undefined)
-  const [editorText, setEditorText] = useState<string | undefined>(undefined)
   const [prompt, setPrompt] = useState<PromptProps | undefined>(undefined)
 
   const showCreateNote = () => {
@@ -41,7 +40,11 @@ function Rrrighter() {
     setNewNote(undefined)
   }
 
-  const onCreate = (newNote: Note) => {
+  const hideEditNote = () => {
+    setEditNote(undefined)
+  }
+
+  const onCreateSave = (newNote: Note) => {
     notebook.upsert(newNote)
     if (newNoteParentId) {
         notebook.attach(newNoteParentId, newNote.id)
@@ -77,8 +80,14 @@ function Rrrighter() {
     setNewNote({ id: self.crypto.randomUUID(), text: '' })
   }
 
+  const onEditSave = (note: Note) => {
+    notebook.upsert(note)
+    setNotebook(new Notebook(notebook))
+    hideEditNote()
+  }
+
   const onEdit = (note: Note) => {
-    setEditorText(note.text)
+    setEditNote(note)
   }
 
   const onInspect = (id: string) => {
@@ -121,35 +130,11 @@ function Rrrighter() {
 
   const promptComponent = prompt ? <Prompt title={prompt.title} onDismiss={prompt.onDismiss}>{prompt.children}</Prompt> : <></>
 
-  const onEditorClose = () => {
-    setEditorText(undefined)
-  }
-
-  const onEditorTextChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setEditorText(event.target.value)
-  }
-
-  const onEditorSave = () => {
-    if (inspectorNote) {
-      notebook.upsert({ id: inspectorNote.id, text: editorText || '' })
-    }
-    setEditorText(undefined)
-    setNotebook(new Notebook(notebook))
-  }
-
   return (
     <ConfigProvider theme={{ algorithm: theme.darkAlgorithm }}>
       <App>
         {promptComponent}
 
-        <Drawer zIndex={3000} open={!!editorText} size={'large'} onClose={onEditorClose} extra={
-          <Space>
-            <Button onClick={onEditorClose}>Cancel</Button>
-            <Button type="primary" onClick={onEditorSave}>Save</Button>
-          </Space>
-        }>
-          <TextArea style={{ height: '100%' }} rows={10} value={editorText} onChange={onEditorTextChange} />
-        </Drawer>
         <header>
           <div style={{ float: 'left' }}>
             <NotebookRepository filename="welcome" notebook={notebook} onNotebookOpen={setNotebook} />
@@ -159,7 +144,8 @@ function Rrrighter() {
           <div style={{ float: 'right' }}>
             <SearchSelect notebook={notebook} onSelect={onInspect} />
             <Button type='text' icon={<PlusOutlined />} onClick={showCreateNote}  aria-label="Add note" title="Add note" />
-            {newNote && <CreateNote note={newNote} onCancel={hideCreateNote} onCreate={onCreate} />}
+            {newNote && <UpdateNote note={newNote} onCancel={hideCreateNote} onSave={onCreateSave} />}
+            {editNote && <UpdateNote note={editNote} onCancel={hideEditNote} onSave={onEditSave} />}
           </div>
         </header>
         <main>
