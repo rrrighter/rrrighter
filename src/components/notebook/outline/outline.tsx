@@ -24,26 +24,13 @@ const treeData = (notebook: Notebook): TreeDataNodeType[] => { // todo: move to 
   return _treeData(notebook.hierarchs())
 }
 
-export default function Outline(props: { notebook: Notebook, selectIcon?: ReactElement, onPrimaryAction?: Function, onSecondaryAction?: Function, onNoteAction?: Function }) {
-  const titleRender = (node: TreeDataNodeType) => <>
-    <NoteOutline
-        notebook={props.notebook} note={node.note}
-    />
-    {/*<div className="actions" style={{float: "right"}}>*/}
-      {/*<Button className="select" type="text" size="small" onClick={() => props.onNoteAction && props.onNoteAction('zoom', node.note.id)} icon={props.selectIcon || <ZoomInOutlined/>} />*/}
-      {/*<Button className="top" type="text" size="small" onClick={() => props.onNoteAction && props.onNoteAction(node.note.id, 'top')} icon={<VerticalAlignTopOutlined/>} />*/}
-      {/*<Button className="up" type="text" size="small" onClick={() => props.onNoteAction && props.onNoteAction('up', node)} icon={<ArrowUpOutlined/>} />*/}
-      {/*<Button className="down" type="text" size="small" onClick={() => props.onNoteAction && props.onNoteAction(node.note.id, 'down')} icon={<ArrowDownOutlined/>} />*/}
-      {/*<Button className="bottom" type="text" size="small" onClick={() => props.onNoteAction && props.onNoteAction(node.note.id, 'bottom')} icon={<VerticalAlignBottomOutlined/>} />*/}
-      {/*<Button className="edit" type="text" size="small" onClick={() => props.onNoteAction && props.onNoteAction(node.note.id, 'edit')} icon={<EditOutlined/>} />*/}
-    {/*</div>*/}
-  </>
+export default function Outline(props: { notebook: Notebook, selectIcon?: ReactElement, onSelect?: Function }) {
+  const titleRender = (node: TreeDataNodeType) => <NoteOutline notebook={props.notebook} note={node.note} />
 
   return <Tree
       // draggable
       // onDrop={(info) => { console.dir(info) }}
-      onSelect={(_selectedKeys, e) => { props.onPrimaryAction && props.onPrimaryAction(e.node.note.id) }}
-      onRightClick={(e) => { props.onSecondaryAction && props.onSecondaryAction(e.node.note.id) }}
+      onSelect={(_selectedKeys, e) => { props.onSelect && props.onSelect(e.node.note.id) }}
       treeData={treeData(props.notebook)}
       blockNode
       titleRender={titleRender}

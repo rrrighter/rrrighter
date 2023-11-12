@@ -41,7 +41,7 @@ export default function Inspector(props: {
 
       <FormattedText text={props.note.text} />
 
-      <Outline notebook={inspectorScopeNotebook} onPrimaryAction={props.onInspect} />
+      <Outline notebook={inspectorScopeNotebook} onSelect={props.onInspect} />
     </div>
   </>
 }

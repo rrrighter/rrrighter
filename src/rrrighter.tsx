@@ -12,7 +12,7 @@ import welcome from './welcome.json'
 import SearchSelect from './components/notebook/search/search-select'
 import './rrrighter.css'
 import Prompt from "./components/prompt/prompt";
-import NoteActions from "./components/notes/note-actions";
+// import NoteActions from "./components/notes/note-actions";
 
 const initialNotebook = new Notebook(fromJsonObject(welcome))
 
@@ -53,7 +53,7 @@ function Rrrighter() {
     hideCreateNote()
   }
 
-  const onDeleteFromInspector = (note: Note) => {
+  const onDelete = (note: Note) => {
     // todo: confirm action, show number of children
     // todo: handle case with children
     notebook.delete(note.id)
@@ -94,32 +94,33 @@ function Rrrighter() {
     setInspectorNote(notebook.get(id))
   }
 
-  const onPromptDismiss = () => {
-    setPrompt(undefined)
-  }
+  // const onPromptDismiss = () => {
+  //   setPrompt(undefined)
+  // }
 
-  const onNoteAction = (noteId: string, action: string) => {
-    console.log(`action ${noteId}: ${action}`)
-    notebook.delete(noteId)
-    setPrompt(undefined)
-  }
+  // const onNoteAction = (noteId: string, action: string) => {
+  //   console.log(`action ${noteId}: ${action}`)
+  //   notebook.delete(noteId)
+  //   setPrompt(undefined)
+  // }
 
-  const onSecondaryAction = (id: string) => {
-    setPrompt({
-        onDismiss: onPromptDismiss,
-        title: 'Note actions',
-        children: <NoteActions note={notebook.get(id)!} onAction={(action: string) => onNoteAction(id, action)} />
-    })
-  }
+  // const onSecondaryAction = (id: string) => {
+  //   setPrompt({
+  //       onDismiss: onPromptDismiss,
+  //       title: 'Note actions',
+  //       children: <NoteActions note={notebook.get(id)!} onAction={(action: string) => onNoteAction(id, action)} />
+  //   })
+  // }
 
   let inspectorDrawer = <></>
   if (inspectorNote) {
-    inspectorDrawer = <Drawer size={'large'} open={true} onClose={() => setInspectorNote(undefined)}>
+    // todo: move note actions to the drawer toolbar as extra?
+    inspectorDrawer = <Drawer title='Note' size={'large'} open={true} onClose={() => setInspectorNote(undefined)}>
       <Inspector
           notebook={notebook}
           note={inspectorNote}
           onEdit={onEdit}
-          onDelete={onDeleteFromInspector}
+          onDelete={onDelete}
           onDetach={onDetach}
           onAttach={onAttach}
           onCreateChild={onCreateChild}
@@ -147,7 +148,7 @@ function Rrrighter() {
           </div>
         </header>
         <main>
-          <Outline notebook={notebook} onPrimaryAction={onInspect} onSecondaryAction={onSecondaryAction} />
+          <Outline notebook={notebook} onSelect={onInspect} />
         </main>
         <aside>
           {inspectorDrawer}
