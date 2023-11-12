@@ -18,10 +18,10 @@ const initialNotebook = new Notebook(fromJsonObject(welcome))
 
 function Rrrighter() {
   const [notebook, setNotebook] = useState<Notebook>(initialNotebook)
-  const [newNoteParentId, setNewNoteParentId] = useState<string | undefined>(undefined)
-  const [newNote, setNewNote] = useState<Note | undefined>(undefined)
-  const [editNote, setEditNote] = useState<Note | undefined>(undefined)
   const [inspectorNote, setInspectorNote] = useState<Note | undefined>(undefined)
+  const [newNote, setNewNote] = useState<Note | undefined>(undefined)
+  const [newNoteParentId, setNewNoteParentId] = useState<string | undefined>(undefined)
+  const [editNote, setEditNote] = useState<Note | undefined>(undefined)
 
   const showCreateNote = () => {
     setNewNoteParentId(undefined)
@@ -34,13 +34,22 @@ function Rrrighter() {
     setEditNote(undefined)
   }
 
-  const onCreateSave = (newNote: Note) => {
-    notebook.upsert(newNote)
+  const onCreateSave = (note: Note) => {
+    notebook.upsert(note)
     if (newNoteParentId) {
-        notebook.attach(newNoteParentId, newNote.id)
+        notebook.attach(newNoteParentId, note.id)
+        setNewNoteParentId(undefined)
     }
     setNotebook(new Notebook(notebook))
     hideNoteEditor()
+  }
+
+  const onEditSave = (note: Note) => {
+    notebook.upsert(note)
+    setInspectorNote({ id: note.id, text: note.text })
+    hideNoteEditor()
+
+    setNotebook(new Notebook(notebook))
   }
 
   const onDelete = (note: Note) => {
@@ -48,11 +57,13 @@ function Rrrighter() {
     // todo: handle case with children
     notebook.delete(note.id)
     setInspectorNote(undefined)
+
     setNotebook(new Notebook(notebook))
   }
 
   const onDetach = (parent: Note, child: Note) => {
     notebook.detach(parent.id, child.id)
+
     setNotebook(new Notebook(notebook))
   }
 
@@ -70,24 +81,17 @@ function Rrrighter() {
     setNewNote({ id: self.crypto.randomUUID(), text: '' })
   }
 
-  const onEditSave = (note: Note) => {
-    notebook.upsert(note)
-    setNotebook(new Notebook(notebook))
-    setInspectorNote({ id: note.id, text: note.text })
-    hideNoteEditor()
-  }
-
   const onEdit = (note: Note) => {
     setEditNote(note)
   }
 
-  const onInspect = (id: string) => {
+  const onSelect = (id: string) => {
     setInspectorNote(notebook.get(id))
   }
 
-  let inspectorDrawer = <></>
+  let inspectorDrawer = <></> // todo extract into InspectorDrawer component (notebook, note, actions..) & onNoteAction(inspectorNote.id, action)
   if (inspectorNote) {
-    const noteParents = <Parents notebook={notebook} note={inspectorNote} onDetach={onDetach} onSelect={onInspect} />
+    const noteParents = <Parents notebook={notebook} note={inspectorNote} onDetach={onDetach} onSelect={onSelect} />
     const noteToolbar = <NoteToolbar
         notebook={notebook}
         noteId={inspectorNote.id}
@@ -97,7 +101,7 @@ function Rrrighter() {
         onDelete={() => onDelete(inspectorNote)}
     />
     inspectorDrawer = <Drawer open={true} size={'large'} title={noteParents} extra={noteToolbar} onClose={() => setInspectorNote(undefined)}>
-      <Inspector notebook={notebook} note={inspectorNote} onEdit={onEdit} onInspect={onInspect} />
+      <Inspector notebook={notebook} note={inspectorNote} onEdit={onEdit} onSelect={onSelect} />
     </Drawer>
   }
 
@@ -110,12 +114,12 @@ function Rrrighter() {
             <Button type="text" icon={<HomeOutlined />} size="small" aria-label="Home" title="Home" onClick={() => setInspectorNote(undefined)} />
           </div>
           <div style={{ float: 'right' }}>
-            <SearchSelect notebook={notebook} onSelect={onInspect} />
+            <SearchSelect notebook={notebook} onSelect={onSelect} />
             <Button type='text' icon={<PlusOutlined />} onClick={showCreateNote}  aria-label="Add note" title="Add note" />
           </div>
         </header>
         <main>
-          <Outline notebook={notebook} onSelect={onInspect} />
+          <Outline notebook={notebook} onSelect={onSelect} />
         </main>
         <aside>
           {inspectorDrawer}

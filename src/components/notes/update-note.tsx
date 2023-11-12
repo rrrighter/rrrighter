@@ -5,6 +5,7 @@ import {TextAreaRef} from "antd/es/input/TextArea";
 
 const { TextArea } = Input;
 
+// todo transform into generic textarea prompt
 export default function UpdateNote(props: { note: Note, onClose: Function, onSave: Function }) {
     const [text, setText] = React.useState(props.note.text)
     const inputRef = React.createRef<TextAreaRef>()

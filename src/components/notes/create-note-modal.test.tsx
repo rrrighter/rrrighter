@@ -10,7 +10,7 @@ const onCancel = jest.fn()
 const onCreate = jest.fn()
 
 const renderComponent = () => {
-    render(<UpdateNote note={note} onCancel={onCancel} onSave={onCreate} />)
+    render(<UpdateNote note={note} onClose={onCancel} onSave={onCreate} />)
 }
 
 beforeEach(renderComponent)
