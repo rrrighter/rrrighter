@@ -2,7 +2,7 @@ import React from 'react'
 import {Drawer} from "antd";
 
 export default function Prompt(props: {
-  title: React.ReactElement,
+  title: React.ReactNode,
   onClose: Function,
   children: React.ReactElement
 }) {

@@ -3,7 +3,7 @@ import Note from './lib/rrrighter/src/note'
 import Notebook from './lib/rrrighter/src/notebook'
 import React, {useState} from 'react'
 import {App, ConfigProvider, theme, Button, Drawer} from 'antd'
-import {HomeOutlined, PlusOutlined} from '@ant-design/icons'
+import {HomeOutlined} from '@ant-design/icons'
 import UpdateNote from './components/notes/update-note'
 import Outline from './components/notebook/outline/outline'
 import Inspector from './components/notes/inspector'
@@ -13,6 +13,7 @@ import SearchSelect from './components/notebook/search/search-select'
 import './rrrighter.css'
 import NoteToolbar from "./components/notes/note-toolbar";
 import Parents from "./components/notes/parents";
+import CreateNoteButton from "./components/notes/create-note-button";
 
 const initialNotebook = new Notebook(fromJsonObject(welcome))
 
@@ -22,12 +23,6 @@ function Rrrighter() {
   const [newNote, setNewNote] = useState<Note | undefined>(undefined)
   const [newNoteParentId, setNewNoteParentId] = useState<string | undefined>(undefined)
   const [editNote, setEditNote] = useState<Note | undefined>(undefined)
-
-  const showCreateNote = () => {
-    setNewNoteParentId(undefined)
-    // eslint-disable-next-line no-restricted-globals
-    setNewNote({ id: self.crypto.randomUUID(), text: '' })
-  }
 
   const hideNoteEditor = () => {
     setNewNote(undefined)
@@ -89,6 +84,13 @@ function Rrrighter() {
     setInspectorNote(notebook.get(id))
   }
 
+  const onCreateHierarchNote = (text: string) => {
+    // eslint-disable-next-line no-restricted-globals
+    const id = self.crypto.randomUUID()
+    notebook.upsert({ id, text})
+    setNotebook(new Notebook(notebook))
+  }
+
   let inspectorDrawer = <></> // todo extract into InspectorDrawer component (notebook, note, actions..) & onNoteAction(inspectorNote.id, action)
   if (inspectorNote) {
     const noteParents = <Parents notebook={notebook} note={inspectorNote} onDetach={onDetach} onSelect={onSelect} />
@@ -115,7 +117,7 @@ function Rrrighter() {
           </div>
           <div style={{ float: 'right' }}>
             <SearchSelect notebook={notebook} onSelect={onSelect} />
-            <Button type='text' icon={<PlusOutlined />} onClick={showCreateNote}  aria-label="Add note" title="Add note" />
+            <CreateNoteButton onCreate={onCreateHierarchNote} />
           </div>
         </header>
         <main>
