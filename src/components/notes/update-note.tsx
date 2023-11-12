@@ -22,7 +22,7 @@ export default function UpdateNote(props: { note: Note, onCancel: Function, onSa
     }
 
     const setFocus = (isOpen: boolean) => {
-        isOpen && inputRef?.current?.focus();
+        isOpen && inputRef?.current?.focus({ cursor: 'end' });
     };
 
     return (

@@ -114,6 +114,7 @@ function Rrrighter() {
 
   let inspectorDrawer = <></>
   if (inspectorNote) {
+    // todo: delete button inside edit drawer
     // todo: move note actions to the drawer toolbar as extra?
     inspectorDrawer = <Drawer title='Note' size={'large'} open={true} onClose={() => setInspectorNote(undefined)}>
       <Inspector

@@ -39,7 +39,9 @@ export default function Inspector(props: {
         />
       </div>
 
-      <FormattedText text={props.note.text} />
+      <span style={{cursor: "pointer"}} onClick={() => props.onEdit(props.note)}>
+        <FormattedText text={props.note.text} />
+      </span>
 
       <Outline notebook={inspectorScopeNotebook} onSelect={props.onInspect} />
     </div>
