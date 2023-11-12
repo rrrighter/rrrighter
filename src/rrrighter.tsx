@@ -11,6 +11,8 @@ import NotebookRepository from './components/notebook/repository/notebook-reposi
 import welcome from './welcome.json'
 import SearchSelect from './components/notebook/search/search-select'
 import './rrrighter.css'
+import NoteToolbar from "./components/notes/note-toolbar";
+import Parents from "./components/notes/parents";
 
 const initialNotebook = new Notebook(fromJsonObject(welcome))
 
@@ -74,6 +76,7 @@ function Rrrighter() {
   const onEditSave = (note: Note) => {
     notebook.upsert(note)
     setNotebook(new Notebook(notebook))
+    setInspectorNote({ id: note.id, text: note.text })
     hideEditNote()
   }
 
@@ -85,39 +88,19 @@ function Rrrighter() {
     setInspectorNote(notebook.get(id))
   }
 
-  // const onPromptDismiss = () => {
-  //   setPrompt(undefined)
-  // }
-
-  // const onNoteAction = (noteId: string, action: string) => {
-  //   console.log(`action ${noteId}: ${action}`)
-  //   notebook.delete(noteId)
-  //   setPrompt(undefined)
-  // }
-
-  // const onSecondaryAction = (id: string) => {
-  //   setPrompt({
-  //       onDismiss: onPromptDismiss,
-  //       title: 'Note actions',
-  //       children: <NoteActions note={notebook.get(id)!} onAction={(action: string) => onNoteAction(id, action)} />
-  //   })
-  // }
-
   let inspectorDrawer = <></>
   if (inspectorNote) {
-    // todo: delete button inside edit drawer
-    // todo: move note actions to the drawer toolbar as extra?
-    inspectorDrawer = <Drawer title='Note' size={'large'} open={true} onClose={() => setInspectorNote(undefined)}>
-      <Inspector
-          notebook={notebook}
-          note={inspectorNote}
-          onEdit={onEdit}
-          onDelete={onDelete}
-          onDetach={onDetach}
-          onAttach={onAttach}
-          onCreateChild={onCreateChild}
-          onInspect={onInspect}
-      />
+    const noteParents = <Parents notebook={notebook} note={inspectorNote} onDetach={onDetach} onSelect={onInspect} />
+    const noteToolbar = <NoteToolbar
+        notebook={notebook}
+        noteId={inspectorNote.id}
+        onEdit={() => onEdit(inspectorNote)}
+        onCreateChild={onCreateChild}
+        onAttach={onAttach}
+        onDelete={() => onDelete(inspectorNote)}
+    />
+    inspectorDrawer = <Drawer open={true} size={'large'} title={noteParents} extra={noteToolbar} onClose={() => setInspectorNote(undefined)}>
+      <Inspector notebook={notebook} note={inspectorNote} onEdit={onEdit} onInspect={onInspect} />
     </Drawer>
   }
 
