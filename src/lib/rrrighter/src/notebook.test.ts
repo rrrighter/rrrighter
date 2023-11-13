@@ -30,7 +30,7 @@ describe('Notebook', () => {
       expect(clone.notes()).toStrictEqual(family.notes());
     });
 
-    test("Has the same relationships", () => {
+    test("Has the same structure", () => {
       for (const note of family.notes()) {
         expect(clone.parents(note.id)).toStrictEqual(family.parents(note.id));
       }
@@ -47,6 +47,24 @@ describe('Notebook', () => {
       clone.upsert(newChild);
       clone.attach(newChild.id, newParent.id);
       expect(originalNodes).toStrictEqual(family.notes());
+    });
+
+    test("Given 1000 nodes, performs NNN times faster than previous implementation", () => {
+      const measureDuration = (
+          hierarchy: Notebook
+      ): number => {
+        for (let i = 0; i < 10000; i++) {
+          hierarchy.upsert({ id: i.toString(), text: i.toString()});
+        }
+        const start = Date.now();
+        new Notebook(hierarchy);
+        return Date.now() - start;
+      };
+
+      // const oldDuration = measureDuration(new OldImplementation());
+      const newDuration = measureDuration(new Notebook());
+
+      expect(newDuration).toBeLessThan(10);
     });
   });
 
