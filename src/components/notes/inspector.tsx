@@ -9,6 +9,7 @@ export default function Inspector(props: {
   note: Note,
   onSelect?: Function
 }) {
+  console.time('inspectorScopeNotebook')
   const inspectorScopeNotebook = new Notebook(props.notebook)
   const descendantIds = new Set(Array.from(props.notebook.descendants(props.note.id) || []).map(n => n.id))
   for (const note of inspectorScopeNotebook.notes()) {
@@ -16,10 +17,10 @@ export default function Inspector(props: {
       inspectorScopeNotebook.delete(note.id)
     }
   }
+  console.timeEnd('inspectorScopeNotebook')
 
   return <div>
     <FormattedText text={props.note.text} />
-
     <Outline notebook={inspectorScopeNotebook} onSelect={props.onSelect} />
   </div>
 }

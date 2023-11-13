@@ -9,11 +9,7 @@ export default class Notebook {
 
   constructor(source?: Notebook) { // TODO: consider returning deep copy as a second option; https://developer.mozilla.org/en-US/docs/Web/API/structuredClone
     if (source) {
-      const sourceNotes = source.notes()
-      sourceNotes.forEach((note) => this.#hierarchy.add(note))
-      sourceNotes.forEach((note) => {
-        source.children(note.id)?.forEach((child) => this.attach(note.id, child.id))
-      })
+      this.#hierarchy = new OverlappingHierarchy<Note>(source.#hierarchy)
     }
   }
 

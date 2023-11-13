@@ -49,7 +49,7 @@ describe('Notebook', () => {
       expect(originalNodes).toStrictEqual(family.notes());
     });
 
-    test("Given 1000 nodes, performs NNN times faster than previous implementation", () => {
+    test("Given 1000 nodes, performs fast cloning", () => {
       const measureDuration = (
           hierarchy: Notebook
       ): number => {
@@ -61,7 +61,6 @@ describe('Notebook', () => {
         return Date.now() - start;
       };
 
-      // const oldDuration = measureDuration(new OldImplementation());
       const newDuration = measureDuration(new Notebook());
 
       expect(newDuration).toBeLessThan(10);
