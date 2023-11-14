@@ -41,7 +41,7 @@ export default class Notebook {
   detach = (parentId: string, childId: string): void => {
     const parent = this.get(parentId)
     const child = this.get(childId)
-    parent && child && this.#hierarchy.detach(parent, child)
+    parent && child && this.#hierarchy.detach(child, parent)
   }
 
   children(noteId: string): Note[] | undefined {
