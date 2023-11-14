@@ -13,9 +13,9 @@ export default class Notebook {
     }
   }
 
-  notes = (): Set<Note> => this.#hierarchy.nodes()
+  notes = (): Set<Note> => this.#hierarchy.descendants()
 
-  get = (id: string): Note | undefined => Array.from(this.#hierarchy.nodes()).find((note) => note.id === id)
+  get = (id: string): Note | undefined => Array.from(this.#hierarchy.descendants()).find((note) => note.id === id)
 
   upsert = ({id, text}: Note): void => {
     // TODO: refactor into setText / setParents / set(id, text, parents)? or make flexible interface?
