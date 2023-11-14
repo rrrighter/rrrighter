@@ -27,10 +27,6 @@ export default class Notebook {
     }
   }
 
-  hierarchs = (): Note[] => {
-    return this.#hierarchy.children()
-  }
-
   attach = (parentId: string, childId: string, index?: number): LoopError | CycleError | TransitiveReductionError | void => {
     // TODO: consider NoteNotFoundError |OverlappingHierarchyError | void
     const parent = this.get(parentId)
@@ -44,7 +40,10 @@ export default class Notebook {
     parent && child && this.#hierarchy.detach(child, parent)
   }
 
-  children(noteId: string): Note[] | undefined {
+  children(noteId?: string): Note[] | undefined {
+    if (!noteId) {
+      return this.#hierarchy.children()
+    }
     const note = this.get(noteId)
     return note ? this.#hierarchy.children(note) || [] : undefined
   }

@@ -21,7 +21,7 @@ const treeData = (notebook: Notebook, parentId?: string): TreeDataNodeType[] => 
     })
   }
 
-  return _treeData(parentId ? (notebook.children(parentId) || []) : notebook.hierarchs())
+  return _treeData(notebook.children(parentId) || [])
 }
 
 export default function Outline(props: { notebook: Notebook, parentId?: string, selectIcon?: ReactElement, onSelect?: Function }) {

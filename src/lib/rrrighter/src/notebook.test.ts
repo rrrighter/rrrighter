@@ -75,12 +75,6 @@ describe('Notebook', () => {
     });
   });
 
-  describe(".hierarchs()", () => {
-    test("Returns hierarchs", () => {
-      expect(family.hierarchs()).toStrictEqual([GRANDPARENT]);
-    });
-  });
-
   describe('.upsert()', () => {
     const note = { id: '1', text: 'upsert' }
 
@@ -190,7 +184,11 @@ describe('Notebook', () => {
   })
 
   describe(".children()", () => {
-    test("Returns children", () => {
+    test("When parent is undefined, returns hierarchs", () => {
+      expect(family.children()).toStrictEqual([GRANDPARENT]);
+    });
+
+    test("When parent is defined, returns its children", () => {
       expect(family.children(PARENT.id)).toStrictEqual([CHILD]);
     });
 
