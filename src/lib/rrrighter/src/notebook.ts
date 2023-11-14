@@ -1,15 +1,15 @@
-import OverlappingHierarchy from "ordered-overlapping-hierarchy"; // todo import OrderedOverlappingHierarchy
+import OrderedOverlappingHierarchy from "ordered-overlapping-hierarchy"; // todo import OrderedOverlappingHierarchy
 import {LoopError, CycleError, TransitiveReductionError} from "ordered-overlapping-hierarchy";
 
 import Note from "./note";
 
 // Notebook is an overlapping hierarchy of text notes with unique IDs.
 export default class Notebook {
-  #hierarchy: OverlappingHierarchy<Note> = new OverlappingHierarchy<Note>()
+  #hierarchy: OrderedOverlappingHierarchy<Note> = new OrderedOverlappingHierarchy<Note>()
 
   constructor(source?: Notebook) { // TODO: consider returning deep copy as a second option; https://developer.mozilla.org/en-US/docs/Web/API/structuredClone
     if (source) {
-      this.#hierarchy = new OverlappingHierarchy<Note>(source.#hierarchy)
+      this.#hierarchy = new OrderedOverlappingHierarchy<Note>(source.#hierarchy)
     }
   }
 
@@ -23,19 +23,19 @@ export default class Notebook {
     if (existing) {
       existing.text = text
     } else {
-      this.#hierarchy.add({ id, text })
+      this.#hierarchy.attach({ id, text })
     }
   }
 
   hierarchs = (): Note[] => {
-    return Array.from(this.#hierarchy.hierarchs() || [])
+    return this.#hierarchy.children()
   }
 
   attach = (parentId: string, childId: string, index?: number): LoopError | CycleError | TransitiveReductionError | void => {
     // TODO: consider NoteNotFoundError |OverlappingHierarchyError | void
     const parent = this.get(parentId)
     const child = this.get(childId)
-    return parent && child && this.#hierarchy.attach(parent, child, index)
+    return parent && child && this.#hierarchy.attach(child, parent, index)
   }
 
   detach = (parentId: string, childId: string): void => {
