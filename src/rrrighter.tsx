@@ -2,8 +2,7 @@ import { fromJsonObject } from './lib/rrrighter/src/json-persistence'
 import Note from './lib/rrrighter/src/note'
 import Notebook from './lib/rrrighter/src/notebook'
 import React, {useState} from 'react'
-import {App, ConfigProvider, theme, Button, Drawer} from 'antd'
-import {HomeOutlined} from '@ant-design/icons'
+import {App, ConfigProvider, theme, Drawer} from 'antd'
 import Outline from './components/notebook/outline/outline'
 import Inspector from './components/notes/inspector'
 import NotebookRepository from './components/notebook/repository/notebook-repository'
@@ -89,7 +88,6 @@ function Rrrighter() {
         <header>
           <div style={{ float: 'left' }}>
             <NotebookRepository filename="welcome" notebook={notebook} onNotebookOpen={setNotebook} />
-            <Button type="text" icon={<HomeOutlined />} size="small" aria-label="Home" title="Home" onClick={() => setInspectorNote(undefined)} />
           </div>
           <div style={{ float: 'right' }}>
             <SearchSelect notebook={notebook} onSelect={onSelect} />

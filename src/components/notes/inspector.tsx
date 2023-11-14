@@ -9,18 +9,8 @@ export default function Inspector(props: {
   note: Note,
   onSelect?: Function
 }) {
-  console.time('inspectorScopeNotebook')
-  const inspectorScopeNotebook = new Notebook(props.notebook)
-  const descendantIds = new Set(Array.from(props.notebook.descendants(props.note.id) || []).map(n => n.id))
-  for (const note of inspectorScopeNotebook.notes()) {
-    if (!descendantIds.has(note.id)) {
-      inspectorScopeNotebook.delete(note.id)
-    }
-  }
-  console.timeEnd('inspectorScopeNotebook')
-
   return <div>
     <FormattedText text={props.note.text} />
-    <Outline notebook={inspectorScopeNotebook} onSelect={props.onSelect} />
+    <Outline notebook={props.notebook} parentId={props.note.id} onSelect={props.onSelect} />
   </div>
 }
