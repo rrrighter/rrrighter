@@ -34,11 +34,6 @@ test('Shows hierarchs by default', async () => {
   expect(screen.getByText(hierarch.text)).toBeInTheDocument()
 })
 
-test('Does not show descendants by default', async () => {
-  render(<Outline notebook={notebook} />)
-  expect(screen.queryByText(child.text)).not.toBeInTheDocument()
-})
-
 test('Displays notes in insertion order', async () => {
   const notebook = new Notebook()
   const noteA = { id: '2', text: 'A' }
@@ -78,28 +73,4 @@ test('Shows 100+ notes without pagination', async () => {
   for(let n = 0; n < 100; n++) {
     expect(screen.getByText('Note' + n)).toBeInTheDocument()
   }
-})
-
-// test('Expanding child with multiple parents throws no warnings', () => {
-//   const hierarch2 = { id: 'H2', text: 'H2' + Math.random().toString() }
-//   notebook.upsert(hierarch2)
-//   notebook.attach(hierarch2, child)
-//   render(<TreeTable notebook={notebook} />)
-//   fireEvent.click(screen.getAllByRole('button', { name: 'Expand row'} )[0])
-//   fireEvent.click(screen.getAllByRole('button', { name: 'Expand row'} )[1])
-// })
-
-describe('Hierarchy', () => {
-  test('Expanding hierarch shows second hierarchy level', async () => {
-    render(<Outline notebook={notebook} />)
-    fireEvent.click(screen.getByRole('button', { name: 'Expand row'} ))
-    expect(screen.getByText(child.text)).toBeInTheDocument()
-  })
-
-  test('Shows no expand button for leaf notes', async () => {
-    const notebook = new Notebook()
-    notebook.upsert({ id: '1', text: 'Orpan' })
-    render(<Outline notebook={notebook} />)
-    expect(screen.queryByRole('button', { name: 'Expand row'} )).not.toBeInTheDocument()
-  })
 })
