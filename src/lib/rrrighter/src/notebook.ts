@@ -15,7 +15,7 @@ export default class Notebook {
 
   notes = (): Set<Note> => this.#hierarchy.descendants()
 
-  get = (id: string): Note | undefined => Array.from(this.#hierarchy.descendants()).find((note) => note.id === id)
+  get = (id: string): Note | undefined => Array.from(this.notes()).find((note) => note.id === id)
 
   upsert = ({id, text}: Note): void => {
     // TODO: refactor into setText / setParents / set(id, text, parents)? or make flexible interface?
@@ -27,6 +27,7 @@ export default class Notebook {
     }
   }
 
+  // todo: swap parent and child arguments order, make parent optional
   attach = (parentId: string, childId: string, index?: number): LoopError | CycleError | TransitiveReductionError | void => {
     // TODO: consider NoteNotFoundError |OverlappingHierarchyError | void
     const parent = this.get(parentId)

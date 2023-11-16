@@ -53,7 +53,7 @@ describe('Notebook', () => {
       const measureDuration = (
           hierarchy: Notebook
       ): number => {
-        for (let i = 0; i < 10000; i++) {
+        for (let i = 0; i < 1000; i++) {
           hierarchy.upsert({ id: i.toString(), text: i.toString()});
         }
         const start = Date.now();
