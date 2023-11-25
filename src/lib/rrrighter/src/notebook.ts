@@ -42,6 +42,7 @@ export default class Notebook {
   }
 
   children(): Note[];
+  children(noteId: undefined): Note[];
   children(noteId: string): Note[] | undefined;
   children(noteId?: string): Note[] | undefined {
     if (!noteId) {

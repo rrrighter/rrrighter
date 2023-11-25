@@ -184,8 +184,12 @@ describe('Notebook', () => {
   })
 
   describe(".children()", () => {
-    test("When parent is undefined, returns hierarchs", () => {
+    test("When parent is omitted, returns hierarchs", () => {
       expect(family.children()).toStrictEqual([GRANDPARENT]);
+    });
+
+    test("When parent is undefined, returns hierarchs", () => {
+      expect(family.children(undefined)).toStrictEqual([GRANDPARENT]);
     });
 
     test("When parent is defined, returns its children", () => {

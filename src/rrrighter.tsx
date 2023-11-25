@@ -14,8 +14,6 @@ import Parents from "./components/notes/parents";
 import CreateNoteButton from "./components/notes/create-note-button";
 
 const initialNotebook = new Notebook(fromJsonObject(welcome))
-console.log(initialNotebook.notes())
-debugger;
 
 // const family = new Notebook();
 // family.upsert({ id: 'grandparent', text: 'grandparent' });
