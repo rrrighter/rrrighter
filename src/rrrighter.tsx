@@ -14,6 +14,17 @@ import Parents from "./components/notes/parents";
 import CreateNoteButton from "./components/notes/create-note-button";
 
 const initialNotebook = new Notebook(fromJsonObject(welcome))
+console.log(initialNotebook.notes())
+debugger;
+
+// const family = new Notebook();
+// family.upsert({ id: 'grandparent', text: 'grandparent' });
+// family.upsert({ id: 'parent', text: 'parent' });
+// family.upsert({ id: 'child', text: 'child' });
+// family.attach('grandparent', 'parent')
+// family.attach('parent', 'child')
+//
+// const initialNotebook = family
 
 function Rrrighter() {
   const [notebook, setNotebook] = useState<Notebook>(initialNotebook)
@@ -62,6 +73,7 @@ function Rrrighter() {
       notebook.attach(inspectorNote.id, id)
       setNotebook(new Notebook(notebook))
     }
+
     const onEdit = (text: string) => {
       const id = inspectorNote.id
       notebook.upsert({ id, text})

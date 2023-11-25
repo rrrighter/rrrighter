@@ -41,6 +41,8 @@ export default class Notebook {
     parent && child && this.#hierarchy.detach(child, parent)
   }
 
+  children(): Note[];
+  children(noteId: string): Note[] | undefined;
   children(noteId?: string): Note[] | undefined {
     if (!noteId) {
       return this.#hierarchy.children()

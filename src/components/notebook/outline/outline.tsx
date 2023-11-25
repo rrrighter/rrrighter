@@ -21,15 +21,28 @@ const treeData = (notebook: Notebook, parentId?: string): TreeDataNodeType[] => 
     })
   }
 
-  return _treeData(notebook.children(parentId) || [])
+  const notes = parentId ? notebook.children(parentId) || [] : notebook.children()
+  return _treeData(notes)
 }
 
-export default function Outline(props: { notebook: Notebook, parentId?: string, selectIcon?: ReactElement, onSelect?: Function }) {
+export default function Outline(props: { notebook: Notebook, parentId?: string, selectIcon?: ReactElement, onSelect?: Function, onDrop?: Function }) {
   const titleRender = (node: TreeDataNodeType) => <NoteOutline notebook={props.notebook} note={node.note} />
 
+  const onDrop = (e: any) => {
+    console.dir(e)
+
+    if (props.onDrop) {
+      const sourceNoteId = e.dragNode.note.id
+      const targetParentNoteId = e.node.parent?.id
+      const index = e.dropPosition
+
+      props.onDrop(e, sourceNoteId, targetParentNoteId, index)
+    }
+  }
+
   return <Tree
-      // draggable
-      // onDrop={(info) => { console.dir(info) }}
+      draggable={!!props.onDrop}
+      onDrop={onDrop}
       onSelect={(_selectedKeys, e) => { props.onSelect && props.onSelect(e.node.note.id) }}
       treeData={treeData(props.notebook, props.parentId)}
       blockNode
