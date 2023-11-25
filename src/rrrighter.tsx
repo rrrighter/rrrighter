@@ -1,8 +1,8 @@
 import { fromJsonObject } from './lib/rrrighter/src/json-persistence'
 import Note from './lib/rrrighter/src/note'
 import Notebook from './lib/rrrighter/src/notebook'
-import React, {useState} from 'react'
-import {App, ConfigProvider, theme, Drawer} from 'antd'
+import React, {ReactNode, useState} from 'react'
+import {App, ConfigProvider, theme, Drawer, Divider, Button} from 'antd'
 import Outline from './components/notebook/outline/outline'
 import Inspector from './components/notes/inspector'
 import NotebookRepository from './components/notebook/repository/notebook-repository'
@@ -14,15 +14,6 @@ import Parents from "./components/notes/parents";
 import CreateNoteButton from "./components/notes/create-note-button";
 
 const initialNotebook = new Notebook(fromJsonObject(welcome))
-
-// const family = new Notebook();
-// family.upsert({ id: 'grandparent', text: 'grandparent' });
-// family.upsert({ id: 'parent', text: 'parent' });
-// family.upsert({ id: 'child', text: 'child' });
-// family.attach('grandparent', 'parent')
-// family.attach('parent', 'child')
-//
-// const initialNotebook = family
 
 function Rrrighter() {
   const [notebook, setNotebook] = useState<Notebook>(initialNotebook)
@@ -43,10 +34,10 @@ function Rrrighter() {
     setNotebook(new Notebook(notebook))
   }
 
-  const onAttach = (parentId: string, childId: string) => {
+  const onAttach = (parentId: string, childId: string, index?: number) => {
     notebook.descendants(parentId)?.forEach((descendant) => notebook.detach(descendant.id, childId))
     notebook.ancestors(parentId)?.forEach((ancestor) => notebook.detach(ancestor.id, childId))
-    console.log(notebook.attach(parentId, childId))
+    console.log(notebook.attach(parentId, childId, index))
 
     setNotebook(new Notebook(notebook))
   }
@@ -87,7 +78,18 @@ function Rrrighter() {
         onAttach={onAttach}
         onDelete={() => onDelete(inspectorNote)}
     />
+    const parents = Array.from(notebook.parents(inspectorNote.id) || [])
+    const parentIndexes: ReactNode[] = parents.map((parent): ReactNode => {
+      const index = notebook.children(parent.id)?.indexOf(inspectorNote) || 0
+      return <div>
+        <Button type="link" onClick={() => onAttach(parent.id, inspectorNote.id, index - 1)}>🔼</Button>
+        <Button type="link" onClick={() => onAttach(parent.id, inspectorNote.id, index + 1)}>🔽</Button>
+        {parent.text} @ {index}
+      </div>
+    })
     inspectorDrawer = <Drawer open={true} size={'large'} title={noteParents} extra={noteToolbar} onClose={() => setInspectorNote(undefined)}>
+      {parentIndexes}
+      <Divider />
       <Inspector notebook={notebook} note={inspectorNote} onSelect={onSelect} />
     </Drawer>
   }
