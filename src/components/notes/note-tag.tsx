@@ -8,7 +8,7 @@ import './note-tag.css';
 export default function NoteTag(props: {
     parent: Note,
     child: Note,
-    onDetach: Function,
+    onDetach?: Function,
     onSelect?: Function
 }) {
     const firstLine = props.parent.text.split('\n')[0] // todo: try use Text component instead or create NoteTitle component
@@ -17,8 +17,8 @@ export default function NoteTag(props: {
         icon={<UpOutlined />}
         key={`${props.parent.id}/${props.child.id}`}
         onClick={() => props.onSelect && props.onSelect(props.parent.id)}
-        closable
-        onClose={() => props.onDetach(props.parent, props.child)}
+        closable={!!props.onDetach}
+        onClose={() => props.onDetach && props.onDetach(props.parent, props.child)}
     >
         <FormattedText text={firstLine} />
     </Tag>

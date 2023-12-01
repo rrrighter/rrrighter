@@ -2,7 +2,7 @@ import { fromJsonObject } from './lib/rrrighter/src/json-persistence'
 import Note from './lib/rrrighter/src/note'
 import Notebook from './lib/rrrighter/src/notebook'
 import React, {ReactNode, useState} from 'react'
-import {App, ConfigProvider, theme, Drawer, Divider, Button} from 'antd'
+import {App, ConfigProvider, theme, Drawer, Button} from 'antd'
 import Outline from './components/notebook/outline/outline'
 import Inspector from './components/notes/inspector'
 import NotebookRepository from './components/notebook/repository/notebook-repository'
@@ -13,7 +13,21 @@ import NoteToolbar from "./components/notes/note-toolbar";
 import Parents from "./components/notes/parents";
 import CreateNoteButton from "./components/notes/create-note-button";
 
-const initialNotebook = new Notebook(fromJsonObject(welcome))
+const urlParams = new URLSearchParams(window.location.search)
+const repository = urlParams.get('repository')
+const readonly = !!repository
+
+const fetch = async (url: string) => {
+  const response = await window.fetch(url)
+  return await response.text()
+}
+
+const fetchJsonObject = async (url: string) => {
+  return (JSON.parse(await fetch(url)))
+}
+
+const sourceJSON = repository ? await fetchJsonObject(repository) : welcome
+const initialNotebook = fromJsonObject(sourceJSON)
 
 function Rrrighter() {
   const [notebook, setNotebook] = useState<Notebook>(initialNotebook)
@@ -69,7 +83,7 @@ function Rrrighter() {
       setNotebook(new Notebook(notebook))
       setInspectorNote(notebook.get(id))
     }
-    const noteParents = <Parents notebook={notebook} note={inspectorNote} onDetach={onDetach} onSelect={onSelect} />
+    const noteParents = <Parents notebook={notebook} note={inspectorNote} onDetach={readonly ? undefined : onDetach} onSelect={onSelect} />
     const noteToolbar = <NoteToolbar
         notebook={notebook}
         note={inspectorNote}
@@ -87,9 +101,8 @@ function Rrrighter() {
         {parent.text} @ {index}
       </div>
     })
-    inspectorDrawer = <Drawer open={true} size={'large'} title={noteParents} extra={noteToolbar} onClose={() => setInspectorNote(undefined)}>
-      {parentIndexes}
-      <Divider />
+    inspectorDrawer = <Drawer open={true} size={'large'} title={noteParents} extra={!readonly && noteToolbar} onClose={() => setInspectorNote(undefined)}>
+      {!readonly && parentIndexes}
       <Inspector notebook={notebook} note={inspectorNote} onSelect={onSelect} />
     </Drawer>
   }
@@ -99,11 +112,11 @@ function Rrrighter() {
       <App>
         <header>
           <div style={{ float: 'left' }}>
-            <NotebookRepository filename="welcome" notebook={notebook} onNotebookOpen={setNotebook} />
+            {!readonly && <NotebookRepository filename="welcome" notebook={notebook} onNotebookOpen={setNotebook} />}
           </div>
           <div style={{ float: 'right' }}>
             <SearchSelect notebook={notebook} onSelect={onSelect} />
-            <CreateNoteButton onCreate={onCreateHierarch} />
+            {!readonly && <CreateNoteButton onCreate={onCreateHierarch} />}
           </div>
         </header>
         <main>
