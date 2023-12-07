@@ -1,9 +1,10 @@
 import Notebook from './notebook'
 import {LoopError, CycleError} from "ordered-overlapping-hierarchy";
 
-const CHILD = { id: "child", text: "child" };
-const PARENT = { id: "parent", text: "parent" };
+const HIERARCH = { id: '', text: '' }
 const GRANDPARENT = { id: "grandparent", text: "grandparent" };
+const PARENT = { id: "parent", text: "parent" };
+const CHILD = { id: "child", text: "child" };
 
 describe('Notebook', () => {
   let notebook: Notebook
@@ -49,6 +50,8 @@ describe('Notebook', () => {
       expect(originalNodes).toStrictEqual(family.notes());
     });
 
+    // todo: optimize for fast insertion of 1000 nodes
+
     test("Given 1000 nodes, performs fast cloning", () => {
       const measureDuration = (
           hierarchy: Notebook
@@ -70,7 +73,7 @@ describe('Notebook', () => {
   describe(".notes()", () => {
     test("Returns notes", () => {
       expect(family.notes()).toStrictEqual(
-          new Set([GRANDPARENT, PARENT, CHILD])
+          new Set([HIERARCH, GRANDPARENT, PARENT, CHILD])
       );
     });
   });
@@ -80,33 +83,33 @@ describe('Notebook', () => {
 
     test('Adds a note to the empty notebook', () => {
       notebook.upsert(note)
-      expect(notebook.notes()).toEqual(new Set([note]))
+      expect(notebook.notes()).toEqual(new Set([HIERARCH, note]))
     })
 
     test('Adding the same note twice does not duplicate it', () => {
       notebook.upsert(note)
       notebook.upsert(note)
-      expect(notebook.notes()).toEqual(new Set([note]))
+      expect(notebook.notes()).toEqual(new Set([HIERARCH, note]))
     })
 
     test('Adding new note object with duplicate id updates note with that id', () => {
       const updated = { id: note.id, text: 'update' }
       notebook.upsert(note)
       notebook.upsert(updated)
-      expect(notebook.notes()).toEqual(new Set([{ id: '1', text: 'update' }]))
+      expect(notebook.notes()).toEqual(new Set([HIERARCH, { id: '1', text: 'update' }]))
     })
   })
 
   describe(".attach()", () => {
     test("Attaching node to itself returns LoopError", () => {
       expect(family.attach(CHILD.id, CHILD.id)).toStrictEqual(
-          new LoopError("Cannot attach node to itself")
+          new LoopError("Cannot relate member to itself")
       );
     });
 
     test("Attaching ancestor as a child returns CycleError", () => {
       expect(family.attach(CHILD.id, GRANDPARENT.id)).toStrictEqual(
-          new CycleError("Cannot attach ancestor as a child")
+          new CycleError("Cannot relate ancestor as a child")
       );
     });
 
@@ -159,9 +162,9 @@ describe('Notebook', () => {
       expect(family.children("parent2")).toStrictEqual([CHILD]);
     });
 
-    test("Child detached from the only parent still belongs to the hierarchy", () => {
+    test("Child detached from the only parent is no longer a member", () => {
       family.detach(PARENT.id, CHILD.id);
-      expect(family.get(CHILD.id)).toBeDefined();
+      expect(family.get(CHILD.id)).toBeUndefined();
     });
   });
 
@@ -194,8 +197,8 @@ describe('Notebook', () => {
   });
 
   describe(".parents()", () => {
-    test("Given top-level node, returns nothing", () => {
-      expect(family.parents(GRANDPARENT.id)).toStrictEqual(new Set());
+    test("Given hierarch, returns nothing", () => {
+      expect(family.parents(family.hierarch().id)).toStrictEqual(new Set());
     });
 
     test("Given child, returns its parents", () => {
@@ -222,7 +225,7 @@ describe('Notebook', () => {
   describe(".ancestors()", () => {
     test("Returns ancestors", () => {
       expect(family.ancestors(CHILD.id)).toStrictEqual(
-          new Set([GRANDPARENT, PARENT])
+          new Set([HIERARCH, GRANDPARENT, PARENT])
       );
     });
 
@@ -245,14 +248,6 @@ describe('Notebook', () => {
     test("Hierarchy no longer has removed node", () => {
       family.delete(PARENT.id);
       expect(family.notes().has(PARENT)).toStrictEqual(false);
-    });
-
-    test("Removing the only node of the hierarchy empties the hierarchy", () => {
-      const hierarchy = new Notebook()
-      const orphan = { id: 'orphan', text: 'orphan' }
-      hierarchy.upsert(orphan);
-      hierarchy.delete(orphan.id);
-      expect(hierarchy.notes()).toStrictEqual(new Set());
     });
   });
 })
