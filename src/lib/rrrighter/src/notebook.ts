@@ -19,6 +19,8 @@ export default class Notebook {
     }
   }
 
+  hierarch = (): Note => this.#hierarchy.hierarch
+
   notes = (): Set<Note> => this.#hierarchy.members()
 
   get = (id: string): Note | undefined => Array.from(this.notes()).find((note) => note.id === id)
