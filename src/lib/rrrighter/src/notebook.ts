@@ -1,11 +1,17 @@
-import OrderedOverlappingHierarchy from "ordered-overlapping-hierarchy"; // todo import OrderedOverlappingHierarchy
-import {LoopError, CycleError, TransitiveReductionError} from "ordered-overlapping-hierarchy";
+import OrderedOverlappingHierarchy from "ordered-overlapping-hierarchy";
+import {LoopError, CycleError} from "ordered-overlapping-hierarchy";
 
 import Note from "./note";
 
+interface Relationship {
+  parent: Note
+  child: Note
+  index: number
+}
+
 // Notebook is an overlapping hierarchy of text notes with unique IDs.
 export default class Notebook {
-  #hierarchy: OrderedOverlappingHierarchy<Note> = new OrderedOverlappingHierarchy<Note>()
+  #hierarchy: OrderedOverlappingHierarchy<Note> = new OrderedOverlappingHierarchy<Note>({ id: '', text: ''})
 
   constructor(source?: Notebook) { // TODO: consider returning deep copy as a second option; https://developer.mozilla.org/en-US/docs/Web/API/structuredClone
     if (source) {
@@ -13,7 +19,7 @@ export default class Notebook {
     }
   }
 
-  notes = (): Set<Note> => this.#hierarchy.descendants()
+  notes = (): Set<Note> => this.#hierarchy.members()
 
   get = (id: string): Note | undefined => Array.from(this.notes()).find((note) => note.id === id)
 
@@ -23,31 +29,25 @@ export default class Notebook {
     if (existing) {
       existing.text = text
     } else {
-      this.#hierarchy.attach({ id, text })
+      this.#hierarchy.relate({ parent: this.#hierarchy.hierarch, child: { id, text } })
     }
   }
 
   // todo: swap parent and child arguments order, make parent optional
-  attach = (parentId: string, childId: string, index?: number): LoopError | CycleError | TransitiveReductionError | void => {
-    // TODO: consider NoteNotFoundError |OverlappingHierarchyError | void
+  attach = (parentId: string, childId: string, index?: number): Relationship | LoopError | CycleError | undefined => {
+    // TODO: consider NoteNotFoundError | void
     const parent = this.get(parentId)
     const child = this.get(childId)
-    return parent && child && this.#hierarchy.attach(child, parent, index)
+    return parent && child && this.#hierarchy.relate({ parent, child, index })
   }
 
   detach = (parentId: string, childId: string): void => {
     const parent = this.get(parentId)
     const child = this.get(childId)
-    parent && child && this.#hierarchy.detach(child, parent)
+    parent && child && this.#hierarchy.unrelate({ parent, child })
   }
 
-  children(): Note[];
-  children(noteId: undefined): Note[];
-  children(noteId: string): Note[] | undefined;
-  children(noteId?: string): Note[] | undefined {
-    if (!noteId) {
-      return this.#hierarchy.children()
-    }
+  children(noteId: string): Note[] | undefined {
     const note = this.get(noteId)
     return note ? this.#hierarchy.children(note) || [] : undefined
   }
@@ -68,7 +68,9 @@ export default class Notebook {
   }
 
   delete = (noteId: string): void => {
-    const note = this.get(noteId)
-    note && this.#hierarchy.delete(note)
+    const child = this.get(noteId)
+    if (child) {
+      this.#hierarchy.parents(child)?.forEach((parent) => this.#hierarchy.unrelate({parent, child}))
+    }
   }
 }

@@ -21,7 +21,7 @@ const treeData = (notebook: Notebook, parentId?: string): TreeDataNodeType[] => 
     })
   }
 
-  const notes = parentId ? notebook.children(parentId) || [] : notebook.children()
+  const notes = parentId ? notebook.children(parentId) || [] : notebook.children(notebook.hierarch)
   return _treeData(notes)
 }
 

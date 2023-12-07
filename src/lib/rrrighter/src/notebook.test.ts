@@ -1,5 +1,5 @@
 import Notebook from './notebook'
-import {LoopError, CycleError, TransitiveReductionError} from "ordered-overlapping-hierarchy";
+import {LoopError, CycleError} from "ordered-overlapping-hierarchy";
 
 const CHILD = { id: "child", text: "child" };
 const PARENT = { id: "parent", text: "parent" };
@@ -110,12 +110,6 @@ describe('Notebook', () => {
       );
     });
 
-    test("Attaching non-child descendant as a child returns ConflictingParentsError", () => {
-      expect(family.attach(GRANDPARENT.id, CHILD.id)).toStrictEqual(
-          new TransitiveReductionError(`Cannot attach non-child descendant as a child`)
-      );
-    });
-
     test("Attaches node to the parent as a child", () => {
       const grandchild = { id: "grandchild", text: "grandchild" };
       family.upsert(grandchild);
@@ -184,14 +178,6 @@ describe('Notebook', () => {
   })
 
   describe(".children()", () => {
-    test("When parent is omitted, returns hierarchs", () => {
-      expect(family.children()).toStrictEqual([GRANDPARENT]);
-    });
-
-    test("When parent is undefined, returns hierarchs", () => {
-      expect(family.children(undefined)).toStrictEqual([GRANDPARENT]);
-    });
-
     test("When parent is defined, returns its children", () => {
       expect(family.children(PARENT.id)).toStrictEqual([CHILD]);
     });

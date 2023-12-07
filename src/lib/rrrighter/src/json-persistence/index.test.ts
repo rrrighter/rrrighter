@@ -18,6 +18,7 @@ describe('JSON persistence', () => {
         // Having top-level "notes" key makes it extendable in future versions
         // which may add more keys like "author", "license", "drafts", "sops", etc.
         'notes': [
+            { id: '', text: '', children: ['1', '2'] },
             { id: '1', text: 'mother', children: ['3'] },
             { id: '2', text: 'father', children: ['3'] },
             { id: '3', text: 'child', children: ['4'] },
@@ -27,7 +28,7 @@ describe('JSON persistence', () => {
 
     describe('.toJsonObject()', () => {
         test('Converts empty notebook to JSON object', () => {
-            expect(toJsonObject(notebook)).toStrictEqual({ notes: [] })
+            expect(toJsonObject(notebook)).toStrictEqual({ notes: [{ id: '', text: ''}] })
         })
 
         test('Converts hierarchical notebook to JSON object', () => {
@@ -47,7 +48,7 @@ describe('JSON persistence', () => {
     describe('.fromJsonObject()', () => {
         test('Converts empty JSON object to empty notebook', () => {
             const notebook = fromJsonObject({ notes: [] })
-            expect(Array.from(notebook.notes())).toStrictEqual([])
+            expect(Array.from(notebook.notes())).toStrictEqual([{ id: '', text: '' }])
         })
 
         test('Converts JSON object with children to hierarchical notebook', () => {
