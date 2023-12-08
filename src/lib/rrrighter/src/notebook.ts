@@ -1,13 +1,6 @@
 import OrderedOverlappingHierarchy from "ordered-overlapping-hierarchy";
-import {LoopError, CycleError} from "ordered-overlapping-hierarchy";
 
 import Note from "./note";
-
-interface Relationship {
-  parent: Note
-  child: Note
-  index: number
-}
 
 // Notebook is an overlapping hierarchy of text notes with unique IDs.
 export default class Notebook {
@@ -25,22 +18,34 @@ export default class Notebook {
 
   get = (id: string): Note | undefined => Array.from(this.notes()).find((note) => note.id === id)
 
-  upsert = ({id, text}: Note): void => {
+  upsert = (notes: Note[]): void => { // TODO: batch API for fast project load
     // TODO: refactor into setText / setParents / set(id, text, parents)? or make flexible interface?
-    const existing = this.get(id)
-    if (existing) {
-      existing.text = text
-    } else {
-      this.#hierarchy.relate({ parent: this.#hierarchy.hierarch, child: { id, text } })
+    const relationships: Array<{parent: Note, child: Note}> = []
+
+    for(const note of notes) {
+      const existing = this.get(note.id)
+      if (existing) {
+        existing.text = note.text
+      } else {
+        relationships.push({ parent: this.#hierarchy.hierarch, child: note })
+      }
     }
+
+    this.#hierarchy.relate(relationships)
   }
 
+  // TODO: attachMany
+  // attachMany = (relationships: Array<{parentId: string, childId: string, index?: number}>): void => {
+  //   relationships.map((rel) => this.attach(rel.parentId, rel.childId, rel.index))
+  // }
+
+  // TODO: batch API for fast project load
   // todo: swap parent and child arguments order, make parent optional
-  attach = (parentId: string, childId: string, index?: number): Relationship | LoopError | CycleError | undefined => {
+  attach = (parentId: string, childId: string, index?: number): void => {
     // TODO: consider NoteNotFoundError | void
     const parent = this.get(parentId)
     const child = this.get(childId)
-    return parent && child && this.#hierarchy.relate({ parent, child, index })
+    parent && child && this.#hierarchy.relate([{ parent, child, index }])
   }
 
   detach = (parentId: string, childId: string): void => {
