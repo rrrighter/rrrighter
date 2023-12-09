@@ -15,8 +15,8 @@ describe('Notebook', () => {
     family.upsert([GRANDPARENT]);
     family.upsert([PARENT]);
     family.upsert([CHILD]);
-    family.attach(GRANDPARENT.id, PARENT.id);
-    family.attach(PARENT.id, CHILD.id);
+    family.attach([{ parentId: GRANDPARENT.id, childId: PARENT.id }]);
+    family.attach([{ parentId: PARENT.id, childId: CHILD.id }]);
   })
 
   describe("new Notebook()", () => {
@@ -45,7 +45,7 @@ describe('Notebook', () => {
       }
       clone.upsert([newParent]);
       clone.upsert([newChild]);
-      clone.attach(newChild.id, newParent.id);
+      clone.attach([{ parentId: newChild.id, childId: newParent.id }]);
       expect(originalNodes).toStrictEqual(family.notes());
     });
 
@@ -124,13 +124,13 @@ describe('Notebook', () => {
     });
   })
 
-  describe(".attachMany()", () => {
+  describe(".attach()", () => {
     test("Attaches two children to parent", () => {
       const child1 = { id: "child1", text: "child1" };
       const child2 = { id: "child2", text: "child2" };
 
       family.upsert([child1, child2]);
-      family.attachMany([
+      family.attach([
         { parentId: PARENT.id, childId: child1.id },
         { parentId: PARENT.id, childId: child2.id }
       ]);
@@ -138,7 +138,7 @@ describe('Notebook', () => {
       expect(family.children(PARENT.id)).toStrictEqual([CHILD, child1, child2])
     });
 
-    test("Given 1000 nodes, performs attachMany in less than three seconds", () => {
+    test("Given 1000 nodes, performs attach in less than three seconds", () => {
       const measureDuration = (
           hierarchy: Notebook
       ): number => {
@@ -149,7 +149,7 @@ describe('Notebook', () => {
         }
         hierarchy.upsert(notes);
         const start = Date.now();
-        hierarchy.attachMany(notes.map((note) => { return { parentId: hierarchy.hierarch().id, childId: note.id } }));
+        hierarchy.attach(notes.map((note) => { return { parentId: hierarchy.hierarch().id, childId: note.id } }));
         const duration = Date.now() - start;
         expect(hierarchy.notes().size).toBe(1001);
         return duration
@@ -177,7 +177,7 @@ describe('Notebook', () => {
     test("Attaches node to the parent as a child", () => {
       const grandchild = { id: "grandchild", text: "grandchild" };
       family.upsert([grandchild]);
-      family.attach(CHILD.id, grandchild.id);
+      family.attach([{ parentId: CHILD.id, childId: grandchild.id }]);
       expect(family.children(CHILD.id)).toStrictEqual([grandchild]);
     });
 
@@ -194,15 +194,15 @@ describe('Notebook', () => {
     test("Attaches node to another parent as a child", () => {
       const anotherParent = { id: "another parent", text: "another parent" };
       family.upsert([anotherParent]);
-      family.attach(GRANDPARENT.id, anotherParent.id);
-      family.attach(anotherParent.id, CHILD.id);
+      family.attach([{ parentId: GRANDPARENT.id, childId: anotherParent.id }]);
+      family.attach([{ parentId: anotherParent.id, childId: CHILD.id }]);
       expect(family.children(anotherParent.id)).toStrictEqual([CHILD]);
     });
 
     test("Attached child has a parent", () => {
       const GREAT_GRANDPARENT = { id: 'gg', text: "great-grandparent" }
       family.upsert([GREAT_GRANDPARENT]);
-      family.attach(GREAT_GRANDPARENT.id, GRANDPARENT.id);
+      family.attach([{ parentId: GREAT_GRANDPARENT.id, childId: GRANDPARENT.id }]);
       expect(family.parents(GRANDPARENT.id)).toStrictEqual(
           new Set([GREAT_GRANDPARENT])
       );
@@ -218,7 +218,7 @@ describe('Notebook', () => {
     test("Detached child still belongs to another parent", () => {
       const parent2 = { id: "parent2", text: "parent2" };
       family.upsert([parent2]);
-      family.attach(parent2.id, CHILD.id);
+      family.attach([{ parentId: parent2.id, childId: CHILD.id }]);
       family.detach(PARENT.id, CHILD.id);
       expect(family.children("parent2")).toStrictEqual([CHILD]);
     });
