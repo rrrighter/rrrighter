@@ -43,15 +43,15 @@ function Rrrighter() {
   }
 
   const onDetach = (parent: Note, child: Note) => {
-    notebook.detach(parent.id, child.id)
+    notebook.unrelate(parent.id, child.id)
 
     setNotebook(new Notebook(notebook))
   }
 
   const onAttach = (parentId: string, childId: string, index?: number) => {
-    notebook.descendants(parentId)?.forEach((descendant) => notebook.detach(descendant.id, childId))
-    notebook.ancestors(parentId)?.forEach((ancestor) => notebook.detach(ancestor.id, childId))
-    console.log(notebook.attach(parentId, childId, index))
+    notebook.descendants(parentId)?.forEach((descendant) => notebook.unrelate(descendant.id, childId))
+    notebook.ancestors(parentId)?.forEach((ancestor) => notebook.unrelate(ancestor.id, childId))
+    console.log(notebook.relate(parentId, childId, index))
 
     setNotebook(new Notebook(notebook))
   }
@@ -73,7 +73,7 @@ function Rrrighter() {
       // eslint-disable-next-line no-restricted-globals
       const id = self.crypto.randomUUID()
       notebook.upsert({ id, text})
-      notebook.attach(inspectorNote.id, id)
+      notebook.relate(inspectorNote.id, id)
       setNotebook(new Notebook(notebook))
     }
 

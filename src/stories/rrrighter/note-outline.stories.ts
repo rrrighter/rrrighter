@@ -22,7 +22,7 @@ const parentChildNotebook = new Notebook();
 const parent = { id: 'parent', text: 'parent' }
 parentChildNotebook.upsert(parent);
 parentChildNotebook.upsert({ id: 'child', text: 'child' });
-parentChildNotebook.attach('parent', 'child')
+parentChildNotebook.relate('parent', 'child')
 
 export const ParentWithOneChild: Story = {
     args: {

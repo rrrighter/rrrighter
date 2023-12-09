@@ -15,8 +15,8 @@ describe('Notebook', () => {
     family.upsert([GRANDPARENT]);
     family.upsert([PARENT]);
     family.upsert([CHILD]);
-    family.attach([{ parentId: GRANDPARENT.id, childId: PARENT.id }]);
-    family.attach([{ parentId: PARENT.id, childId: CHILD.id }]);
+    family.relate([{ parentId: GRANDPARENT.id, childId: PARENT.id }]);
+    family.relate([{ parentId: PARENT.id, childId: CHILD.id }]);
   })
 
   describe("new Notebook()", () => {
@@ -45,7 +45,7 @@ describe('Notebook', () => {
       }
       clone.upsert([newParent]);
       clone.upsert([newChild]);
-      clone.attach([{ parentId: newChild.id, childId: newParent.id }]);
+      clone.relate([{ parentId: newChild.id, childId: newParent.id }]);
       expect(originalNodes).toStrictEqual(family.notes());
     });
 
@@ -124,13 +124,13 @@ describe('Notebook', () => {
     });
   })
 
-  describe(".attach()", () => {
-    test("Attaches two children to parent", () => {
+  describe(".relates()", () => {
+    test("Relates two children to parent", () => {
       const child1 = { id: "child1", text: "child1" };
       const child2 = { id: "child2", text: "child2" };
 
       family.upsert([child1, child2]);
-      family.attach([
+      family.relate([
         { parentId: PARENT.id, childId: child1.id },
         { parentId: PARENT.id, childId: child2.id }
       ]);
@@ -138,7 +138,7 @@ describe('Notebook', () => {
       expect(family.children(PARENT.id)).toStrictEqual([CHILD, child1, child2])
     });
 
-    test("Given 1000 nodes, performs attach in less than three seconds", () => {
+    test("Given 1000 nodes, performs relate in less than three seconds", () => {
       const measureDuration = (
           hierarchy: Notebook
       ): number => {
@@ -149,7 +149,7 @@ describe('Notebook', () => {
         }
         hierarchy.upsert(notes);
         const start = Date.now();
-        hierarchy.attach(notes.map((note) => { return { parentId: hierarchy.hierarch().id, childId: note.id } }));
+        hierarchy.relate(notes.map((note) => { return { parentId: hierarchy.hierarch().id, childId: note.id } }));
         const duration = Date.now() - start;
         expect(hierarchy.notes().size).toBe(1001);
         return duration
@@ -161,48 +161,26 @@ describe('Notebook', () => {
     });
   })
 
-  describe(".attach()", () => {
-    // test("Attaching node to itself returns LoopError", () => {
-    //   expect(family.attach(CHILD.id, CHILD.id)).toStrictEqual(
-    //       new LoopError("Cannot relate member to itself")
-    //   );
-    // });
-    //
-    // test("Attaching ancestor as a child returns CycleError", () => {
-    //   expect(family.attach(CHILD.id, GRANDPARENT.id)).toStrictEqual(
-    //       new CycleError("Cannot relate ancestor as a child")
-    //   );
-    // });
-
-    test("Attaches node to the parent as a child", () => {
+  describe(".relate()", () => {
+    test("Relates node to the parent as a child", () => {
       const grandchild = { id: "grandchild", text: "grandchild" };
       family.upsert([grandchild]);
-      family.attach([{ parentId: CHILD.id, childId: grandchild.id }]);
+      family.relate([{ parentId: CHILD.id, childId: grandchild.id }]);
       expect(family.children(CHILD.id)).toStrictEqual([grandchild]);
     });
 
-    // // TODO: also test it doesn't change hierarchy
-    // test("Attaching to non-existing parent returns undefined", () => { // TODO consider returning ParentNotFoundError
-    //   expect(family.attach("missing", CHILD.id)).toStrictEqual(undefined);
-    // });
-    //
-    // // TODO: also test it doesn't change hierarchy
-    // test("Attaching to non-existing child returns undefined", () => { // TODO consider returning ParentNotFoundError
-    //   expect(family.attach("missing", CHILD.id)).toStrictEqual(undefined);
-    // });
-
-    test("Attaches node to another parent as a child", () => {
+    test("Relates node to another parent as a child", () => {
       const anotherParent = { id: "another parent", text: "another parent" };
       family.upsert([anotherParent]);
-      family.attach([{ parentId: GRANDPARENT.id, childId: anotherParent.id }]);
-      family.attach([{ parentId: anotherParent.id, childId: CHILD.id }]);
+      family.relate([{ parentId: GRANDPARENT.id, childId: anotherParent.id }]);
+      family.relate([{ parentId: anotherParent.id, childId: CHILD.id }]);
       expect(family.children(anotherParent.id)).toStrictEqual([CHILD]);
     });
 
-    test("Attached child has a parent", () => {
+    test("Related child has a parent", () => {
       const GREAT_GRANDPARENT = { id: 'gg', text: "great-grandparent" }
       family.upsert([GREAT_GRANDPARENT]);
-      family.attach([{ parentId: GREAT_GRANDPARENT.id, childId: GRANDPARENT.id }]);
+      family.relate([{ parentId: GREAT_GRANDPARENT.id, childId: GRANDPARENT.id }]);
       expect(family.parents(GRANDPARENT.id)).toStrictEqual(
           new Set([GREAT_GRANDPARENT])
       );
@@ -211,20 +189,20 @@ describe('Notebook', () => {
 
   describe(".detach()", () => {
     test("Parent no longer has detached child", () => {
-      family.detach(PARENT.id, CHILD.id);
+      family.unrelate(PARENT.id, CHILD.id);
       expect(family.children(PARENT.id)?.includes(CHILD)).toStrictEqual(false);
     });
 
     test("Detached child still belongs to another parent", () => {
       const parent2 = { id: "parent2", text: "parent2" };
       family.upsert([parent2]);
-      family.attach([{ parentId: parent2.id, childId: CHILD.id }]);
-      family.detach(PARENT.id, CHILD.id);
+      family.relate([{ parentId: parent2.id, childId: CHILD.id }]);
+      family.unrelate(PARENT.id, CHILD.id);
       expect(family.children("parent2")).toStrictEqual([CHILD]);
     });
 
     test("Child detached from the only parent is no longer a member", () => {
-      family.detach(PARENT.id, CHILD.id);
+      family.unrelate(PARENT.id, CHILD.id);
       expect(family.get(CHILD.id)).toBeUndefined();
     });
   });

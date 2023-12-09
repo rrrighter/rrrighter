@@ -3,6 +3,7 @@ import OrderedOverlappingHierarchy from "ordered-overlapping-hierarchy";
 import Note from "./note";
 
 // Notebook is an overlapping hierarchy of text notes with unique IDs.
+// TODO: use entities as arguments https://softwareengineering.stackexchange.com/a/285159
 export default class Notebook {
   #hierarchy: OrderedOverlappingHierarchy<Note> = new OrderedOverlappingHierarchy<Note>({ id: '', text: ''})
 
@@ -34,8 +35,7 @@ export default class Notebook {
     this.#hierarchy.relate(relationships)
   }
 
-  // todo: rename to relate
-  attach = (relationshipIds: Array<{parentId: string, childId: string, index?: number}>): void => {
+  relate = (relationshipIds: Array<{parentId: string, childId: string, index?: number}>): void => {
     const relationships: Array<{parent: Note, child: Note}> = []
 
     for(const relationship of relationshipIds) {
@@ -47,7 +47,7 @@ export default class Notebook {
     this.#hierarchy.relate(relationships)
   }
 
-  detach = (parentId: string, childId: string): void => {
+  unrelate = (parentId: string, childId: string): void => {
     const parent = this.get(parentId)
     const child = this.get(childId)
     parent && child && this.#hierarchy.unrelate({ parent, child })
@@ -73,10 +73,10 @@ export default class Notebook {
     return note ? this.#hierarchy.ancestors(note) : undefined
   }
 
-  delete = (noteId: string): void => {
+  delete = (noteId: string): void => { // todo: deprecate in favor of unrelate
     const child = this.get(noteId)
     if (child) {
-      this.#hierarchy.parents(child)?.forEach((parent) => this.#hierarchy.unrelate({parent, child}))
+      this.parents(noteId)?.forEach((parent) => this.unrelate(parent.id, child.id))
     }
   }
 }

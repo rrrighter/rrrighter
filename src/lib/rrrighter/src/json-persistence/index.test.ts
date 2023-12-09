@@ -36,9 +36,9 @@ describe('JSON persistence', () => {
             notebook.upsert(father)
             notebook.upsert(child)
             notebook.upsert(grandchild)
-            notebook.attach(mother.id, child.id)
-            notebook.attach(father.id, child.id)
-            notebook.attach(child.id, grandchild.id)
+            notebook.relate(mother.id, child.id)
+            notebook.relate(father.id, child.id)
+            notebook.relate(child.id, grandchild.id)
             expect(toJsonObject(notebook)).toStrictEqual(threeLevelHierarchyWithChildrenJsonObject)
         })
 
