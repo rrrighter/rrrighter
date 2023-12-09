@@ -35,9 +35,17 @@ export default class Notebook {
   }
 
   // TODO: attachMany
-  // attachMany = (relationships: Array<{parentId: string, childId: string, index?: number}>): void => {
-  //   relationships.map((rel) => this.attach(rel.parentId, rel.childId, rel.index))
-  // }
+  attachMany = (relationshipIds: Array<{parentId: string, childId: string, index?: number}>): void => {
+    const relationships: Array<{parent: Note, child: Note}> = []
+
+    for(const relationship of relationshipIds) {
+      const parent = this.get(relationship.parentId)
+      const child = this.get(relationship.childId)
+      parent && child && relationships.push({ parent, child })
+    }
+
+    this.#hierarchy.relate(relationships)
+  }
 
   // TODO: batch API for fast project load
   // todo: swap parent and child arguments order, make parent optional

@@ -1,5 +1,4 @@
 import Notebook from './notebook'
-import {LoopError, CycleError} from "ordered-overlapping-hierarchy";
 
 const HIERARCH = { id: '', text: '' }
 const GRANDPARENT = { id: "grandparent", text: "grandparent" };
@@ -102,6 +101,64 @@ describe('Notebook', () => {
       notebook.upsert([updated])
       expect(notebook.notes()).toEqual(new Set([HIERARCH, { id: '1', text: 'update' }]))
     })
+
+    test("Given 1000 nodes, performs bulk upsert in less than three seconds", () => {
+      const measureDuration = (
+          hierarchy: Notebook
+      ): number => {
+        const notes = [];
+        for (let i = 0; i < 1000; i++) {
+          const note = { id: i.toString(), text: i.toString() }
+          notes.push(note)
+        }
+        const start = Date.now();
+        hierarchy.upsert(notes);
+        const duration = Date.now() - start;
+        expect(hierarchy.notes().size).toBe(1001);
+        return duration
+      };
+
+      const newDuration = measureDuration(new Notebook());
+
+      expect(newDuration).toBeLessThan(3000);
+    });
+  })
+
+  describe(".attachMany()", () => {
+    test("Attaches two children to parent", () => {
+      const child1 = { id: "child1", text: "child1" };
+      const child2 = { id: "child2", text: "child2" };
+
+      family.upsert([child1, child2]);
+      family.attachMany([
+        { parentId: PARENT.id, childId: child1.id },
+        { parentId: PARENT.id, childId: child2.id }
+      ]);
+
+      expect(family.children(PARENT.id)).toStrictEqual([CHILD, child1, child2])
+    });
+
+    test("Given 1000 nodes, performs attachMany in less than three seconds", () => {
+      const measureDuration = (
+          hierarchy: Notebook
+      ): number => {
+        const notes = [];
+        for (let i = 0; i < 1000; i++) {
+          const note = { id: i.toString(), text: i.toString() }
+          notes.push(note)
+        }
+        hierarchy.upsert(notes);
+        const start = Date.now();
+        hierarchy.attachMany(notes.map((note) => { return { parentId: hierarchy.hierarch().id, childId: note.id } }));
+        const duration = Date.now() - start;
+        expect(hierarchy.notes().size).toBe(1001);
+        return duration
+      };
+
+      const newDuration = measureDuration(new Notebook());
+
+      expect(newDuration).toBeLessThan(3000);
+    });
   })
 
   describe(".attach()", () => {
@@ -110,7 +167,7 @@ describe('Notebook', () => {
     //       new LoopError("Cannot relate member to itself")
     //   );
     // });
-
+    //
     // test("Attaching ancestor as a child returns CycleError", () => {
     //   expect(family.attach(CHILD.id, GRANDPARENT.id)).toStrictEqual(
     //       new CycleError("Cannot relate ancestor as a child")
