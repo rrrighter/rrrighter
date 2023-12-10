@@ -23,11 +23,10 @@ describe('Notebook', () => {
     })
   })
 
-  // todo: members has nome by default
-  describe(".members()", () => {
+  describe(".notes()", () => {
     test('Contains only home by default', () => {
       const notebook = new Notebook()
-      expect(notebook.members()).toStrictEqual(new Set([notebook.home]))
+      expect(notebook.notes()).toStrictEqual(new Set([notebook.home]))
     })
   })
 
@@ -48,13 +47,13 @@ describe('Notebook', () => {
       expect(relationships).toStrictEqual([{ parent: notebook.home, child: note, index: 0 }])
     })
 
-    test("Relates two different notes with identical content", () => {
+    test("Relates different notes with identical texts", () => {
       const notebook = new Notebook()
       const firstApple = { text: '🍏' }
       const secondApple = { text: '🍏' }
       notebook.relate([{ parent: notebook.home, child: firstApple }])
       notebook.relate([{ parent: notebook.home, child: secondApple }])
-      expect(notebook.members()).toStrictEqual(new Set([notebook.home, firstApple, secondApple]))
+      expect(notebook.notes()).toStrictEqual(new Set([notebook.home, firstApple, secondApple]))
     })
   })
 

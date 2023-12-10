@@ -12,22 +12,17 @@ export default class Notebook {
 
     readonly home: Note
 
-    constructor(source: Note = { text: '' }) { // todo: clone other notebook
+    constructor(source: Note = { text: '' }) { // todo: clone notebook
         this.home = source
         this.#hierarchy = new OrderedOverlappingHierarchy<Note>(this.home)
     }
 
-    members() {
-        return this.#hierarchy.members()
-    }
+    notes = () => this.#hierarchy.members()
 
-    relationships() {
-        return this.#hierarchy.relationships()
-    }
+    relationships = () => this.#hierarchy.relationships()
 
-    relate(relationships: ParentChild[]) {
-        return this.#hierarchy.relate(relationships)
-    }
+    // todo: relate with index
+    relate = (relationships: ParentChild[]) => this.#hierarchy.relate(relationships)
 
     // todo: unrelate
     // todo: children
