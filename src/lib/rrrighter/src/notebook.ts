@@ -2,11 +2,6 @@ import OrderedOverlappingHierarchy from "ordered-overlapping-hierarchy";
 
 import Note from "./note";
 
-interface ParentChild {
-    parent: Note;
-    child: Note;
-}
-
 export default class Notebook {
     #hierarchy: OrderedOverlappingHierarchy<Note>
 
@@ -21,12 +16,14 @@ export default class Notebook {
 
     relationships = () => this.#hierarchy.relationships()
 
-    // todo: relate with index
-    relate = (relationships: ParentChild[]) => this.#hierarchy.relate(relationships)
+    relate = (relationships: { parent: Note; child: Note; index?: number; }[]) => this.#hierarchy.relate(relationships)
 
     // todo: unrelate
-    // todo: children
+
+    children = (parent: Note) => this.#hierarchy.children(parent)
+
     // todo: parents
-    // todo: ancestors
     // todo: descendants
+
+    // todo: ancestors
 }

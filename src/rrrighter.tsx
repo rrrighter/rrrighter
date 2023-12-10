@@ -49,8 +49,8 @@ function Rrrighter() {
   }
 
   const onAttach = (parentId: string, childId: string, index?: number) => {
-    notebook.descendants(parentId)?.forEach((descendant) => notebook.unrelate(descendant.id, childId))
-    notebook.ancestors(parentId)?.forEach((ancestor) => notebook.unrelate(ancestor.id, childId))
+    // todo: no longer needed? notebook.descendants(parentId)?.forEach((descendant) => notebook.unrelate(descendant.id, childId))
+    // todo: no longer needed? notebook.ancestors(parentId)?.forEach((ancestor) => notebook.unrelate(ancestor.id, childId))
     console.log(notebook.relate(parentId, childId, index))
 
     setNotebook(new Notebook(notebook))

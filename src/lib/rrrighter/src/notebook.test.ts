@@ -55,10 +55,31 @@ describe('Notebook', () => {
       notebook.relate([{ parent: notebook.home, child: secondApple }])
       expect(notebook.notes()).toStrictEqual(new Set([notebook.home, firstApple, secondApple]))
     })
+
+    test("Zero index makes the child note first", () => {
+      const notebook = new Notebook()
+      const zero = { text: '0' }
+      const first = { text: '1' }
+      const second = { text: '2' }
+      notebook.relate([{ parent: notebook.home, child: first }])
+      notebook.relate([{ parent: notebook.home, child: second }])
+      notebook.relate([{ parent: notebook.home, child: zero, index: 0 }])
+      expect(notebook.children(notebook.home)).toStrictEqual([zero, first, second])
+    })
+  })
+
+  describe(".children()", () => {
+    test('Returns notes in order', () => {
+      const notebook = new Notebook()
+      const a = { text: 'A' }
+      const b = { text: 'B' }
+      notebook.relate([{ parent: notebook.home, child: a }])
+      notebook.relate([{ parent: notebook.home, child: b }])
+      expect(notebook.children(notebook.home)).toStrictEqual([a, b])
+    })
   })
 
   // todo: unrelate
-  // todo: children
   // todo: parents
   // todo: ancestors
   // todo: descendants
