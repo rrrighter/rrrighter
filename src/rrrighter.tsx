@@ -25,8 +25,8 @@ const fetchJsonObject = async (url: string) => {
   return (JSON.parse(await fetch(url)))
 }
 
-const sourceJSON = repository ? await fetchJsonObject(repository) : help // todo: fix loader
-const initialNotebook = new Notebook({ text: '🏡 Home' }) // todo: fix and use fromJsonObject(sourceJSON)
+const sourceJSON = repository ? await fetchJsonObject(repository) : help
+const initialNotebook = fromJsonObject(sourceJSON)
 
 function Rrrighter() {
   const [notebook, setNotebook] = useState<Notebook>(initialNotebook)

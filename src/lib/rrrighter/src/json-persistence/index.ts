@@ -24,8 +24,9 @@ export const fromJsonObject = (jsonObject: NotebookJson): Notebook => {
         notebook.relate([{ parent: notebook.home, child: note }])
     }
 
-    for(const parent of jsonObject.notes) {
-        for(const childId of parent.children || []) {
+    for(const noteRecord of jsonObject.notes) {
+        const parent = identityMap.get(noteRecord.id) as Note
+        for(const childId of noteRecord.children || []) {
             const child = identityMap.get(childId) as Note
             notebook.relate([{ parent, child }])
         }

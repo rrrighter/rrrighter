@@ -7,27 +7,27 @@ interface PersistableNote {
 }
 
 describe('JSON persistence', () => {
-    const home = { text: '🏡' }
+    const home = { text: '🏡 Home' }
     let notebook: Notebook
 
     beforeEach(() => {
         notebook = new Notebook(home)
     })
 
-    const mother: PersistableNote = { id: '1', text: 'mother' }
-    const father: PersistableNote = { id: '2', text: 'father' }
-    const child: PersistableNote = { id: '3', text: 'child' }
-    const grandchild: PersistableNote = { id: '4', text: 'grandchild' }
+    const mother: Note = { text: 'mother' }
+    const father: Note = { text: 'father' }
+    const child: Note = { text: 'child' }
+    const grandchild: Note = { text: 'grandchild' }
 
     const threeLevelHierarchyWithChildrenJsonObject = {
         // Having top-level "notes" key makes it extendable in future versions
         // which may add more keys like "author", "license", "drafts", "sops", etc.
         'notes': [
-            { id: '', text: '', children: ['1', '2'] },
-            { id: '1', text: 'mother', children: ['3'] },
-            { id: '2', text: 'father', children: ['3'] },
-            { id: '3', text: 'child', children: ['4'] },
-            { id: '4', text: 'grandchild' }
+            { id: '', text: home.text, children: ['1', '2'] },
+            { id: '1', text: mother.text, children: ['3'] },
+            { id: '2', text: father.text, children: ['3'] },
+            { id: '3', text: child.text, children: ['4'] },
+            { id: '4', text: grandchild.text }
         ]
     }
 
@@ -51,14 +51,20 @@ describe('JSON persistence', () => {
     // })
 
     describe('.fromJsonObject()', () => {
-        test('Converts empty JSON object to empty notebook', () => {
+        test('When notes array is empty, returns notebook with blank home note', () => {
             const notebook = fromJsonObject({ notes: [] })
-            expect(Array.from(notebook.notes())).toStrictEqual([{ id: '', text: '' }])
+            expect(Array.from(notebook.notes())).toStrictEqual([{ text: '' }])
         })
 
-        // test('Converts JSON object with children to hierarchical notebook', () => {
-        //     notebook = fromJsonObject(threeLevelHierarchyWithChildrenJsonObject)
-        //     expect(toJsonObject(notebook)).toStrictEqual(threeLevelHierarchyWithChildrenJsonObject)
-        // })
+        test('Converts JSON object with children to hierarchical notebook', () => {
+            notebook = fromJsonObject(threeLevelHierarchyWithChildrenJsonObject)
+            expect(notebook.relationships()).toStrictEqual(new Set([
+                { parent: home, child: mother, childIndex: 0 },
+                { parent: home, child: father, childIndex: 1 },
+                { parent: mother, child: child, childIndex: 0 },
+                { parent: father, child: child, childIndex: 0 },
+                { parent: child, child: grandchild, childIndex: 0 },
+            ]))
+        })
     })
 })

@@ -10,13 +10,12 @@
     },
     {
       "id": "welcome",
-      "text": " 👋 Welcome\n\nRrrighter is a personal multi-dimensional notes manager for power users.\n\n(c) 2023, [Andrey Zharikov](https://github.com/zharikovpro)"
+      "text": " 👋 Welcome\n\nRrrighter is a free and open source multidimensional personal notes manager for hackers.\n\n(c) 2023, [Andrey Zharikov](https://github.com/zharikovpro)"
     },
     {
       "id": "features",
       "text": "🎁 Features",
       "children": [
-        "23c319e1-09a8-469c-976f-749e0233f58d",
         "853ad2b8-9c72-4f9a-a7a5-f7c0b9eb47d7",
         "28d7e6ce-f778-47fb-a5df-5e55aa150e65"
       ]
