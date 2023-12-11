@@ -20,7 +20,7 @@ const treeData = (notebook: Notebook, parent?: Note): TreeDataNodeType[] => { //
     })
   }
 
-  const notes = notebook.children(parent || notebook.hierarch) || []
+  const notes = parent ? notebook.children(parent) as Note[] : [notebook.hierarch] // todo: consider passing notes[] instead
   return _treeData(notes)
 }
 
