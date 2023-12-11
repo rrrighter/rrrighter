@@ -1,4 +1,4 @@
-import { fromJsonObject } from './lib/rrrighter/src/json-persistence'
+import { fromJsonObjectLiteral } from './lib/rrrighter/src/json-persistence'
 import Notebook, { Note } from './lib/rrrighter/src/notebook'
 import React, {ReactNode, useState} from 'react'
 import {App, ConfigProvider, theme, Drawer, Button} from 'antd'
@@ -21,12 +21,12 @@ const fetch = async (url: string) => {
   return await response.text()
 }
 
-const fetchJsonObject = async (url: string) => {
-  return (JSON.parse(await fetch(url)))
+const fetchJsonObjectLiteral = async (url: string) => {
+  return JSON.parse(await fetch(url))
 }
 
-const sourceJSON = repository ? await fetchJsonObject(repository) : help
-const initialNotebook = fromJsonObject(sourceJSON)
+const sourceJSON = repository ? await fetchJsonObjectLiteral(repository) : help
+const initialNotebook = fromJsonObjectLiteral(sourceJSON)
 
 function Rrrighter() {
   const [notebook, setNotebook] = useState<Notebook>(initialNotebook)

@@ -2,14 +2,14 @@ import React, { useState } from 'react'
 import { Badge, Button, Dropdown, Space} from 'antd'
 import { DownOutlined} from '@ant-design/icons'
 import Notebook from '../../../lib/rrrighter/src/notebook'
-import { fromJsonObject } from '../../../lib/rrrighter/src/json-persistence'
+import { fromJsonObjectLiteral } from '../../../lib/rrrighter/src/json-persistence'
 import { fileOpen, fileSave } from 'browser-fs-access';
 import type { MenuProps } from 'antd';
 
 export default function NotebookRepository(props: { filename: string, notebook: Notebook, onNotebookOpen: Function }) {
   const onOpen = async () => {
     const fileWithHandle = await fileOpen({ description: 'Rrrighter notebook', extensions: ['.rrrighter'] })
-    const openedNotebook = new Notebook(fromJsonObject(JSON.parse(await fileWithHandle.text())))
+    const openedNotebook = new Notebook(fromJsonObjectLiteral(JSON.parse(await fileWithHandle.text())))
     setFileName(fileWithHandle.name)
     setFileHandle(fileWithHandle.handle || null)
     setSavedNotebook(openedNotebook)

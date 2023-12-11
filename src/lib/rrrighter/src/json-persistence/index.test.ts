@@ -1,10 +1,5 @@
-import { fromJsonObject } from "./index"; // todo: toJsonObject
+import { fromJsonObjectLiteral } from "./index"; // todo: toJsonObjectLiteral
 import Notebook, { Note } from "./../notebook";
-
-interface PersistableNote {
-    id: string
-    text: string
-}
 
 describe('JSON persistence', () => {
     const home = { text: '🏡 Home' }
@@ -23,14 +18,33 @@ describe('JSON persistence', () => {
         // Having top-level "notes" key makes it extendable in future versions
         // which may add more keys like "author", "license", "drafts", "sops", etc.
         'notes': [
-            { id: '', text: home.text, children: ['1', '2'] },
-            { id: '1', text: mother.text, children: ['3'] },
-            { id: '2', text: father.text, children: ['3'] },
-            { id: '3', text: child.text, children: ['4'] },
-            { id: '4', text: grandchild.text }
+            { id: '', text: home.text, children: ['0', '1'] },
+            { id: '0', text: mother.text, children: ['2'] },
+            { id: '1', text: father.text, children: ['2'] },
+            { id: '2', text: child.text, children: ['3'] },
+            { id: '3', text: grandchild.text }
         ]
     }
 
+    describe('.fromJsonObjectLiteral()', () => {
+        test('When notes array is empty, notebook home note is blank', () => {
+            const notebook = fromJsonObjectLiteral({ notes: [] })
+            expect(Array.from(notebook.notes())).toStrictEqual([{ text: '' }])
+        })
+
+        test('Returns notebook', () => {
+            notebook = fromJsonObjectLiteral(threeLevelHierarchyWithChildrenJsonObject)
+            expect(notebook.relationships()).toStrictEqual(new Set([
+                { parent: home, child: mother, childIndex: 0 },
+                { parent: home, child: father, childIndex: 1 },
+                { parent: mother, child: child, childIndex: 0 },
+                { parent: father, child: child, childIndex: 0 },
+                { parent: child, child: grandchild, childIndex: 0 },
+            ]))
+        })
+    })
+
+    // todo: case with empty string as valid id with default implementation
     // describe('.toJsonObject()', () => {
     //     test('Converts empty notebook to JSON object', () => {
     //         expect(toJsonObject(notebook)).toStrictEqual({ notes: [{ id: '', text: ''}] })
@@ -49,22 +63,4 @@ describe('JSON persistence', () => {
     //
     //     // TODO tests for notebook mutations
     // })
-
-    describe('.fromJsonObject()', () => {
-        test('When notes array is empty, returns notebook with blank home note', () => {
-            const notebook = fromJsonObject({ notes: [] })
-            expect(Array.from(notebook.notes())).toStrictEqual([{ text: '' }])
-        })
-
-        test('Converts JSON object with children to hierarchical notebook', () => {
-            notebook = fromJsonObject(threeLevelHierarchyWithChildrenJsonObject)
-            expect(notebook.relationships()).toStrictEqual(new Set([
-                { parent: home, child: mother, childIndex: 0 },
-                { parent: home, child: father, childIndex: 1 },
-                { parent: mother, child: child, childIndex: 0 },
-                { parent: father, child: child, childIndex: 0 },
-                { parent: child, child: grandchild, childIndex: 0 },
-            ]))
-        })
-    })
 })

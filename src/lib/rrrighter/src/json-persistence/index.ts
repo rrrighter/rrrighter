@@ -10,7 +10,7 @@ export type NotebookJson = {
     notes: NoteRecord[]
 }
 
-export const fromJsonObject = (jsonObject: NotebookJson): Notebook => {
+export const fromJsonObjectLiteral = (jsonObject: NotebookJson): Notebook => {
     const homeRecord = jsonObject.notes.shift()
     const home = { text: homeRecord?.text || '' }
 
@@ -35,17 +35,24 @@ export const fromJsonObject = (jsonObject: NotebookJson): Notebook => {
     return notebook
 }
 
-// export const toJsonObject = (notebook: Notebook): NotebookJson => {
-//     let notes: NoteRecord[] = []
+// export const toJsonObjectLiteral = (notebook: Notebook, noteId?: Function): NotebookJson => { // todo: test custom noteId
+//     let sequentialId = 0
+//     // todo: noteId default with autoincrement from 0 for home, 1 for first note, etc.
+//     const notes = notebook.notes()
+//     let noteRecords: NoteRecord[] = []
 //
-//     notebook.notes().forEach(note => {
-//         const noteJson: NoteRecord = { id: note.id, text: note.text }
-//         const children = notebook.children(note.id)
+//     // todo: shift hierarch and add it first with empty string as id, then add the rest
+//
+//     notes.forEach(note => {
+//         const id = noteId ? noteId(note) : sequentialId++
+//         const text = note.text
+//         const noteJson: NoteRecord = { id, text }
+//         const children = notebook.children(note)
 //         if (children && children.length > 0) {
 //             noteJson.children = children.map(child => child.id)
 //         }
-//         notes.push(noteJson)
+//         noteRecords.push(noteJson)
 //     })
 //
-//     return { notes }
+//     return { notes: noteRecords }
 // }
