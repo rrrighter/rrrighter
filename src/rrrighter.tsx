@@ -1,6 +1,5 @@
 import { fromJsonObject } from './lib/rrrighter/src/json-persistence'
-import Note from './lib/rrrighter/src/note'
-import Notebook from './lib/rrrighter/src/notebook'
+import Notebook, { Note } from './lib/rrrighter/src/notebook'
 import React, {ReactNode, useState} from 'react'
 import {App, ConfigProvider, theme, Drawer, Button} from 'antd'
 import Outline from './components/notebook/outline/outline'
@@ -49,10 +48,10 @@ function Rrrighter() {
     setNotebook(new Notebook(notebook))
   }
 
-  const onAttach = (parent: Note, child: Note, index?: number) => {
+  const onAttach = (parent: Note, child: Note, childIndex?: number) => {
     // todo: no longer needed? notebook.descendants(parentId)?.forEach((descendant) => notebook.unrelate(descendant.id, childId))
     // todo: no longer needed? notebook.ancestors(parentId)?.forEach((ancestor) => notebook.unrelate(ancestor.id, childId))
-    console.log(notebook.relate([{ parent, child, index }]))
+    console.log(notebook.relate([{ parent, child, childIndex }]))
 
     setNotebook(new Notebook(notebook))
   }
