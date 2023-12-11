@@ -26,7 +26,7 @@ const fetchJsonObject = async (url: string) => {
 }
 
 const sourceJSON = repository ? await fetchJsonObject(repository) : welcome
-const initialNotebook = fromJsonObject(sourceJSON)
+const initialNotebook = new Notebook({ text: '🏡' }) // todo: load help fromJsonObject(sourceJSON)
 
 function Rrrighter() {
   const [notebook, setNotebook] = useState<Notebook>(initialNotebook)
@@ -49,10 +49,8 @@ function Rrrighter() {
   }
 
   const onAttach = (parent: Note, child: Note, childIndex?: number) => {
-    // todo: no longer needed? notebook.descendants(parentId)?.forEach((descendant) => notebook.unrelate(descendant.id, childId))
-    // todo: no longer needed? notebook.ancestors(parentId)?.forEach((ancestor) => notebook.unrelate(ancestor.id, childId))
+    debugger
     console.log(notebook.relate([{ parent, child, childIndex }]))
-
     setNotebook(new Notebook(notebook))
   }
 
@@ -62,7 +60,7 @@ function Rrrighter() {
 
   const onCreateHierarch = (text: string) => {
     // eslint-disable-next-line no-restricted-globals
-    const id = self.crypto.randomUUID()
+    // const id = self.crypto.randomUUID()
     notebook.relate([{parent: notebook.home, child: { text }}])
     setNotebook(new Notebook(notebook))
   }
@@ -72,6 +70,7 @@ function Rrrighter() {
     const onCreateChild = (text: string) => {
       // eslint-disable-next-line no-restricted-globals
       // const id = self.crypto.randomUUID()
+      // debugger
       notebook.relate([{parent: inspectorNote, child: { text }}])
       setNotebook(new Notebook(notebook))
     }

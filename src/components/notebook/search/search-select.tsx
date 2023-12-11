@@ -6,9 +6,9 @@ import NoteOutline from "../../notes/note-outline";
 const {Option} = Select;
 
 export default function SearchSelect(props: { notebook: Notebook, onSelect: Function }) {
-    const searchOptions = Array.from(props.notebook.notes()).map((note) => {
+    const searchOptions = Array.from(props.notebook.notes()).map((note, index) => {
         const firstLine = note.text.split('\n')[0]
-        return <Option value={firstLine}>
+        return <Option key={index} value={firstLine}>
             <NoteOutline notebook={props.notebook} note={note} />
         </Option>
     })
