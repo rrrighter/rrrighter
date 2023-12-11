@@ -17,7 +17,7 @@ export default function NoteToolbar(props: {
     onAttach: Function
 }) {
     return <>
-        <AttachToParent notebook={props.notebook} childId={props.note.id} onAttach={props.onAttach} />
+        <AttachToParent notebook={props.notebook} child={props.note} onAttach={props.onAttach} />
         <CreateNoteButton onCreate={props.onCreateChild} />
         <EditNoteButton text={props.note.text} onEdit={props.onEdit} />
 

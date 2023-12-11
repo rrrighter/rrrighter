@@ -36,34 +36,35 @@ function Rrrighter() {
   const onDelete = (note: Note) => {
     // todo: confirm action, show number of children
     // todo: handle case with children
-    notebook.delete(note.id)
-    setInspectorNote(undefined)
-
-    setNotebook(new Notebook(notebook))
+    // notebook.delete(note)
+    // notebook.parents()
+    // setInspectorNote(undefined)
+    //
+    // setNotebook(new Notebook(notebook))
   }
 
   const onDetach = (parent: Note, child: Note) => {
-    notebook.unrelate(parent.id, child.id)
+    notebook.unrelate({parent, child })
 
     setNotebook(new Notebook(notebook))
   }
 
-  const onAttach = (parentId: string, childId: string, index?: number) => {
+  const onAttach = (parent: Note, child: Note, index?: number) => {
     // todo: no longer needed? notebook.descendants(parentId)?.forEach((descendant) => notebook.unrelate(descendant.id, childId))
     // todo: no longer needed? notebook.ancestors(parentId)?.forEach((ancestor) => notebook.unrelate(ancestor.id, childId))
-    console.log(notebook.relate(parentId, childId, index))
+    console.log(notebook.relate([{ parent, child, index }]))
 
     setNotebook(new Notebook(notebook))
   }
 
-  const onSelect = (id: string) => {
-    setInspectorNote(notebook.get(id))
+  const onSelect = (note: Note) => {
+    setInspectorNote(note)
   }
 
   const onCreateHierarch = (text: string) => {
     // eslint-disable-next-line no-restricted-globals
     const id = self.crypto.randomUUID()
-    notebook.upsert({ id, text})
+    notebook.relate([{parent: notebook.home, child: { text }}])
     setNotebook(new Notebook(notebook))
   }
 
@@ -71,18 +72,17 @@ function Rrrighter() {
   if (inspectorNote) {
     const onCreateChild = (text: string) => {
       // eslint-disable-next-line no-restricted-globals
-      const id = self.crypto.randomUUID()
-      notebook.upsert({ id, text})
-      notebook.relate(inspectorNote.id, id)
+      // const id = self.crypto.randomUUID()
+      notebook.relate([{parent: inspectorNote, child: { text }}])
       setNotebook(new Notebook(notebook))
     }
 
     const onEdit = (text: string) => {
-      const id = inspectorNote.id
-      notebook.upsert({ id, text})
+      inspectorNote.text = text
       setNotebook(new Notebook(notebook))
-      setInspectorNote(notebook.get(id))
+      setInspectorNote(inspectorNote)
     }
+
     const noteParents = <Parents notebook={notebook} note={inspectorNote} onDetach={readonly ? undefined : onDetach} onSelect={onSelect} />
     const noteToolbar = <NoteToolbar
         notebook={notebook}
@@ -92,12 +92,12 @@ function Rrrighter() {
         onAttach={onAttach}
         onDelete={() => onDelete(inspectorNote)}
     />
-    const parents = Array.from(notebook.parents(inspectorNote.id) || [])
+    const parents = Array.from(notebook.parents(inspectorNote) || [])
     const parentIndexes: ReactNode[] = parents.map((parent): ReactNode => {
-      const index = notebook.children(parent.id)?.indexOf(inspectorNote) || 0
+      const index = notebook.children(parent)?.indexOf(inspectorNote) || 0
       return <div>
-        <Button type="link" onClick={() => onAttach(parent.id, inspectorNote.id, index - 1)}>🔼</Button>
-        <Button type="link" onClick={() => onAttach(parent.id, inspectorNote.id, index + 1)}>🔽</Button>
+        <Button type="link" onClick={() => onAttach(parent, inspectorNote, index - 1)}>🔼</Button>
+        <Button type="link" onClick={() => onAttach(parent, inspectorNote, index + 1)}>🔽</Button>
         {parent.text} @ {index}
       </div>
     })

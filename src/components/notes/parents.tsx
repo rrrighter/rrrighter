@@ -10,7 +10,7 @@ export default function Parents(props: {
   onDetach?: Function,
   onSelect?: Function
 }) {
-  const parents = Array.from(props.notebook.parents(props.note.id) || [])
+  const parents = Array.from(props.notebook.parents(props.note) || [])
   const tags: ReactNode[] = parents.map((parent): ReactNode => {
     return <NoteTag parent={parent} child={props.note} onSelect={props.onSelect} onDetach={props.onDetach || undefined} />
   })

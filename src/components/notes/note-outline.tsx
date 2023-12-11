@@ -8,7 +8,7 @@ import './note-outline.css';
 const { Text } = Typography;
 
 export default function NoteOutline(props: { notebook: Notebook, note: Note }) {
-    const descendantsCount = props.notebook.descendants(props.note.id)?.size || 0
+    const descendantsCount = props.notebook.descendants(props.note)?.size || 0
 
     return <div className='note-outline'>
         <div style={{ float: 'left' }}>

@@ -1,86 +1,46 @@
-import Notebook from './notebook'
+import OrderedOverlappingHierarchy from "ordered-overlapping-hierarchy";
+import Notebook from './notebook';
 
 describe('Notebook', () => {
+  const home = { text: '🏡' }
+  let notebook: Notebook
+
+  beforeEach(() => {
+    notebook = new Notebook(home)
+  })
+
+  test('Is OrderedOverlappingHierarchy', () => {
+    expect(new Notebook(home)).toBeInstanceOf(OrderedOverlappingHierarchy)
+  })
+
   describe("new Notebook()", () => {
-    test('Requires no arguments', () => {
-      const notebook = new Notebook()
-      expect(notebook).toBeInstanceOf(Notebook)
+    test('Accepts note as hierarch', () => {
+      expect(notebook.hierarch).toStrictEqual(home)
     })
 
-    test('Given note, makes it home', () => {
-      const home = { text: '🏡' }
-      const notebook = new Notebook(home)
-      expect(notebook.home).toStrictEqual(home)
+    test('Accepts notebook as source', () => {
+      const clone = new Notebook(notebook)
+      expect(clone.relationships()).toStrictEqual(notebook.relationships())
     })
-
-    // todo: shallow clone structure from another notebook
-  });
+  })
 
   describe(".home", () => {
-    test('Is an empty note by default', () => {
-      const notebook = new Notebook()
-      expect(notebook.home).toStrictEqual({ text: '' })
+    test('Returns hierarch', () => {
+      expect(notebook.home).toStrictEqual(notebook.hierarch)
     })
   })
 
   describe(".notes()", () => {
-    test('Contains only home by default', () => {
-      const notebook = new Notebook()
-      expect(notebook.notes()).toStrictEqual(new Set([notebook.home]))
-    })
-  })
-
-  describe(".relationships()", () => {
-    test('Is an empty set by default', () => {
-      const notebook = new Notebook()
-      expect(notebook.relationships()).toStrictEqual(new Set())
+    test('Returns members', () => {
+      expect(notebook.notes()).toStrictEqual(notebook.members())
     })
 
-    // todo: example with three notes and indexes 0-2
-  })
-
-  describe(".relate()", () => {
-    test("Returns resulting relationships", () => {
-      const notebook = new Notebook()
-      const note = { text: 'note' }
-      const relationships = notebook.relate([{ parent: notebook.home, child: note }])
-      expect(relationships).toStrictEqual([{ parent: notebook.home, child: note, index: 0 }])
-    })
-
-    test("Relates different notes with identical texts", () => {
-      const notebook = new Notebook()
+    test('Can contain different notes with identical texts', () => {
       const firstApple = { text: '🍏' }
       const secondApple = { text: '🍏' }
       notebook.relate([{ parent: notebook.home, child: firstApple }])
       notebook.relate([{ parent: notebook.home, child: secondApple }])
       expect(notebook.notes()).toStrictEqual(new Set([notebook.home, firstApple, secondApple]))
     })
-
-    test("Zero index makes the child note first", () => {
-      const notebook = new Notebook()
-      const zero = { text: '0' }
-      const first = { text: '1' }
-      const second = { text: '2' }
-      notebook.relate([{ parent: notebook.home, child: first }])
-      notebook.relate([{ parent: notebook.home, child: second }])
-      notebook.relate([{ parent: notebook.home, child: zero, index: 0 }])
-      expect(notebook.children(notebook.home)).toStrictEqual([zero, first, second])
-    })
   })
-
-  describe(".children()", () => {
-    test('Returns notes in order', () => {
-      const notebook = new Notebook()
-      const a = { text: 'A' }
-      const b = { text: 'B' }
-      notebook.relate([{ parent: notebook.home, child: a }])
-      notebook.relate([{ parent: notebook.home, child: b }])
-      expect(notebook.children(notebook.home)).toStrictEqual([a, b])
-    })
-  })
-
-  // todo: unrelate
-  // todo: parents
-  // todo: ancestors
-  // todo: descendants
 })

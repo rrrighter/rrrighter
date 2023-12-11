@@ -3,17 +3,24 @@ import {Button} from "antd";
 import SearchDrawer from "../notebook/search/search-drawer";
 import Notebook from "../../lib/rrrighter/src/notebook";
 import {PullRequestOutlined} from "@ant-design/icons";
+import Note from "../../lib/rrrighter/src/note";
 
-export default function AttachToParent(props: { notebook: Notebook, childId: string, onAttach: Function }) {
+export default function AttachToParent(props: { notebook: Notebook, child: Note, onAttach: Function }) {
     const [open, setOpen] = useState(false);
 
-    const potentialParentsNotebook = (notebook: Notebook, childId: string): Notebook => { // todo: extract to Rrrighter app class?
+    const potentialParentsNotebook = (notebook: Notebook, child: Note): Notebook => {
+        const deleteNote = (child: Note) => {
+            notebook.parents(child)?.forEach((parent) => {
+                notebook.unrelate({ parent, child })
+            })
+        }
+
         const result = new Notebook(notebook)
-        result.descendants(childId)?.forEach((descendant) => result.delete(descendant.id))
-        result.delete(childId)
+        result.descendants(child)?.forEach((descendant) => deleteNote(descendant))
+        deleteNote(child)
         return result
     }
-    const potentialParents = open ? potentialParentsNotebook(props.notebook, props.childId) : new Notebook()
+    const potentialParents = open ? potentialParentsNotebook(props.notebook, props.child) : new Notebook()
 
     const showDrawer = () => {
         setOpen(true);
@@ -23,8 +30,8 @@ export default function AttachToParent(props: { notebook: Notebook, childId: str
         setOpen(false);
     };
 
-    const onSelect = (parentId: string) => {
-        props.onAttach(parentId, props.childId)
+    const onSelect = (parent: Note) => {
+        props.onAttach(parent, props.child)
         onClose()
     }
 
