@@ -1,11 +1,19 @@
 {
   "notes": [
     {
+      "id": "help",
+      "text": "📙 Help",
+      "children": [
+          "welcome",
+          "features"
+      ]
+    },
+    {
       "id": "welcome",
       "text": " 👋 Welcome\n\nRrrighter is a personal multi-dimensional notes manager for power users.\n\n(c) 2023, [Andrey Zharikov](https://github.com/zharikovpro)"
     },
     {
-      "id": "834cedcc-3b76-4078-beb9-c2f7b40916cd",
+      "id": "features",
       "text": "🎁 Features",
       "children": [
         "23c319e1-09a8-469c-976f-749e0233f58d",

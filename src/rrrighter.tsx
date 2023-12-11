@@ -5,7 +5,7 @@ import {App, ConfigProvider, theme, Drawer, Button} from 'antd'
 import Outline from './components/notebook/outline/outline'
 import Inspector from './components/notes/inspector'
 import NotebookRepository from './components/notebook/repository/notebook-repository'
-import welcome from './welcome.json'
+import help from './help.json'
 import SearchSelect from './components/notebook/search/search-select'
 import './rrrighter.css'
 import NoteToolbar from "./components/notes/note-toolbar";
@@ -25,21 +25,21 @@ const fetchJsonObject = async (url: string) => {
   return (JSON.parse(await fetch(url)))
 }
 
-const sourceJSON = repository ? await fetchJsonObject(repository) : welcome
-const initialNotebook = new Notebook({ text: '🏡' }) // todo: load help fromJsonObject(sourceJSON)
+const sourceJSON = repository ? await fetchJsonObject(repository) : help // todo: fix loader
+const initialNotebook = new Notebook({ text: '🏡 Home' }) // todo: fix and use fromJsonObject(sourceJSON)
 
 function Rrrighter() {
   const [notebook, setNotebook] = useState<Notebook>(initialNotebook)
   const [inspectorNote, setInspectorNote] = useState<Note | undefined>(undefined)
 
-  const onDelete = (note: Note) => {
-    // todo: confirm action, show number of children
-    // todo: handle case with children
-    // notebook.delete(note)
-    // notebook.parents()
-    // setInspectorNote(undefined)
-    //
-    // setNotebook(new Notebook(notebook))
+  const onDelete = (child: Note) => {
+    if (notebook.descendants(child)?.size) {
+      alert('Cannot delete note with children')
+    } else {
+      notebook.parents(child)?.forEach(parent => notebook.unrelate({ parent, child }))
+      setInspectorNote(undefined)
+      setNotebook(new Notebook(notebook))
+    }
   }
 
   const onDetach = (parent: Note, child: Note) => {

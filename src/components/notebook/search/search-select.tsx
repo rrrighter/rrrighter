@@ -1,6 +1,6 @@
 import React from "react";
 import {Select} from "antd";
-import Notebook, { Note } from "../../../lib/rrrighter/src/notebook";
+import Notebook from "../../../lib/rrrighter/src/notebook";
 import NoteOutline from "../../notes/note-outline";
 
 const {Option} = Select;
