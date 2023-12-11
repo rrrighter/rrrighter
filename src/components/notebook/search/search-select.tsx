@@ -1,7 +1,7 @@
 import React from "react";
 import {Select} from "antd";
 import Notebook from "../../../lib/rrrighter/src/notebook";
-import NoteOutline from "../../notes/note-outline";
+import NoteItem from "../../notes/note-item";
 
 const {Option} = Select;
 
@@ -10,7 +10,7 @@ export default function SearchSelect(props: { notebook: Notebook, onSelect?: Fun
 
     const searchOptions = notesArray.map((note, index) => {
         return <Option key={index}>
-            <NoteOutline notebook={props.notebook} note={note} />
+            <NoteItem notebook={props.notebook} note={note} />
         </Option>
     })
 

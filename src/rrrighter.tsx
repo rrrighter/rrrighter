@@ -34,7 +34,7 @@ function Rrrighter() {
 
   const onDelete = (child: Note) => {
     if (notebook.descendants(child)?.size) {
-      alert('Cannot delete note with children')
+      alert('Cannot delete note with children. Delete the children first.') // todo: implement wizard drawer OR batch actions with descendats
     } else {
       notebook.parents(child)?.forEach(parent => notebook.unrelate({ parent, child }))
       setInspectorNote(undefined)

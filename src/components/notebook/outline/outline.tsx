@@ -1,7 +1,7 @@
 import React, {ReactElement} from 'react'
 import Notebook, { Note } from '../../../lib/rrrighter/src/notebook'
 import {Tree} from 'antd'
-import NoteOutline from "../../notes/note-outline";
+import NoteItem from "../../notes/note-item";
 import './outline.css';
 
 interface TreeDataNodeType {
@@ -25,7 +25,7 @@ const treeData = (notebook: Notebook, parent?: Note): TreeDataNodeType[] => { //
 }
 
 export default function Outline(props: { notebook: Notebook, parent?: Note, selectIcon?: ReactElement, onSelect?: Function, onDrop?: Function }) {
-  const titleRender = (node: TreeDataNodeType) => <NoteOutline notebook={props.notebook} note={node.note} />
+  const titleRender = (node: TreeDataNodeType) => <NoteItem notebook={props.notebook} note={node.note} />
 
   const onDrop = (e: any) => {
     console.dir(e)

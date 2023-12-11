@@ -1,12 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import NoteOutline from '../../components/notes/note-outline';
+import NoteItem from '../../components/notes/note-item';
 import Notebook from "../../lib/rrrighter/src/notebook";
 
 const meta = {
     title: 'Rrrighter/Note/NoteOutline',
-    component: NoteOutline
-} satisfies Meta<typeof NoteOutline>;
+    component: NoteItem
+} satisfies Meta<typeof NoteItem>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
