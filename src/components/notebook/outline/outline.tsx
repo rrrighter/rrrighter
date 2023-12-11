@@ -1,6 +1,5 @@
 import React, {ReactElement} from 'react'
-import Notebook from '../../../lib/rrrighter/src/notebook'
-import Note from '../../../lib/rrrighter/src/note'
+import Notebook, { Note } from '../../../lib/rrrighter/src/notebook'
 import {Tree} from 'antd'
 import NoteOutline from "../../notes/note-outline";
 import './outline.css';
@@ -12,20 +11,23 @@ interface TreeDataNodeType {
   children?: TreeDataNodeType[]
 }
 
-const treeData = (notebook: Notebook, parentId?: string): TreeDataNodeType[] => { // todo: move to Rrrighter app presentation layer?
-  const _treeData = (notes: Iterable<Note>, prefix = '', parent: Note | undefined = undefined): TreeDataNodeType[] => {
+const treeData = (notebook: Notebook, parent?: Note): TreeDataNodeType[] => { // todo: move to Rrrighter app presentation layer?
+  let index = 0
+
+  const _treeData = (notes: Iterable<Note>, parent: Note | undefined = undefined): TreeDataNodeType[] => {
     return Array.from(notes).map((note) => {
-      const key = prefix + '/' + note.id
-      const childrenNotes = notebook.children(note.id)
-      return { key, parent, note, children: childrenNotes && childrenNotes.length > 0 ? _treeData(childrenNotes, key, note) : undefined }
+      index++
+      const key = index.toString()
+      const childrenNotes = notebook.children(note)
+      return { key, parent, note, children: childrenNotes && childrenNotes.length > 0 ? _treeData(childrenNotes, note) : undefined }
     })
   }
 
-  const notes = notebook.children(parentId || notebook.hierarch().id) || []
+  const notes = notebook.children(parent || notebook.hierarch) || []
   return _treeData(notes)
 }
 
-export default function Outline(props: { notebook: Notebook, parentId?: string, selectIcon?: ReactElement, onSelect?: Function, onDrop?: Function }) {
+export default function Outline(props: { notebook: Notebook, parent?: Note, selectIcon?: ReactElement, onSelect?: Function, onDrop?: Function }) {
   const titleRender = (node: TreeDataNodeType) => <NoteOutline notebook={props.notebook} note={node.note} />
 
   const onDrop = (e: any) => {
@@ -43,8 +45,8 @@ export default function Outline(props: { notebook: Notebook, parentId?: string, 
   return <Tree
       draggable={!!props.onDrop}
       onDrop={onDrop}
-      onSelect={(_selectedKeys, e) => { props.onSelect && props.onSelect(e.node.note.id) }}
-      treeData={treeData(props.notebook, props.parentId)}
+      onSelect={(_selectedKeys, e) => { props.onSelect && props.onSelect(e.node.note) }}
+      treeData={treeData(props.notebook, props.parent)}
       blockNode
       titleRender={titleRender}
   />

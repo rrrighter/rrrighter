@@ -1,7 +1,6 @@
-import Notebook from "../../lib/rrrighter/src/notebook";
+import Notebook, { Note } from "../../lib/rrrighter/src/notebook";
 import FormattedText from "./formatted-text";
 import React from "react";
-import Note from "../../lib/rrrighter/src/note";
 import {Typography} from "antd";
 import './note-outline.css';
 

@@ -1,9 +1,8 @@
 import React, {useState} from "react"
 import {Button} from "antd";
 import SearchDrawer from "../notebook/search/search-drawer";
-import Notebook from "../../lib/rrrighter/src/notebook";
+import Notebook, { Note } from "../../lib/rrrighter/src/notebook";
 import {PullRequestOutlined} from "@ant-design/icons";
-import Note from "../../lib/rrrighter/src/note";
 
 export default function AttachToParent(props: { notebook: Notebook, child: Note, onAttach: Function }) {
     const [open, setOpen] = useState(false);
@@ -20,7 +19,7 @@ export default function AttachToParent(props: { notebook: Notebook, child: Note,
         deleteNote(child)
         return result
     }
-    const potentialParents = open ? potentialParentsNotebook(props.notebook, props.child) : new Notebook()
+    const potentialParents = open ? potentialParentsNotebook(props.notebook, props.child) : new Notebook(props.notebook.home)
 
     const showDrawer = () => {
         setOpen(true);

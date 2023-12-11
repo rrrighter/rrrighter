@@ -11,22 +11,24 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const OrphanHierarch: Story = {
+const home = { text: '🏡' }
+const person = { text: '🧍' }
+
+const notebook = new Notebook(home);
+notebook.relate([
+    { parent: home, child: person }
+]);
+
+export const NoDescendantsBadge: Story = {
     args: {
-        notebook: new Notebook(),
-        note: { id: 'orphan hierarch', text: 'orphan hierarch' },
+        notebook,
+        note: person,
     },
 };
 
-const parentChildNotebook = new Notebook();
-const parent = { id: 'parent', text: 'parent' }
-parentChildNotebook.upsert(parent);
-parentChildNotebook.upsert({ id: 'child', text: 'child' });
-parentChildNotebook.relate('parent', 'child')
-
-export const ParentWithOneChild: Story = {
+export const DescendantsCountBadge: Story = {
     args: {
-        notebook: parentChildNotebook,
-        note: parent,
+        notebook,
+        note: home,
     },
 };

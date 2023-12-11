@@ -3,10 +3,9 @@ import {DeleteOutlined} from '@ant-design/icons'
 
 import {Button, Popconfirm} from 'antd'
 import AttachToParent from "./attach-to-parent";
-import Notebook from "../../lib/rrrighter/src/notebook";
+import Notebook, { Note } from "../../lib/rrrighter/src/notebook";
 import CreateNoteButton from "./create-note-button";
 import EditNoteButton from "./edit-note-button";
-import Note from "../../lib/rrrighter/src/note";
 
 export default function NoteToolbar(props: {
     notebook: Notebook,

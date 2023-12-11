@@ -1,6 +1,5 @@
 import React, {ReactNode} from 'react'
-import Note from "../../lib/rrrighter/src/note"
-import Notebook from '../../lib/rrrighter/src/notebook'
+import Notebook, { Note } from '../../lib/rrrighter/src/notebook'
 
 import NoteTag from "./note-tag";
 

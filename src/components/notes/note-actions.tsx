@@ -1,5 +1,5 @@
 import React from 'react'
-import Note from "../../lib/rrrighter/src/note";
+import { Note } from "../../lib/rrrighter/src/notebook";
 import FormattedText from "./formatted-text";
 import {Button} from "antd";
 

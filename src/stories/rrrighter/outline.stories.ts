@@ -15,16 +15,20 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-const family = new Notebook();
-family.upsert({ id: 'grandparent', text: 'grandparent' });
-family.upsert({ id: 'parent', text: 'parent' });
-family.upsert({ id: 'child1', text: 'child1' });
-family.upsert({ id: 'child2', text: 'child2' });
-family.upsert({ id: 'child3', text: 'child3' });
-family.relate('grandparent', 'parent')
-family.relate('parent', 'child1')
-family.relate('parent', 'child2')
-family.relate('parent', 'child3')
+const home = { text: '🏡' }
+const family = new Notebook(home);
+const grandparent = { text: 'grandparent' }
+const parent = { text: 'parent' }
+const child1 = { text: 'child1' }
+const child2 = { text: 'child2' }
+const child3 = { text: 'child3' }
+family.relate([
+    { parent: home, child: grandparent },
+    { parent: grandparent, child: parent },
+    { parent: parent, child: child1 },
+    { parent: parent, child: child2 },
+    { parent: parent, child: child3 }
+]);
 
 export const Family: Story = {
     args: {
@@ -35,6 +39,6 @@ export const Family: Story = {
 export const Parent: Story = {
     args: {
         notebook: family,
-        parentId: 'parent'
+        parent: parent
     },
 };

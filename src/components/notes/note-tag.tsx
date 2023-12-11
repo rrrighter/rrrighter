@@ -1,6 +1,6 @@
 import FormattedText from "./formatted-text";
 import React from "react";
-import Note from "../../lib/rrrighter/src/note";
+import { Note } from "../../lib/rrrighter/src/notebook";
 import {UpOutlined} from "@ant-design/icons";
 import {Tag} from 'antd'
 import './note-tag.css';
@@ -15,8 +15,8 @@ export default function NoteTag(props: {
     return <Tag
         style={{ cursor: 'pointer' }}
         icon={<UpOutlined />}
-        key={`${props.parent.id}/${props.child.id}`}
-        onClick={() => props.onSelect && props.onSelect(props.parent.id)}
+        // key={`${props.parent}/${props.child.id}`}
+        onClick={() => props.onSelect && props.onSelect(props.parent)}
         closable={!!props.onDetach}
         onClose={() => props.onDetach && props.onDetach(props.parent, props.child)}
     >

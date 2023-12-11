@@ -8,7 +8,7 @@ const {Option} = Select;
 export default function SearchSelect(props: { notebook: Notebook, onSelect: Function }) {
     const searchOptions = Array.from(props.notebook.notes()).map((note) => {
         const firstLine = note.text.split('\n')[0]
-        return <Option key={note.id} value={firstLine}>
+        return <Option value={firstLine}>
             <NoteOutline notebook={props.notebook} note={note} />
         </Option>
     })
