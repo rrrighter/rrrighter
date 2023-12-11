@@ -49,8 +49,7 @@ function Rrrighter() {
   }
 
   const onAttach = (parent: Note, child: Note, childIndex?: number) => {
-    debugger
-    console.log(notebook.relate([{ parent, child, childIndex }]))
+    notebook.relate([{ parent, child, childIndex }])
     setNotebook(new Notebook(notebook))
   }
 
@@ -70,7 +69,6 @@ function Rrrighter() {
     const onCreateChild = (text: string) => {
       // eslint-disable-next-line no-restricted-globals
       // const id = self.crypto.randomUUID()
-      // debugger
       notebook.relate([{parent: inspectorNote, child: { text }}])
       setNotebook(new Notebook(notebook))
     }

@@ -19,7 +19,7 @@ export default function AttachToParent(props: { notebook: Notebook, child: Note,
         deleteNote(child)
         return result
     }
-    const potentialParents = open ? potentialParentsNotebook(props.notebook, props.child) : new Notebook(props.notebook.home)
+    const potentialParents = open ? potentialParentsNotebook(new Notebook(props.notebook), props.child) : new Notebook(props.notebook.home)
 
     const showDrawer = () => {
         setOpen(true);
