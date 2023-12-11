@@ -19,14 +19,14 @@ notebook.relate([
     { parent: home, child: person }
 ]);
 
-export const NoDescendantsBadge: Story = {
+export const WithoutDescendantsCountBadge: Story = {
     args: {
         notebook,
         note: person,
     },
 };
 
-export const DescendantsCountBadge: Story = {
+export const WithDescendantsCountBadge: Story = {
     args: {
         notebook,
         note: home,
