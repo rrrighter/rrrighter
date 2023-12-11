@@ -36,7 +36,7 @@ export default function AttachToParent(props: { notebook: Notebook, child: Note,
 
     return (
         <>
-            <Button type="text" size="small" onClick={showDrawer}><PullRequestOutlined /></Button>
+            <Button disabled={props.child === props.notebook.home} type="text" size="small" onClick={showDrawer}><PullRequestOutlined /></Button>
             <SearchDrawer notebook={potentialParents} onSelect={onSelect} onClose={onClose} open={open} />
         </>
     )
