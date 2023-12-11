@@ -15,19 +15,22 @@ export default function NoteToolbar(props: {
     onCreateChild: Function,
     onAttach: Function
 }) {
+    const isDeleteDisabled = props.note === props.notebook.home
+
     return <>
         <AttachToParent notebook={props.notebook} child={props.note} onAttach={props.onAttach} />
         <CreateNoteButton onCreate={props.onCreateChild} />
         <EditNoteButton text={props.note.text} onEdit={props.onEdit} />
 
         <Popconfirm
+            disabled={isDeleteDisabled}
             title="Delete the note"
             description="Are you sure to delete this note?"
             onConfirm={() => props.onDelete()}
             okText="Yes"
             cancelText="No"
         >
-            <Button type='text' size='small' danger icon={<DeleteOutlined />} />
+            <Button disabled={isDeleteDisabled} type='text' size='small' danger icon={<DeleteOutlined />} />
         </Popconfirm>
     </>
 }
