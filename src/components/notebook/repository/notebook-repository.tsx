@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Badge, Button, Dropdown, Space} from 'antd'
 import { DownOutlined} from '@ant-design/icons'
 import Notebook from '../../../lib/rrrighter/src/notebook'
-import { fromJsonObjectLiteral } from '../../../lib/rrrighter/src/json-repository'
+import { fromJsonObjectLiteral, toJsonObjectLiteral } from '../../../lib/rrrighter/src/json-repository'
 import { fileOpen, fileSave } from 'browser-fs-access';
 import type { MenuProps } from 'antd';
 
@@ -17,10 +17,10 @@ export default function NotebookRepository(props: { filename: string, notebook: 
   }
 
   const onSave = async () => {
-    // const json = JSON.stringify(toJsonObjectLiteral(props.notebook), null, '  ')
-    // const blob = new Blob([json])
-    // await fileSave(blob, { fileName, extensions: ['.rrrighter'] }, fileHandle)
-    // setSavedNotebook(props.notebook)
+    const json = JSON.stringify(toJsonObjectLiteral(props.notebook), null, '  ')
+    const blob = new Blob([json])
+    await fileSave(blob, { fileName, extensions: ['.rrrighter'] }, fileHandle)
+    setSavedNotebook(props.notebook)
   }
 
   const [savedNotebook, setSavedNotebook] = useState<Notebook>(props.notebook)
