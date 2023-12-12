@@ -46,11 +46,10 @@ export const toJsonObjectLiteral = (notebook: Notebook): NotebookJson => {
         const id = noteIds.get(note) as string
         const text = note.text
         const children = notebook.children(note)?.map((child) => noteIds.get(child) as string)
-        noteRecords.push(children ? { id, text, children } : { id, text })
+        noteRecords.push(children?.length ? { id, text, children } : { id, text })
     }
 
     let noteRecords: NoteRecord[] = []
-    // todo: map over [home, ...descendants] with recordNote, then inline function
     pushNote(home)
     notebook.descendants(home)?.forEach(pushNote)
 

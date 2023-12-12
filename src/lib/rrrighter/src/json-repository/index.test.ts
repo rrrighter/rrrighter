@@ -1,4 +1,4 @@
-import { fromJsonObjectLiteral, toJsonObjectLiteral } from "./index"; // todo: toJsonObjectLiteral
+import { fromJsonObjectLiteral, toJsonObjectLiteral } from "./index";
 import Notebook, { Note } from "./../notebook";
 
 describe('JSON repository', () => {
@@ -22,7 +22,7 @@ describe('JSON repository', () => {
             { id: '0', text: mother.text, children: ['2'] },
             { id: '1', text: father.text, children: ['2'] },
             { id: '2', text: child.text, children: ['3'] },
-            { id: '3', text: grandchild.text, children: [] } // todo: remove redundant empty children key
+            { id: '3', text: grandchild.text }
         ]
     }
 
@@ -57,8 +57,7 @@ describe('JSON repository', () => {
 
     describe('.toJsonObjectLiteral()', () => {
         test('Converts blank notebook to JSON object', () => {
-            // todo: remove redundant empty children key
-            const blankNotebookJsonObjectLiteral = { notes: [{ id: '', text: home.text, children: []}] }
+            const blankNotebookJsonObjectLiteral = { notes: [{ id: '', text: home.text }] }
             expect(toJsonObjectLiteral(notebook)).toStrictEqual(blankNotebookJsonObjectLiteral)
         })
 
