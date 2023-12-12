@@ -14,7 +14,7 @@ interface TreeDataNodeType {
 const treeData = (notebook: Notebook, parent?: Note): TreeDataNodeType[] => { // todo: move to Rrrighter app presentation layer?
   const _treeData = (notes: Iterable<Note>, parent: Note | undefined = undefined, prefix?: string): TreeDataNodeType[] => {
     return Array.from(notes).map((note, index) => {
-      const key = prefix ? `${prefix}-${index}` : index.toString() // to maintain order after notebook.relate()
+      const key = prefix ? `${prefix}-${index}` : index.toString() // to maintain expanded nodes state after notebook changes
       const childrenNotes = notebook.children(note)
       return { key, parent, note, children: childrenNotes && childrenNotes.length > 0 ? _treeData(childrenNotes,  note, key) : undefined }
     })

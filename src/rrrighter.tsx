@@ -1,4 +1,4 @@
-import { fromJsonObjectLiteral } from './lib/rrrighter/src/json-persistence'
+import { fromJsonObjectLiteral } from './lib/rrrighter/src/json-repository'
 import Notebook, { Note } from './lib/rrrighter/src/notebook'
 import React, {ReactNode, useState} from 'react'
 import {App, ConfigProvider, theme, Drawer, Button} from 'antd'

@@ -17,7 +17,7 @@ export default function NotebookRepository(props: { filename: string, notebook: 
   }
 
   const onSave = async () => {
-    // const json = JSON.stringify(toJsonObject(props.notebook), null, '  ')
+    // const json = JSON.stringify(toJsonObjectLiteral(props.notebook), null, '  ')
     // const blob = new Blob([json])
     // await fileSave(blob, { fileName, extensions: ['.rrrighter'] }, fileHandle)
     // setSavedNotebook(props.notebook)
