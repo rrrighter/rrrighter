@@ -12,21 +12,12 @@ export type NotebookJson = {
 
 export const fromJsonObjectLiteral = (jsonObject: NotebookJson): Notebook => {
     if (jsonObject.notes[0]) {
-        const relationships = []
-        const homeRecord = jsonObject.notes[0]
-        const home = { text: homeRecord.text }
+        const identityMap = new Map<string, Note>(
+    jsonObject.notes.map((noteRecord) => [noteRecord.id, { text: noteRecord.text }])
+        )
 
-        let identityMap = new Map<string, Note>()
-        identityMap.set(homeRecord.id, home)
-        for(const noteRecord of jsonObject.notes) {
-            if (noteRecord !== homeRecord) {
-                const note = { text: noteRecord.text }
-                identityMap.set(noteRecord.id, note)
-            }
-        }
-
-        let notebook = new Notebook(home)
-
+        let notebook = new Notebook(identityMap.get(jsonObject.notes[0].id) as Note)
+        const relationships = [] // todo: consider flatmap
         for(const noteRecord of jsonObject.notes) {
             const parent = identityMap.get(noteRecord.id) as Note
             for(const childId of noteRecord.children || []) {
@@ -34,7 +25,6 @@ export const fromJsonObjectLiteral = (jsonObject: NotebookJson): Notebook => {
                 relationships.push({ parent, child })
             }
         }
-
         notebook.relate(relationships)
 
         return notebook
