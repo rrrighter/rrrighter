@@ -45,9 +45,10 @@ describe('JSON repository', () => {
     })
 
     describe('.toJsonObjectLiteral()', () => {
-        test('Converts new notebook to JSON object', () => {
+        test('Converts blank notebook to JSON object', () => {
             // todo: remove redundant empty children key
-            expect(toJsonObjectLiteral(notebook)).toStrictEqual({ notes: [{ id: '', text: home.text, children: []}] })
+            const blankNotebookJsonObjectLiteral = { notes: [{ id: '', text: home.text, children: []}] }
+            expect(toJsonObjectLiteral(notebook)).toStrictEqual(blankNotebookJsonObjectLiteral)
         })
 
         test('Converts hierarchical notebook to JSON object', () => {

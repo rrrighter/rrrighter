@@ -2,7 +2,7 @@ import OrderedOverlappingHierarchy from "ordered-overlapping-hierarchy";
 import Notebook from './notebook';
 
 describe('Notebook', () => {
-  const home = { text: '🏡' }
+  const home = { text: '' }
   let notebook: Notebook
 
   beforeEach(() => {
@@ -21,6 +21,10 @@ describe('Notebook', () => {
     test('Accepts notebook as source', () => {
       const clone = new Notebook(notebook)
       expect(clone.relationships()).toStrictEqual(notebook.relationships())
+    })
+
+    test('Blank notebook has blank home note', () => {
+      expect(notebook.home.text).toBe('')
     })
   })
 
