@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Badge, Button, Dropdown, Space} from 'antd'
 import { DownOutlined} from '@ant-design/icons'
 import Notebook from '../../../lib/rrrighter/src/notebook'
-import { fromJsonObjectLiteral } from '../../../lib/rrrighter/src/json-persistence'
+import { fromJsonObjectLiteral } from '../../../lib/rrrighter/src/json-repository'
 import { fileOpen, fileSave } from 'browser-fs-access';
 import type { MenuProps } from 'antd';
 

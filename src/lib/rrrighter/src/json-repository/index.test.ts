@@ -42,6 +42,17 @@ describe('JSON repository', () => {
                 { parent: child, child: grandchild, childIndex: 0 },
             ]))
         })
+
+        test('Loads 1000 notes under a second', () => {
+            const notes = []
+            for (let i = 0; i < 1000; i++) {
+                notes.push({ id: i.toString(), text: 'note' })
+            }
+            const start = Date.now()
+            notebook = fromJsonObjectLiteral({ notes })
+            const duration = Date.now() - start
+            expect(duration).toBeLessThan(1000)
+        })
     })
 
     describe('.toJsonObjectLiteral()', () => {

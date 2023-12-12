@@ -11,30 +11,36 @@ export type NotebookJson = {
 }
 
 export const fromJsonObjectLiteral = (jsonObject: NotebookJson): Notebook => {
-    const homeRecord = jsonObject.notes[0] || { id: '', text: '', children: []}
-    const home = { text: homeRecord.text }
+    if (jsonObject.notes[0]) {
+        const relationships = []
+        const homeRecord = jsonObject.notes[0]
+        const home = { text: homeRecord.text }
 
-    let notebook = new Notebook(home)
-    let identityMap = new Map<string, Note>()
-    identityMap.set(homeRecord?.id || '', home)
-
-    for(const noteRecord of jsonObject.notes) {
-        if (noteRecord !== homeRecord) {
-            const note = { text: noteRecord.text }
-            identityMap.set(noteRecord.id, note)
-            notebook.relate([{ parent: notebook.home, child: note }])
+        let identityMap = new Map<string, Note>()
+        identityMap.set(homeRecord.id, home)
+        for(const noteRecord of jsonObject.notes) {
+            if (noteRecord !== homeRecord) {
+                const note = { text: noteRecord.text }
+                identityMap.set(noteRecord.id, note)
+            }
         }
-    }
 
-    for(const noteRecord of jsonObject.notes) {
-        const parent = identityMap.get(noteRecord.id) as Note
-        for(const childId of noteRecord.children || []) {
-            const child = identityMap.get(childId) as Note
-            notebook.relate([{ parent, child }])
+        let notebook = new Notebook(home)
+
+        for(const noteRecord of jsonObject.notes) {
+            const parent = identityMap.get(noteRecord.id) as Note
+            for(const childId of noteRecord.children || []) {
+                const child = identityMap.get(childId) as Note
+                relationships.push({ parent, child })
+            }
         }
-    }
 
-    return notebook
+        notebook.relate(relationships)
+
+        return notebook
+    } else {
+        return new Notebook({ text: ''})
+    }
 }
 
 export const toJsonObjectLiteral = (notebook: Notebook): NotebookJson => {
