@@ -44,6 +44,7 @@ export default function Outline(props: { notebook: Notebook, parent?: Note, sele
       onDrop={onDrop}
       onSelect={(_selectedKeys, e) => { props.onSelect && props.onSelect(e.node.note) }}
       treeData={treeData(props.notebook, props.parent)}
+      defaultExpandedKeys={["0"]}
       blockNode
       titleRender={titleRender}
   />
