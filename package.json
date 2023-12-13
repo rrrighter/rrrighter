@@ -24,6 +24,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "prettify": "prettier src --write",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -66,6 +67,7 @@
     "babel-plugin-named-exports-order": "^0.0.2",
     "eslint-plugin-storybook": "^0.6.13",
     "jest-fail-on-console": "^3.1.1",
+    "prettier": "3.1.1",
     "prop-types": "^15.8.1",
     "react-markdown": "^8.0.7",
     "storybook": "^7.4.0",

@@ -1,34 +1,32 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from "@storybook/react";
 
-import NoteItem from '../../components/notes/note-item';
+import NoteItem from "../../components/notes/note-item";
 import Notebook from "../../lib/rrrighter/src/notebook";
 
 const meta = {
-    title: 'Rrrighter/Note/NoteOutline',
-    component: NoteItem
+  title: "Rrrighter/Note/NoteOutline",
+  component: NoteItem,
 } satisfies Meta<typeof NoteItem>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-const home = { text: '🏡' }
-const person = { text: '🧍' }
+const home = { text: "🏡" };
+const person = { text: "🧍" };
 
 const notebook = new Notebook(home);
-notebook.relate([
-    { parent: home, child: person }
-]);
+notebook.relate([{ parent: home, child: person }]);
 
 export const WithoutDescendantsCountBadge: Story = {
-    args: {
-        notebook,
-        note: person,
-    },
+  args: {
+    notebook,
+    note: person,
+  },
 };
 
 export const WithDescendantsCountBadge: Story = {
-    args: {
-        notebook,
-        note: home,
-    },
+  args: {
+    notebook,
+    note: home,
+  },
 };

@@ -1,11 +1,11 @@
 .ant-tree-title p {
-    margin: 0;
+  margin: 0;
 }
 
 .actions {
-    visibility: hidden;
+  visibility: hidden;
 }
 
 .ant-tree-node-content-wrapper:hover .actions {
-    visibility: visible;
+  visibility: visible;
 }

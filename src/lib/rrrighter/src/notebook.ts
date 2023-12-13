@@ -1,13 +1,13 @@
 import OrderedOverlappingHierarchy from "ordered-overlapping-hierarchy";
 
 export interface Note {
-    text: string
+  text: string;
 }
 
-export default class Notebook extends OrderedOverlappingHierarchy<Note>{
-    get home(): Note {
-        return this.hierarch
-    }
+export default class Notebook extends OrderedOverlappingHierarchy<Note> {
+  get home(): Note {
+    return this.hierarch;
+  }
 
-    notes = (): Set<Note> => this.members()
+  notes = (): Set<Note> => this.members();
 }

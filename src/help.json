@@ -3,10 +3,7 @@
     {
       "id": "help",
       "text": "📙 Help",
-      "children": [
-          "welcome",
-          "features"
-      ]
+      "children": ["welcome", "features"]
     },
     {
       "id": "welcome",
@@ -31,16 +28,12 @@
     {
       "id": "fa9bc5c6-9568-44d5-913d-f766d19eaf53",
       "text": "👨 Father",
-      "children": [
-        "23dd9e57-a496-447a-b72d-74a6f9cf0a9e"
-      ]
+      "children": ["23dd9e57-a496-447a-b72d-74a6f9cf0a9e"]
     },
     {
       "id": "29e592db-1966-4b58-9b62-e90cdb1ee0e5",
       "text": "🧑 Mother",
-      "children": [
-        "23dd9e57-a496-447a-b72d-74a6f9cf0a9e"
-      ]
+      "children": ["23dd9e57-a496-447a-b72d-74a6f9cf0a9e"]
     },
     {
       "id": "23dd9e57-a496-447a-b72d-74a6f9cf0a9e",
@@ -57,9 +50,7 @@
     {
       "id": "f0efceb1-d638-49b3-ac2c-eca020b09f3f",
       "text": "🔗 Links",
-      "children": [
-        "3ca7c090-e6ae-4e7e-83ae-66fb57764d80"
-      ]
+      "children": ["3ca7c090-e6ae-4e7e-83ae-66fb57764d80"]
     },
     {
       "id": "3ca7c090-e6ae-4e7e-83ae-66fb57764d80",

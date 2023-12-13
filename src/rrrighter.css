@@ -1,13 +1,13 @@
 .ant-app {
-    height: 100vh;
-    width: 100vw;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 3em 1fr;
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 3em 1fr;
 }
 
 main {
-    padding: 0.5em;
-    overflow: hidden;
-    overflow-y: scroll;
+  padding: 0.5em;
+  overflow: hidden;
+  overflow-y: scroll;
 }
