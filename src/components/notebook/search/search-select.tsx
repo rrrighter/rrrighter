@@ -9,7 +9,7 @@ export default function SearchSelect(props: { notebook: Notebook, onSelect?: Fun
     const notesArray = [...props.notebook.notes()]
 
     const searchOptions = notesArray.map((note, index) => {
-        return <Option key={index}>
+        return <Option key={index} value={note.text}>
             <NoteItem notebook={props.notebook} note={note} />
         </Option>
     })

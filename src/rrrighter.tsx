@@ -58,8 +58,6 @@ function Rrrighter() {
   }
 
   const onCreateHierarch = (text: string) => {
-    // eslint-disable-next-line no-restricted-globals
-    // const id = self.crypto.randomUUID()
     notebook.relate([{parent: notebook.home, child: { text }}])
     setNotebook(new Notebook(notebook))
   }
@@ -67,8 +65,6 @@ function Rrrighter() {
   let inspectorDrawer = <></> // todo extract into InspectorDrawer component (notebook, note, actions..) & onNoteAction(inspectorNote.id, action)
   if (inspectorNote) {
     const onCreateChild = (text: string) => {
-      // eslint-disable-next-line no-restricted-globals
-      // const id = self.crypto.randomUUID()
       notebook.relate([{parent: inspectorNote, child: { text }}])
       setNotebook(new Notebook(notebook))
     }
