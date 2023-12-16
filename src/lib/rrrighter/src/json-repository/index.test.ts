@@ -1,17 +1,18 @@
 import { fromJsonObjectLiteral, toJsonObjectLiteral } from "./index";
-import Notebook, { Note } from "./../notebook";
+import Notebook from "./../notebook";
 
 describe("JSON repository", () => {
-  const home = { text: "🏡 Home" };
-  const mother: Note = { text: "mother" };
-  const father: Note = { text: "father" };
-  const child: Note = { text: "child" };
-  const grandchild: Note = { text: "grandchild" };
+  const home = { id: "", text: "🏡 Home" };
+  const mother = { id: "0", text: "mother" };
+  const father = { id: "1", text: "father" };
+  const child = { id: "2", text: "child" };
+  const grandchild = { id: "3", text: "grandchild" };
 
   let notebook: Notebook;
 
   beforeEach(() => {
-    notebook = new Notebook(home);
+    notebook = new Notebook(home.id);
+    notebook.set(home.id, home.text);
   });
 
   const hierarchyJsonObjectLiteral = {
@@ -29,7 +30,7 @@ describe("JSON repository", () => {
   describe(".fromJsonObjectLiteral()", () => {
     test("When notes array is empty, notebook home note is blank", () => {
       const notebook = fromJsonObjectLiteral({ notes: [] });
-      expect(Array.from(notebook.notes())).toStrictEqual([{ text: "" }]);
+      expect(notebook.get(notebook.home())).toStrictEqual("");
     });
 
     test("Returns notebook", () => {
@@ -68,13 +69,17 @@ describe("JSON repository", () => {
     });
 
     test("Converts hierarchical notebook to JSON object", () => {
-      notebook.relate([{ parent: notebook.home, child: mother }]);
-      notebook.relate([{ parent: notebook.home, child: father }]);
-      notebook.relate([{ parent: notebook.home, child: child }]);
-      notebook.relate([{ parent: notebook.home, child: grandchild }]);
-      notebook.relate([{ parent: mother, child }]);
-      notebook.relate([{ parent: father, child }]);
-      notebook.relate([{ parent: child, child: grandchild }]);
+      notebook.set(mother.id, mother.text);
+      notebook.set(father.id, father.text);
+      notebook.set(child.id, child.text);
+      notebook.set(grandchild.id, grandchild.text);
+      notebook.relate([{ parent: notebook.home(), child: mother.id }]);
+      notebook.relate([{ parent: notebook.home(), child: father.id }]);
+      notebook.relate([{ parent: notebook.home(), child: child.id }]);
+      notebook.relate([{ parent: notebook.home(), child: grandchild.id }]);
+      notebook.relate([{ parent: mother.id, child: child.id }]);
+      notebook.relate([{ parent: father.id, child: child.id }]);
+      notebook.relate([{ parent: child.id, child: grandchild.id }]);
       expect(toJsonObjectLiteral(notebook)).toStrictEqual(
         hierarchyJsonObjectLiteral,
       );

@@ -61,15 +61,20 @@ function Rrrighter() {
     setInspectorNote(note);
   };
 
+  const newNoteId = ():string => {
+    // eslint-disable-next-line no-restricted-globals
+    return self.crypto.randomUUID()
+  }
+
   const onCreateHierarch = (text: string) => {
-    notebook.relate([{ parent: notebook.home, child: { text } }]);
+    notebook.relate([{ parent: notebook.home, child: { id: newNoteId(), text } }]);
     setNotebook(new Notebook(notebook));
   };
 
   let inspectorDrawer = <></>; // todo extract into InspectorDrawer component (notebook, note, actions..) & onNoteAction(inspectorNote.id, action)
   if (inspectorNote) {
     const onCreateChild = (text: string) => {
-      notebook.relate([{ parent: inspectorNote, child: { text } }]);
+      notebook.relate([{ parent: inspectorNote, child: { id: newNoteId(), text } }]);
       setNotebook(new Notebook(notebook));
     };
 
