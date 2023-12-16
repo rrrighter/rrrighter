@@ -14,8 +14,14 @@ describe("Notebook", () => {
     });
 
     test("Accepts notebook as source", () => {
+      notebook.set("", "/");
+      notebook.set("0", "0");
       const clone = new Notebook(notebook);
       expect(clone.relationships()).toStrictEqual(notebook.relationships());
+      expect(clone.ids()).toStrictEqual(notebook.ids());
+      clone.ids().forEach((id) => {
+        expect(clone.get(id)).toStrictEqual(notebook.get(id));
+      })
     });
   });
 

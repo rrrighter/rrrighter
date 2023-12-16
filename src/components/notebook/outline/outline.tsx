@@ -45,6 +45,7 @@ const treeData = (
 
 export default function Outline(props: {
   notebook: Notebook;
+  defaultExpandedHome?: boolean;
   parentId?: NoteId;
   selectIcon?: ReactElement;
   onSelect?: Function;
@@ -74,7 +75,7 @@ export default function Outline(props: {
         props.onSelect && props.onSelect(e.node.id);
       }}
       treeData={treeData(props.notebook, props.parentId)}
-      defaultExpandedKeys={["0"]}
+      defaultExpandedKeys={props.defaultExpandedHome ? ["0"] : []}
       blockNode
       titleRender={titleRender}
     />
