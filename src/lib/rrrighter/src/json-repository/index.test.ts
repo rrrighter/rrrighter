@@ -30,20 +30,23 @@ describe("JSON repository", () => {
   describe(".fromJsonObjectLiteral()", () => {
     test("When notes array is empty, notebook home note is blank", () => {
       const notebook = fromJsonObjectLiteral({ notes: [] });
-      expect(notebook.get(notebook.home())).toStrictEqual("");
+      expect(notebook.get(notebook.homeId())).toStrictEqual("");
     });
 
     test("Returns notebook", () => {
       notebook = fromJsonObjectLiteral(hierarchyJsonObjectLiteral);
       expect(notebook.relationships()).toStrictEqual(
         new Set([
-          { parent: home, child: mother, childIndex: 0 },
-          { parent: home, child: father, childIndex: 1 },
-          { parent: mother, child: child, childIndex: 0 },
-          { parent: father, child: child, childIndex: 0 },
-          { parent: child, child: grandchild, childIndex: 0 },
+          { parent: home.id, child: mother.id, childIndex: 0 },
+          { parent: home.id, child: father.id, childIndex: 1 },
+          { parent: mother.id, child: child.id, childIndex: 0 },
+          { parent: father.id, child: child.id, childIndex: 0 },
+          { parent: child.id, child: grandchild.id, childIndex: 0 },
         ]),
       );
+      for (const note of [home, mother, father, child, grandchild]) {
+        expect(notebook.get(note.id)).toStrictEqual(note.text);
+      }
     });
 
     test("Loads 1000 notes under a second", () => {
@@ -73,10 +76,10 @@ describe("JSON repository", () => {
       notebook.set(father.id, father.text);
       notebook.set(child.id, child.text);
       notebook.set(grandchild.id, grandchild.text);
-      notebook.relate([{ parent: notebook.home(), child: mother.id }]);
-      notebook.relate([{ parent: notebook.home(), child: father.id }]);
-      notebook.relate([{ parent: notebook.home(), child: child.id }]);
-      notebook.relate([{ parent: notebook.home(), child: grandchild.id }]);
+      notebook.relate([{ parent: notebook.homeId(), child: mother.id }]);
+      notebook.relate([{ parent: notebook.homeId(), child: father.id }]);
+      notebook.relate([{ parent: notebook.homeId(), child: child.id }]);
+      notebook.relate([{ parent: notebook.homeId(), child: grandchild.id }]);
       notebook.relate([{ parent: mother.id, child: child.id }]);
       notebook.relate([{ parent: father.id, child: child.id }]);
       notebook.relate([{ parent: child.id, child: grandchild.id }]);

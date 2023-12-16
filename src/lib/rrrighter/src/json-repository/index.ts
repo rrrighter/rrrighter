@@ -1,12 +1,11 @@
 import Notebook from "./../notebook";
 
-interface Note {
-  readonly id: string;
-  text: string;
-}
+type NoteId = string;
 
-interface NoteRecord extends Note {
-  children?: string[]
+interface NoteRecord {
+  id: NoteId;
+  text: string;
+  children?: NoteId[]
 }
 
 export type NotebookJson = {
@@ -16,20 +15,13 @@ export type NotebookJson = {
 export const fromJsonObjectLiteral = (jsonObject: NotebookJson): Notebook => {
   if (jsonObject.notes[0]) {
     const relationships = [];
-    const identityMap = new Map<string, Note>(
-      jsonObject.notes.map((noteRecord) => [
-        noteRecord.id,
-        { id: noteRecord.id, text: noteRecord.text },
-      ]),
-    );
 
-    let notebook = new Notebook(
-      identityMap.get(jsonObject.notes[0].id) as Note,
-    );
+    let notebook = new Notebook(jsonObject.notes[0].id);
+    notebook.set(jsonObject.notes[0].id, jsonObject.notes[0].text);
     for (const noteRecord of jsonObject.notes) {
-      const parent = identityMap.get(noteRecord.id) as Note;
-      for (const childId of noteRecord.children || []) {
-        const child = identityMap.get(childId) as Note;
+      // fixme: why inifinite loop? notebook.set(noteRecord.id, noteRecord.text);
+      const parent = noteRecord.id;
+      for (const child of noteRecord.children || []) {
         relationships.push({ parent, child });
       }
     }
@@ -42,15 +34,16 @@ export const fromJsonObjectLiteral = (jsonObject: NotebookJson): Notebook => {
 };
 
 export const toJsonObjectLiteral = (notebook: Notebook): NotebookJson => {
+  let notes: NoteRecord[] = [];
+
   const pushNote = (id: string) => {
     const text = notebook.get(id) as string;
     const children = notebook.children(id);
-    noteRecords.push(children?.length ? { id, text, children } : { id, text });
+    notes.push(children?.length ? { id, text, children } : { id, text });
   };
 
-  let noteRecords: NoteRecord[] = [];
-  pushNote(notebook.home());
-  notebook.descendants(notebook.home())?.forEach(pushNote);
+  pushNote(notebook.homeId());
+  notebook.descendants(notebook.homeId())?.forEach(pushNote);
 
-  return { notes: noteRecords };
+  return { notes };
 };

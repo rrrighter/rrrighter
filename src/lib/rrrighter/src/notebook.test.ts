@@ -10,7 +10,7 @@ describe("Notebook", () => {
   describe("new Notebook()", () => {
     test("Accepts home note id as hierarch", () => {
       const notebook = new Notebook("");
-      expect(notebook.hierarch).toStrictEqual("");
+      expect(notebook.homeId()).toStrictEqual("");
     });
 
     test("Accepts notebook as source", () => {
@@ -21,7 +21,7 @@ describe("Notebook", () => {
 
   describe(".get()", () => {
     test("Blank notebook has blank home note", () => {
-      expect(notebook.get(notebook.home())).toBe("");
+      expect(notebook.get(notebook.homeId())).toBe("");
     });
 
     test("Non-member id returns undefined", () => {
@@ -29,15 +29,15 @@ describe("Notebook", () => {
     })
   })
 
-  describe(".home", () => {
+  describe(".homeId", () => {
     test("Returns hierarch note id", () => {
-      expect(notebook.home()).toStrictEqual(notebook.hierarch);
+      expect(notebook.homeId()).toStrictEqual(notebook.hierarch());
     });
   });
 
-  describe(".notes()", () => {
+  describe(".ids()", () => {
     test("Returns note ids", () => {
-      expect(notebook.notes()).toStrictEqual(notebook.members());
+      expect(notebook.ids()).toStrictEqual(notebook.members());
     });
   });
 
@@ -58,7 +58,7 @@ describe("Notebook", () => {
     test("Batch relating 1000 members takes less than two seconds", () => {
       const relationships: { parent: string; child: string }[] = [];
       for (let i = 0; i < 1000; i++) {
-        relationships.push({ parent: notebook.home(), child: i.toString() });
+        relationships.push({ parent: notebook.homeId(), child: i.toString() });
       }
       const batchStart = Date.now();
       notebook.relate(relationships);
