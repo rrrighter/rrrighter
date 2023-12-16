@@ -48,7 +48,6 @@ function Rrrighter() {
 
   const onDetach = (parentId: NoteId, childId: NoteId) => {
     notebook.unrelate({ parent: parentId, child: childId });
-
     setNotebook(new Notebook(notebook));
   };
 
@@ -57,11 +56,7 @@ function Rrrighter() {
     setNotebook(new Notebook(notebook));
   };
 
-  const onSelect = (id: NoteId) => {
-    setInspectorNoteId(id);
-  };
-
-  const newNoteId = (): string => {
+  const newNoteId = (): NoteId => {
     // eslint-disable-next-line no-restricted-globals
     return self.crypto.randomUUID();
   };
@@ -93,7 +88,7 @@ function Rrrighter() {
         notebook={notebook}
         id={inspectorNoteId}
         onDetach={readonly ? undefined : onDetach}
-        onSelect={onSelect}
+        onSelect={setInspectorNoteId}
       />
     );
     const noteToolbar = (
@@ -139,7 +134,7 @@ function Rrrighter() {
         <Inspector
           notebook={notebook}
           id={inspectorNoteId}
-          onSelect={onSelect}
+          onSelect={setInspectorNoteId}
         />
       </Drawer>
     );
@@ -159,12 +154,12 @@ function Rrrighter() {
             )}
           </div>
           <div style={{ float: "right" }}>
-            <SearchSelect notebook={notebook} onSelect={onSelect} />
+            <SearchSelect notebook={notebook} onSelect={setInspectorNoteId} />
             {!readonly && <CreateNoteButton onCreate={onCreateHierarch} />}
           </div>
         </header>
         <main>
-          <Outline notebook={notebook} defaultExpandedHome={true} onSelect={onSelect} />
+          <Outline notebook={notebook} defaultExpandedHome={true} onSelect={setInspectorNoteId} />
         </main>
         <aside>{inspectorDrawer}</aside>
       </App>
