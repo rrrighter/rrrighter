@@ -8,11 +8,11 @@ interface NoteRecord {
   children?: NoteId[]
 }
 
-export type NotebookJson = {
+export type NotebookStructure = {
   notes: NoteRecord[];
 };
 
-export const fromJsonObjectLiteral = (jsonObjectLiteral: NotebookJson): Notebook => {
+export const fromJsonObjectLiteral = (jsonObjectLiteral: NotebookStructure): Notebook => {
   let notebook = new Notebook(jsonObjectLiteral.notes[0]?.id || "");
 
   if (jsonObjectLiteral.notes[0]) {
@@ -33,7 +33,7 @@ export const fromJsonObjectLiteral = (jsonObjectLiteral: NotebookJson): Notebook
   return notebook;
 };
 
-export const toJsonObjectLiteral = (notebook: Notebook): NotebookJson => {
+export const toJsonObjectLiteral = (notebook: Notebook): NotebookStructure => {
   let notes: NoteRecord[] = [];
 
   const pushNoteRecord = (id: string) => {
