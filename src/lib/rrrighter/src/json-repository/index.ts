@@ -16,12 +16,9 @@ export const fromJsonObjectLiteral = (jsonObjectLiteral: NotebookJson): Notebook
   let notebook = new Notebook(jsonObjectLiteral.notes[0]?.id || "");
 
   if (jsonObjectLiteral.notes[0]) {
-    notebook.set(jsonObjectLiteral.notes[0].id, jsonObjectLiteral.notes[0].text);
-
     const relationships = [];
     for (const noteRecord of jsonObjectLiteral.notes) {
       relationships.push({ parent: notebook.homeId(), child: noteRecord.id });
-
       noteRecord.children?.forEach((child) => {
         relationships.push({ parent: noteRecord.id, child });
       });

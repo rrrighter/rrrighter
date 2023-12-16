@@ -55,7 +55,22 @@ describe("Notebook", () => {
   });
 
   describe(".relate()", () => {
-    // todo: add test for complex transitive reduction
+    test("When relating sub-notebooks with shared note, removes redundant relationship", () => {
+      const hierarchy = new Notebook("0");
+      // 0 --> A & C
+      // A --> B & X
+      // C --> X
+      // B --> C ==> redundant relationship
+      hierarchy.relate([
+        { parent: "0", child: "A" },
+        { parent: "0", child: "C" },
+        { parent: "A", child: "B" },
+        { parent: "A", child: "X" },
+        { parent: "C", child: "X" },
+        { parent: "B", child: "C" },
+      ]);
+      expect(hierarchy.children("A")).toStrictEqual(["B"]);
+    });
 
     test("Batch relating 1000 members takes less than two seconds", () => {
       const relationships: { parent: string; child: string }[] = [];
