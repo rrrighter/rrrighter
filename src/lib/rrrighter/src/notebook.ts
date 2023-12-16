@@ -1,6 +1,7 @@
 import OrderedOverlappingHierarchy from "ordered-overlapping-hierarchy";
 
-type NoteId = string;
+export type NoteId = string;
+export type NoteText = string;
 
 export default class Notebook extends OrderedOverlappingHierarchy<NoteId> {
   #notes: Map<NoteId, string> = new Map();
@@ -9,14 +10,14 @@ export default class Notebook extends OrderedOverlappingHierarchy<NoteId> {
 
   ids = (): Set<NoteId> => this.members();
 
-  get = (id: NoteId): string | undefined => {
+  get = (id: NoteId): NoteText | undefined => {
     return this.ids().has(id) ? this.#notes.get(id) ?? "" : undefined;
-  }
+  };
 
-  set = (id: NoteId, text: string): void => {
+  set = (id: NoteId, text: NoteText): void => {
     this.#notes.set(id, text);
     if (!this.ids().has(id)) {
       this.relate([{ child: id, parent: this.homeId() }]);
     }
-  }
+  };
 }

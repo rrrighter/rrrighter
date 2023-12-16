@@ -3,29 +3,32 @@ import { DeleteOutlined } from "@ant-design/icons";
 
 import { Button, Popconfirm } from "antd";
 import AttachToParent from "./attach-to-parent";
-import Notebook, { Note } from "../../lib/rrrighter/src/notebook";
+import Notebook, { NoteId } from "../../lib/rrrighter/src/notebook";
 import CreateNoteButton from "./create-note-button";
 import EditNoteButton from "./edit-note-button";
 
 export default function NoteToolbar(props: {
   notebook: Notebook;
-  note: Note;
+  id: NoteId;
   onEdit: Function;
   onDelete: Function;
   onCreateChild: Function;
   onAttach: Function;
 }) {
-  const isHomeNote = props.note === props.notebook.home;
+  const isHomeNote = props.id === props.notebook.homeId();
 
   return (
     <>
       <AttachToParent
         notebook={props.notebook}
-        child={props.note}
+        childId={props.id}
         onAttach={props.onAttach}
       />
       <CreateNoteButton onCreate={props.onCreateChild} />
-      <EditNoteButton text={props.note.text} onEdit={props.onEdit} />
+      <EditNoteButton
+        text={props.notebook.get(props.id) || ""}
+        onEdit={props.onEdit}
+      />
 
       <Popconfirm
         disabled={isHomeNote}

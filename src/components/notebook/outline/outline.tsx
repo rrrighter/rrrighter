@@ -1,53 +1,57 @@
 import React, { ReactElement } from "react";
-import Notebook, { Note } from "../../../lib/rrrighter/src/notebook";
+import Notebook, {
+  NoteId,
+  NoteText,
+} from "../../../lib/rrrighter/src/notebook";
 import { Tree } from "antd";
 import NoteItem from "../../notes/note-item";
 import "./outline.css";
 
 interface TreeDataNodeType {
   key: string;
-  note: Note;
-  parent: Note | undefined;
+  id: NoteId;
+  text: NoteText;
   children?: TreeDataNodeType[];
 }
 
-const treeData = (notebook: Notebook, parent?: Note): TreeDataNodeType[] => {
+const treeData = (
+  notebook: Notebook,
+  parentId?: NoteId,
+): TreeDataNodeType[] => {
   // todo: move to Rrrighter app presentation layer?
-  const _treeData = (
-    notes: Iterable<Note>,
-    parent: Note | undefined = undefined,
-    prefix?: string,
-  ): TreeDataNodeType[] => {
-    return Array.from(notes).map((note, index) => {
-      const key = prefix ? `${prefix}-${index}` : index.toString(); // to maintain expanded nodes state after notebook changes
-      const childrenNotes = notebook.children(note);
+  const _treeData = (ids: NoteId[], prefix?: string): TreeDataNodeType[] => {
+    return ids.map((id: NoteId, index) => {
+      const key = prefix ? `${prefix}-${index}` : index.toString();
+      const text = notebook.get(id) || "";
+      const childrenIds = notebook.children(id);
+      const children =
+        childrenIds && childrenIds?.length > 0
+          ? _treeData(childrenIds, key)
+          : undefined;
       return {
         key,
-        parent,
-        note,
-        children:
-          childrenNotes && childrenNotes.length > 0
-            ? _treeData(childrenNotes, note, key)
-            : undefined,
+        id,
+        text,
+        children,
       };
     });
   };
 
-  const notes = parent
-    ? (notebook.children(parent) as Note[])
-    : [notebook.hierarch]; // todo: consider passing notes[] instead
-  return _treeData(notes);
+  const ids = parentId
+    ? (notebook.children(parentId) as NoteId[])
+    : [notebook.homeId()];
+  return _treeData(ids);
 };
 
 export default function Outline(props: {
   notebook: Notebook;
-  parent?: Note;
+  parentId?: NoteId;
   selectIcon?: ReactElement;
   onSelect?: Function;
   onDrop?: Function;
 }) {
   const titleRender = (node: TreeDataNodeType) => (
-    <NoteItem notebook={props.notebook} note={node.note} />
+    <NoteItem notebook={props.notebook} id={node.id} />
   );
 
   const onDrop = (e: any) => {
@@ -67,9 +71,9 @@ export default function Outline(props: {
       draggable={!!props.onDrop}
       onDrop={onDrop}
       onSelect={(_selectedKeys, e) => {
-        props.onSelect && props.onSelect(e.node.note);
+        props.onSelect && props.onSelect(e.node.id);
       }}
-      treeData={treeData(props.notebook, props.parent)}
+      treeData={treeData(props.notebook, props.parentId)}
       defaultExpandedKeys={["0"]}
       blockNode
       titleRender={titleRender}

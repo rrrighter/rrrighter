@@ -11,22 +11,25 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-const home = { text: "🏡" };
-const person = { text: "🧍" };
+// todo: load from jsonObjectLiteral to simplify setup
+const home = { id: "0", text: "🏡" };
+const person = { id: "1", text: "🧍" };
 
-const notebook = new Notebook(home);
-notebook.relate([{ parent: home, child: person }]);
+const notebook = new Notebook(home.id);
+notebook.set(home.id, home.text);
+notebook.relate([{ parent: home.id, child: person.id }]);
+notebook.set(person.id, person.text);
 
 export const WithoutDescendantsCountBadge: Story = {
   args: {
     notebook,
-    note: person,
+    id: person.id,
   },
 };
 
 export const WithDescendantsCountBadge: Story = {
   args: {
     notebook,
-    note: home,
+    id: home.id,
   },
 };

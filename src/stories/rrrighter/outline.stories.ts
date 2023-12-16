@@ -15,20 +15,24 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-const home = { text: "🏡" };
-const family = new Notebook(home);
-const grandparent = { text: "grandparent" };
-const parent = { text: "parent" };
-const child1 = { text: "child1" };
-const child2 = { text: "child2" };
-const child3 = { text: "child3" };
+// todo: load from jsonObjectLiteral to simplify setup
+const home = { id: "0", text: "🏡 Home" };
+const family = new Notebook(home.id);
+const grandparent = { id: "1", text: "grandparent" };
+const parent = { id: "2", text: "parent" };
+const child1 = { id: "3", text: "child1" };
+const child2 = { id: "4", text: "child2" };
+const child3 = { id: "5", text: "child3" };
 family.relate([
-  { parent: home, child: grandparent },
-  { parent: grandparent, child: parent },
-  { parent: parent, child: child1 },
-  { parent: parent, child: child2 },
-  { parent: parent, child: child3 },
+  { parent: home.id, child: grandparent.id },
+  { parent: grandparent.id, child: parent.id },
+  { parent: parent.id, child: child1.id },
+  { parent: parent.id, child: child2.id },
+  { parent: parent.id, child: child3.id },
 ]);
+[home, grandparent, parent, child1, child2, child3].forEach(({ id, text }) =>
+    family.set(id, text)
+);
 
 export const Family: Story = {
   args: {
@@ -39,6 +43,6 @@ export const Family: Story = {
 export const Parent: Story = {
   args: {
     notebook: family,
-    parent: parent,
+    parentId: parent.id,
   },
 };

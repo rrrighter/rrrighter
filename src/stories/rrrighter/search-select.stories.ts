@@ -15,11 +15,14 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-const home = { text: "🏡" };
-const person = { text: "🧍" };
+// todo: load from jsonObjectLiteral to simplify setup
+const home = { id: "home", text: "🏡 Home" };
+const person = { id: "person", text: "🧍 Person" };
 
-const notebook = new Notebook(home);
-notebook.relate([{ parent: home, child: person }]);
+const notebook = new Notebook(home.id);
+notebook.set(home.id, home.text);
+notebook.relate([{ parent: home.id, child: person.id }]);
+notebook.set(person.id, person.text);
 
 export const Search: Story = {
   args: {

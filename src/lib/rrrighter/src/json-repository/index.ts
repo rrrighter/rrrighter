@@ -5,14 +5,16 @@ type NoteId = string;
 interface NoteRecord {
   id: NoteId;
   text: string;
-  children?: NoteId[]
+  children?: NoteId[];
 }
 
 export type NotebookStructure = {
   notes: NoteRecord[];
 };
 
-export const fromJsonObjectLiteral = (jsonObjectLiteral: NotebookStructure): Notebook => {
+export const fromJsonObjectLiteral = (
+  jsonObjectLiteral: NotebookStructure,
+): Notebook => {
   let notebook = new Notebook(jsonObjectLiteral.notes[0]?.id || "");
 
   if (jsonObjectLiteral.notes[0]) {
@@ -25,7 +27,7 @@ export const fromJsonObjectLiteral = (jsonObjectLiteral: NotebookStructure): Not
     }
     notebook.relate(relationships);
 
-    for (const { id, text} of jsonObjectLiteral.notes) {
+    for (const { id, text } of jsonObjectLiteral.notes) {
       notebook.set(id, text);
     }
   }

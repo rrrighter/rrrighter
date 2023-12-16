@@ -1,20 +1,20 @@
 import React from "react";
-import { Note } from "../../lib/rrrighter/src/notebook";
+import { NoteId } from "../../lib/rrrighter/src/notebook";
 import Notebook from "../../lib/rrrighter/src/notebook";
 import FormattedText from "./formatted-text";
 import Outline from "../notebook/outline/outline";
 
 export default function Inspector(props: {
   notebook: Notebook;
-  note: Note;
+  id: NoteId;
   onSelect?: Function;
 }) {
   return (
     <div>
-      <FormattedText text={props.note.text} />
+      <FormattedText text={props.notebook.get(props.id) || ""} />
       <Outline
         notebook={props.notebook}
-        parent={props.note}
+        parentId={props.id}
         onSelect={props.onSelect}
       />
     </div>

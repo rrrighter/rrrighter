@@ -3,7 +3,7 @@ Rrrighter Notebook structures identifiable text notes as [ordered overlapping hi
 - new(NoteId) || new(Notebook)
 - get(NoteId) => notes().members.get(id)
 - set(NoteId, text)
-... OOH methods for NoteId
+  ... OOH methods for NoteId
 - relate(ParentChild[])
 - unrelate(ParentChild[])
 - children

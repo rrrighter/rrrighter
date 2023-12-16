@@ -1,5 +1,5 @@
 import { fromJsonObjectLiteral } from "./lib/rrrighter/src/json-repository";
-import Notebook, { Note } from "./lib/rrrighter/src/notebook";
+import Notebook, { NoteId } from "./lib/rrrighter/src/notebook";
 import React, { ReactNode, useState } from "react";
 import { App, ConfigProvider, theme, Drawer, Button } from "antd";
 import Outline from "./components/notebook/outline/outline";
@@ -30,64 +30,68 @@ const initialNotebook = fromJsonObjectLiteral(sourceJSON);
 
 function Rrrighter() {
   const [notebook, setNotebook] = useState<Notebook>(initialNotebook);
-  const [inspectorNote, setInspectorNote] = useState<Note | undefined>(
+  const [inspectorNoteId, setInspectorNoteId] = useState<NoteId | undefined>(
     undefined,
   );
 
-  const onDelete = (child: Note) => {
-    if (notebook.descendants(child)?.size) {
-      alert("Cannot delete note with children. Delete the children first."); // todo: implement wizard drawer OR batch actions with descendats
+  const onDelete = (id: NoteId) => {
+    if (notebook.descendants(id)?.size) {
+      alert("Cannot delete note with children. Delete the children first."); // todo: implement wizard drawer OR batch actions with descendants
     } else {
       notebook
-        .parents(child)
-        ?.forEach((parent) => notebook.unrelate({ parent, child }));
-      setInspectorNote(undefined);
+        .parents(id)
+        ?.forEach((parent) => notebook.unrelate({ parent, child: id }));
+      setInspectorNoteId(undefined);
       setNotebook(new Notebook(notebook));
     }
   };
 
-  const onDetach = (parent: Note, child: Note) => {
-    notebook.unrelate({ parent, child });
+  const onDetach = (parentId: NoteId, childId: NoteId) => {
+    notebook.unrelate({ parent: parentId, child: childId });
 
     setNotebook(new Notebook(notebook));
   };
 
-  const onAttach = (parent: Note, child: Note, childIndex?: number) => {
-    notebook.relate([{ parent, child, childIndex }]);
+  const onAttach = (parentId: NoteId, childId: NoteId, childIndex?: number) => {
+    notebook.relate([{ parent: parentId, child: childId, childIndex }]);
     setNotebook(new Notebook(notebook));
   };
 
-  const onSelect = (note: Note) => {
-    setInspectorNote(note);
+  const onSelect = (id: NoteId) => {
+    setInspectorNoteId(id);
   };
 
-  const newNoteId = ():string => {
+  const newNoteId = (): string => {
     // eslint-disable-next-line no-restricted-globals
-    return self.crypto.randomUUID()
-  }
+    return self.crypto.randomUUID();
+  };
 
   const onCreateHierarch = (text: string) => {
-    notebook.relate([{ parent: notebook.home, child: { id: newNoteId(), text } }]);
+    const id = newNoteId();
+    notebook.relate([{ parent: notebook.homeId(), child: id }]);
+    notebook.set(id, text);
     setNotebook(new Notebook(notebook));
   };
 
   let inspectorDrawer = <></>; // todo extract into InspectorDrawer component (notebook, note, actions..) & onNoteAction(inspectorNote.id, action)
-  if (inspectorNote) {
+  if (inspectorNoteId) {
     const onCreateChild = (text: string) => {
-      notebook.relate([{ parent: inspectorNote, child: { id: newNoteId(), text } }]);
+      const id = newNoteId();
+      notebook.relate([{ parent: inspectorNoteId, child: id }]);
+      notebook.set(id, text);
       setNotebook(new Notebook(notebook));
     };
 
     const onEdit = (text: string) => {
-      inspectorNote.text = text;
+      notebook.set(inspectorNoteId, text);
       setNotebook(new Notebook(notebook));
-      setInspectorNote(inspectorNote);
+      setInspectorNoteId(inspectorNoteId);
     };
 
     const noteParents = (
       <Parents
         notebook={notebook}
-        note={inspectorNote}
+        id={inspectorNoteId}
         onDetach={readonly ? undefined : onDetach}
         onSelect={onSelect}
       />
@@ -95,31 +99,31 @@ function Rrrighter() {
     const noteToolbar = (
       <NoteToolbar
         notebook={notebook}
-        note={inspectorNote}
+        id={inspectorNoteId}
         onEdit={onEdit}
         onCreateChild={onCreateChild}
         onAttach={onAttach}
-        onDelete={() => onDelete(inspectorNote)}
+        onDelete={() => onDelete(inspectorNoteId)}
       />
     );
-    const parents = Array.from(notebook.parents(inspectorNote) || []);
+    const parents = Array.from(notebook.parents(inspectorNoteId) || []);
     const parentIndexes: ReactNode[] = parents.map((parent): ReactNode => {
-      const index = notebook.children(parent)?.indexOf(inspectorNote) || 0;
+      const index = notebook.children(parent)?.indexOf(inspectorNoteId) || 0;
       return (
         <div>
           <Button
             type="link"
-            onClick={() => onAttach(parent, inspectorNote, index - 1)}
+            onClick={() => onAttach(parent, inspectorNoteId, index - 1)}
           >
             🔼
           </Button>
           <Button
             type="link"
-            onClick={() => onAttach(parent, inspectorNote, index + 1)}
+            onClick={() => onAttach(parent, inspectorNoteId, index + 1)}
           >
             🔽
           </Button>
-          {parent.text} @ {index}
+          {notebook.get(parent) || ""} @ {index}
         </div>
       );
     });
@@ -129,12 +133,12 @@ function Rrrighter() {
         size={"large"}
         title={noteParents}
         extra={!readonly && noteToolbar}
-        onClose={() => setInspectorNote(undefined)}
+        onClose={() => setInspectorNoteId(undefined)}
       >
         {!readonly && parentIndexes}
         <Inspector
           notebook={notebook}
-          note={inspectorNote}
+          id={inspectorNoteId}
           onSelect={onSelect}
         />
       </Drawer>

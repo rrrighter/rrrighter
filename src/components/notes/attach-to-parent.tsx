@@ -1,34 +1,36 @@
 import React, { useState } from "react";
 import { Button } from "antd";
 import SearchDrawer from "../notebook/search/search-drawer";
-import Notebook, { Note } from "../../lib/rrrighter/src/notebook";
+import Notebook, { NoteId } from "../../lib/rrrighter/src/notebook";
 import { PullRequestOutlined } from "@ant-design/icons";
 
 export default function AttachToParent(props: {
   notebook: Notebook;
-  child: Note;
+  childId: NoteId;
   onAttach: Function;
 }) {
   const [open, setOpen] = useState(false);
 
   const potentialParentsNotebook = (
     notebook: Notebook,
-    child: Note,
+    childId: NoteId,
   ): Notebook => {
-    const deleteNote = (child: Note) => {
+    const deleteNote = (child: NoteId) => {
       notebook.parents(child)?.forEach((parent) => {
         notebook.unrelate({ parent, child });
       });
     };
 
     const result = new Notebook(notebook);
-    result.descendants(child)?.forEach((descendant) => deleteNote(descendant));
-    deleteNote(child);
+    result
+      .descendants(childId)
+      ?.forEach((descendant) => deleteNote(descendant));
+    deleteNote(childId);
     return result;
   };
   const potentialParents = open
-    ? potentialParentsNotebook(new Notebook(props.notebook), props.child)
-    : new Notebook(props.notebook.home);
+    ? potentialParentsNotebook(new Notebook(props.notebook), props.childId)
+    : new Notebook(props.notebook.homeId());
 
   const showDrawer = () => {
     setOpen(true);
@@ -38,15 +40,15 @@ export default function AttachToParent(props: {
     setOpen(false);
   };
 
-  const onSelect = (parent: Note) => {
-    props.onAttach(parent, props.child);
+  const onSelect = (id: NoteId) => {
+    props.onAttach(id, props.childId);
     onClose();
   };
 
   return (
     <>
       <Button
-        disabled={props.child === props.notebook.home}
+        disabled={props.childId === props.notebook.homeId()}
         type="text"
         size="small"
         onClick={showDrawer}

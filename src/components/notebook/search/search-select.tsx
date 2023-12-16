@@ -9,12 +9,12 @@ export default function SearchSelect(props: {
   notebook: Notebook;
   onSelect?: Function;
 }) {
-  const notesArray = [...props.notebook.notes()];
+  const ids = [...props.notebook.ids()];
 
-  const searchOptions = notesArray.map((note, index) => {
+  const searchOptions = ids.map((id, index) => {
     return (
-      <Option key={index} value={note.text}>
-        <NoteItem notebook={props.notebook} note={note} />
+      <Option key={index} value={props.notebook.get(id) || ""}>
+        <NoteItem notebook={props.notebook} id={id} />
       </Option>
     );
   });
@@ -27,7 +27,7 @@ export default function SearchSelect(props: {
       placeholder="Search"
       value={[]}
       onSelect={(_val: string, option: any) =>
-        props.onSelect && props.onSelect(notesArray[option.key])
+        props.onSelect && props.onSelect(ids[option.key])
       }
     >
       {searchOptions}

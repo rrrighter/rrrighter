@@ -26,8 +26,8 @@ describe("Notebook", () => {
 
     test("Non-member id returns undefined", () => {
       expect(notebook.get("404")).toBeUndefined();
-    })
-  })
+    });
+  });
 
   describe(".homeId", () => {
     test("Returns hierarch note id", () => {
@@ -43,14 +43,17 @@ describe("Notebook", () => {
 
   describe(".set()", () => {
     test("Given non-member id, relates it to home", () => {
-      notebook.set('0', '0');
-      expect(notebook.parents('0')).toStrictEqual(new Set([""]));
-    })
+      notebook.set("0", "0");
+      expect(notebook.parents("0")).toStrictEqual(new Set([""]));
+    });
 
     test("Stores different notes with identical texts", () => {
-      notebook.set('A', '🍏');
-      notebook.set('B', '🍏');
-      expect([notebook.get('A'), notebook.get('B')]).toStrictEqual(['🍏', '🍏']);
+      notebook.set("A", "🍏");
+      notebook.set("B", "🍏");
+      expect([notebook.get("A"), notebook.get("B")]).toStrictEqual([
+        "🍏",
+        "🍏",
+      ]);
     });
   });
 
@@ -82,5 +85,5 @@ describe("Notebook", () => {
       const batchDuration = Date.now() - batchStart;
       expect(batchDuration).toBeLessThan(2000);
     });
-  })
+  });
 });
