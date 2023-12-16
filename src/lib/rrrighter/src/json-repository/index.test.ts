@@ -2,11 +2,11 @@ import { fromJsonObjectLiteral, toJsonObjectLiteral } from "./index";
 import Notebook from "./../notebook";
 
 describe("JSON repository", () => {
-  const home = { id: "", text: "🏡 Home" };
-  const mother = { id: "0", text: "mother" };
-  const father = { id: "1", text: "father" };
-  const child = { id: "2", text: "child" };
-  const grandchild = { id: "3", text: "grandchild" };
+  const home = { id: "home", text: "🏡" };
+  const mother = { id: "mother", text: "👩" };
+  const father = { id: "father", text: "👨" };
+  const child = { id: "child", text: "🧒" };
+  const grandchild = { id: "grandchild", text: "👶" };
 
   let notebook: Notebook;
 
@@ -19,11 +19,11 @@ describe("JSON repository", () => {
     // Having top-level "notes" key makes it extendable in future versions
     // which may add more keys like "author", "license", "drafts", "sops", etc.
     notes: [
-      { id: "", text: home.text, children: ["0", "1"] },
-      { id: "0", text: mother.text, children: ["2"] },
-      { id: "1", text: father.text, children: ["2"] },
-      { id: "2", text: child.text, children: ["3"] },
-      { id: "3", text: grandchild.text },
+      { id: home.id, text: home.text, children: [mother.id, father.id] },
+      { id: mother.id, text: mother.text, children: [child.id] },
+      { id: father.id, text: father.text, children: [child.id] },
+      { id: child.id, text: child.text, children: [grandchild.id] },
+      { id: grandchild.id, text: grandchild.text },
     ],
   };
 
@@ -62,16 +62,13 @@ describe("JSON repository", () => {
   });
 
   describe(".toJsonObjectLiteral()", () => {
-    test("Converts blank notebook to JSON object", () => {
-      const blankNotebookJsonObjectLiteral = {
-        notes: [{ id: "", text: home.text }],
-      };
-      expect(toJsonObjectLiteral(notebook)).toStrictEqual(
-        blankNotebookJsonObjectLiteral,
-      );
+    test("Converts blank notebook to JSON object literal", () => {
+      expect(toJsonObjectLiteral(new Notebook())).toStrictEqual({
+        notes: [{ id: "", text: "" }],
+      });
     });
 
-    test("Converts hierarchical notebook to JSON object", () => {
+    test("Converts hierarchical notebook to JSON object literal", () => {
       notebook.set(mother.id, mother.text);
       notebook.set(father.id, father.text);
       notebook.set(child.id, child.text);

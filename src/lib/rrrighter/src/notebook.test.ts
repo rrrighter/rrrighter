@@ -8,6 +8,12 @@ describe("Notebook", () => {
   });
 
   describe("new Notebook()", () => {
+    test("Has blank home by default", () => {
+      const notebook = new Notebook();
+      expect(notebook.homeId()).toStrictEqual("");
+      expect(notebook.get(notebook.homeId())).toStrictEqual("");
+    });
+
     test("Accepts home note id as hierarch", () => {
       const notebook = new Notebook("");
       expect(notebook.homeId()).toStrictEqual("");
@@ -21,7 +27,7 @@ describe("Notebook", () => {
       expect(clone.ids()).toStrictEqual(notebook.ids());
       clone.ids().forEach((id) => {
         expect(clone.get(id)).toStrictEqual(notebook.get(id));
-      })
+      });
     });
   });
 

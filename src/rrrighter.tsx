@@ -159,7 +159,11 @@ function Rrrighter() {
           </div>
         </header>
         <main>
-          <Outline notebook={notebook} defaultExpandedHome={true} onSelect={setInspectorNoteId} />
+          <Outline
+            notebook={notebook}
+            defaultExpandedHome={true}
+            onSelect={setInspectorNoteId}
+          />
         </main>
         <aside>{inspectorDrawer}</aside>
       </App>

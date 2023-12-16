@@ -31,7 +31,7 @@ family.relate([
   { parent: parent.id, child: child3.id },
 ]);
 [home, grandparent, parent, child1, child2, child3].forEach(({ id, text }) =>
-    family.set(id, text)
+  family.set(id, text),
 );
 
 export const Family: Story = {

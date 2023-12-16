@@ -6,11 +6,12 @@ export type NoteText = string;
 export default class Notebook extends OrderedOverlappingHierarchy<NoteId> {
   #notes: Map<NoteId, string> = new Map();
 
-  constructor(source: NoteId | Notebook) {
-      super(source);
-      if (source instanceof Notebook) {
-        this.#notes = new Map(source.#notes);
-      }
+  constructor(source?: NoteId | Notebook) {
+    source = source ?? "";
+    super(source);
+    if (source instanceof Notebook) {
+      this.#notes = new Map(source.#notes);
+    }
   }
 
   homeId = (): NoteId => this.hierarch();
