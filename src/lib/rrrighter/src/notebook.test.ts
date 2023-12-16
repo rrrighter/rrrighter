@@ -55,6 +55,8 @@ describe("Notebook", () => {
   });
 
   describe(".relate()", () => {
+    // todo: add test for complex transitive reduction
+
     test("Batch relating 1000 members takes less than two seconds", () => {
       const relationships: { parent: string; child: string }[] = [];
       for (let i = 0; i < 1000; i++) {

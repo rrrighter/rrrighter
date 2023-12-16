@@ -12,38 +12,41 @@ export type NotebookJson = {
   notes: NoteRecord[];
 };
 
-export const fromJsonObjectLiteral = (jsonObject: NotebookJson): Notebook => {
-  if (jsonObject.notes[0]) {
-    const relationships = [];
+export const fromJsonObjectLiteral = (jsonObjectLiteral: NotebookJson): Notebook => {
+  let notebook = new Notebook(jsonObjectLiteral.notes[0]?.id || "");
 
-    let notebook = new Notebook(jsonObject.notes[0].id);
-    notebook.set(jsonObject.notes[0].id, jsonObject.notes[0].text);
-    for (const noteRecord of jsonObject.notes) {
-      // fixme: why inifinite loop? notebook.set(noteRecord.id, noteRecord.text);
-      const parent = noteRecord.id;
-      for (const child of noteRecord.children || []) {
-        relationships.push({ parent, child });
-      }
+  if (jsonObjectLiteral.notes[0]) {
+    notebook.set(jsonObjectLiteral.notes[0].id, jsonObjectLiteral.notes[0].text);
+
+    const relationships = [];
+    for (const noteRecord of jsonObjectLiteral.notes) {
+      relationships.push({ parent: notebook.homeId(), child: noteRecord.id });
+
+      noteRecord.children?.forEach((child) => {
+        relationships.push({ parent: noteRecord.id, child });
+      });
     }
     notebook.relate(relationships);
 
-    return notebook;
-  } else {
-    return new Notebook("");
+    for (const { id, text} of jsonObjectLiteral.notes) {
+      notebook.set(id, text);
+    }
   }
+
+  return notebook;
 };
 
 export const toJsonObjectLiteral = (notebook: Notebook): NotebookJson => {
   let notes: NoteRecord[] = [];
 
-  const pushNote = (id: string) => {
+  const pushNoteRecord = (id: string) => {
     const text = notebook.get(id) as string;
     const children = notebook.children(id);
     notes.push(children?.length ? { id, text, children } : { id, text });
   };
 
-  pushNote(notebook.homeId());
-  notebook.descendants(notebook.homeId())?.forEach(pushNote);
+  pushNoteRecord(notebook.homeId());
+  notebook.descendants(notebook.homeId())?.forEach(pushNoteRecord);
 
   return { notes };
 };
