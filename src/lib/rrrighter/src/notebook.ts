@@ -28,4 +28,6 @@ export default class Notebook extends OrderedOverlappingHierarchy<NoteId> {
       this.relate([{ child: id, parent: this.homeId() }]);
     }
   };
+
+  // todo: relate and unrelate methods with parentId and childId arguments
 }

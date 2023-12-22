@@ -47,8 +47,15 @@ function Rrrighter() {
   };
 
   const onDetach = (parentId: NoteId, childId: NoteId) => {
-    notebook.unrelate({ parent: parentId, child: childId });
+    // fixme: detaching child from father hides mother
+    if (notebook.parents(childId)?.size === 1) {
+        // todo: replace with home
+        alert("Cannot detach from the only parent.");
+    } else {
+      notebook.unrelate({ parent: parentId, child: childId });
+    }
     setNotebook(new Notebook(notebook));
+    setInspectorNoteId(childId)
   };
 
   const onAttach = (parentId: NoteId, childId: NoteId, childIndex?: number) => {
