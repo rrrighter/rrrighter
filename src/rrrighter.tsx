@@ -47,10 +47,8 @@ function Rrrighter() {
   };
 
   const onDetach = (parentId: NoteId, childId: NoteId) => {
-    // fixme: detaching child from father hides mother
     if (notebook.parents(childId)?.size === 1) {
-        // todo: replace with home
-        alert("Cannot detach from the only parent.");
+        alert("Note must have at least one parent.");
     } else {
       notebook.unrelate({ parent: parentId, child: childId });
     }

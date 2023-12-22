@@ -29,5 +29,5 @@ export default class Notebook extends OrderedOverlappingHierarchy<NoteId> {
     }
   };
 
-  // todo: relate and unrelate methods with parentId and childId arguments
+  // todo: relate and unrelate methods with parentId and childId argument names instead of parent/child for clarity
 }
