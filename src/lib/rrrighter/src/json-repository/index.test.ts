@@ -28,7 +28,7 @@ describe("JSON repository", () => {
     ],
   };
 
-  test('Back and forth JSON conversion produces identical output', () => {
+  test("Back and forth JSON conversion produces identical output", () => {
     const originalNotebook = fromJsonObjectLiteral(hierarchyJsonObjectLiteral);
     const originalObjectLiteral = toJsonObjectLiteral(originalNotebook);
     const originalJson = JSON.stringify(originalObjectLiteral);
@@ -36,7 +36,7 @@ describe("JSON repository", () => {
     const restoredObjectLiteral = toJsonObjectLiteral(restoredNotebook);
     const restoredJson = JSON.stringify(restoredObjectLiteral);
     expect(restoredJson).toStrictEqual(originalJson);
-  })
+  });
 
   describe(".fromJsonObjectLiteral()", () => {
     test("When notes array is empty, notebook home note is blank", () => {
