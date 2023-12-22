@@ -2,11 +2,12 @@ import { fromJsonObjectLiteral, toJsonObjectLiteral } from "./index";
 import Notebook from "./../notebook";
 
 describe("JSON repository", () => {
-  const home = { id: "home", text: "🏡" };
-  const mother = { id: "mother", text: "👩" };
-  const father = { id: "father", text: "👨" };
-  const child = { id: "child", text: "🧒" };
-  const grandchild = { id: "grandchild", text: "👶" };
+  const id = (prefix: string): string => `${prefix}-${Math.random()}`;
+  const home = { id: id("home"), text: "🏡" };
+  const mother = { id: id("mother"), text: "👩" };
+  const father = { id: id("father"), text: "👨" };
+  const child = { id: id("child"), text: "🧒" };
+  const grandchild = { id: id("grandchild"), text: "👶" };
 
   let notebook: Notebook;
 
@@ -26,6 +27,16 @@ describe("JSON repository", () => {
       { id: grandchild.id, text: grandchild.text },
     ],
   };
+
+  test('Back and forth JSON conversion produces identical output', () => {
+    const originalNotebook = fromJsonObjectLiteral(hierarchyJsonObjectLiteral);
+    const originalObjectLiteral = toJsonObjectLiteral(originalNotebook);
+    const originalJson = JSON.stringify(originalObjectLiteral);
+    const restoredNotebook = fromJsonObjectLiteral(JSON.parse(originalJson));
+    const restoredObjectLiteral = toJsonObjectLiteral(restoredNotebook);
+    const restoredJson = JSON.stringify(restoredObjectLiteral);
+    expect(restoredJson).toStrictEqual(originalJson);
+  })
 
   describe(".fromJsonObjectLiteral()", () => {
     test("When notes array is empty, notebook home note is blank", () => {
