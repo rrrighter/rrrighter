@@ -1,4 +1,4 @@
-import { fromJsonObjectLiteral, toJsonObjectLiteral } from "./index";
+import { fromJsonObjectLiteral, toJsonObjectLiteral, convertToUUIDs } from "./index";
 import Notebook from "./../notebook";
 
 describe("JSON repository", () => {
@@ -96,4 +96,34 @@ describe("JSON repository", () => {
       );
     });
   });
+
+  describe("convertToUUIDs", () => {
+    let notebook: Notebook;
+    let converted: Notebook;
+
+    beforeEach(() => {
+      notebook = fromJsonObjectLiteral(hierarchyJsonObjectLiteral);
+      converted = convertToUUIDs(notebook);
+    })
+
+    test("returns new Notebook with UUID ids", () => {
+      converted.ids().forEach((id) => {
+        expect(id.length).toStrictEqual(36);
+      })
+    })
+
+    test("new Notebook has the same note texts", () => {
+      const contentStructure = function(notebook: Notebook): string {
+        return toJsonObjectLiteral(notebook).notes.map((note) => note.text).join("|");
+      }
+      expect(contentStructure(converted)).toStrictEqual(contentStructure(notebook));
+    })
+
+    test("new Notebook has the same relationships", () => {
+      const relationshipsStructure = function(notebook: Notebook): string {
+        return toJsonObjectLiteral(notebook).notes.map((note) => note.children?.map((childId) => notebook.get(childId))).join("|");
+      }
+      expect(relationshipsStructure(converted)).toStrictEqual(relationshipsStructure(notebook));
+    })
+  })
 });

@@ -1,3 +1,5 @@
+import { randomUUID } from 'node:crypto';
+
 import Notebook from "./../notebook";
 
 type NoteId = string;
@@ -49,3 +51,18 @@ export const toJsonObjectLiteral = (notebook: Notebook): NotebookStructure => {
 
   return { notes };
 };
+
+export const convertToUUIDs = (notebook: Notebook): Notebook => {
+  const old2new = new Map<string, string>();
+  notebook.ids().forEach((id) => {
+    old2new.set(id, randomUUID());
+  });
+
+  const structure = toJsonObjectLiteral(notebook);
+  structure.notes.forEach((note) => {
+    note.id = old2new.get(note.id) as string;
+    note.children = note.children?.map((child) => old2new.get(child) as string);
+  })
+
+  return new Notebook(fromJsonObjectLiteral(structure));
+}
