@@ -3,6 +3,7 @@ import { Badge, Button, Dropdown, Space } from "antd";
 import { DownOutlined } from "@ant-design/icons";
 import Notebook from "../../../lib/rrrighter/src/notebook";
 import {
+  convertToUUIDs,
   fromJsonObjectLiteral,
   toJsonObjectLiteral,
 } from "../../../lib/rrrighter/src/json-repository";
@@ -19,9 +20,10 @@ export default function NotebookRepository(props: {
       description: "Rrrighter notebook",
       extensions: [".rrrighter"],
     });
-    const openedNotebook = new Notebook(
+    const originalNotebook = new Notebook(
       fromJsonObjectLiteral(JSON.parse(await fileWithHandle.text())),
     );
+    const openedNotebook = convertToUUIDs(originalNotebook);
     setFileName(fileWithHandle.name);
     setFileHandle(fileWithHandle.handle || null);
     setSavedNotebook(openedNotebook);
