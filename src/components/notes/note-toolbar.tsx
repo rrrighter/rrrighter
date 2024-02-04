@@ -1,4 +1,4 @@
-import React, {ReactEventHandler} from "react";
+import React from "react";
 import { DeleteOutlined } from "@ant-design/icons";
 
 import { Button, Popconfirm } from "antd";

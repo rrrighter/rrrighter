@@ -23,7 +23,7 @@ export default function NoteTag(props: {
       style={{ cursor: "pointer" }}
       icon={<UpOutlined />}
       key={`${props.parentId}/${props.childId}`} // https://github.com/ant-design/ant-design/issues/28768
-      onClick={() => props.onSelect && props.onSelect(props.parentId)}
+      onClick={() => props.onSelect?.(props.parentId)}
       closable={!!props.onDetach}
       onClose={onClose}
     >

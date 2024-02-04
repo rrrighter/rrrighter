@@ -27,7 +27,7 @@ export default function SearchSelect(props: {
       placeholder="Search"
       value={[]}
       onSelect={(_val: string, option: any) =>
-        props.onSelect && props.onSelect(ids[option.key])
+        props.onSelect?.(ids[option.key])
       }
     >
       {searchOptions}
