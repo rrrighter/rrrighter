@@ -1,4 +1,4 @@
-import React, { ReactElement, Key, useState } from "react";
+import React from "react";
 import Notebook, {
   NoteId,
   NoteText,
@@ -51,16 +51,16 @@ const treeData = (
 export default function Outline(props: {
   notebook: Notebook;
   parentId?: NoteId;
-  selectIcon?: ReactElement;
+  selectedKey?: string;
   onSelect?: Function;
   onDrop?: Function;
   onEdit?: Function;
   onDelete?: Function;
 }) {
-  const defaultSelectedKeys = props.parentId
-    ? []
-    : [`undefined/${props.notebook.homeId()}`];
-  const [selectedKeys, setSelectedKeys] = useState<Key[]>(defaultSelectedKeys);
+  // const defaultSelectedKeys = props.parentId
+  //   ? []
+  //   : [`undefined/${props.notebook.homeId()}`];
+  // const [selectedKeys, setSelectedKeys] = useState<Key[]>(defaultSelectedKeys);
 
   const titleRender = (node: TreeDataNodeType) => {
     return <NoteItem notebook={props.notebook} noteId={node.noteId} />;
@@ -84,7 +84,6 @@ export default function Outline(props: {
       onDrop={onDrop}
       onSelect={(keys, e) => {
         if (keys.length) {
-          setSelectedKeys(keys);
           props.onSelect?.({
             noteId: e.node.noteId,
             parentNoteId: e.node.parentNoteId,
@@ -92,7 +91,7 @@ export default function Outline(props: {
         }
       }}
       treeData={treeData(props.notebook, props.parentId)}
-      selectedKeys={selectedKeys}
+      selectedKeys={props.selectedKey ? [props.selectedKey] : []}
       defaultExpandedKeys={
         props.parentId ? [] : [`undefined/${props.notebook.homeId()}`]
       }

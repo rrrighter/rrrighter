@@ -83,13 +83,13 @@ function Rrrighter() {
     setNotebook(new Notebook(notebook));
   };
 
-  const onOutlineSelect = (event?: {
-    noteId: NoteId;
-    parentNoteId: NoteId;
-  }) => {
-    // setInspectorNoteId(event.noteId);
-    setSelectedNoteId(event?.noteId);
-    setSelectedNoteParentId(event?.parentNoteId);
+  const onOutlineSelect = (event: { noteId: NoteId; parentNoteId: NoteId }) => {
+    if (readonly) {
+      setInspectorNoteId(event.noteId);
+    } else {
+      setSelectedNoteId(event.noteId);
+      setSelectedNoteParentId(event.parentNoteId);
+    }
   };
 
   const moveUp = () => {
@@ -212,7 +212,7 @@ function Rrrighter() {
                 onNotebookOpen={setNotebook}
               />
             )}
-            {selectedNoteId && (
+            {!readonly && selectedNoteId && (
               <Parents
                 notebook={notebook}
                 noteId={selectedNoteId}
@@ -220,19 +220,18 @@ function Rrrighter() {
                 onDetach={readonly ? undefined : onDetach}
               />
             )}
-            <span>
-              {selectedNoteId}/{selectedNoteParentId}
-            </span>
+            {!readonly && selectedNoteId && (
+              <span>
+                {selectedNoteId}/{selectedNoteParentId}
+              </span>
+            )}
           </div>
           <div style={{ float: "right" }}>
             <SearchSelect notebook={notebook} onSelect={setInspectorNoteId} />
           </div>
         </header>
         <main tabIndex={-1} onKeyDownCapture={onKeyDownCapture}>
-          <div
-            id="toolbar"
-            style={{ visibility: readonly ? "hidden" : "visible" }}
-          >
+          <div id="toolbar" style={{ display: readonly ? "none" : "block" }}>
             <Button
               type="link"
               disabled={!selectedNoteId}
@@ -265,9 +264,11 @@ function Rrrighter() {
               />
             )}
           </div>
-          <br />
           <Outline
             notebook={notebook}
+            selectedKey={
+              readonly ? "" : `${selectedNoteParentId}/${selectedNoteId}`
+            }
             onSelect={onOutlineSelect}
             // todo: onEnter={() => {}} - add sibling
             // todo: on meta+Enter (or maybe shift) -> add child

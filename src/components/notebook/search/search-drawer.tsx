@@ -3,7 +3,6 @@ import { Drawer } from "antd";
 import SearchSelect from "./search-select";
 import Outline from "../outline/outline";
 import Notebook from "../../../lib/rrrighter/src/notebook";
-import { PullRequestOutlined } from "@ant-design/icons";
 
 export default function SearchDrawer(props: {
   notebook: Notebook;
@@ -23,11 +22,7 @@ export default function SearchDrawer(props: {
         <SearchSelect notebook={props.notebook} onSelect={props.onSelect} />
       }
     >
-      <Outline
-        notebook={props.notebook}
-        selectIcon={<PullRequestOutlined />}
-        onSelect={props.onSelect}
-      />
+      <Outline notebook={props.notebook} onSelect={props.onSelect} />
     </Drawer>
   );
 }
