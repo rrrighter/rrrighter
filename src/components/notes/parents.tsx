@@ -9,7 +9,7 @@ export default function Parents(props: {
   onDetach?: Function;
   onSelect?: Function;
 }) {
-  const parentIds = props.notebook.parents(props.noteId) as Set<NoteId>
+  const parentIds = props.notebook.parents(props.noteId) as Set<NoteId>;
   const parents = Array.from(parentIds || []);
   const tags: ReactNode[] = parents.map((parent): ReactNode => {
     return (

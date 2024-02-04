@@ -6,7 +6,10 @@ import "./note-outline.css";
 
 const { Text } = Typography;
 
-export default function NoteItem(props: { notebook: Notebook; noteId: NoteId }) {
+export default function NoteItem(props: {
+  notebook: Notebook;
+  noteId: NoteId;
+}) {
   const descendantsCount = props.notebook.descendants(props.noteId)?.size || 0;
 
   return (

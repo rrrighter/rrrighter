@@ -1,4 +1,4 @@
-import React, {ReactElement, Key, useState} from "react";
+import React, { ReactElement, Key, useState } from "react";
 import Notebook, {
   NoteId,
   NoteText,
@@ -20,7 +20,10 @@ const treeData = (
   parentId?: NoteId,
 ): TreeDataNodeType[] => {
   // todo: move to Rrrighter app presentation layer?
-  const _treeData = (ids: NoteId[], parentNoteId?: string): TreeDataNodeType[] => {
+  const _treeData = (
+    ids: NoteId[],
+    parentNoteId?: string,
+  ): TreeDataNodeType[] => {
     return ids.map((noteId: NoteId) => {
       const key = `${parentNoteId}/${noteId}`;
       const text = notebook.get(noteId) || "";
@@ -54,11 +57,13 @@ export default function Outline(props: {
   onEdit?: Function;
   onDelete?: Function;
 }) {
-  const defaultSelectedKeys = props.parentId ? [] : [`undefined/${props.notebook.homeId()}`];
+  const defaultSelectedKeys = props.parentId
+    ? []
+    : [`undefined/${props.notebook.homeId()}`];
   const [selectedKeys, setSelectedKeys] = useState<Key[]>(defaultSelectedKeys);
 
   const titleRender = (node: TreeDataNodeType) => {
-    return <NoteItem notebook={props.notebook} noteId={node.noteId}/>
+    return <NoteItem notebook={props.notebook} noteId={node.noteId} />;
   };
 
   const onDrop = (e: any) => {
@@ -74,18 +79,23 @@ export default function Outline(props: {
   };
 
   return (
-      <Tree
+    <Tree
       draggable={!!props.onDrop}
       onDrop={onDrop}
       onSelect={(keys, e) => {
         if (keys.length) {
           setSelectedKeys(keys);
-          props.onSelect?.({ noteId: e.node.noteId, parentNoteId: e.node.parentNoteId });
+          props.onSelect?.({
+            noteId: e.node.noteId,
+            parentNoteId: e.node.parentNoteId,
+          });
         }
       }}
       treeData={treeData(props.notebook, props.parentId)}
       selectedKeys={selectedKeys}
-      defaultExpandedKeys={props.parentId ? [] : [`undefined/${props.notebook.homeId()}`]}
+      defaultExpandedKeys={
+        props.parentId ? [] : [`undefined/${props.notebook.homeId()}`]
+      }
       blockNode
       titleRender={titleRender}
     />
