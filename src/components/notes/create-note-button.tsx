@@ -1,5 +1,5 @@
 import { Button } from "antd";
-import { PlusOutlined } from "@ant-design/icons";
+import { SubnodeOutlined } from "@ant-design/icons";
 import React, { useState } from "react";
 import TextareaPrompt from "../prompt/textarea-prompt";
 
@@ -24,7 +24,7 @@ export default function CreateNoteButton(props: { onCreate: Function }) {
       <Button
         type="text"
         size={"small"}
-        icon={<PlusOutlined />}
+        icon={<SubnodeOutlined />}
         onClick={showPrompt}
         aria-label="Create note"
         title="Create note"
