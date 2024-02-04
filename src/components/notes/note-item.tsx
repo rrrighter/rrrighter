@@ -6,13 +6,13 @@ import "./note-outline.css";
 
 const { Text } = Typography;
 
-export default function NoteItem(props: { notebook: Notebook; id: NoteId }) {
-  const descendantsCount = props.notebook.descendants(props.id)?.size || 0;
+export default function NoteItem(props: { notebook: Notebook; noteId: NoteId }) {
+  const descendantsCount = props.notebook.descendants(props.noteId)?.size || 0;
 
   return (
     <div className="note-outline">
       <div style={{ float: "left" }}>
-        <FormattedText text={props.notebook.get(props.id) || ""} />
+        <FormattedText text={props.notebook.get(props.noteId) || ""} />
       </div>
       <div style={{ float: "right" }}>
         <Text type="secondary">

@@ -14,7 +14,7 @@ export default function SearchSelect(props: {
   const searchOptions = ids.map((id, index) => {
     return (
       <Option key={index} value={props.notebook.get(id) || ""}>
-        <NoteItem notebook={props.notebook} id={id} />
+        <NoteItem notebook={props.notebook} noteId={id} />
       </Option>
     );
   });

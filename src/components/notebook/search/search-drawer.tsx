@@ -25,7 +25,6 @@ export default function SearchDrawer(props: {
     >
       <Outline
         notebook={props.notebook}
-        defaultExpandedHome={true}
         selectIcon={<PullRequestOutlined />}
         onSelect={props.onSelect}
       />

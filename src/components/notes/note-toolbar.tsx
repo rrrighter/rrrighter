@@ -1,4 +1,4 @@
-import React from "react";
+import React, {ReactEventHandler} from "react";
 import { DeleteOutlined } from "@ant-design/icons";
 
 import { Button, Popconfirm } from "antd";
@@ -9,32 +9,32 @@ import EditNoteButton from "./edit-note-button";
 
 export default function NoteToolbar(props: {
   notebook: Notebook;
-  id: NoteId;
+  noteId: NoteId;
   onEdit: Function;
   onDelete: Function;
-  onCreateChild: Function;
+  onCreate: Function;
   onAttach: Function;
 }) {
-  const isHomeNote = props.id === props.notebook.homeId();
+  const isHomeNote = props.noteId === props.notebook.homeId();
 
   return (
     <>
       <AttachToParent
         notebook={props.notebook}
-        childId={props.id}
+        childId={props.noteId}
         onAttach={props.onAttach}
       />
-      <CreateNoteButton onCreate={props.onCreateChild} />
       <EditNoteButton
-        text={props.notebook.get(props.id) || ""}
+        text={props.notebook.get(props.noteId) || ""}
         onEdit={props.onEdit}
       />
+      <CreateNoteButton onCreate={props.onCreate} />
 
       <Popconfirm
         disabled={isHomeNote}
         title="Delete the note"
         description="Are you sure to delete this note?"
-        onConfirm={() => props.onDelete()}
+        onConfirm={() => props.onDelete(props.noteId)}
         okText="Yes"
         cancelText="No"
       >

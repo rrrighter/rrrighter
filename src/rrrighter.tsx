@@ -1,7 +1,7 @@
 import { fromJsonObjectLiteral } from "./lib/rrrighter/src/json-repository";
 import Notebook, { NoteId } from "./lib/rrrighter/src/notebook";
-import React, { ReactNode, useState } from "react";
-import { App, ConfigProvider, theme, Drawer, Button } from "antd";
+import React, {useState} from "react";
+import {App, ConfigProvider, theme, Drawer, Button, Divider} from "antd";
 import Outline from "./components/notebook/outline/outline";
 import Inspector from "./components/notes/inspector";
 import NotebookRepository from "./components/notebook/repository/notebook-repository";
@@ -10,7 +10,6 @@ import SearchSelect from "./components/notebook/search/search-select";
 import "./rrrighter.css";
 import NoteToolbar from "./components/notes/note-toolbar";
 import Parents from "./components/notes/parents";
-import CreateNoteButton from "./components/notes/create-note-button";
 
 const urlParams = new URLSearchParams(window.location.search);
 const repository = urlParams.get("repository");
@@ -31,16 +30,24 @@ const initialNotebook = fromJsonObjectLiteral(sourceJSON);
 function Rrrighter() {
   const [notebook, setNotebook] = useState<Notebook>(initialNotebook);
   const [inspectorNoteId, setInspectorNoteId] = useState<NoteId | undefined>(
-    undefined,
+      undefined,
   );
+  const [selectedNoteId, setSelectedNoteId] = useState<NoteId | undefined>(
+      notebook.homeId(),
+  );
+  const [selectedNoteParentId, setSelectedNoteParentId] = useState<NoteId | undefined>(
+      undefined,
+  );
+  const selectedNoteIndex = (selectedNoteParentId && selectedNoteId) ? notebook.children(selectedNoteParentId)?.indexOf(selectedNoteId) : undefined;
 
   const onDelete = (id: NoteId) => {
     if (notebook.descendants(id)?.size) {
+      // todo: move inside toolbar or delete button component
       alert("Cannot delete note with children. Delete the children first."); // todo: implement wizard drawer OR batch actions with descendants
     } else {
       notebook
-        .parents(id)
-        ?.forEach((parent) => notebook.unrelate({ parent, child: id }));
+          .parents(id)
+          ?.forEach((parent) => notebook.unrelate({parent, child: id}));
       setInspectorNoteId(undefined);
       setNotebook(new Notebook(notebook));
     }
@@ -48,16 +55,16 @@ function Rrrighter() {
 
   const onDetach = (parentId: NoteId, childId: NoteId) => {
     if (notebook.parents(childId)?.size === 1) {
-        alert("Note must have at least one parent.");
+      alert("Note must have at least one parent.");
     } else {
-      notebook.unrelate({ parent: parentId, child: childId });
+      notebook.unrelate({parent: parentId, child: childId});
     }
     setNotebook(new Notebook(notebook));
-    setInspectorNoteId(childId)
+    setInspectorNoteId(childId);
   };
 
   const onAttach = (parentId: NoteId, childId: NoteId, childIndex?: number) => {
-    notebook.relate([{ parent: parentId, child: childId, childIndex }]);
+    notebook.relate([{parent: parentId, child: childId, childIndex}]);
     setNotebook(new Notebook(notebook));
   };
 
@@ -66,18 +73,72 @@ function Rrrighter() {
     return self.crypto.randomUUID();
   };
 
-  const onCreateHierarch = (text: string) => {
-    const id = newNoteId();
-    notebook.relate([{ parent: notebook.homeId(), child: id }]);
-    notebook.set(id, text);
+  const onCreateNote = (text: string) => {
+    const noteId = newNoteId();
+    notebook.relate([{parent: selectedNoteId as NoteId, child: noteId}]);
+    notebook.set(noteId, text);
     setNotebook(new Notebook(notebook));
+  };
+
+  const onOutlineSelect = (event?: { noteId: NoteId, parentNoteId: NoteId }) => {
+    // setInspectorNoteId(event.noteId);
+    setSelectedNoteId(event?.noteId);
+    setSelectedNoteParentId(event?.parentNoteId);
+  }
+
+  const moveUp = () => {
+    onAttach(selectedNoteParentId as NoteId, selectedNoteId as NoteId, selectedNoteIndex as number - 1)
+  }
+
+  const moveDown = () => {
+    onAttach(selectedNoteParentId as NoteId, selectedNoteId as NoteId, selectedNoteIndex as number + 1)
+  }
+
+  const onKeyDownCapture = (e: React.KeyboardEvent) => {
+    console.dir(e);
+    console.log('onKeyDown:', e.metaKey, e.key);
+    console.dir(document.activeElement);
+
+    if (e.metaKey) {
+      if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        e.stopPropagation();
+        console.log('moveUp');
+        moveUp();
+      } else if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        e.stopPropagation();
+        console.log('moveDown');
+        moveDown();
+      }
+    } else {
+        // TODO: tab to indent (alias as meta+right, shift-tab to outdent with alias as meta+left)
+        if (e.key === 'v') {
+          // e.preventDefault();
+          // e.stopPropagation();
+          // console.log('view');
+          // setInspectorNoteId(selectedNoteId);
+        } else if (e.key === 'e') {
+          // e.preventDefault();
+          // e.stopPropagation();
+          // console.log('edit');
+          // setInspectorNoteId(selectedNoteId);
+        }
+        // TODO: key 'a' to add sibling next to the selected note and select it
+    }
+  }
+
+  const onSelectedNoteEdit = (text: string) => {
+    notebook.set(selectedNoteId as string, text);
+    setNotebook(new Notebook(notebook));
+    setInspectorNoteId(inspectorNoteId);
   };
 
   let inspectorDrawer = <></>; // todo extract into InspectorDrawer component (notebook, note, actions..) & onNoteAction(inspectorNote.id, action)
   if (inspectorNoteId) {
     const onCreateChild = (text: string) => {
       const id = newNoteId();
-      notebook.relate([{ parent: inspectorNoteId, child: id }]);
+      notebook.relate([{parent: inspectorNoteId, child: id}]);
       notebook.set(id, text);
       setNotebook(new Notebook(notebook));
     };
@@ -89,90 +150,98 @@ function Rrrighter() {
     };
 
     const noteParents = (
-      <Parents
-        notebook={notebook}
-        id={inspectorNoteId}
-        onDetach={readonly ? undefined : onDetach}
-        onSelect={setInspectorNoteId}
-      />
+        <Parents
+            notebook={notebook}
+            noteId={inspectorNoteId}
+            onDetach={readonly ? undefined : onDetach}
+            onSelect={setInspectorNoteId}
+        />
     );
     const noteToolbar = (
-      <NoteToolbar
-        notebook={notebook}
-        id={inspectorNoteId}
-        onEdit={onEdit}
-        onCreateChild={onCreateChild}
-        onAttach={onAttach}
-        onDelete={() => onDelete(inspectorNoteId)}
-      />
-    );
-    const parents = Array.from(notebook.parents(inspectorNoteId) || []);
-    const parentIndexes: ReactNode[] = parents.map((parent): ReactNode => {
-      const index = notebook.children(parent)?.indexOf(inspectorNoteId) || 0;
-      return (
-        <div>
-          <Button
-            type="link"
-            onClick={() => onAttach(parent, inspectorNoteId, index - 1)}
-          >
-            🔼
-          </Button>
-          <Button
-            type="link"
-            onClick={() => onAttach(parent, inspectorNoteId, index + 1)}
-          >
-            🔽
-          </Button>
-          {notebook.get(parent) || ""} @ {index}
-        </div>
-      );
-    });
-    inspectorDrawer = (
-      <Drawer
-        open={true}
-        size={"large"}
-        title={noteParents}
-        extra={!readonly && noteToolbar}
-        onClose={() => setInspectorNoteId(undefined)}
-      >
-        {!readonly && parentIndexes}
-        <Inspector
-          notebook={notebook}
-          id={inspectorNoteId}
-          onSelect={setInspectorNoteId}
+        <NoteToolbar
+            notebook={notebook}
+            noteId={inspectorNoteId}
+            onEdit={onEdit}
+            onCreate={onCreateChild}
+            onAttach={onAttach}
+            onDelete={() => onDelete(inspectorNoteId)}
         />
-      </Drawer>
+    );
+    inspectorDrawer = (
+        <Drawer
+            open={true}
+            size={"large"}
+            title={noteParents}
+            extra={!readonly && noteToolbar}
+            onClose={() => setInspectorNoteId(undefined)}
+        >
+          <Inspector
+              notebook={notebook}
+              id={inspectorNoteId}
+              onSelect={(event: { noteId: NoteId }) => setInspectorNoteId(event.noteId)}
+          />
+        </Drawer>
     );
   }
 
   return (
-    <ConfigProvider theme={{ algorithm: theme.darkAlgorithm }}>
-      <App>
-        <header>
-          <div style={{ float: "left" }}>
-            {!readonly && (
-              <NotebookRepository
-                filename="welcome"
+      <ConfigProvider theme={{algorithm: theme.darkAlgorithm}}>
+        <App>
+          <header>
+            <div style={{float: "left"}}>
+              {!readonly && (
+                  <NotebookRepository
+                      filename="welcome"
+                      notebook={notebook}
+                      onNotebookOpen={setNotebook}
+                  />
+              )}
+              {selectedNoteId && <Parents notebook={notebook} noteId={selectedNoteId} onSelect={setInspectorNoteId}
+                                          onDetach={readonly ? undefined : onDetach}/>}
+              <span>{selectedNoteId}/{selectedNoteParentId}</span>
+            </div>
+            <div style={{float: "right"}}>
+              <SearchSelect notebook={notebook} onSelect={setInspectorNoteId}/>
+            </div>
+          </header>
+          <main tabIndex={-1} onKeyDownCapture={onKeyDownCapture}>
+            <div id="toolbar" style={{visibility: readonly ? "hidden" : "visible"}}>
+              <Button
+                  type="link"
+                  disabled={!selectedNoteId}
+                  onClick={() => setInspectorNoteId(selectedNoteId)}
+              >👁️</Button>
+              <Button
+                  type="link"
+                  disabled={!selectedNoteParentId || !selectedNoteId}
+                  onClick={moveUp}
+              >🔼</Button>
+              <Button
+                  type="link"
+                  disabled={!selectedNoteParentId || !selectedNoteId}
+                  onClick={moveDown}
+              >🔽</Button>
+              {selectedNoteId && <NoteToolbar
+                  notebook={notebook}
+                  noteId={selectedNoteId}
+                  onEdit={onSelectedNoteEdit}
+                  onCreate={onCreateNote}
+                  onAttach={onAttach}
+                  onDelete={() => onDelete(selectedNoteId)}
+              />}
+            </div>
+            <br/>
+            <Outline
                 notebook={notebook}
-                onNotebookOpen={setNotebook}
-              />
-            )}
-          </div>
-          <div style={{ float: "right" }}>
-            <SearchSelect notebook={notebook} onSelect={setInspectorNoteId} />
-            {!readonly && <CreateNoteButton onCreate={onCreateHierarch} />}
-          </div>
-        </header>
-        <main>
-          <Outline
-            notebook={notebook}
-            defaultExpandedHome={true}
-            onSelect={setInspectorNoteId}
-          />
-        </main>
-        <aside>{inspectorDrawer}</aside>
-      </App>
-    </ConfigProvider>
+                onSelect={onOutlineSelect}
+                // todo: onEnter={() => {}} - add sibling
+                // todo: on meta+Enter (or maybe shift) -> add child
+                onEdit={onSelectedNoteEdit}
+            />
+          </main>
+          <aside>{inspectorDrawer}</aside>
+        </App>
+      </ConfigProvider>
   );
 }
 

@@ -5,17 +5,18 @@ import NoteTag from "./note-tag";
 
 export default function Parents(props: {
   notebook: Notebook;
-  id: NoteId;
+  noteId: NoteId;
   onDetach?: Function;
   onSelect?: Function;
 }) {
-  const parents = Array.from(props.notebook.parents(props.id) || []);
+  const parentIds = props.notebook.parents(props.noteId) as Set<NoteId>
+  const parents = Array.from(parentIds || []);
   const tags: ReactNode[] = parents.map((parent): ReactNode => {
     return (
       <NoteTag
         notebook={props.notebook}
         parentId={parent}
-        childId={props.id}
+        childId={props.noteId}
         onSelect={props.onSelect}
         onDetach={props.onDetach || undefined}
       />

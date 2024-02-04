@@ -16,14 +16,13 @@ export default function NoteTag(props: {
   const onClose = (event: any) => {
     // do not hide tag automatically if removal fails
     event.preventDefault();
-    props.onDetach && props.onDetach(props.parentId, props.childId)
-  }
+    props.onDetach && props.onDetach(props.parentId, props.childId);
+  };
   return (
     <Tag
       style={{ cursor: "pointer" }}
       icon={<UpOutlined />}
-      // https://github.com/ant-design/ant-design/issues/28768
-      key={`${props.parentId}/${props.childId}`}
+      key={`${props.parentId}/${props.childId}`} // https://github.com/ant-design/ant-design/issues/28768
       onClick={() => props.onSelect && props.onSelect(props.parentId)}
       closable={!!props.onDetach}
       onClose={onClose}

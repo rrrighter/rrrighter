@@ -23,13 +23,13 @@ notebook.set(person.id, person.text);
 export const WithoutDescendantsCountBadge: Story = {
   args: {
     notebook,
-    id: person.id,
+    noteId: person.id,
   },
 };
 
 export const WithDescendantsCountBadge: Story = {
   args: {
     notebook,
-    id: home.id,
+    noteId: home.id,
   },
 };
