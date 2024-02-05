@@ -1,24 +1,26 @@
 import React, { ReactNode } from "react";
 import Notebook, { NoteId } from "../../lib/rrrighter/src/notebook";
 
-import NoteTag from "./note-tag";
+import NoteButton from "./note-button";
+import { UpOutlined } from "@ant-design/icons";
 
 export default function Parents(props: {
   notebook: Notebook;
   noteId: NoteId;
+  onClick?: Function;
   onDetach?: Function;
-  onSelect?: Function;
 }) {
   const parentIds = props.notebook.parents(props.noteId) as Set<NoteId>;
-  const parents = Array.from(parentIds || []);
-  const tags: ReactNode[] = parents.map((parent): ReactNode => {
+  const tags: ReactNode[] = Array.from(parentIds).map((parentId): ReactNode => {
     return (
-      <NoteTag
+      <NoteButton
         notebook={props.notebook}
-        parentId={parent}
-        childId={props.noteId}
-        onSelect={props.onSelect}
-        onDetach={props.onDetach || undefined}
+        noteId={parentId}
+        icon={<UpOutlined />}
+        onClick={props.onClick}
+        onClose={() =>
+          props.onDetach?.({ parentId: parentId, childId: props.noteId })
+        }
       />
     );
   });

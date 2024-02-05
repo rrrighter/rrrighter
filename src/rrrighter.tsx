@@ -1,7 +1,7 @@
 import { fromJsonObjectLiteral } from "./lib/rrrighter/src/json-repository";
 import Notebook, { NoteId } from "./lib/rrrighter/src/notebook";
 import React, { useState } from "react";
-import {App, ConfigProvider, theme, Drawer, Button, Tag} from "antd";
+import { App, ConfigProvider, theme, Drawer, Button, Tag } from "antd";
 import Outline from "./components/notebook/outline/outline";
 import Inspector from "./components/notes/inspector";
 import NotebookRepository from "./components/notebook/repository/notebook-repository";
@@ -10,8 +10,8 @@ import SearchSelect from "./components/notebook/search/search-select";
 import "./rrrighter.css";
 import NoteToolbar from "./components/notes/note-toolbar";
 import Parents from "./components/notes/parents";
-import {EyeOutlined} from "@ant-design/icons";
-import FormattedText from "./components/notes/formatted-text";
+import { EyeOutlined } from "@ant-design/icons";
+import NoteButton from "./components/notes/note-button";
 
 const urlParams = new URLSearchParams(window.location.search);
 const repository = urlParams.get("repository");
@@ -49,7 +49,7 @@ function Rrrighter() {
     setNotebook(notebook);
     setSelectedNoteParentId(undefined);
     setSelectedNoteId(notebook.homeId());
-  }
+  };
 
   const onDelete = (id: NoteId) => {
     if (notebook.descendants(id)?.size) {
@@ -64,7 +64,13 @@ function Rrrighter() {
     }
   };
 
-  const onDetach = (parentId: NoteId, childId: NoteId) => {
+  const onDetach = ({
+    parentId,
+    childId,
+  }: {
+    parentId: NoteId;
+    childId: NoteId;
+  }) => {
     if (notebook.parents(childId)?.size === 1) {
       alert("Note must have at least one parent.");
     } else {
@@ -91,7 +97,10 @@ function Rrrighter() {
     setNotebook(new Notebook(notebook));
   };
 
-  const onOutlineSelect = (event: { noteId: NoteId; parentNoteId?: NoteId }) => {
+  const onOutlineSelect = (event: {
+    noteId: NoteId;
+    parentNoteId?: NoteId;
+  }) => {
     if (readonly) {
       setInspectorNoteId(event.noteId);
     } else {
@@ -175,8 +184,8 @@ function Rrrighter() {
       <Parents
         notebook={notebook}
         noteId={inspectorNoteId}
+        onClick={setInspectorNoteId}
         onDetach={readonly ? undefined : onDetach}
-        onSelect={setInspectorNoteId}
       />
     );
     const noteToolbar = (
@@ -220,22 +229,22 @@ function Rrrighter() {
                 onNotebookOpen={onNotebookOpen}
               />
             )}
-            {!readonly && selectedNoteId && notebook.get(selectedNoteId) && (<>
-              <Parents
-                notebook={notebook}
-                noteId={selectedNoteId}
-                onSelect={setInspectorNoteId}
-                onDetach={readonly ? undefined : onDetach}
-              />
-              <Tag // todo: create universal NoteButton instead of this and NoteTag
-                  style={{ cursor: "pointer" }}
+            {!readonly && selectedNoteId && notebook.get(selectedNoteId) && (
+              <>
+                <Parents
+                  notebook={notebook}
+                  noteId={selectedNoteId}
+                  onClick={setInspectorNoteId}
+                  onDetach={readonly ? undefined : onDetach}
+                />
+                <NoteButton
+                  notebook={notebook}
+                  noteId={selectedNoteId}
                   icon={<EyeOutlined />}
-                  key={selectedNoteId} // https://github.com/ant-design/ant-design/issues/28768
-                  onClick={() => setInspectorNoteId(selectedNoteId)}
-              >
-                <FormattedText text={notebook.get(selectedNoteId)!.split("\n")[0] || ''} />
-              </Tag>
-            </>)}
+                  onClick={setInspectorNoteId}
+                />
+              </>
+            )}
           </div>
           <div style={{ float: "right" }}>
             <SearchSelect notebook={notebook} onSelect={setInspectorNoteId} />
