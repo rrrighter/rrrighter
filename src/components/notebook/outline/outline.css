@@ -3,5 +3,10 @@
 }
 
 .ant-tree .ant-tree-node-content-wrapper:hover {
-  background: transparent !important;
+  background-color: transparent;
+}
+
+.ant-tree .ant-tree-node-content-wrapper.ant-tree-node-selected,
+.ant-tree .ant-tree-node-content-wrapper.ant-tree-node-selected:hover {
+  background-color: #141414;
 }
