@@ -25,7 +25,10 @@ const treeData = (
     parentNoteId?: string,
   ): TreeDataNodeType[] => {
     return ids.map((noteId: NoteId) => {
-      const key = `${parentNoteId}/${noteId}`;
+      let key = encodeURIComponent(noteId);
+      if (parentNoteId) {
+        key = `${encodeURIComponent(parentNoteId)}/${key}`;
+      }
       const text = notebook.get(noteId) || "";
       const childrenIds = notebook.children(noteId);
       const children =
@@ -57,11 +60,6 @@ export default function Outline(props: {
   onEdit?: Function;
   onDelete?: Function;
 }) {
-  // const defaultSelectedKeys = props.parentId
-  //   ? []
-  //   : [`undefined/${props.notebook.homeId()}`];
-  // const [selectedKeys, setSelectedKeys] = useState<Key[]>(defaultSelectedKeys);
-
   const titleRender = (node: TreeDataNodeType) => {
     return <NoteItem notebook={props.notebook} noteId={node.noteId} />;
   };
@@ -82,6 +80,16 @@ export default function Outline(props: {
     <Tree
       draggable={!!props.onDrop}
       onDrop={onDrop}
+      onActiveChange={(key?) => {
+        if (key) {
+          console.log("onActiveChange", key);
+          const path = key.toString().split("/").map(decodeURIComponent) as NoteId[];
+          console.dir(path);
+          const noteId = path.pop() as NoteId;
+          const parentNoteId = path.pop();
+          props.onSelect?.({ noteId, parentNoteId })
+        }
+      }}
       onSelect={(keys, e) => {
         if (keys.length) {
           props.onSelect?.({
@@ -92,8 +100,9 @@ export default function Outline(props: {
       }}
       treeData={treeData(props.notebook, props.parentId)}
       selectedKeys={props.selectedKey ? [props.selectedKey] : []}
+      activeKey={props.selectedKey}
       defaultExpandedKeys={
-        props.parentId ? [] : [`undefined/${props.notebook.homeId()}`]
+        [props.notebook.homeId()]
       }
       blockNode
       titleRender={titleRender}
