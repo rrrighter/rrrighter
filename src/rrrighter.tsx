@@ -243,6 +243,30 @@ function Rrrighter() {
                   icon={<EyeOutlined />}
                   onClick={setInspectorNoteId}
                 />
+                <Button
+                    type="link"
+                    disabled={!selectedNoteParentId || !selectedNoteId}
+                    onClick={moveUp}
+                >
+                  🔼
+                </Button>
+                <Button
+                    type="link"
+                    disabled={!selectedNoteParentId || !selectedNoteId}
+                    onClick={moveDown}
+                >
+                  🔽
+                </Button>
+                {selectedNoteId && (
+                    <NoteToolbar
+                        notebook={notebook}
+                        noteId={selectedNoteId}
+                        onEdit={onSelectedNoteEdit}
+                        onCreate={onCreateNote}
+                        onAttach={onAttach}
+                        onDelete={() => onDelete(selectedNoteId)}
+                    />
+                )}
               </>
             )}
           </div>
@@ -251,39 +275,6 @@ function Rrrighter() {
           </div>
         </header>
         <main tabIndex={-1} onKeyDownCapture={onKeyDownCapture}>
-          <div id="toolbar" style={{ display: readonly ? "none" : "block" }}>
-            <Button
-              type="link"
-              disabled={!selectedNoteId}
-              onClick={() => setInspectorNoteId(selectedNoteId)}
-            >
-              👁️
-            </Button>
-            <Button
-              type="link"
-              disabled={!selectedNoteParentId || !selectedNoteId}
-              onClick={moveUp}
-            >
-              🔼
-            </Button>
-            <Button
-              type="link"
-              disabled={!selectedNoteParentId || !selectedNoteId}
-              onClick={moveDown}
-            >
-              🔽
-            </Button>
-            {selectedNoteId && (
-              <NoteToolbar
-                notebook={notebook}
-                noteId={selectedNoteId}
-                onEdit={onSelectedNoteEdit}
-                onCreate={onCreateNote}
-                onAttach={onAttach}
-                onDelete={() => onDelete(selectedNoteId)}
-              />
-            )}
-          </div>
           <Outline
             notebook={notebook}
             selectedKey={
