@@ -1,7 +1,7 @@
 import { fromJsonObjectLiteral } from "./lib/rrrighter/src/json-repository";
 import Notebook, { NoteId } from "./lib/rrrighter/src/notebook";
 import React, { useState } from "react";
-import { App, ConfigProvider, theme, Drawer, Button, Tag } from "antd";
+import { App, ConfigProvider, theme, Drawer, Button } from "antd";
 import Outline from "./components/notebook/outline/outline";
 import Inspector from "./components/notes/inspector";
 import NotebookRepository from "./components/notebook/repository/notebook-repository";
@@ -126,35 +126,44 @@ function Rrrighter() {
   };
 
   const onKeyDownCapture = (e: React.KeyboardEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+
     console.dir(e);
     console.log("onKeyDown:", e.metaKey, e.key);
     console.dir(document.activeElement);
 
     if (e.metaKey) {
       if (e.key === "ArrowUp") {
-        e.preventDefault();
-        e.stopPropagation();
-        console.log("moveUp");
         moveUp();
       } else if (e.key === "ArrowDown") {
-        e.preventDefault();
-        e.stopPropagation();
-        console.log("moveDown");
         moveDown();
       }
     } else {
+      if (selectedNoteParentId && selectedNoteId && selectedNoteIndex) {
+        if (e.key === "ArrowUp") {
+          console.log("Up");
+          const newIndex = Math.max(selectedNoteIndex - 1, 0);
+          setSelectedNoteId(notebook.children(selectedNoteParentId)?.[newIndex]);
+        } else if (e.key === "ArrowDown") {
+          console.log("Down");
+          const newIndex = Math.min(selectedNoteIndex + 1, notebook.children(selectedNoteParentId)!.length - 1);
+          setSelectedNoteId(notebook.children(selectedNoteParentId)?.[newIndex]);
+        }
+      }
+
       // TODO: tab to indent (alias as meta+right, shift-tab to outdent with alias as meta+left)
-      if (e.key === "v") {
+      // if (e.key === "v") {
         // e.preventDefault();
         // e.stopPropagation();
         // console.log('view');
         // setInspectorNoteId(selectedNoteId);
-      } else if (e.key === "e") {
+      // } else if (e.key === "e") {
         // e.preventDefault();
         // e.stopPropagation();
         // console.log('edit');
         // setInspectorNoteId(selectedNoteId);
-      }
+      // }
       // TODO: key 'a' to add sibling next to the selected note and select it
     }
   };
