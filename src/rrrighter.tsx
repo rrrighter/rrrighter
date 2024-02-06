@@ -283,7 +283,7 @@ function Rrrighter() {
             <SearchSelect notebook={notebook} onSelect={setInspectorNoteId} />
           </div>
         </header>
-        <main tabIndex={-1} onKeyDownCapture={onKeyDownCapture}>
+        <main tabIndex={-1}>
           <Outline
             notebook={notebook}
             selectedKey={
