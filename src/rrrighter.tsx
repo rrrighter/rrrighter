@@ -287,7 +287,7 @@ function Rrrighter() {
           <Outline
             notebook={notebook}
             selectedKey={
-              readonly ? "" : `${selectedNoteParentId}/${selectedNoteId}`
+              readonly ? "" : selectedNoteParentId ? `${selectedNoteParentId}/${selectedNoteId}` : selectedNoteId
             }
             onSelect={onOutlineSelect}
             // todo: onEnter={() => {}} - add sibling
