@@ -1,7 +1,7 @@
 import { fromJsonObjectLiteral } from "./lib/rrrighter/src/json-repository";
 import Notebook, { NoteId } from "./lib/rrrighter/src/notebook";
 import React, { useState } from "react";
-import { App, ConfigProvider, theme, Drawer, Button } from "antd";
+import { App, ConfigProvider, theme, Drawer } from "antd";
 import Outline from "./components/notebook/outline/outline";
 import Inspector from "./components/notes/inspector";
 import NotebookRepository from "./components/notebook/repository/notebook-repository";
@@ -109,7 +109,7 @@ function Rrrighter() {
     }
   };
 
-  const moveUp = () => {
+  const onMoveUp = () => {
     onAttach(
       selectedNoteParentId as NoteId,
       selectedNoteId as NoteId,
@@ -117,7 +117,7 @@ function Rrrighter() {
     );
   };
 
-  const moveDown = () => {
+  const onMoveDown = () => {
     onAttach(
       selectedNoteParentId as NoteId,
       selectedNoteId as NoteId,
@@ -126,39 +126,20 @@ function Rrrighter() {
   };
 
   const onKeyDownCapture = (e: React.KeyboardEvent) => {
-    // e.preventDefault();
-    // e.stopPropagation();
-    console.dir(document.activeElement);
-    console.dir(e);
-    console.log("onKeyDown:", e.metaKey, e.key);
-    console.dir(document.activeElement);
+    console.log("onKeyDown:", e.key);
 
-    if (e.metaKey) {
-      if (e.key === "ArrowUp") {
-        moveUp();
-      } else if (e.key === "ArrowDown") {
-        moveDown();
+    if (e.altKey) {
+      const onAction = (action: Function) => {
+        e.preventDefault();
+        e.stopPropagation();
+        action();
       }
-    } else {
-        if (e.key === "ArrowUp") {
-          console.log("Up");
-        } else if (e.key === "ArrowDown") {
-          console.log("Down");
-        }
 
-      // TODO: tab to indent (alias as meta+right, shift-tab to outdent with alias as meta+left)
-      // if (e.key === "v") {
-        // e.preventDefault();
-        // e.stopPropagation();
-        // console.log('view');
-        // setInspectorNoteId(selectedNoteId);
-      // } else if (e.key === "e") {
-        // e.preventDefault();
-        // e.stopPropagation();
-        // console.log('edit');
-        // setInspectorNoteId(selectedNoteId);
-      // }
-      // TODO: key 'a' to add sibling next to the selected note and select it
+      if (e.key === "ArrowUp") {
+        onAction(onMoveUp);
+      } else if (e.key === "ArrowDown") {
+        onAction(onMoveDown);
+      }
     }
   };
 
@@ -220,6 +201,10 @@ function Rrrighter() {
     );
   }
 
+  const onMainClick = () => {
+    (document.querySelector('.ant-tree input') as HTMLElement)?.focus();
+  }
+
   return (
     <ConfigProvider theme={{ algorithm: theme.darkAlgorithm }}>
       <App>
@@ -246,20 +231,6 @@ function Rrrighter() {
                   icon={<EyeOutlined />}
                   onClick={setInspectorNoteId}
                 />
-                <Button
-                    type="link"
-                    disabled={!selectedNoteParentId || !selectedNoteId}
-                    onClick={moveUp}
-                >
-                  🔼
-                </Button>
-                <Button
-                    type="link"
-                    disabled={!selectedNoteParentId || !selectedNoteId}
-                    onClick={moveDown}
-                >
-                  🔽
-                </Button>
                 {selectedNoteId && (
                     <NoteToolbar
                         notebook={notebook}
@@ -277,7 +248,7 @@ function Rrrighter() {
             <SearchSelect notebook={notebook} onSelect={setInspectorNoteId} />
           </div>
         </header>
-        <main tabIndex={-1} onKeyDownCapture={onKeyDownCapture}>
+        <main tabIndex={-1} onClick={onMainClick} onKeyDownCapture={onKeyDownCapture}>
           <Outline
             notebook={notebook}
             selectedKey={
