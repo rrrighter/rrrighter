@@ -8,5 +8,9 @@
 
 .ant-tree .ant-tree-node-content-wrapper.ant-tree-node-selected,
 .ant-tree .ant-tree-node-content-wrapper.ant-tree-node-selected:hover {
-  background-color: #141414;
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.ant-tree .ant-tree-treenode-active .ant-tree-node-content-wrapper {
+  outline: none;
 }
