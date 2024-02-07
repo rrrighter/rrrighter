@@ -126,9 +126,9 @@ function Rrrighter() {
   };
 
   const onKeyDownCapture = (e: React.KeyboardEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-
+    // e.preventDefault();
+    // e.stopPropagation();
+    console.dir(document.activeElement);
     console.dir(e);
     console.log("onKeyDown:", e.metaKey, e.key);
     console.dir(document.activeElement);
@@ -140,17 +140,11 @@ function Rrrighter() {
         moveDown();
       }
     } else {
-      if (selectedNoteParentId && selectedNoteId && selectedNoteIndex) {
         if (e.key === "ArrowUp") {
           console.log("Up");
-          const newIndex = Math.max(selectedNoteIndex - 1, 0);
-          setSelectedNoteId(notebook.children(selectedNoteParentId)?.[newIndex]);
         } else if (e.key === "ArrowDown") {
           console.log("Down");
-          const newIndex = Math.min(selectedNoteIndex + 1, notebook.children(selectedNoteParentId)!.length - 1);
-          setSelectedNoteId(notebook.children(selectedNoteParentId)?.[newIndex]);
         }
-      }
 
       // TODO: tab to indent (alias as meta+right, shift-tab to outdent with alias as meta+left)
       // if (e.key === "v") {
@@ -283,7 +277,7 @@ function Rrrighter() {
             <SearchSelect notebook={notebook} onSelect={setInspectorNoteId} />
           </div>
         </header>
-        <main tabIndex={-1}>
+        <main tabIndex={-1} onKeyDownCapture={onKeyDownCapture}>
           <Outline
             notebook={notebook}
             selectedKey={
