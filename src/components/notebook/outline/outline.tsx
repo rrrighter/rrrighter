@@ -1,67 +1,38 @@
 import React from "react";
-import Notebook, {
-  NoteId,
-  NoteText,
-} from "../../../lib/rrrighter/src/notebook";
+import Notebook, { NoteId } from "../../../lib/rrrighter/src/notebook";
 import { Tree } from "antd";
 import NoteItem from "../../notes/note-item";
 import "./outline.css";
 
 interface TreeDataNodeType {
   key: string;
-  noteId: NoteId;
-  text: NoteText;
-  parentNoteId?: NoteId;
+  path: NoteId[];
   children?: TreeDataNodeType[];
 }
 
-const treeData = (
+const treeNode = (
   notebook: Notebook,
-  parentId?: NoteId,
-): TreeDataNodeType[] => {
-  // todo: move to Rrrighter app presentation layer?
-  const _treeData = (
-    ids: NoteId[],
-    parentNoteId?: string,
-  ): TreeDataNodeType[] => {
-    return ids.map((noteId: NoteId) => {
-      let key = encodeURIComponent(noteId);
-      if (parentNoteId) {
-        key = `${encodeURIComponent(parentNoteId)}/${key}`;
-      }
-      const text = notebook.get(noteId) || "";
-      const childrenIds = notebook.children(noteId);
-      const children =
-        childrenIds && childrenIds?.length > 0
-          ? _treeData(childrenIds, noteId)
-          : undefined;
-      return {
-        key,
-        noteId,
-        parentNoteId,
-        text,
-        children,
-      };
-    });
+  path: NoteId[],
+): TreeDataNodeType => {
+  return {
+    path,
+    key: path.map(encodeURIComponent).join("/"),
+    children: notebook.children(path[path.length - 1])?.map((childId) => {
+      return treeNode(notebook, path.concat(childId));
+    }),
   };
-
-  const ids = parentId
-    ? (notebook.children(parentId) as NoteId[])
-    : [notebook.homeId()];
-  return _treeData(ids, parentId);
 };
 
 export default function Outline(props: {
   notebook: Notebook;
   parentId?: NoteId;
-  selectedKey?: string;
+  selectedKey?: string; // todo: path: NoteId[]
   onSelect?: Function;
   onDrop?: Function;
-  onEdit?: Function;
   onDelete?: Function;
 }) {
   const titleRender = (node: TreeDataNodeType) => {
-    return <NoteItem notebook={props.notebook} noteId={node.noteId} />;
+    return <NoteItem notebook={props.notebook} noteId={node.path[node.path.length - 1]} />;
   };
 
   const onDrop = (e: any) => {
@@ -93,12 +64,12 @@ export default function Outline(props: {
       onSelect={(keys, e) => {
         if (keys.length) {
           props.onSelect?.({
-            noteId: e.node.noteId,
-            parentNoteId: e.node.parentNoteId,
+            noteId: e.node.path[e.node.path.length - 1],
+            parentNoteId: e.node.path[e.node.path.length - 2],
           });
         }
       }}
-      treeData={treeData(props.notebook, props.parentId)}
+      treeData={[treeNode(props.notebook, [props.parentId || props.notebook.homeId()])]}
       selectedKeys={props.selectedKey ? [props.selectedKey] : []}
       activeKey={props.selectedKey}
       defaultExpandedKeys={

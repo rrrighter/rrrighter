@@ -8,7 +8,6 @@ const meta = {
   component: Outline,
   argTypes: {
     onSelect: { action: "onSelect" },
-    onEdit: { action: "onEdit" },
     onDrop: { action: "onDrop" },
   },
 } satisfies Meta<typeof Outline>;

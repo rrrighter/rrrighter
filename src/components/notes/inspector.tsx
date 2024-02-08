@@ -1,7 +1,6 @@
 import React from "react";
 import { NoteId } from "../../lib/rrrighter/src/notebook";
 import Notebook from "../../lib/rrrighter/src/notebook";
-import FormattedText from "./formatted-text";
 import Outline from "../notebook/outline/outline";
 
 export default function Inspector(props: {
@@ -11,7 +10,6 @@ export default function Inspector(props: {
 }) {
   return (
     <div>
-      <FormattedText text={props.notebook.get(props.id) || ""} />
       <Outline
         notebook={props.notebook}
         parentId={props.id}

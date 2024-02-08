@@ -97,7 +97,7 @@ function Rrrighter() {
     setNotebook(new Notebook(notebook));
   };
 
-  const onOutlineSelect = (event: {
+  const onSelect = (event: {
     noteId: NoteId;
     parentNoteId?: NoteId;
   }) => {
@@ -109,7 +109,7 @@ function Rrrighter() {
     }
   };
 
-  const onMoveUp = () => {
+  const raise = () => {
     onAttach(
       selectedNoteParentId as NoteId,
       selectedNoteId as NoteId,
@@ -117,7 +117,7 @@ function Rrrighter() {
     );
   };
 
-  const onMoveDown = () => {
+  const lower = () => {
     onAttach(
       selectedNoteParentId as NoteId,
       selectedNoteId as NoteId,
@@ -128,18 +128,28 @@ function Rrrighter() {
   const onKeyDownCapture = (e: React.KeyboardEvent) => {
     console.log("onKeyDown:", e.key);
 
-    if (e.altKey) {
-      const onAction = (action: Function) => {
-        e.preventDefault();
-        e.stopPropagation();
-        action();
-      }
+    const onAction = (action: Function) => {
+      e.preventDefault();
+      e.stopPropagation();
+      action();
+    }
 
-      if (e.key === "ArrowUp") {
-        onAction(onMoveUp);
-      } else if (e.key === "ArrowDown") {
-        onAction(onMoveDown);
+    if (e.metaKey) {
+      if (e.key === "Backspace") {
+        // todo delete
+        // onAction(() => {
+        //   onDelete(selectedNoteId as string);
+        //   setSelectedNoteId(notebook.children()[selectedNoteIndex as number]);
+        // });
       }
+    } else if (e.altKey) {
+      if (e.key === "ArrowUp") {
+        onAction(raise);
+      } else if (e.key === "ArrowDown") {
+        onAction(lower);
+      }
+      // todo ArrowLeft -> onOutdent
+      // todo ArrowRight -> onIndent
     }
   };
 
@@ -201,7 +211,7 @@ function Rrrighter() {
     );
   }
 
-  const onMainClick = () => {
+  const onMainFocusClick = () => {
     (document.querySelector('.ant-tree input') as HTMLElement)?.focus();
   }
 
@@ -248,16 +258,13 @@ function Rrrighter() {
             <SearchSelect notebook={notebook} onSelect={setInspectorNoteId} />
           </div>
         </header>
-        <main tabIndex={-1} onClick={onMainClick} onKeyDownCapture={onKeyDownCapture}>
+        <main tabIndex={-1} onClick={onMainFocusClick} onFocus={onMainFocusClick} onKeyDownCapture={onKeyDownCapture}>
           <Outline
             notebook={notebook}
             selectedKey={
               readonly ? "" : selectedNoteParentId ? `${selectedNoteParentId}/${selectedNoteId}` : selectedNoteId
             }
-            onSelect={onOutlineSelect}
-            // todo: onEnter={() => {}} - add sibling
-            // todo: on meta+Enter (or maybe shift) -> add child
-            onEdit={onSelectedNoteEdit}
+            onSelect={onSelect}
           />
         </main>
         <aside>{inspectorDrawer}</aside>
