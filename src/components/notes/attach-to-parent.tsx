@@ -41,6 +41,7 @@ export default function AttachToParent(props: {
   };
 
   const onSelect = ({ noteId }: { noteId?: NoteId }) => {
+    //
     props.onAttach(noteId, props.childId);
     onClose();
   };

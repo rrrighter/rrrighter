@@ -34,12 +34,12 @@ function Rrrighter() {
   const [inspectorNoteId, setInspectorNoteId] = useState<NoteId | undefined>(
     undefined,
   );
-  const [selectedNoteId, setSelectedNoteId] = useState<NoteId | undefined>(
-    notebook.homeId(),
+  const [selectedPath, setSelectedPath] = useState<NoteId[]>(
+    [notebook.homeId()],
   );
-  const [selectedNoteParentId, setSelectedNoteParentId] = useState<
-    NoteId | undefined
-  >(undefined);
+
+  const selectedNoteId = selectedPath[selectedPath.length - 1];
+  const selectedNoteParentId = selectedPath[selectedPath.length - 2];
   const selectedNoteIndex =
     selectedNoteParentId && selectedNoteId
       ? notebook.children(selectedNoteParentId)?.indexOf(selectedNoteId)
@@ -47,8 +47,7 @@ function Rrrighter() {
 
   const onNotebookOpen = (notebook: Notebook) => {
     setNotebook(notebook);
-    setSelectedNoteParentId(undefined);
-    setSelectedNoteId(notebook.homeId());
+    setSelectedPath([notebook.homeId()]);
   };
 
   const onDelete = (id: NoteId) => {
@@ -97,15 +96,11 @@ function Rrrighter() {
     setNotebook(new Notebook(notebook));
   };
 
-  const onSelect = (event: {
-    noteId: NoteId;
-    parentNoteId?: NoteId;
-  }) => {
+  const onSelect = (path: NoteId[]) => {
     if (readonly) {
-      setInspectorNoteId(event.noteId);
+      setInspectorNoteId(path[path.length - 1]);
     } else {
-      setSelectedNoteId(event.noteId);
-      setSelectedNoteParentId(event.parentNoteId);
+      setSelectedPath(path);
     }
   };
 
@@ -203,8 +198,8 @@ function Rrrighter() {
         <Inspector
           notebook={notebook}
           id={inspectorNoteId}
-          onSelect={(event: { noteId: NoteId }) =>
-            setInspectorNoteId(event.noteId)
+          onSelect={(path: NoteId[]) =>
+            setInspectorNoteId(path[path.length - 1])
           }
         />
       </Drawer>
@@ -262,7 +257,7 @@ function Rrrighter() {
           <Outline
             notebook={notebook}
             selectedKey={
-              readonly ? "" : selectedNoteParentId ? `${selectedNoteParentId}/${selectedNoteId}` : selectedNoteId
+              readonly ? "" : selectedPath?.map(encodeURIComponent).join("/")
             }
             onSelect={onSelect}
           />

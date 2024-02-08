@@ -53,20 +53,13 @@ export default function Outline(props: {
       onDrop={onDrop}
       onActiveChange={(key?) => {
         if (key) {
-          console.log("onActiveChange", key);
           const path = key.toString().split("/").map(decodeURIComponent) as NoteId[];
-          console.dir(path);
-          const noteId = path.pop() as NoteId;
-          const parentNoteId = path.pop();
-          props.onSelect?.({ noteId, parentNoteId })
+          props.onSelect?.(path)
         }
       }}
       onSelect={(keys, e) => {
         if (keys.length) {
-          props.onSelect?.({
-            noteId: e.node.path[e.node.path.length - 1],
-            parentNoteId: e.node.path[e.node.path.length - 2],
-          });
+          props.onSelect?.(Array.from(e.node.path));
         }
       }}
       treeData={[treeNode(props.notebook, [props.parentId || props.notebook.homeId()])]}
