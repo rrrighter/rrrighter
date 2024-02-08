@@ -2,7 +2,7 @@ import React from "react";
 import { Drawer } from "antd";
 import SearchSelect from "./search-select";
 import Outline from "../outline/outline";
-import Notebook from "../../../lib/rrrighter/src/notebook";
+import Notebook, {NoteId} from "../../../lib/rrrighter/src/notebook";
 
 export default function SearchDrawer(props: {
   notebook: Notebook;
@@ -22,7 +22,7 @@ export default function SearchDrawer(props: {
         <SearchSelect notebook={props.notebook} onSelect={props.onSelect} />
       }
     >
-      <Outline notebook={props.notebook} onSelect={props.onSelect} />
+      <Outline notebook={props.notebook} onSelect={(path: NoteId[]) => { props.onSelect(path[path.length - 1]) } } />
     </Drawer>
   );
 }

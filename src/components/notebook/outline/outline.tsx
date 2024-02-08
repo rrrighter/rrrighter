@@ -10,10 +10,7 @@ interface TreeDataNodeType {
   children?: TreeDataNodeType[];
 }
 
-const treeNode = (
-  notebook: Notebook,
-  path: NoteId[],
-): TreeDataNodeType => {
+const treeNode = (notebook: Notebook, path: NoteId[]): TreeDataNodeType => {
   return {
     path,
     key: path.map(encodeURIComponent).join("/"),
@@ -25,14 +22,19 @@ const treeNode = (
 
 export default function Outline(props: {
   notebook: Notebook;
-  parentId?: NoteId;
-  selectedKey?: string; // todo: path: NoteId[]
+  parentId?: NoteId; // todo: path: NoteId[]
+  selectedKey?: string; // todo: selectedPath: NoteId[]
   onSelect?: Function;
   onDrop?: Function;
   onDelete?: Function;
 }) {
   const titleRender = (node: TreeDataNodeType) => {
-    return <NoteItem notebook={props.notebook} noteId={node.path[node.path.length - 1]} />;
+    return (
+      <NoteItem
+        notebook={props.notebook}
+        noteId={node.path[node.path.length - 1]}
+      />
+    );
   };
 
   const onDrop = (e: any) => {
@@ -47,29 +49,37 @@ export default function Outline(props: {
     }
   };
 
+  const onActiveChange = (key?: React.Key) => {
+    if (key) {
+      const path = key
+        .toString()
+        .split("/")
+        .map(decodeURIComponent) as NoteId[];
+      props.onSelect?.(path);
+    }
+  };
+
+  const treeData = [
+    treeNode(props.notebook, [props.parentId || props.notebook.homeId()]),
+  ];
+  const onSelect = (keys: React.Key[], e: { node: TreeDataNodeType }) => {
+    if (keys.length) {
+      props.onSelect?.(Array.from(e.node.path));
+    }
+  };
+
   return (
     <Tree
-      draggable={!!props.onDrop}
-      onDrop={onDrop}
-      onActiveChange={(key?) => {
-        if (key) {
-          const path = key.toString().split("/").map(decodeURIComponent) as NoteId[];
-          props.onSelect?.(path)
-        }
-      }}
-      onSelect={(keys, e) => {
-        if (keys.length) {
-          props.onSelect?.(Array.from(e.node.path));
-        }
-      }}
-      treeData={[treeNode(props.notebook, [props.parentId || props.notebook.homeId()])]}
-      selectedKeys={props.selectedKey ? [props.selectedKey] : []}
-      activeKey={props.selectedKey}
-      defaultExpandedKeys={
-        [props.notebook.homeId()]
-      }
       blockNode
       titleRender={titleRender}
+      treeData={treeData}
+      activeKey={props.selectedKey}
+      selectedKeys={props.selectedKey ? [props.selectedKey] : []}
+      defaultExpandedKeys={[treeData[0].key]}
+      onActiveChange={onActiveChange}
+      onSelect={onSelect}
+      draggable={!!props.onDrop}
+      onDrop={onDrop}
     />
   );
 }

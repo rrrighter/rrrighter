@@ -40,8 +40,7 @@ export default function AttachToParent(props: {
     setOpen(false);
   };
 
-  const onSelect = ({ noteId }: { noteId?: NoteId }) => {
-    //
+  const onSelect = (noteId: NoteId) => {
     props.onAttach(noteId, props.childId);
     onClose();
   };

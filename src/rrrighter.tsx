@@ -34,9 +34,9 @@ function Rrrighter() {
   const [inspectorNoteId, setInspectorNoteId] = useState<NoteId | undefined>(
     undefined,
   );
-  const [selectedPath, setSelectedPath] = useState<NoteId[]>(
-    [notebook.homeId()],
-  );
+  const [selectedPath, setSelectedPath] = useState<NoteId[]>([
+    notebook.homeId(),
+  ]);
 
   const selectedNoteId = selectedPath[selectedPath.length - 1];
   const selectedNoteParentId = selectedPath[selectedPath.length - 2];
@@ -127,7 +127,7 @@ function Rrrighter() {
       e.preventDefault();
       e.stopPropagation();
       action();
-    }
+    };
 
     if (e.metaKey) {
       if (e.key === "Backspace") {
@@ -207,8 +207,8 @@ function Rrrighter() {
   }
 
   const onMainFocusClick = () => {
-    (document.querySelector('.ant-tree input') as HTMLElement)?.focus();
-  }
+    (document.querySelector(".ant-tree input") as HTMLElement)?.focus();
+  };
 
   return (
     <ConfigProvider theme={{ algorithm: theme.darkAlgorithm }}>
@@ -237,14 +237,14 @@ function Rrrighter() {
                   onClick={setInspectorNoteId}
                 />
                 {selectedNoteId && (
-                    <NoteToolbar
-                        notebook={notebook}
-                        noteId={selectedNoteId}
-                        onEdit={onSelectedNoteEdit}
-                        onCreate={onCreateNote}
-                        onAttach={onAttach}
-                        onDelete={() => onDelete(selectedNoteId)}
-                    />
+                  <NoteToolbar
+                    notebook={notebook}
+                    noteId={selectedNoteId}
+                    onEdit={onSelectedNoteEdit}
+                    onCreate={onCreateNote}
+                    onAttach={onAttach}
+                    onDelete={() => onDelete(selectedNoteId)}
+                  />
                 )}
               </>
             )}
@@ -253,7 +253,12 @@ function Rrrighter() {
             <SearchSelect notebook={notebook} onSelect={setInspectorNoteId} />
           </div>
         </header>
-        <main tabIndex={-1} onClick={onMainFocusClick} onFocus={onMainFocusClick} onKeyDownCapture={onKeyDownCapture}>
+        <main
+          tabIndex={-1}
+          onClick={onMainFocusClick}
+          onFocus={onMainFocusClick}
+          onKeyDownCapture={onKeyDownCapture}
+        >
           <Outline
             notebook={notebook}
             selectedKey={
