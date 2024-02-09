@@ -1,9 +1,8 @@
 import { fromJsonObjectLiteral } from "./lib/rrrighter/src/json-repository";
 import Notebook, { NoteId } from "./lib/rrrighter/src/notebook";
 import React, { useState } from "react";
-import { App, ConfigProvider, theme, Drawer } from "antd";
+import { App, ConfigProvider, theme } from "antd";
 import Outline from "./components/notebook/outline/outline";
-import Inspector from "./components/notes/inspector";
 import NotebookRepository from "./components/notebook/repository/notebook-repository";
 import help from "./help.json";
 import SearchSelect from "./components/notebook/search/search-select";
@@ -31,9 +30,7 @@ const initialNotebook = fromJsonObjectLiteral(sourceJSON);
 
 function Rrrighter() {
   const [notebook, setNotebook] = useState<Notebook>(initialNotebook);
-  const [inspectorNoteId, setInspectorNoteId] = useState<NoteId | undefined>(
-    undefined,
-  );
+  const [path, setPath] = useState<NoteId[]>([notebook.homeId()]);
   const [selectedPath, setSelectedPath] = useState<NoteId[]>([
     notebook.homeId(),
   ]);
@@ -58,7 +55,6 @@ function Rrrighter() {
       notebook
         .parents(id)
         ?.forEach((parent) => notebook.unrelate({ parent, child: id }));
-      setInspectorNoteId(undefined);
       setNotebook(new Notebook(notebook));
     }
   };
@@ -76,7 +72,6 @@ function Rrrighter() {
       notebook.unrelate({ parent: parentId, child: childId });
     }
     setNotebook(new Notebook(notebook));
-    setInspectorNoteId(childId);
   };
 
   const onAttach = (parentId: NoteId, childId: NoteId, childIndex?: number) => {
@@ -98,7 +93,7 @@ function Rrrighter() {
 
   const onSelect = (path: NoteId[]) => {
     if (readonly) {
-      setInspectorNoteId(path[path.length - 1]);
+      zoomNote(path[path.length - 1]);
     } else {
       setSelectedPath(path);
     }
@@ -151,64 +146,16 @@ function Rrrighter() {
   const onSelectedNoteEdit = (text: string) => {
     notebook.set(selectedNoteId as string, text);
     setNotebook(new Notebook(notebook));
-    setInspectorNoteId(inspectorNoteId);
   };
-
-  let inspectorDrawer = <></>; // todo extract into InspectorDrawer component (notebook, note, actions..) & onNoteAction(inspectorNote.id, action)
-  if (inspectorNoteId) {
-    const onCreateChild = (text: string) => {
-      const id = newNoteId();
-      notebook.relate([{ parent: inspectorNoteId, child: id }]);
-      notebook.set(id, text);
-      setNotebook(new Notebook(notebook));
-    };
-
-    const onEdit = (text: string) => {
-      notebook.set(inspectorNoteId, text);
-      setNotebook(new Notebook(notebook));
-      setInspectorNoteId(inspectorNoteId);
-    };
-
-    const noteParents = (
-      <Parents
-        notebook={notebook}
-        noteId={inspectorNoteId}
-        onClick={setInspectorNoteId}
-        onDetach={readonly ? undefined : onDetach}
-      />
-    );
-    const noteToolbar = (
-      <NoteToolbar
-        notebook={notebook}
-        noteId={inspectorNoteId}
-        onEdit={onEdit}
-        onCreate={onCreateChild}
-        onAttach={onAttach}
-        onDelete={() => onDelete(inspectorNoteId)}
-      />
-    );
-    inspectorDrawer = (
-      <Drawer
-        open={true}
-        size={"large"}
-        title={noteParents}
-        extra={!readonly && noteToolbar}
-        onClose={() => setInspectorNoteId(undefined)}
-      >
-        <Inspector
-          notebook={notebook}
-          noteId={inspectorNoteId}
-          onSelect={(path: NoteId[]) =>
-            setInspectorNoteId(path[path.length - 1])
-          }
-        />
-      </Drawer>
-    );
-  }
 
   const onMainFocusClick = () => {
     (document.querySelector(".ant-tree input") as HTMLElement)?.focus();
   };
+
+  const zoomNote = (noteId: NoteId) => {
+    setPath([noteId])
+    setSelectedPath([noteId])
+  }
 
   return (
     <ConfigProvider theme={{ algorithm: theme.darkAlgorithm }}>
@@ -227,14 +174,14 @@ function Rrrighter() {
                 <Parents
                   notebook={notebook}
                   noteId={selectedNoteId}
-                  onClick={setInspectorNoteId}
+                  onClick={zoomNote}
                   onDetach={readonly ? undefined : onDetach}
                 />
                 <NoteButton
                   notebook={notebook}
                   noteId={selectedNoteId}
                   icon={<EyeOutlined />}
-                  onClick={setInspectorNoteId}
+                  onClick={zoomNote}
                 />
                 {selectedNoteId && (
                   <NoteToolbar
@@ -250,7 +197,7 @@ function Rrrighter() {
             )}
           </div>
           <div style={{ float: "right" }}>
-            <SearchSelect notebook={notebook} onSelect={setInspectorNoteId} />
+            <SearchSelect notebook={notebook} onSelect={zoomNote} />
           </div>
         </header>
         <main
@@ -261,12 +208,12 @@ function Rrrighter() {
         >
           <Outline
             notebook={notebook}
-            path={readonly ? [] : [notebook.homeId()]}
+            path={path}
             selectedPath={selectedPath}
             onSelect={onSelect}
           />
         </main>
-        <aside>{inspectorDrawer}</aside>
+        <aside></aside>
       </App>
     </ConfigProvider>
   );
