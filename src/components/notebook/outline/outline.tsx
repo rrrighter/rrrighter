@@ -22,12 +22,16 @@ const treeNode = (notebook: Notebook, path: NoteId[]): TreeDataNodeType => {
 
 export default function Outline(props: {
   notebook: Notebook;
-  parentId?: NoteId; // todo: path: NoteId[]
-  selectedKey?: string; // todo: selectedPath: NoteId[]
+  path?: NoteId[];
+  selectedPath?: NoteId[];
   onSelect?: Function;
   onDrop?: Function;
   onDelete?: Function;
 }) {
+  const path = props.path || [props.notebook.homeId()];
+  const selectedPath = props.selectedPath || [props.notebook.homeId()];
+  const selectedKey = selectedPath.map(encodeURIComponent).join("/");
+
   const titleRender = (node: TreeDataNodeType) => {
     return (
       <NoteItem
@@ -60,7 +64,7 @@ export default function Outline(props: {
   };
 
   const treeData = [
-    treeNode(props.notebook, [props.parentId || props.notebook.homeId()]),
+    treeNode(props.notebook, path),
   ];
   const onSelect = (keys: React.Key[], e: { node: TreeDataNodeType }) => {
     if (keys.length) {
@@ -73,8 +77,8 @@ export default function Outline(props: {
       blockNode
       titleRender={titleRender}
       treeData={treeData}
-      activeKey={props.selectedKey}
-      selectedKeys={props.selectedKey ? [props.selectedKey] : []}
+      activeKey={selectedKey}
+      selectedKeys={[selectedKey]}
       defaultExpandedKeys={[treeData[0].key]}
       onActiveChange={onActiveChange}
       onSelect={onSelect}

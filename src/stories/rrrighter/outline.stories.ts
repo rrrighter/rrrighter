@@ -43,6 +43,6 @@ export const Family: Story = {
 export const Parent: Story = {
   args: {
     notebook: family,
-    parentId: parent.id,
+    path: [parent.id],
   },
 };

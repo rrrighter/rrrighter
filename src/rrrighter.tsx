@@ -197,7 +197,7 @@ function Rrrighter() {
       >
         <Inspector
           notebook={notebook}
-          id={inspectorNoteId}
+          noteId={inspectorNoteId}
           onSelect={(path: NoteId[]) =>
             setInspectorNoteId(path[path.length - 1])
           }
@@ -261,9 +261,8 @@ function Rrrighter() {
         >
           <Outline
             notebook={notebook}
-            selectedKey={
-              readonly ? "" : selectedPath?.map(encodeURIComponent).join("/")
-            }
+            path={readonly ? [] : [notebook.homeId()]}
+            selectedPath={selectedPath}
             onSelect={onSelect}
           />
         </main>

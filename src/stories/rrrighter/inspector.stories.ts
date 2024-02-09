@@ -36,13 +36,13 @@ family.relate([
 export const Home: Story = {
   args: {
     notebook: family,
-    id: family.homeId(),
+    noteId: family.homeId(),
   },
 };
 
 export const Descendant: Story = {
   args: {
     notebook: family,
-    id: grandparent.id,
+    noteId: grandparent.id,
   },
 };

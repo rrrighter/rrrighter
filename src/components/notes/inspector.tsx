@@ -5,14 +5,14 @@ import Outline from "../notebook/outline/outline";
 
 export default function Inspector(props: {
   notebook: Notebook;
-  id: NoteId;
+  noteId: NoteId;
   onSelect?: Function;
 }) {
   return (
     <div>
       <Outline
         notebook={props.notebook}
-        parentId={props.id}
+        path={[props.noteId]}
         onSelect={props.onSelect}
       />
     </div>
