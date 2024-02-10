@@ -4,33 +4,41 @@ import { Tree } from "antd";
 import NoteItem from "../../notes/note-item";
 import "./outline.css";
 
+// TODO: all content components should be responsible only for rendering the notebook and for indicating [selected] path
+// TODO: keyboard navigation and all actions should be handled by higher order components
+// TODO: example: Outline, Sunburst, Treemap, etc.
+// TODO: path should be replaced with a notebook scoped to note
+// TODO: depth should be replaced with a notebook scoped to depth
+// TODO: interface NotebookContent { notebook: Notebook, path?: NoteId[], onSelect?: Function, onDrop?: Function }
+
+interface MainPanelProps {
+  notebook: Notebook;
+  path?: NoteId[];
+  selectedPath?: NoteId[];
+  onSelect?: Function;
+  onDrop?: Function;
+}
+
 interface TreeDataNodeType {
   key: string;
   path: NoteId[];
   children?: TreeDataNodeType[];
 }
 
-const treeNode = (notebook: Notebook, path: NoteId[]): TreeDataNodeType => {
-  return {
-    path,
-    key: path.map(encodeURIComponent).join("/"),
-    children: notebook.children(path[path.length - 1])?.map((childId) => {
-      return treeNode(notebook, path.concat(childId));
-    }),
-  };
-};
-
-export default function Outline(props: {
-  notebook: Notebook;
-  path?: NoteId[];
-  selectedPath?: NoteId[];
-  onSelect?: Function;
-  onDrop?: Function;
-  onDelete?: Function;
-}) {
+export default function Outline(props: MainPanelProps) {
   const path = props.path || [props.notebook.homeId()];
   const selectedPath = props.selectedPath || [props.notebook.homeId()];
   const selectedKey = selectedPath.map(encodeURIComponent).join("/");
+
+  const treeNode = (notebook: Notebook, path: NoteId[]): TreeDataNodeType => {
+    return {
+      path,
+      key: path.map(encodeURIComponent).join("/"),
+      children: notebook.children(path[path.length - 1])?.map((childId) => {
+        return treeNode(notebook, path.concat(childId));
+      }),
+    };
+  };
 
   const titleRender = (node: TreeDataNodeType) => {
     return (
@@ -66,11 +74,15 @@ export default function Outline(props: {
   const treeData = [
     treeNode(props.notebook, path),
   ];
-  const onSelect = (keys: React.Key[], e: { node: TreeDataNodeType }) => {
+  const onSelect = (keys: React.Key[], event: { node: TreeDataNodeType }) => {
     if (keys.length) {
-      props.onSelect?.(Array.from(e.node.path));
+      props.onSelect?.(Array.from(event.node.path));
     }
   };
+
+  const onExpand = (_expandedKeys: React.Key[], event: { node: TreeDataNodeType }) => {
+    onSelect([event.node.key], event)
+  }
 
   return (
     <Tree
@@ -80,10 +92,11 @@ export default function Outline(props: {
       activeKey={selectedKey}
       selectedKeys={[selectedKey]}
       defaultExpandedKeys={[treeData[0].key]}
-      onActiveChange={onActiveChange}
-      onSelect={onSelect}
       draggable={!!props.onDrop}
       onDrop={onDrop}
+      onSelect={onSelect}
+      onExpand={onExpand}
+      onActiveChange={onActiveChange}
     />
   );
 }

@@ -3,7 +3,7 @@ import Notebook, { NoteId } from "./lib/rrrighter/src/notebook";
 import React, { useState } from "react";
 import { App, ConfigProvider, theme } from "antd";
 import Outline from "./components/notebook/outline/outline";
-import NotebookRepository from "./components/notebook/repository/notebook-repository";
+import Repository from "./components/repository/repository";
 import help from "./help.json";
 import SearchSelect from "./components/notebook/search/search-select";
 import "./rrrighter.css";
@@ -13,8 +13,8 @@ import { EyeOutlined } from "@ant-design/icons";
 import NoteButton from "./components/notes/note-button";
 
 const urlParams = new URLSearchParams(window.location.search);
-const repository = urlParams.get("repository");
-const readonly = !!repository;
+const urlRepository = urlParams.get("repository");
+const readonly = !!urlRepository;
 
 const fetch = async (url: string) => {
   const response = await window.fetch(url);
@@ -25,7 +25,7 @@ const fetchJsonObjectLiteral = async (url: string) => {
   return JSON.parse(await fetch(url));
 };
 
-const sourceJSON = repository ? await fetchJsonObjectLiteral(repository) : help;
+const sourceJSON = urlRepository ? await fetchJsonObjectLiteral(urlRepository) : help;
 const initialNotebook = fromJsonObjectLiteral(sourceJSON);
 
 function Rrrighter() {
@@ -163,7 +163,7 @@ function Rrrighter() {
         <header>
           <div style={{ float: "left" }}>
             {!readonly && (
-              <NotebookRepository
+              <Repository
                 filename="welcome"
                 notebook={notebook}
                 onNotebookOpen={onNotebookOpen}
