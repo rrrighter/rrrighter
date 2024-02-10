@@ -13,6 +13,8 @@ import { HomeOutlined, AimOutlined, EyeOutlined } from "@ant-design/icons";
 // TODO: use AimOutlined for focus action
 import NoteButton from "./components/notes/note-button";
 
+type Path = NoteId[];
+
 const urlParams = new URLSearchParams(window.location.search);
 const urlRepository = urlParams.get("repository");
 const readonly = !!urlRepository;
@@ -242,7 +244,7 @@ function Rrrighter() {
           <Outline
             notebook={notebook}
             path={path}
-            selectedPath={selectedPath}
+            selected={new Set<Path>(selectedPath ? [selectedPath] : [])}
             onSelect={onSelect}
           />
         </main>

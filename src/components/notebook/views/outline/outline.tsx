@@ -25,7 +25,7 @@ interface onDropFunction {
 }
 
 // TODO: implement clean universal interface for all view components
-interface View {
+interface ViewProps {
   notebook: Notebook,
   selected?: Set<Path>,
   onSelect?: onSelectFunction,
@@ -34,9 +34,8 @@ interface View {
 }
 
 // TODO: deprecate in favor of View
-interface MainPanelProps extends View {
+interface OutlineProps extends ViewProps {
   path?: NoteId[]; // todo: deprecate in favor of scoped notebook
-  selectedPath?: NoteId[]; // TODO: deprecate in favor of selected Set
 }
 
 interface TreeDataNodeType {
@@ -46,9 +45,11 @@ interface TreeDataNodeType {
 }
 
 // todo: implement NotebookViewComponent interface { props: NotebookViewProps } => JSX.Element
-export default function Outline(props: MainPanelProps) {
+export default function Outline(props: OutlineProps) {
   const path = props.path || [props.notebook.homeId()];
-  const selectedPath = props.selectedPath || [props.notebook.homeId()];
+  const defaultSelectedPath = [props.notebook.homeId() as NoteId]
+  const selectedSet = props.selected || new Set<Path>([defaultSelectedPath]);
+  const selectedPath = Array.from(selectedSet.values()).pop() as Path;
   const selectedKey = selectedPath.map(encodeURIComponent).join("/");
 
   const treeNode = (notebook: Notebook, path: NoteId[]): TreeDataNodeType => {
@@ -70,19 +71,7 @@ export default function Outline(props: MainPanelProps) {
     );
   };
 
-  // const onDrop = (e: any) => {
-  //   console.dir(e);
-  //
-  //   if (props.onDrop) {
-  //     const sourceNoteId = e.dragNode.note.id;
-  //     const targetParentNoteId = e.node.parent?.id;
-  //     const index = e.dropPosition;
-  //
-  //     props.onDrop(e, sourceNoteId, targetParentNoteId, index);
-  //   }
-  // };
-
-  const onActiveChange = (key?: React.Key) => {
+  const changeActive = (key?: React.Key) => {
     if (key) {
       const path = key
         .toString()
@@ -101,7 +90,7 @@ export default function Outline(props: MainPanelProps) {
     }
   };
 
-  const onExpand = (_expandedKeys: React.Key[], event: { node: TreeDataNodeType }) => {
+  const expand = (_expandedKeys: React.Key[], event: { node: TreeDataNodeType }) => {
     onSelect([event.node.key], event)
   }
 
@@ -113,10 +102,10 @@ export default function Outline(props: MainPanelProps) {
       activeKey={selectedKey}
       selectedKeys={[selectedKey]}
       defaultExpandedKeys={[treeData[0].key]}
+      onExpand={expand}
+      onActiveChange={changeActive}
       draggable={!!props.onDrop}
       onSelect={onSelect}
-      onExpand={onExpand}
-      onActiveChange={onActiveChange}
     />
   );
 }
