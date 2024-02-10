@@ -1,7 +1,7 @@
 import React from "react";
-import Notebook, { NoteId } from "../../../lib/rrrighter/src/notebook";
+import Notebook, { NoteId } from "../../../../lib/rrrighter/src/notebook";
 import { Tree } from "antd";
-import NoteItem from "../../notes/note-item";
+import NoteItem from "../../../notes/note-item";
 import "./outline.css";
 
 // TODO: all content components should be responsible only for rendering the notebook and for indicating [selected] path
@@ -9,9 +9,6 @@ import "./outline.css";
 // TODO: example: Outline, Sunburst, Treemap, etc.
 // TODO: path should be replaced with a notebook scoped to note
 // TODO: depth should be replaced with a notebook scoped to depth
-// TODO: interface
-
-
 
 type Path = NoteId[];
 
@@ -19,31 +16,27 @@ interface onSelectFunction {
   (selectedPath: Path): void;
 }
 
-interface onFocusFunction {
+interface onOpenFunction {
   (selectedPath: Path): void;
 }
 
 interface onDropFunction {
-  (sourcePath: Path, targetPath: Path): void;
+  (sourcePath: Path, targetPath: Path, targetIndex?: number): void;
 }
 
-// TODO: implement clean universal interface for all content components
-interface NotebookContent {
+// TODO: implement clean universal interface for all view components
+interface View {
   notebook: Notebook,
   selected?: Set<Path>,
-  focused?: Path,
   onSelect?: onSelectFunction,
-  onFocus?: onFocusFunction,
+  onOpen?: onOpenFunction, // TODO: double click to open, i.e. narrow the original scope and feed scoped notebook
   onDrop?: onDropFunction
 }
 
-// TODO: deprecate in favor of NotebookContentProps
-interface MainPanelProps {
-  notebook: Notebook;
-  path?: NoteId[];
-  selectedPath?: NoteId[];
-  onSelect?: Function;
-  onDrop?: Function;
+// TODO: deprecate in favor of View
+interface MainPanelProps extends View {
+  path?: NoteId[]; // todo: deprecate in favor of scoped notebook
+  selectedPath?: NoteId[]; // TODO: deprecate in favor of selected Set
 }
 
 interface TreeDataNodeType {
@@ -52,7 +45,7 @@ interface TreeDataNodeType {
   children?: TreeDataNodeType[];
 }
 
-// todo: implement NotebookContentComponent interface { props: NotebookContent } => JSX.Element
+// todo: implement NotebookViewComponent interface { props: NotebookViewProps } => JSX.Element
 export default function Outline(props: MainPanelProps) {
   const path = props.path || [props.notebook.homeId()];
   const selectedPath = props.selectedPath || [props.notebook.homeId()];
@@ -77,17 +70,17 @@ export default function Outline(props: MainPanelProps) {
     );
   };
 
-  const onDrop = (e: any) => {
-    console.dir(e);
-
-    if (props.onDrop) {
-      const sourceNoteId = e.dragNode.note.id;
-      const targetParentNoteId = e.node.parent?.id;
-      const index = e.dropPosition;
-
-      props.onDrop(e, sourceNoteId, targetParentNoteId, index);
-    }
-  };
+  // const onDrop = (e: any) => {
+  //   console.dir(e);
+  //
+  //   if (props.onDrop) {
+  //     const sourceNoteId = e.dragNode.note.id;
+  //     const targetParentNoteId = e.node.parent?.id;
+  //     const index = e.dropPosition;
+  //
+  //     props.onDrop(e, sourceNoteId, targetParentNoteId, index);
+  //   }
+  // };
 
   const onActiveChange = (key?: React.Key) => {
     if (key) {
@@ -121,7 +114,6 @@ export default function Outline(props: MainPanelProps) {
       selectedKeys={[selectedKey]}
       defaultExpandedKeys={[treeData[0].key]}
       draggable={!!props.onDrop}
-      onDrop={onDrop}
       onSelect={onSelect}
       onExpand={onExpand}
       onActiveChange={onActiveChange}

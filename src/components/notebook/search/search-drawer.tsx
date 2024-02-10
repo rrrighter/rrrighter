@@ -1,7 +1,7 @@
 import React from "react";
 import { Drawer } from "antd";
 import SearchSelect from "./search-select";
-import Outline from "../outline/outline";
+import Outline from "../views/outline/outline";
 import Notebook, {NoteId} from "../../../lib/rrrighter/src/notebook";
 
 export default function SearchDrawer(props: {

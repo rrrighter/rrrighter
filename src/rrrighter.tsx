@@ -2,14 +2,15 @@ import { fromJsonObjectLiteral } from "./lib/rrrighter/src/json-repository";
 import Notebook, { NoteId } from "./lib/rrrighter/src/notebook";
 import React, { useState } from "react";
 import { App, ConfigProvider, theme } from "antd";
-import Outline from "./components/notebook/outline/outline";
+import Outline from "./components/notebook/views/outline/outline";
 import Repository from "./components/repository/repository";
 import help from "./help.json";
 import SearchSelect from "./components/notebook/search/search-select";
 import "./rrrighter.css";
 import NoteToolbar from "./components/notes/note-toolbar";
 import Parents from "./components/notes/parents";
-import { HomeOutlined, CompressOutlined, EyeOutlined } from "@ant-design/icons";
+import { HomeOutlined, AimOutlined, EyeOutlined } from "@ant-design/icons";
+// TODO: use AimOutlined for focus action
 import NoteButton from "./components/notes/note-button";
 
 const urlParams = new URLSearchParams(window.location.search);
@@ -115,6 +116,22 @@ function Rrrighter() {
     );
   };
 
+  const outdent = () => {
+    if (selectedPath.length > 1) {
+      // TODO: OOH method / Notebook method to replace parent (with grandparent)
+      // const grandparentId = selectedPath[selectedPath.length - 2];
+      // const tmpId = newNoteId();
+      // debugger;
+      // notebook.relate([{ parent: notebook.homeId(), child: tmpId }]);
+      // notebook.relate([{ parent: tmpId, child: selectedNoteId as NoteId }]);
+      // notebook.set(tmpId, 'tmp');
+      // // notebook.unrelate({ parent: selectedNoteParentId, child: selectedNoteId });
+      // // notebook.relate([{ parent: grandparentId, child: selectedNoteId }]);
+      // // notebook.unrelate({ parent: tmpId, child: selectedNoteId });
+      // setNotebook(new Notebook(notebook));
+    }
+  }
+
   const onKeyDownCapture = (e: React.KeyboardEvent) => {
     console.log("onKeyDown:", e.key);
 
@@ -137,6 +154,8 @@ function Rrrighter() {
         onAction(raise);
       } else if (e.key === "ArrowDown") {
         onAction(lower);
+      } else if (e.key === "ArrowLeft") {
+        onAction(outdent);
       }
       // todo ArrowLeft -> onOutdent
       // todo ArrowRight -> onIndent
@@ -156,6 +175,8 @@ function Rrrighter() {
     setPath([noteId])
     setSelectedPath([noteId])
   }
+
+  // TODO: <ScopeFramedContainer (focus or intersection)><Outline /></Focus>
 
   return (
     <ConfigProvider theme={{ algorithm: theme.darkAlgorithm }}>
@@ -226,6 +247,7 @@ function Rrrighter() {
           />
         </main>
         <aside></aside>
+        <footer>{/* TODO: consider breadcrumbs here like in Finder */}</footer>
       </App>
     </ConfigProvider>
   );

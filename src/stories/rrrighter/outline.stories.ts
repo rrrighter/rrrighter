@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import Outline from "../../components/notebook/outline/outline";
+import Outline from "../../components/notebook/views/outline/outline";
 import Notebook from "../../lib/rrrighter/src/notebook";
 
 const meta = {
