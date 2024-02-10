@@ -2,7 +2,7 @@ import React, { ReactNode } from "react";
 import Notebook, { NoteId } from "../../lib/rrrighter/src/notebook";
 
 import NoteButton from "./note-button";
-import { UpOutlined } from "@ant-design/icons";
+import {HomeOutlined, UpOutlined} from "@ant-design/icons";
 
 export default function Parents(props: {
   notebook: Notebook;
@@ -16,7 +16,7 @@ export default function Parents(props: {
       <NoteButton
         notebook={props.notebook}
         noteId={parentId}
-        icon={<UpOutlined />}
+        icon={parentId === props.notebook.homeId() ? <HomeOutlined /> : <UpOutlined />}
         onClick={props.onClick}
         onClose={() =>
           props.onDetach?.({ parentId: parentId, childId: props.noteId })

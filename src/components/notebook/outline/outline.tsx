@@ -9,8 +9,35 @@ import "./outline.css";
 // TODO: example: Outline, Sunburst, Treemap, etc.
 // TODO: path should be replaced with a notebook scoped to note
 // TODO: depth should be replaced with a notebook scoped to depth
-// TODO: interface NotebookContent { notebook: Notebook, path?: NoteId[], onSelect?: Function, onDrop?: Function }
+// TODO: interface
 
+
+
+type Path = NoteId[];
+
+interface onSelectFunction {
+  (selectedPath: Path): void;
+}
+
+interface onFocusFunction {
+  (selectedPath: Path): void;
+}
+
+interface onDropFunction {
+  (sourcePath: Path, targetPath: Path): void;
+}
+
+// TODO: implement clean universal interface for all content components
+interface NotebookContent {
+  notebook: Notebook,
+  selected?: Set<Path>,
+  focused?: Path,
+  onSelect?: onSelectFunction,
+  onFocus?: onFocusFunction,
+  onDrop?: onDropFunction
+}
+
+// TODO: deprecate in favor of NotebookContentProps
 interface MainPanelProps {
   notebook: Notebook;
   path?: NoteId[];
@@ -25,6 +52,7 @@ interface TreeDataNodeType {
   children?: TreeDataNodeType[];
 }
 
+// todo: implement NotebookContentComponent interface { props: NotebookContent } => JSX.Element
 export default function Outline(props: MainPanelProps) {
   const path = props.path || [props.notebook.homeId()];
   const selectedPath = props.selectedPath || [props.notebook.homeId()];

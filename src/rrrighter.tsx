@@ -9,7 +9,7 @@ import SearchSelect from "./components/notebook/search/search-select";
 import "./rrrighter.css";
 import NoteToolbar from "./components/notes/note-toolbar";
 import Parents from "./components/notes/parents";
-import { EyeOutlined } from "@ant-design/icons";
+import { HomeOutlined, CompressOutlined, EyeOutlined } from "@ant-design/icons";
 import NoteButton from "./components/notes/note-button";
 
 const urlParams = new URLSearchParams(window.location.search);
@@ -171,18 +171,30 @@ function Rrrighter() {
             )}
             {!readonly && selectedNoteId && notebook.get(selectedNoteId) && (
               <>
+                {(!notebook.parents(selectedNoteId)?.has(notebook.homeId())) && (<NoteButton
+                    notebook={notebook}
+                    noteId={notebook.homeId()}
+                    icon={<HomeOutlined />}
+                    onClick={zoomNote}
+                />)}
+                {/*{(selectedPath[0] !== notebook.homeId()) && (<NoteButton*/}
+                {/*    notebook={notebook}*/}
+                {/*    noteId={selectedPath[0]}*/}
+                {/*    icon={<CompressOutlined />}*/}
+                {/*    onClick={zoomNote}*/}
+                {/*/>)}*/}
                 <Parents
                   notebook={notebook}
                   noteId={selectedNoteId}
                   onClick={zoomNote}
                   onDetach={readonly ? undefined : onDetach}
                 />
-                <NoteButton
+                {selectedNoteId !== notebook.homeId() && (<NoteButton
                   notebook={notebook}
                   noteId={selectedNoteId}
                   icon={<EyeOutlined />}
                   onClick={zoomNote}
-                />
+                />)}
                 {selectedNoteId && (
                   <NoteToolbar
                     notebook={notebook}
